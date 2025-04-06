@@ -1,0 +1,29 @@
+@startuml
+title Diagrama de Componentes: Arquitectura Cliente-Servidor
+
+package "Cliente (Dispositivo Android)" {
+  [UI de Mensajería] as UI
+  [Gestor de Mensajes] as GM
+  [Controlador de Clasificación] as CC
+  [LLM Local] as LLM
+  [Base de Datos Local (opcional)] as BDLocal
+  
+  UI --> GM : Envía mensajes
+  GM --> CC : Procesa mensaje para clasificación
+  CC --> LLM : Invoca inferencia local
+}
+
+package "Servidor Casero Expuesto (Ngrok)" {
+  [API de Autenticación y Cuentas] as AuthAPI
+  [API de Mensajería] as MsgAPI
+  [Base de Datos Central\n(PostgreSQL u otro)] as DB
+  
+  AuthAPI --> DB : Gestiona cuentas
+  MsgAPI --> DB : Almacena y consulta mensajes
+}
+
+' Comunicación entre cliente y servidor
+UI --> AuthAPI : Login / Registro
+GM --> MsgAPI : Envía/Recibe mensajes
+
+@enduml

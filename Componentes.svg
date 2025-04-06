@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="554px" preserveAspectRatio="none" style="width:994px;height:554px;background:#FFFFFF;" version="1.1" viewBox="0 0 994 554" width="994px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="26.2969" id="_title" style="stroke:none;stroke-width:1.0;" width="466" x="257" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="456" x="262" y="22.9951">Diagrama de Componentes: Arquitectura Cliente-Servidor</text><!--MD5=[1c0dab86273dbd14edeec5cae366de6f]
+cluster Cliente (Dispositivo Android)--><g id="cluster_Cliente (Dispositivo Android)"><path d="M8.5,43.2969 L234.5,43.2969 A3.75,3.75 0 0 1 237,45.7969 L244,65.5938 L477.5,65.5938 A2.5,2.5 0 0 1 480,68.0938 L480,536.2969 A2.5,2.5 0 0 1 477.5,538.7969 L8.5,538.7969 A2.5,2.5 0 0 1 6,536.2969 L6,45.7969 A2.5,2.5 0 0 1 8.5,43.2969 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="6" x2="244" y1="65.5938" y2="65.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="225" x="10" y="58.292">Cliente (Dispositivo Android)</text></g><!--MD5=[e10186908d94bece4adba2c97e8e8f68]
+cluster Servidor Casero Expuesto (Ngrok)--><g id="cluster_Servidor Casero Expuesto (Ngrok)"><path d="M506.5,310.2969 L777.5,310.2969 A3.75,3.75 0 0 1 780,312.7969 L787,332.5938 L984.5,332.5938 A2.5,2.5 0 0 1 987,335.0938 L987,544.7969 A2.5,2.5 0 0 1 984.5,547.2969 L506.5,547.2969 A2.5,2.5 0 0 1 504,544.7969 L504,312.7969 A2.5,2.5 0 0 1 506.5,310.2969 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="504" x2="787" y1="332.5938" y2="332.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="270" x="508" y="325.292">Servidor Casero Expuesto (Ngrok)</text></g><!--MD5=[c42ed81cef7fdd2e33758127945b9a5b]
+entity UI--><g id="elem_UI"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="153" x="310.5" y="78.2969"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="443.5" y="83.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="441.5" y="85.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="441.5" y="89.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="325.5" y="111.292">UI de Mensajería</text></g><!--MD5=[e1c8081d9970b9b7b83adc32ee9c7782]
+entity GM--><g id="elem_GM"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="179" x="272.5" y="201.2969"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="431.5" y="206.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="429.5" y="208.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="429.5" y="212.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="287.5" y="234.292">Gestor de Mensajes</text></g><!--MD5=[36dc586d67e0f1d076b0ce70c9875d3e]
+entity CC--><g id="elem_CC"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="231" x="123.5" y="345.2969"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="334.5" y="350.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="332.5" y="352.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="332.5" y="356.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="191" x="138.5" y="378.292">Controlador de Clasificación</text></g><!--MD5=[762d9b1ee2eb630aa40151fb5f0602e7]
+entity LLM--><g id="elem_LLM"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="105" x="186.5" y="476.7969"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="271.5" y="481.7969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="269.5" y="483.7969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="269.5" y="487.7969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="201.5" y="509.792">LLM Local</text></g><!--MD5=[cb37057b9d425a096f8e3dedecab173b]
+entity BDLocal--><g id="elem_BDLocal"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="253" x="22.5" y="78.2969"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="255.5" y="83.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="253.5" y="85.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="253.5" y="89.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="213" x="37.5" y="111.292">Base de Datos Local (opcional)</text></g><!--MD5=[3d5b3b33ddac8729f4afe0ab0f8b6b0f]
+entity AuthAPI--><g id="elem_AuthAPI"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="254" x="717" y="345.2969"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="951" y="350.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="949" y="352.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="949" y="356.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="214" x="732" y="378.292">API de Autenticación y Cuentas</text></g><!--MD5=[2c95b76f02981cee0e8aefefbceec679]
+entity MsgAPI--><g id="elem_MsgAPI"><rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="161" x="520.5" y="345.2969"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="661.5" y="350.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="659.5" y="352.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="659.5" y="356.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="535.5" y="378.292">API de Mensajería</text></g><!--MD5=[f9ba5bf973e7832d2ce5ed59077b93f7]
+entity DB--><g id="elem_DB"><rect fill="#F1F1F1" height="62.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="195" x="632.5" y="468.2969"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="807.5" y="473.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="805.5" y="475.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="805.5" y="479.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="155" x="647.5" y="501.292">Base de Datos Central</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="136" x="647.5" y="517.5889">(PostgreSQL u otro)</text></g><!--MD5=[afc7dbd8b88aa882b4eff926f4c05566]
+link UI to GM--><g id="link_UI_GM"><path d="M382.41,124.4869 C378.24,144.7069 372.06,174.6069 367.6,196.2169 " fill="none" id="UI-to-GM" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="366.56,201.2469,372.2789,193.2285,367.5598,196.3479,364.4404,191.6288,366.56,201.2469" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="100" x="376" y="167.3638">Envía mensajes</text></g><!--MD5=[78a10021ac38389e90ccc2a266b6779b]
+link GM to CC--><g id="link_GM_CC"><path d="M320.39,247.3769 C307.61,255.5569 294.23,265.7069 284,277.2969 C267.69,295.7669 255.7,321.2069 248.21,340.3269 " fill="none" id="GM-to-CC" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="246.4,345.0469,253.357,338.0755,248.1901,340.3783,245.8873,335.2114,246.4,345.0469" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="223" x="285" y="290.3638">Procesa mensaje para clasificación</text></g><!--MD5=[d1691ecce1e9fa1a136914203e67df90]
+link CC to LLM--><g id="link_CC_LLM"><path d="M239,391.5569 C239,413.6069 239,447.4369 239,471.1869 " fill="none" id="CC-to-LLM" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="239,476.3969,243,467.3969,239,471.3969,235,467.3969,239,476.3969" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="140" x="240" y="434.3638">Invoca inferencia local</text></g><!--MD5=[3780c2c100ae9ca559d76ab51894e689]
+link AuthAPI to DB--><g id="link_AuthAPI_DB"><path d="M833.76,391.4269 C826.58,405.6569 816.12,424.0669 804,438.2969 C795.93,447.7769 786.23,456.8969 776.55,465.0569 " fill="none" id="AuthAPI-to-DB" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="772.7,468.2469,782.1806,465.5789,776.5481,465.0544,777.0726,459.4219,772.7,468.2469" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="112" x="816" y="434.3638">Gestiona cuentas</text></g><!--MD5=[2c8a5927c08bd616072cf89dbd5a11a5]
+link MsgAPI to DB--><g id="link_MsgAPI_DB"><path d="M592.42,391.5169 C588.36,405.9569 586.11,424.5669 595,438.2969 C603.22,450.9869 614.79,461.0369 627.74,468.9869 " fill="none" id="MsgAPI-to-DB" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="632.18,471.6069,626.4379,463.6051,627.8663,469.0786,622.3927,470.507,632.18,471.6069" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="199" x="596" y="434.3638">Almacena y consulta mensajes</text></g><!--MD5=[c36b1b26dbae3bb726cf8a9ceba23cac]
+link UI to AuthAPI--><g id="link_UI_AuthAPI"><path d="M429.69,124.3869 C446.96,133.4669 467.03,144.2069 485,154.2969 C601.94,219.9669 737.41,301.9969 803.51,342.4169 " fill="none" id="UI-to-AuthAPI" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="808.15,345.2569,802.5739,337.1386,803.8893,342.6404,798.3875,343.9558,808.15,345.2569" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="98" x="645" y="228.8638">Login / Registro</text></g><!--MD5=[3029a5991fe0087e87b9f4919a9e8266]
+link GM to MsgAPI--><g id="link_GM_MsgAPI"><path d="M448.24,247.3069 C470.3,254.9669 493.32,264.8469 513,277.2969 C540.01,294.3869 564.88,321.3269 581.24,341.2769 " fill="none" id="GM-to-MsgAPI" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="584.39,345.1669,581.8231,335.6584,581.2387,341.285,575.6121,340.7006,584.39,345.1669" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="536" y="290.3638">Envía/Recibe mensajes</text></g><!--MD5=[e244622068509eb9f89fc38509f41d2f]
+@startuml
+title Diagrama de Componentes: Arquitectura Cliente-Servidor
+
+package "Cliente (Dispositivo Android)" {
+  [UI de Mensajería] as UI
+  [Gestor de Mensajes] as GM
+  [Controlador de Clasificación] as CC
+  [LLM Local] as LLM
+  [Base de Datos Local (opcional)] as BDLocal
+  
+  UI - -> GM : Envía mensajes
+  GM - -> CC : Procesa mensaje para clasificación
+  CC - -> LLM : Invoca inferencia local
+}
+
+package "Servidor Casero Expuesto (Ngrok)" {
+  [API de Autenticación y Cuentas] as AuthAPI
+  [API de Mensajería] as MsgAPI
+  [Base de Datos Central\n(PostgreSQL u otro)] as DB
+  
+  AuthAPI - -> DB : Gestiona cuentas
+  MsgAPI - -> DB : Almacena y consulta mensajes
+}
+
+' Comunicación entre cliente y servidor
+UI - -> AuthAPI : Login / Registro
+GM - -> MsgAPI : Envía/Recibe mensajes
+@enduml
+
+@startuml
+title Diagrama de Componentes: Arquitectura Cliente-Servidor
+
+package "Cliente (Dispositivo Android)" {
+  [UI de Mensajería] as UI
+  [Gestor de Mensajes] as GM
+  [Controlador de Clasificación] as CC
+  [LLM Local] as LLM
+  [Base de Datos Local (opcional)] as BDLocal
+  
+  UI - -> GM : Envía mensajes
+  GM - -> CC : Procesa mensaje para clasificación
+  CC - -> LLM : Invoca inferencia local
+}
+
+package "Servidor Casero Expuesto (Ngrok)" {
+  [API de Autenticación y Cuentas] as AuthAPI
+  [API de Mensajería] as MsgAPI
+  [Base de Datos Central\n(PostgreSQL u otro)] as DB
+  
+  AuthAPI - -> DB : Gestiona cuentas
+  MsgAPI - -> DB : Almacena y consulta mensajes
+}
+
+UI - -> AuthAPI : Login / Registro
+GM - -> MsgAPI : Envía/Recibe mensajes
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 17:01:30 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

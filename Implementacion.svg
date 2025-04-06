@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="610px" preserveAspectRatio="none" style="width:548px;height:610px;background:#FFFFFF;" version="1.1" viewBox="0 0 548 610" width="548px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="26.2969" id="_title" style="stroke:none;stroke-width:1.0;" width="530" x="5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="520" x="10" y="22.9951">Diagrama de Despliegue: Arquitectura Cliente-Servidor con Ngrok</text><!--MD5=[aeef9b66c4d5ad6084ecae1f680bfcd4]
+cluster Dispositivo Android--><g id="cluster_Dispositivo Android"><polygon fill="none" points="142.5,53.2969,152.5,43.2969,371.5,43.2969,371.5,145.2969,361.5,155.2969,142.5,155.2969,142.5,53.2969" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="361.5" x2="371.5" y1="53.2969" y2="43.2969"/><line style="stroke:#181818;stroke-width:1.0;" x1="142.5" x2="361.5" y1="53.2969" y2="53.2969"/><line style="stroke:#181818;stroke-width:1.0;" x1="361.5" x2="361.5" y1="53.2969" y2="155.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="153" x="176.5" y="69.292">Dispositivo Android</text></g><!--MD5=[534ef8afde2bc1ff5d774c8a6e444fd5]
+cluster Servidor Casero--><g id="cluster_Servidor Casero"><polygon fill="none" points="144.5,358.2969,154.5,348.2969,369.5,348.2969,369.5,583.2969,359.5,593.2969,144.5,593.2969,144.5,358.2969" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="359.5" x2="369.5" y1="358.2969" y2="348.2969"/><line style="stroke:#181818;stroke-width:1.0;" x1="144.5" x2="359.5" y1="358.2969" y2="358.2969"/><line style="stroke:#181818;stroke-width:1.0;" x1="359.5" x2="359.5" y1="358.2969" y2="593.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="128" x="189" y="374.292">Servidor Casero</text></g><!--MD5=[c868e96e9aaffa62418953ee13ad0226]
+cluster Ngrok--><g id="cluster_Ngrok"><polygon fill="none" points="165.5,214.2969,175.5,204.2969,311.5,204.2969,311.5,289.2969,301.5,299.2969,165.5,299.2969,165.5,214.2969" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="301.5" x2="311.5" y1="214.2969" y2="204.2969"/><line style="stroke:#181818;stroke-width:1.0;" x1="165.5" x2="301.5" y1="214.2969" y2="214.2969"/><line style="stroke:#181818;stroke-width:1.0;" x1="301.5" x2="301.5" y1="214.2969" y2="299.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="47" x="211" y="230.292">Ngrok</text></g><!--MD5=[40046ef14a1cf630dc5fb444525ef4ac]
+entity AppClient--><g id="elem_AppClient"><rect fill="#F1F1F1" height="55.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="157" x="160" y="83.2969"/><polygon fill="#F1F1F1" points="300,88.2969,300,102.2969,312,102.2969,312,94.2969,306,88.2969,300,88.2969" style="stroke:#181818;stroke-width:0.5;"/><line style="stroke:#181818;stroke-width:0.5;" x1="306" x2="306" y1="88.2969" y2="94.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="312" x2="306" y1="94.2969" y2="94.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="127" x="170" y="109.292">App de Mensajería</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="170" y="125.5889">con LLM Local</text></g><!--MD5=[a6db0c926898241e7c594507fb3ca544]
+entity Backend--><g id="elem_Backend"><rect fill="#F1F1F1" height="55.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="155" x="161" y="388.2969"/><polygon fill="#F1F1F1" points="299,393.2969,299,407.2969,311,407.2969,311,399.2969,305,393.2969,299,393.2969" style="stroke:#181818;stroke-width:0.5;"/><line style="stroke:#181818;stroke-width:0.5;" x1="305" x2="305" y1="393.2969" y2="399.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="311" x2="305" y1="399.2969" y2="399.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="86" x="171" y="414.292">Backend API</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="171" y="430.5889">(FastAPI / Node.js)</text></g><!--MD5=[f9ba5bf973e7832d2ce5ed59077b93f7]
+entity DB--><g id="elem_DB"><rect fill="#F1F1F1" height="55.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="185" x="160" y="521.2969"/><polygon fill="#F1F1F1" points="328,526.2969,328,540.2969,340,540.2969,340,532.2969,334,526.2969,328,526.2969" style="stroke:#181818;stroke-width:0.5;"/><line style="stroke:#181818;stroke-width:0.5;" x1="334" x2="334" y1="526.2969" y2="532.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="340" x2="334" y1="532.2969" y2="532.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="155" x="170" y="547.292">Base de Datos Central</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="170" y="563.5889">(PostgreSQL)</text></g><!--MD5=[00a4b2eebae024f63f478b77a0c21ef9]
+entity NgrokTunnel--><g id="elem_NgrokTunnel"><rect fill="#F1F1F1" height="39.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="114" x="181.5" y="244.2969"/><polygon fill="#F1F1F1" points="278.5,249.2969,278.5,263.2969,290.5,263.2969,290.5,255.2969,284.5,249.2969,278.5,249.2969" style="stroke:#181818;stroke-width:0.5;"/><line style="stroke:#181818;stroke-width:0.5;" x1="284.5" x2="284.5" y1="249.2969" y2="255.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="290.5" x2="284.5" y1="255.2969" y2="255.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="191.5" y="270.292">Túnel Ngrok</text></g><!--MD5=[f26fe487fba52826627f23e12ce1f0dd]
+link AppClient to NgrokTunnel--><g id="link_AppClient_NgrokTunnel"><path d="M238.5,139.5469 C238.5,167.9769 238.5,212.0969 238.5,239.1169 " fill="none" id="AppClient-to-NgrokTunnel" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="238.5,244.2869,242.5,235.2869,238.5,239.2869,234.5,235.2869,238.5,244.2869" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="160" x="239.5" y="184.3638">Conexión HTTPS (cliente)</text></g><!--MD5=[0039060f58405be7b93ee38a7011b86d]
+link NgrokTunnel to Backend--><g id="link_NgrokTunnel_Backend"><path d="M238.5,283.5569 C238.5,308.4369 238.5,352.7269 238.5,383.0269 " fill="none" id="NgrokTunnel-to-Backend" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="238.5,388.1369,242.5257,379.1483,238.5143,383.1369,234.5257,379.1255,238.5,388.1369" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="180" x="239.5" y="328.3638">Redirección de tráfico TCP/IP</text></g><!--MD5=[e51c87b4fe94d727f0d0dd704a0cbc3c]
+link Backend to DB--><g id="link_Backend_DB"><path d="M241.4,444.4369 C243.63,465.2569 246.7,494.0469 249.05,516.0369 " fill="none" id="Backend-to-DB" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="249.6,521.1869,252.5994,511.8059,249.0572,516.2164,244.6467,512.6743,249.6,521.1869" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="156" x="246.5" y="487.3638">Acceso a Base de Datos</text></g><!--MD5=[1c986d6f363226285417bfc19911df6e]
+@startuml
+title Diagrama de Despliegue: Arquitectura Cliente-Servidor con Ngrok
+
+node "Dispositivo Android" {
+  artifact "App de Mensajería\ncon LLM Local" as AppClient
+}
+
+node "Servidor Casero" {
+  artifact "Backend API\n(FastAPI / Node.js)" as Backend
+  artifact "Base de Datos Central\n(PostgreSQL)" as DB
+}
+
+node "Ngrok" {
+  artifact "Túnel Ngrok" as NgrokTunnel
+}
+
+' Flujo de conexión
+AppClient - -> NgrokTunnel : Conexión HTTPS (cliente)
+NgrokTunnel - -> Backend : Redirección de tráfico TCP/IP
+Backend - -> DB : Acceso a Base de Datos
+@enduml
+
+@startuml
+title Diagrama de Despliegue: Arquitectura Cliente-Servidor con Ngrok
+
+node "Dispositivo Android" {
+  artifact "App de Mensajería\ncon LLM Local" as AppClient
+}
+
+node "Servidor Casero" {
+  artifact "Backend API\n(FastAPI / Node.js)" as Backend
+  artifact "Base de Datos Central\n(PostgreSQL)" as DB
+}
+
+node "Ngrok" {
+  artifact "Túnel Ngrok" as NgrokTunnel
+}
+
+AppClient - -> NgrokTunnel : Conexión HTTPS (cliente)
+NgrokTunnel - -> Backend : Redirección de tráfico TCP/IP
+Backend - -> DB : Acceso a Base de Datos
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 17:01:30 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

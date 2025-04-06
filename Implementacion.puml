@@ -1,0 +1,22 @@
+@startuml
+title Diagrama de Despliegue: Arquitectura Cliente-Servidor con Ngrok
+
+node "Dispositivo Android" {
+  artifact "App de Mensajería\ncon LLM Local" as AppClient
+}
+
+node "Servidor Casero" {
+  artifact "Backend API\n(FastAPI / Node.js)" as Backend
+  artifact "Base de Datos Central\n(PostgreSQL)" as DB
+}
+
+node "Ngrok" {
+  artifact "Túnel Ngrok" as NgrokTunnel
+}
+
+' Flujo de conexión
+AppClient --> NgrokTunnel : Conexión HTTPS (cliente)
+NgrokTunnel --> Backend : Redirección de tráfico TCP/IP
+Backend --> DB : Acceso a Base de Datos
+
+@enduml
