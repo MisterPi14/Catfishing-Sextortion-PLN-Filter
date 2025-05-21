@@ -1,0 +1,154 @@
+📡 Generando respuesta en streaming: 1
+
+
+Texto: Hola, soy un soldado en misión en Siria. Necesito que me ayudes con algo urgente.
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 1
+
+
+Texto: Hola, ¿cómo estás? ¿Quieres salir este fin de semana?
+Etiqueta real: 0 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+
+Texto: Buen día, le informamos sobre su próxima cita médica.
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+
+Texto: Hola hermosa, vi tu perfil y me encantó. ¿Te gustaría conocernos mejor? Soy ingeniero en Monterrey.
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+
+Texto: ¡Qué onda! ¿Vamos por unas chelas al rato o qué?
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+
+Texto: Mi nombre es Laura, soy enfermera en Cancún. Me encantaría platicar contigo y ver si tenemos química.
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+
+Texto: No olvides que mañana tienes tu cita con el dentista a las 10:00 AM.
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+
+Texto: Hola guapo, estoy buscando a alguien especial. ¿Te animas a una videollamada?
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+
+Texto: ¿Puedes pasar por el súper y comprar leche y pan, porfa?
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+
+Texto: Soy Mariana, modelo de Guadalajara. Me encantaría que me conocieras mejor. ¿Te gustaría ver más fotos mías?
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+
+Texto: Recuerda que el pago de la luz vence el viernes. No se te pase.
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+
+Texto: Estoy en una misión humanitaria en África y necesito ayuda para regresar a casa. ¿Podrías apoyarme económicamente?
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+
+Texto: ¡Feliz cumpleaños! Espero que tengas un día increíble lleno de alegría.
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+
+Texto: Soy piloto y estaré en tu ciudad la próxima semana. ¿Te gustaría que nos conociéramos?
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+
+Texto: Te mandé el archivo por correo. Avísame si lo recibiste.
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+
+Texto: Mi ex me dejó y estoy buscando a alguien que me valore. ¿Te gustaría ser esa persona?
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+
+Texto: La junta se reprogramó para el jueves a las 3 PM. Por favor, confirma tu asistencia.
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+
+Texto: Estoy atrapado en el aeropuerto sin dinero. ¿Podrías enviarme algo para poder regresar?
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+
+Texto: ¿Viste el partido de anoche? ¡Estuvo buenísimo!
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+
+Texto: Soy chef y me encanta cocinar para alguien especial. ¿Te gustaría probar mis platillos?
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+
+Texto: Mamá, llegué bien a casa. Te quiero mucho.
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+
+Texto: Estoy en una situación difícil y necesito a alguien en quien confiar. ¿Puedo contar contigo?
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+
+Texto: No olvides llevar tu paraguas. Parece que va a llover hoy.
+Etiqueta real: 0 | Predicción: 0
+
+== MÉTRICAS DE EVALUACIÓN ==
+Accuracy: 0.9565217391304348
+Precision (macro): 0.9583333333333333
+Recall (macro): 0.9583333333333333
+F1 Score (macro): 0.9565217391304348
+
+== REPORTE DE CLASIFICACIÓN COMPLETO ==
+              precision    recall  f1-score   support
+
+           0       1.00      0.92      0.96        12
+           1       0.92      1.00      0.96        11
+
+    accuracy                           0.96        23
+   macro avg       0.96      0.96      0.96        23
+weighted avg       0.96      0.96      0.96        23
+
