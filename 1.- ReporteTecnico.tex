@@ -1,113 +1,114 @@
-% docx2tex 1.10 --- ``TeX without any tariffs (local regulations may vary)'' 
-% 
-% docx2tex is Open Source and  
-% you can download it on GitHub: 
-% https://github.com/transpect/docx2tex 
-%  
-\documentclass{scrbook} 
+\documentclass{article} 
 \usepackage[T1]{fontenc} 
-\usepackage[utf8]{inputenc} 
+%\usepackage[utf8]{inputenc} 
 \usepackage{graphicx}
 \usepackage{hyperref} 
-\usepackage{multirow} 
-\usepackage{tabularx} 
+\usepackage{float}
+%\usepackage{multirow} 
+%\usepackage{tabularx} 
 \usepackage{color} 
-\usepackage{textcomp} 
-\usepackage{tipa}
-\usepackage{amsmath} 
-\usepackage{amssymb} 
-\usepackage{amsfonts} 
-\usepackage{amsxtra} 
-\usepackage{wasysym} 
-\usepackage{isomath} 
-\usepackage{mathtools} 
-\usepackage{txfonts} 
-\usepackage{upgreek} 
-\usepackage{enumerate} 
-\usepackage{tensor} 
-\usepackage{pifont} 
-\usepackage{ulem} 
-\usepackage{xfrac} 
-\usepackage{arydshln} 
-\def\spanishoptions{mexico}
-\usepackage[english,spanish]{babel}
-\definecolor{color-DDDDDD}{rgb}{0.87,0.87,0.87}
-\definecolor{color-F9F9F9}{rgb}{0.98,0.98,0.98}
-\definecolor{white}{rgb}{1,1,1}
+%\usepackage{textcomp} 
+%\usepackage{tipa}
+%\usepackage{amsmath} 
+%\usepackage{amssymb} 
+%\usepackage{amsfonts}
+%\usepackage{amsxtra} 
+%\usepackage{wasysym} 
+%\usepackage{isomath} 
+%\usepackage{mathtools} 
+%\usepackage{txfonts} 
+%\usepackage{upgreek} 
+%\usepackage{enumerate} 
+%\usepackage{tensor} 
+%\usepackage{pifont} 
+%\usepackage{ulem} 
+%\usepackage{xfrac} 
+%\usepackage{arydshln} 
+%\def\spanishoptions{mexico}
+%\usepackage[english,spanish]{babel}
+%\definecolor{color-DDDDDD}{rgb}{0.87,0.87,0.87}
+%\definecolor{color-F9F9F9}{rgb}{0.98,0.98,0.98}
+%\definecolor{white}{rgb}{1,1,1}
 \definecolor{yellow}{rgb}{1,1,0}
-\definecolor{color-0F4761}{rgb}{0.06,0.28,0.38}
+%\definecolor{color-0F4761}{rgb}{0.06,0.28,0.38}
+%los dos de abajo para la tabla de estado del arte
+\usepackage{tabularx}
+\usepackage{array}
+%\usepackage[top=1.9cm, bottom=3cm, left=1.3cm, right=1.3cm]{geometry}
+\usepackage[margin=2cm]{geometry}
 
 \begin{document}
 
-\begin{table}
-\begin{tabularx}{\textwidth}{|p{\dimexpr 0.261\linewidth-2\tabcolsep-2\arrayrulewidth}|p{\dimexpr 0.739\linewidth-2\tabcolsep-\arrayrulewidth}|} \hline 
-\centering\arraybackslash{}\includegraphics[width=1\textwidth]{1.-_Filtro_de_deteccion_de_catfishing_y_extorcion_en_aplicaciones_de_mensajeria.docx.tmp/word/media/image1.png} & INSTITUTO POLIT{\'{E}}CNICO\newline NACIONAL\newline \textbf{\uline{\includegraphics{1-svg-1.svg}\includegraphics{1-svg-1.svg}}}\newline ESCUELA SUPERIOR DE INGENIER{\'{I}}A MEC{\'{A}}NICA Y EL{\'{E}}CTRICA, UNIDAD CULHUAC{\'{A}}N\newline CARRERA: INGENIER{\'{I}}A COMPUTACI{\'{O}}N\newline \textbf{Reporte t{\'{e}}cnico: Filtro de detecci{\'{o}}n de catfishing y extorci{\'{o}}n en aplicaciones de mensajer{\'{i}}a basado en PLN mediante refinamiento}%Edgar Diego Pina VargasEP2025-05-12T12:59:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-12T12:59:00Z 2025-05-12T12:59:00Z 0 0 0 Es un termino ambiguo relacionado al fine tuning o prompt engineering: especificar conforme se avance en el desarrollo Es un termino ambiguo relacionado al fine tuning o prompt engineering: especificar conforme se avance en el desarrollo
-\textbf{ de un LLM }\newline Proyecto de Investigaci{\'{o}}n\newline Que para obtener el t{\'{i}}tulo de: Ingeniero en Computaci{\'{o}}n\newline Presenta:\newline 
-\begin{itemize}
-\item Edgar Diego Pi{\~{n}}a Vargas
-\end{itemize}
-Asesores\newline 
-\begin{itemize}
-\item Jose Portillo Portillo
-\item Olalekan Tolulope Abiola
-\end{itemize}
-\textit{Ciudad de M{\'{e}}xico a de del 2025}\\\hline 
-\includegraphics{1-svg-1.svg}\includegraphics{1-svg-1.svg}\includegraphics[width=1\textwidth]{1.-_Filtro_de_deteccion_de_catfishing_y_extorcion_en_aplicaciones_de_mensajeria.docx.tmp/word/media/image2.png} &\\\hline 
-\end{tabularx}
-\end{table}
-Contenido
 
-\tableofcontents
+%Es un termino ambiguo relacionado al fine tuning o prompt engineering: especificar conforme se avance en el desarrollo Es un termino ambiguo relacionado al fine tuning o prompt engineering: especificar conforme se avance en el desarrollo
 
-\section{\label{ref-001}Introducci{\'{o}}n%Edgar Diego Pina VargasEP2025-05-08T20:10:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:10:00Z 2025-05-08T20:10:00Z 0 0 0 🡺Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática 🡺Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática 🡺Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática 🡺 🡺  Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática
-%Edgar Diego Pina VargasEP2025-05-08T21:10:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T21:10:00Z 2025-05-08T21:10:00Z 0 0 0 
-%Edgar Diego Pina VargasEP2025-05-09T22:38:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T22:38:00Z 2025-05-09T22:38:00Z 0 0 0 Se puede hablar también sobre lo necesario que es el uso de internet y redes sociales hoy dia Se puede hablar también sobre lo necesario que es el uso de internet y redes sociales hoy dia
-	%Edgar Diego Pina VargasEP2025-05-08T21:27:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T21:27:00Z 2025-05-08T21:27:00Z 0 0 0 Acceso a internet, uso de redes sociales, redes sociales laborales Acceso a internet, uso de redes sociales, redes sociales laborales
-%Edgar Diego Pina VargasEP2025-05-09T21:54:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T21:54:00Z 2025-05-09T21:54:00Z 0 0 0 Aquí se puede hablar conforme al por que es local el modelo considerando la cobertura que en ocasiones no es formidable y en la misma ciudad en edificios aveces se queda desconectado totalmente sin estar en zonas rurales Aquí se puede hablar conforme al por que es local el modelo considerando la cobertura que en ocasiones no es formidable y en la misma ciudad en edificios aveces se queda desconectado totalmente sin estar en zonas rurales
-}
+%\tableofcontents
 
-El crecimiento exponencial en el uso de tecnolog{\'{i}}as m{\'{o}}viles y plataformas de comunicaci{\'{o}}n digital ha transformado la manera en que interact{{\'{u}}}an las personas. Seg{{\'{u}}}n datos de la ENDUTIH 2023, en M{\'{e}}xico el 81.2\,\% de la poblaci{\'{o}}n utiliza tel{\'{e}}fono celular y el 96.1\,\% de los usuarios de internet en la Ciudad de M{\'{e}}xico lo hace para comunicarse, principalmente a trav{\'{e}}s de redes sociales y aplicaciones de mensajer{\'{i}}a. Esta adopci{\'{o}}n masiva ha tra{\'{i}}do consigo grandes beneficios, pero tambi{\'{e}}n ha abierto nuevas oportunidades para la comisi{\'{o}}n de delitos como el \textit{catfishing} y la extorsi{\'{o}}n digital.
+%Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática   Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática   Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática        Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática
 
-La facilidad con la que se pueden crear perfiles falsos y establecer contacto an{\'{o}}nimo en entornos digitales ha hecho que estos delitos proliferen, afectando especialmente a los j{\'{o}}venes, quienes presentan la mayor penetraci{\'{o}}n de internet (96.7\,\% en el grupo de 18 a 24 a{\~{n}}os). Adem{\'{a}}s, cifras del INEGI (ENVIPE 2023) reflejan un repunte en la tasa de incidencia de fraudes y extorsiones, situando a este fen{\'{o}}meno como una amenaza persistente en el {\'{a}}mbito digital.
+% Se puede hablar también sobre lo necesario que es el uso de internet y redes sociales hoy dia Se puede hablar también sobre lo necesario que es el uso de internet y redes sociales hoy dia
 
-\subsubsection{Personas usuarias de tecnolog{\'{i}}as de la informaci{\'{o}}n y comunicaci{\'{o}}n}
+%Acceso a internet, uso de redes sociales, redes sociales laborales Acceso a internet, uso de redes sociales, redes sociales laborales
 
+%Aquí se puede hablar conforme al por que es local el modelo considerando la cobertura que en ocasiones no es formidable y en la misma ciudad en edificios aveces se queda desconectado totalmente sin estar en zonas rurales Aquí se puede hablar conforme al por que es local el modelo considerando la cobertura que en ocasiones no es formidable y en la misma ciudad en edificios aveces se queda desconectado totalmente sin estar en zonas rurales
 
-\begin{figure}
-\caption{Figura 1: Porcentaje de usuarios de internet, telefon{\'{i}}a m{\'{o}}vil y computadora en M{\'{e}}xico.\protect\newline
-Porcentaje de hogares con acceso a internet en M{\'{e}}xico, 2023. Adaptado de \textit{Encuesta Nacional sobre Disponibilidad y Uso de Tecnolog{\'{i}}as de la Informaci{\'{o}}n en los Hogares (ENDUTIH) 2023}, por Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a, 2024, \url{https://www.inegi.org.mx/programas/endutih/2023/\#informacion_general}. {\textcopyright} INEGI\includegraphics[width=0.5\textwidth]{1.-_Filtro_de_deteccion_de_catfishing_y_extorcion_en_aplicaciones_de_mensajeria.docx.tmp/word/media/image4.png}}\includegraphics[width=0.5\textwidth]{1.-_Filtro_de_deteccion_de_catfishing_y_extorcion_en_aplicaciones_de_mensajeria.docx.tmp/word/media/image3.png}
-\label{fig:1}
+\section{\label{ref-001}Introducción}
+
+El crecimiento exponencial en el uso de tecnologías móviles y plataformas de comunicación digital ha transformado la manera en que interactúan las personas. Según datos de la ENDUTIH 2023, en México el 81.2\,\% de la población utiliza teléfono celular y el 96.1\,\% de los usuarios de internet en la Ciudad de México lo hace para comunicarse, principalmente a través de redes sociales y aplicaciones de mensajería. Esta adopción masiva ha traído consigo grandes beneficios, pero también ha abierto nuevas oportunidades para la comisión de delitos como el \textit{catfishing} y la extorsión digital.
+
+La facilidad con la que se pueden crear perfiles falsos y establecer contacto anónimo en entornos digitales ha hecho que estos delitos proliferen, afectando especialmente a los jóvenes, quienes presentan la mayor penetración de internet (96.7\,\% en el grupo de 18 a 24 años). Además, cifras del INEGI (ENVIPE 2023) reflejan un repunte en la tasa de incidencia de fraudes y extorsiones, situando a este fenómeno como una amenaza persistente en el ámbito digital.
+
+\subsubsection{Personas usuarias de tecnologías de la información y comunicación}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{imagenes/grafica1.png}
+    \caption{Porcentaje de usuarios de internet, telefonía móvil y computadora en México, 2023. Adaptado de \textit{Encuesta Nacional sobre Disponibilidad y Uso de Tecnolog{\'{i}}as de la Informaci{\'{o}}n en los Hogares (ENDUTIH) 2023}, por Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a, 2024, \url{https://www.inegi.org.mx/programas/endutih/2023/\#informacion_general}.
+    {\textcopyright} INEGI}
+    \label{fig:1}
 \end{figure}
-Grafica 1: Personas usuarias de internet seg{{\'{u}}}n grupos de edad del 2020 al 2023\newline
-Acceso a internet por entidad federativa, 2023. Tomado de \textit{Encuesta Nacional sobre Disponibilidad y Uso de Tecnolog{\'{i}}as de la Informaci{\'{o}}n en los Hogares (ENDUTIH) 2023: Comunicado de prensa n{{\'{u}}}m. 161/24}, por Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a, 2024, \url{https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/ENDUTIH/ENDUTIH_23.pdf}. {\textcopyright} INEGI
 
-Datos de la ENDUTIH 2024 muestran que los j{\'{o}}venes de \textbf{18 a 24 a{\~{n}}os} presentan la mayor penetraci{\'{o}}n de Internet en M{\'{e}}xico (96.7 \%), lo cual coincide con su alta participaci{\'{o}}n en redes sociales y aplicaciones de citas. Esta combinaci{\'{o}}n los convierte en un grupo con mayor exposici{\'{o}}n a \textbf{estafas rom{\'{a}}nticas y catfishing}, 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{imagenes/grafica2.png}
+    \caption{Personas usuarias de internet seg{{\'{u}}}n grupos de edad del 2020 al 2023\newline
+    Acceso a internet por entidad federativa, 2023. Tomado de \textit{Encuesta Nacional sobre Disponibilidad y Uso de Tecnolog{\'{i}}as de la Informaci{\'{o}}n en los Hogares (ENDUTIH) 2023: Comunicado de prensa n{{\'{u}}}m. 161/24}, por Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a, 2024, \url{https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/ENDUTIH/ENDUTIH_23.pdf}. {\textcopyright} INEGI}
+    \label{fig:2}
+\end{figure}
+
+Datos de la ENDUTIH 2024 muestran que los jóvenes de \textbf{18 a 24 años} presentan la mayor penetración de Internet en México (96.7 \%), lo cual coincide con su alta participaci{\'{o}}n en redes sociales y aplicaciones de citas. Esta combinaci{\'{o}}n los convierte en un grupo con mayor exposici{\'{o}}n a \textbf{estafas rom{\'{a}}nticas y catfishing}
 
 \subsubsection{Tasa de incidencia delictiva por cada cien mil habitantes por tipo de delito.}
 
-
-\begin{table}
-\begin{tabularx}{\textwidth}{|p{\dimexpr 0.088\linewidth-2\tabcolsep-2\arrayrulewidth}|p{\dimexpr 0.146\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.198\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.184\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.135\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.117\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.131\linewidth-2\tabcolsep-\arrayrulewidth}|} \hline 
-\centering\arraybackslash{}\textbf{A{\~{n}}o} & \centering\arraybackslash{}\textbf{Tipo de delito} & \centering\arraybackslash{}\textbf{Estimaciones puntuales} & \centering\arraybackslash{}\textbf{Coeficientes de variaci{\'{o}}n} & \centering\arraybackslash{}\textbf{Errores est{\'{a}}ndar} & \centering\arraybackslash{}\textbf{L{\'{i}}mite inferior} & \centering\arraybackslash{}\textbf{L{\'{i}}mite superior}\\\hline 
-\centering\arraybackslash{}\multirow{2}{*}{\centering\arraybackslash{}\textbf{2023}} & \centering\arraybackslash{}\textbf{Fraude\textbackslash 4} & \centering\arraybackslash{}6.962 & \centering\arraybackslash{}2,4 & \centering\arraybackslash{}168 & \centering\arraybackslash{}6.687 & \centering\arraybackslash{}7.238\\\cline{2-7}
- & \centering\arraybackslash{}\textbf{Extorsi{\'{o}}n} & \centering\arraybackslash{}5.213 & \centering\arraybackslash{}3,2 & \centering\arraybackslash{}166 & \centering\arraybackslash{}4.940 & \centering\arraybackslash{}5.486\\\hline 
-\centering\arraybackslash{}\multirow{2}{*}{\centering\arraybackslash{}\textbf{2022}} & \centering\arraybackslash{}\textbf{Fraude\textbackslash 4} & \centering\arraybackslash{}5.770 & \centering\arraybackslash{}2,5 & \centering\arraybackslash{}146 & \centering\arraybackslash{}5.530 & \centering\arraybackslash{}6.009\\\cline{2-7}
- & \centering\arraybackslash{}\textbf{Extorsi{\'{o}}n} & \centering\arraybackslash{}5.056 & \centering\arraybackslash{}3,0 & \centering\arraybackslash{}154 & \centering\arraybackslash{}4.803 & \centering\arraybackslash{}5.308\\\hline 
-\centering\arraybackslash{}\multirow{2}{*}{\centering\arraybackslash{}\textbf{2020}} & \centering\arraybackslash{}\textbf{Fraude\textbackslash 4} & \centering\arraybackslash{}5.904 & \centering\arraybackslash{}2,5 & \centering\arraybackslash{}148 & \centering\arraybackslash{}5.660 & \centering\arraybackslash{}6.148\\\cline{2-7}
- & \centering\arraybackslash{}\textbf{Extorsi{\'{o}}n} & \centering\arraybackslash{}5.160 & \centering\arraybackslash{}3,0 & \centering\arraybackslash{}153 & \centering\arraybackslash{}4.909 & \centering\arraybackslash{}5.412\\\hline 
-\centering\arraybackslash{}\multirow{2}{*}{\centering\arraybackslash{}\textbf{2018}} & \centering\arraybackslash{}\textbf{Fraude\textbackslash 4} & \centering\arraybackslash{}5.397 & \centering\arraybackslash{}3,0 & \centering\arraybackslash{}161 & \centering\arraybackslash{}5.133 & \centering\arraybackslash{}5.661\\\cline{2-7}
- & \centering\arraybackslash{}\textbf{Extorsi{\'{o}}n} & \centering\arraybackslash{}6.542 & \centering\arraybackslash{}2,7 & \centering\arraybackslash{}179 & \centering\arraybackslash{}6.248 & \centering\arraybackslash{}6.836\\\hline 
-\centering\arraybackslash{}\multirow{2}{*}{\centering\arraybackslash{}\textbf{2016}} & \centering\arraybackslash{}\textbf{Fraude\textbackslash 4} & \centering\arraybackslash{}4.656 & \centering\arraybackslash{}2,9 & \centering\arraybackslash{}136 & \centering\arraybackslash{}4.433 & \centering\arraybackslash{}4.879\\\cline{2-7}
- & \centering\arraybackslash{}\textbf{Extorsi{\'{o}}n} & \centering\arraybackslash{}8.945 & \centering\arraybackslash{}2,3 & \centering\arraybackslash{}206 & \centering\arraybackslash{}8.606 & \centering\arraybackslash{}9.283\\\hline 
-\centering\arraybackslash{}\multirow{2}{*}{\centering\arraybackslash{}\textbf{2014}} & \centering\arraybackslash{}\textbf{Fraude\textbackslash 4} & \centering\arraybackslash{}4.255 & \centering\arraybackslash{}4,6 & \centering\arraybackslash{}195 & \centering\arraybackslash{}3.933 & \centering\arraybackslash{}4.576\\\cline{2-7}
- & \centering\arraybackslash{}\textbf{Extorsi{\'{o}}n} & \centering\arraybackslash{}9.850 & \centering\arraybackslash{}2,8 & \centering\arraybackslash{}271 & \centering\arraybackslash{}9.404 & \centering\arraybackslash{}10.295\\\hline 
-\centering\arraybackslash{}\multirow{2}{*}{\centering\arraybackslash{}\textbf{2012}} & \centering\arraybackslash{}\textbf{Fraude\textbackslash 4} & \centering\arraybackslash{}3.319 & \centering\arraybackslash{}4,0 & \centering\arraybackslash{}132 & \centering\arraybackslash{}3.101 & \centering\arraybackslash{}3.536\\\cline{2-7}
- & \centering\arraybackslash{}\textbf{Extorsi{\'{o}}n} & \centering\arraybackslash{}7.585 & \centering\arraybackslash{}3,0 & \centering\arraybackslash{}224 & \centering\arraybackslash{}7.216 & \centering\arraybackslash{}7.954\\\hline 
-\centering\arraybackslash{}\multirow{2}{*}{\centering\arraybackslash{}\textbf{2010}} & \centering\arraybackslash{}\textbf{Fraude\textbackslash 4} & \centering\arraybackslash{}2.658 & \centering\arraybackslash{}4,3 & \centering\arraybackslash{}115 & \centering\arraybackslash{}2.469 & \centering\arraybackslash{}2.848\\\cline{2-7}
- & \centering\arraybackslash{}\textbf{Extorsi{\'{o}}n} & \centering\arraybackslash{}7.239 & \centering\arraybackslash{}4,3 & \centering\arraybackslash{}311 & \centering\arraybackslash{}6.727 & \centering\arraybackslash{}7.750\\\hline 
-\end{tabularx}
+% Tabla de incidencia delictiva
+\begin{table}[H]
+  \centering
+  \caption{Tasa de incidencia delictiva por cada cien mil habitantes por tipo de delito.}
+  \label{tab:incidencia}
+  \begin{tabular}{@{}lcrrrr@{}}
+    \toprule
+    Año & Tipo de delito & Estimaciones puntuales & Coef. de variación (\%) & Límite inferior & Límite superior \\
+    \midrule
+    2023 & Fraude & 6.962 & 2.4 & 6.687 & 7.238 \\
+         & Extorsión & 5.213 & 3.2 & 4.940 & 5.486 \\
+    2022 & Fraude & 5.770 & 2.5 & 5.530 & 6.009 \\
+         & Extorsión & 5.056 & 3.0 & 4.803 & 5.308 \\
+    2020 & Fraude & 5.904 & 2.5 & 5.660 & 6.148 \\
+         & Extorsión & 5.160 & 3.0 & 4.909 & 5.412 \\
+    2018 & Fraude & 5.397 & 3.0 & 5.133 & 5.661 \\
+         & Extorsión & 6.542 & 2.7 & 6.248 & 6.836 \\
+    2016 & Fraude & 4.656 & 2.9 & 4.433 & 4.879 \\
+         & Extorsión & 8.945 & 2.3 & 8.606 & 9.283 \\
+    2014 & Fraude & 4.255 & 4.6 & 3.933 & 4.576 \\
+         & Extorsión & 9.850 & 2.8 & 9.404 & 10.295 \\
+    2012 & Fraude & 3.319 & 4.0 & 3.101 & 3.536 \\
+         & Extorsión & 7.585 & 3.0 & 7.216 & 7.954 \\
+    2010 & Fraude & 2.658 & 4.3 & 2.469 & 2.848 \\
+         & Extorsión & 7.239 & 4.3 & 6.727 & 7.750 \\
+    \bottomrule
+  \end{tabular}
+  \footnotesize{\\ \centering Tasa de incidencia delictiva por tipo de delito en México, 2023. Tomado de \textit{Encuesta Nacional de Victimizaci{\'{o}}n y Percepción sobre Seguridad P{{\'{u}}}blica (ENVIPE) \textendash{} Incidencia delictiva por tipo de delito}, por Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a, 2024, \url{https://www.inegi.org.mx/app/tabulados/interactivos/?px=ENVIPE_INCIDENCIA_TIPO_DELITO&bd=ENVIPE}. {\textcopyright} INEGI }
 \end{table}
-Tasa de incidencia delictiva por tipo de delito en M{\'{e}}xico, 2023. Tomado de \textit{Encuesta Nacional de Victimizaci{\'{o}}n y Percepci{\'{o}}n sobre Seguridad P{{\'{u}}}blica (ENVIPE) \textendash{} Incidencia delictiva por tipo de delito}, por Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a, 2024, \url{https://www.inegi.org.mx/app/tabulados/interactivos/?px=ENVIPE_INCIDENCIA_TIPO_DELITO&bd=ENVIPE}. {\textcopyright} INEGI 
 
 \subsubsection{Servicios con los que cuenta la poblaci{\'{o}}n}
 
@@ -121,12 +122,12 @@ Seg{{\'{u}}}n la base de datos ``Usuarios de internet, por entidad federativa, s
 
 Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a. (2023). \textit{ENDUTIH 2023: Tabulados {[}Archivo de Excel{]}}. \url{https://www.inegi.org.mx/contenidos/programas/endutih/2023/tabulados/2023_u2ed244.xlsx}
 
-\section{\label{ref-002}Planteamiento del problema%Edgar Diego Pina VargasEP2025-05-08T20:09:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:09:00Z 2025-05-08T20:09:00Z 0 0 0 🡺Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques 🡺Hablar sobre las consecuencias económicas, psicológicas, de privacidad 🡺Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques  🡺Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques  🡺 🡺  Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques  🡺Hablar sobre las consecuencias económicas, psicológicas, de privacidad 🡺Hablar sobre las consecuencias económicas, psicológicas, de privacidad 🡺 🡺  Hablar sobre las consecuencias económicas, psicológicas, de privacidad
+\section{\label{ref-002}Planteamiento del problema%Edgar Diego Pina VargasEP2025-05-08T20:09:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:09:00Z 2025-05-08T20:09:00Z 0 0 0   Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques   Hablar sobre las consecuencias económicas, psicológicas, de privacidad   Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques    Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques         Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques    Hablar sobre las consecuencias económicas, psicológicas, de privacidad   Hablar sobre las consecuencias económicas, psicológicas, de privacidad        Hablar sobre las consecuencias económicas, psicológicas, de privacidad
 }
 
 Hoy en d{\'{i}}a el crecimiento de internet y aspectos multifactoriales han dado como producto un crecimiento de las estafas en l{\'{i}}nea y diversos tipos de extorci{\'{o}}n a trav{\'{e}}s de las redes sociales, en la actualidad este tipo de fen{\'{o}}menos son principalmente efectuados dentro de los servicios de mensajer{\'{i}}a instant{\'{a}}nea, los cuales se convierten en una oportunidad que tienen los ciberdelincuentes para establecer contacto con diferentes usuarios a lo largo del mundo de manera an{\'{o}}nima, la falta de evidencia documentada sobre las estafas y casos de extorci{\'{o}}n en medios digitales tambi{\'{e}}n forma parte principal de los problemas en la agilizaci{\'{o}}n de los procesos que enfrentan las autoridades judiciales.
 
-\section{Hip{\'{o}}tesis %Edgar Diego Pina VargasEP2025-05-08T20:05:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:05:00Z 2025-05-08T20:05:00Z 0 0 0 🡺Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes, la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema 🡺Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes, la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema 🡺Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes, la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema 🡺 🡺  Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de  que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes,  que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes,  la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema
+\section{Hip{\'{o}}tesis %Edgar Diego Pina VargasEP2025-05-08T20:05:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:05:00Z 2025-05-08T20:05:00Z 0 0 0   Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes, la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema   Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes, la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema   Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes, la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema        Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de  que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes,  que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes,  la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema
 %Edgar Diego Pina VargasEP2025-05-09T21:50:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T21:50:00Z 2025-05-09T21:50:00Z 0 0 0 Desarrollar la hipótesis que se tiene sobre “un sistema que alerta sobre mensajes con contenido de catphising prevendría el que el usuario sea victima del fraude” Desarrollar la hipótesis que se tiene sobre “un sistema que alerta sobre mensajes con contenido de catphising prevendría el que el usuario sea victima del fraude” Desarrollar la hipótesis que se tiene sobre “un sistema que alerta sobre mensajes con contenido de catphising prevendría el que el usuario sea victima del fraude” La segunda hipótesis sobre “el reporteador de evidencias y su apoyo en el proceso legal“, cuidar el afirmar como evidencias totales, se podría hablar de parciales y fundamentar desde el alcance tecnológico con el nivel de pertenencia de datos y aspectos legales sobre lo invasivo de los datos La segunda hipótesis sobre “el reporteador de evidencias y su apoyo en el proceso legal“, cuidar el afirmar como evidencias totales, se podría hablar de parciales y fundamentar desde el alcance tecnológico con el nivel de pertenencia de datos y aspectos legales sobre lo invasivo de los datos La segunda hipótesis sobre “el reporteador de evidencias y su apoyo en el proceso legal“, cuidar el afirmar como evidencias totales, se podría hablar de parciales y fundamentar desde el alcance tecnológico con el nivel de pertenencia de datos y aspectos legales sobre lo invasivo de los datos
 }
 
@@ -140,7 +141,7 @@ Hoy en d{\'{i}}a el crecimiento de internet y aspectos multifactoriales han dado
 
 Generar datos sint{\'{e}}ticas puntualmente ejemplos de catphising y extorci{\'{o}}n mediante uso de modelos de lenguaje preentrenados para realizar pruebas de desempe{\~{n}}o a los diferentes modelos de lenguaje contemplados y definir el modelo base a utilizar en la solucion
 
-🡺	Investigaci{\'{o}}n an{\'{a}}lisis y selecci{\'{o}}n de {\ldots}
+  	Investigaci{\'{o}}n an{\'{a}}lisis y selecci{\'{o}}n de {\ldots}
 
 Definir el/los prompts que entreguen un mejor resultado en el modelo seleccionado mediante pruebas considerando la efectividad al detectar correctamente el catphising y/o extorci{\'{o}}n en los ejemplos suministrados para registrarlos y posteriormente implementarlos en la aplicaci{\'{o}}n de mensajer{\'{i}}a%Edgar Diego Pina VargasEP2025-05-09T21:46:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T21:46:00Z 2025-05-09T21:46:00Z 0 0 0 Como el tecnisismo prompt puede tener colision, investigar como poner notas al pie de pagina para distinguir a que se refiere en nuestro ámbito o directamente aconsejar visitar la sección de glosario de términos, analizar esto no solo para prompt sino para tantos se requieran (conviene mejor una redaccion glocal que recomiende visitar el glosario) Como el tecnisismo prompt puede tener colision, investigar como poner notas al pie de pagina para distinguir a que se refiere en nuestro ámbito o directamente aconsejar visitar la sección de glosario de términos, analizar esto no solo para prompt sino para tantos se requieran (conviene mejor una redaccion glocal que recomiende visitar el glosario)
 
@@ -156,7 +157,7 @@ Migrar el modelo refinado mediante fine tuning al ecosistema de Andoid mediante 
 	%Edgar Diego Pina VargasEP2025-05-09T22:35:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T22:35:00Z 2025-05-09T22:35:00Z 0 0 0 Altamente Relacionado con la hipótesis pues en la justificación se hablara de lo que beneficiaria el desarrollo de la solución planteada desde la hipotesis Altamente Relacionado con la hipótesis pues en la justificación se hablara de lo que beneficiaria el desarrollo de la solución planteada desde la hipotesis
 }
 
-\section{\label{ref-006}Marco Te{\'{o}}rico%Edgar Diego Pina VargasEP2025-05-08T20:01:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:01:00Z 2025-05-08T20:01:00Z 0 0 0 🡺En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos 🡺En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos 🡺En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos 🡺 🡺  En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos 🡺Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts🡺Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos 🡺Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts 🡺Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts 🡺 🡺  Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts    🡺Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos 🡺Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos 🡺 🡺  Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos
+\section{\label{ref-006}Marco Te{\'{o}}rico%Edgar Diego Pina VargasEP2025-05-08T20:01:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:01:00Z 2025-05-08T20:01:00Z 0 0 0   En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos   En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos   En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos        En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos   Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts  Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos   Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts   Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts        Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts      Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos   Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos        Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos
 %Edgar Diego Pina VargasEP2025-05-09T21:14:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T21:14:00Z 2025-05-09T21:14:00Z 0 0 0 Línea 2:  Línea 2:  DEP 2 (Entrega: 09-may-2025, 17:30 horas) DEP 2 (Entrega: 09-may-2025, 17:30 horas) (20\%) MARCO TEÓRICO (20\%) MARCO TEÓRICO - (10\%) Citas - (10\%) Citas - (10\%) Conceptos, definiciones y teorías que requiere el lector para entender su - (10\%) Conceptos, definiciones y teorías que requiere el lector para entender su trabajo. trabajo. (80\%) PROPUESTA DE DESARROLLO (80\%) PROPUESTA DE DESARROLLO - (30\%) Diagrama a bloques o algoritmo(s) de la propuesta de desarrollo - (30\%) Diagrama a bloques o algoritmo(s) de la propuesta de desarrollo - (30\%) Explicación con texto del diagrama a bloques o algoritmo(s) de la - (30\%) Explicación con texto del diagrama a bloques o algoritmo(s) de la propuesta de desarrollo propuesta de desarrollo - (10\%) Citas - (10\%) Citas - (10\%) Explicaciones adicionales sobre la propuesta de desarrollo - (10\%) Explicaciones adicionales sobre la propuesta de desarrollo
 }
 
@@ -198,42 +199,6 @@ Seleccionar un modelo de lenguaje base adecuado balanceando tama{\~{n}}o y habil
 
 Retomar a que se refiere lo de ``modelo base'' en la parte de iobjetivos
 
-\textbf{Regionalized models for Spanish language variations based on Twitter}
-
-\url{https://arxiv.org/abs/2110.06128}
-
-https://arxiv.org/pdf/2110.06128
-
-usarlo como referencia del cambio en el lenguaje en redes sociales
-
-\url{https://arxiv.org/abs/2312.01044} -{\textgreater} concluye que los llms pueden ser perfectos clasificadores con {{\'{u}}}nicamente el uso de t{\'{e}}cnicas de prompt engineering como zero shoot, {{\'{u}}}til para la justificaci{\'{o}}n del enfoque de entrenamiento
-
-de igual manera menciona una sugerencia para mejorar los resultados en identificaci{\'{o}}n, podr{\'{i}}a aparecer en la secci{\'{o}}n de trabajo futuro en este trabajo ``Another prospective improvement could involve implementing a critic agent, drawing inspiration from actor-critic algorithms''
-
--------------------------------seguir evaluando ewstas fuentes----------------------------------
-
-\privateuse{}  \textbf{Neuroevolution for Sentiment Analysis in Tweets Written in Mexican Spanish}\newline
-Este estudio aplica t{\'{e}}cnicas de neuroevoluci{\'{o}}n para el an{\'{a}}lisis de sentimientos en tuits escritos en espa{\~{n}}ol mexicano, considerando las particularidades ling{\"{u}}{\'{i}}sticas regionales.\newline
-\url{https://link.springer.com/chapter/10.1007/978-3-030-77004-4_10}
-
-\privateuse{}  \textbf{Uncovering Cybercrimes in Social Media through Natural Language Processing}\newline
-Este art{\'{i}}culo explora c{\'{o}}mo el PLN puede utilizarse para detectar y analizar delitos cibern{\'{e}}ticos en redes sociales, enfoc{\'{a}}ndose en la identificaci{\'{o}}n de patrones ling{\"{u}}{\'{i}}sticos asociados a actividades delictivas.\newline
-https://dl.acm.org/doi/abs/10.1155/2021/7955637
-
-\privateuse{}  \textbf{Detection of Violent Speech Against Women in Mexican Tweets Using an Active Learning Approach}\newline
-Este estudio implementa un enfoque de aprendizaje activo para detectar discursos violentos contra mujeres en tuits mexicanos, destacando la importancia de adaptar modelos ling{\"{u}}{\'{i}}sticos a contextos socioculturales espec{\'{i}}ficos.\newline
-https://latamt.ieeer9.org/index.php/transactions/article/view/8397
-
-.-------------------------------------las siguientes creo no cumplen con el objetivo de lo que se busca, es mas formal pero no demuestra lo que se busca de la varaibilidad del mismo, investigas mas si lo hace o no--------------------
-
-\href{https://tallinzen.net/media/readings/chomsky\_syntactic\_structures.pdf}{!! Noam Chomsky - Syntactic Structures (2Ed).pdf}
-
-\href{https://ieeexplore-ieee-org.bibliotecaipn.idm.oclc.org/document/1056813}{Three models for the description of language {\textbar} IEEE Journals \& Magazine {\textbar} IEEE Xplore}
-
-\href{https://books.google.com.mx/books?hl=es&lr=&id=6tUv4IzUWtwC&oi=fnd&pg=PR9&dq=chomsky+noam&ots=cb7RHucC0j&sig=kU3NWsYParVDgXZVWXHIjiWxHKs&redir\_esc=y\#v=onepage&q=chomsky\%20noam&f=false}{Estructuras sint{\'{a}}cticas - Noam Chomsky - Google Libros}
-
-\includegraphics[width=1\textwidth]{1.-_Filtro_de_deteccion_de_catfishing_y_extorcion_en_aplicaciones_de_mensajeria.docx.tmp/word/media/image5.png}
-
 \section{M{\'{e}}tricas de desempe{\~{n}}o de clasificadores}
 
 \subsection{Presicion}
@@ -266,7 +231,7 @@ A la empresa de servicios financieros JP Morgan, por ejemplo, le result{\'{o}} d
 
 Al preparar conjuntos de datos originales para la generaci{\'{o}}n de datos sint{\'{e}}ticos mediante algoritmos de~\href{https://www.ibm.com/mx-es/think/topics/machine-learning}{aprendizaje autom{\'{a}}tico}~(ML), aseg{{\'{u}}}rese de verificar y corregir errores, imprecisiones e incongruencias. Elimine los duplicados e ingrese los valores faltantes.
 
-\section{Glosario de t{\'{e}}rminos%Edgar Diego Pina VargasEP2025-05-08T20:03:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:03:00Z 2025-05-08T20:03:00Z 0 0 0 🡺Presentar en orden alfabetico 🡺Presentar en orden alfabetico 🡺Presentar en orden alfabetico 🡺 🡺  Presentar en orden alfabetico
+\section{Glosario de t{\'{e}}rminos%Edgar Diego Pina VargasEP2025-05-08T20:03:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:03:00Z 2025-05-08T20:03:00Z 0 0 0   Presentar en orden alfabetico   Presentar en orden alfabetico   Presentar en orden alfabetico        Presentar en orden alfabetico
 }
 
 \textbf{Catphishing}: Pr{\'{a}}ctica enga{\~{n}}osa en la que una persona crea una identidad falsa en l{\'{i}}nea para establecer relaciones con otras personas, generalmente con fines de manipulaci{\'{o}}n emocional, fraude o explotaci{\'{o}}n. Es com{{\'{u}}}n en aplicaciones de citas y redes sociales, donde los estafadores se hacen pasar por alguien m{\'{a}}s para ganarse la confianza de la v{\'{i}}ctima y, en muchos casos, obtener beneficios econ{\'{o}}micos o personales.
@@ -281,7 +246,7 @@ Al preparar conjuntos de datos originales para la generaci{\'{o}}n de datos sint
 
 \textbf{Few-shot}: Es una t{\'{e}}cnica de prompt engineering que es identificada por incluir ejemplos sobre la tarea que se le indica al modelo dentro del mismo prompt 
 
-\section{\label{ref-007}\textbf{Fine Tuning}: Proceso de adaptar un modelo de lenguaje previamente entrenado para tareas o dominios espec{\'{i}}ficos mediante un entrenamiento adicional con datos relevantes. En el contexto de este proyecto, se destaca el uso de t{\'{e}}cnicas de prompt engineering para afinar el modelo sin necesidad de reentrenarlo completamente, lo que permite una personalizaci{\'{o}}n eficiente y menos costosa en t{\'{e}}rminos computacionales.}
+\textbf{Fine Tuning}: Proceso de adaptar un modelo de lenguaje previamente entrenado para tareas o dominios específicos mediante un entrenamiento adicional con datos relevantes. En el contexto de este proyecto, se destaca el uso de t{\'{e}}cnicas de prompt engineering para afinar el modelo sin necesidad de reentrenarlo completamente, lo que permite una personalizaci{\'{o}}n eficiente y menos costosa en t{\'{e}}rminos computacionales.
 
 \textbf{Large language model LLM:} Son modelos de inteligencia artificial que suelen ser entrenados con grandes cantidades de informaci{\'{o}}n principalmente de textos con el fin de entender y manipular el lenguaje humano. 
 
@@ -291,40 +256,46 @@ Se invita a consultar la secci{\'{o}}n ``marco teorico'' para profundizar mas en
 
 \section{Estado del arte}
 
-
-\begin{table}
-\begin{tabularx}{\textwidth}{|p{\dimexpr 0.118\linewidth-2\tabcolsep-2\arrayrulewidth}|p{\dimexpr 0.115\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.201\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.183\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.181\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.202\linewidth-2\tabcolsep-\arrayrulewidth}|} \hline 
-Autores & T{\'{i}}tulo & Descripci{\'{o}}n & Ventajas & Desventajas & Diferencias con propuesta\\\hline 
-Ahmed Elmagdy, Walid Magdy, Tarek El-Ganainy\newline \includegraphics[width=1\textwidth]{1.-_Filtro_de_deteccion_de_catfishing_y_extorcion_en_aplicaciones_de_mensajeria.docx.tmp/word/media/image6.png} & Fake It Till You Make It: Profiling Fake Users on PornHub & Este estudio se enfoca en detectar perfiles falsos dentro de la plataforma PornHub. Utiliza aprendizaje autom{\'{a}}tico sobre datos de perfil, comentarios y metainformaci{\'{o}}n para identificar inconsistencias en atributos como edad y g{\'{e}}nero, destacando patrones comunes en usuarios fraudulentos. & Se basa en datos reales y masivos provenientes de una plataforma activa.\newline Proporciona un marco de an{\'{a}}lisis para detecci{\'{o}}n de identidad falsa utilizando m{{\'{u}}}ltiples caracter{\'{i}}sticas. & Est{\'{a}} restringido a una sola plataforma, lo cual limita su generalizaci{\'{o}}n.\newline El enfoque no aborda la din{\'{a}}mica conversacional ni mensajes en tiempo real. & A diferencia del enfoque centrado en atributos est{\'{a}}ticos de usuario, el proyecto propuesto introduce un mecanismo de an{\'{a}}lisis en tiempo real de los mensajes entrantes, con especial atenci{\'{o}}n a contenido extorsivo o de catfishing. Este sistema opera a trav{\'{e}}s de un modelo de lenguaje ligero que se ejecuta localmente en un dispositivo Android, lo cual no solo permite mayor privacidad, sino tambi{\'{e}}n detecci{\'{o}}n inmediata sin depender de servidores externos ni reentrenamiento. As{\'{i}}, la propuesta aporta una soluci{\'{o}}n proactiva y descentralizada, enfocada en la protecci{\'{o}}n del usuario final desde la capa de mensajer{\'{i}}a.\\\hline 
-\end{tabularx}
+\begin{table}[H]
+    \centering
+    \caption{Comparación de Trabajos Relacionados}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|}
+    %{|p{2cm}|p{2.5cm}|p{3cm}|p{2.8cm}|p{2.5cm}|p{2.7cm}|}
+    \hline 
+    \textbf{Autores} & \textbf{Título} & \textbf{Descripción} & \textbf{Ventajas} & \textbf{Desventajas} & \textbf{Diferencias con propuesta} \\
+    \hline\hline
+    
+    Ahmed Elmagdy, Walid Magdy, Tarek El-Ganainy & Fake It Till You Make It: Profiling Fake Users on PornHub & Este estudio se enfoca en detectar perfiles falsos dentro de la plataforma PornHub. Utiliza aprendizaje automático sobre datos de perfil, comentarios y metainformación. & Se basa en datos reales y masivos. Proporciona un marco de análisis para detección de identidad falsa. & Restringido a una sola plataforma. No aborda mensajes en tiempo real. & • Análisis en tiempo real vs. atributos estáticos \newline • Procesamiento local en Android \newline • Enfoque en mensajería vs. perfiles \\
+    \hline
+    
+    Rui Cao, Roy Ka-Wei Lee, Tuan-Anh Hoang & DeepHate: Hate Speech Detection via Multi-Faceted Text Representations & DeepHate combina múltiples representaciones de texto para detectar discurso de odio en redes sociales usando redes neuronales. & Utiliza múltiples representaciones textuales. Supera métodos clásicos en clasificación de odio. & Requiere recursos computacionales significativos. No aborda escenarios móviles. & • Modelos livianos vs. modelos pesados \newline • Procesamiento local vs. servidor \newline • Catfishing/extorsión vs. discurso de odio \\
+    \hline
+    
+    Matthew Edwards & Scam Survivors Sextortion Reports & Conjunto de datos con más de 41,000 testimonios de víctimas de sextorsión, incluyendo detalles sobre ofensores y métodos utilizados. & Proporciona datos reales sobre casos de sextorsión. Permite explorar patrones de comportamiento. & Puede contener sesgos de autoreporte. No diseñado para detección en tiempo real. & • Herramienta operativa vs. base de datos \newline • Detección inmediata vs. análisis retrospectivo \newline • Prevención automatizada vs. documentación \\
+    \hline
+    
+    \end{tabularx}
 \end{table}
 
-\begin{table}
-\begin{tabularx}{\textwidth}{|p{\dimexpr 0.1\linewidth-2\tabcolsep-2\arrayrulewidth}|p{\dimexpr 0.176\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.186\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.186\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.186\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.165\linewidth-2\tabcolsep-\arrayrulewidth}|} \hline 
-Autores & T{\'{i}}tulo & Descripci{\'{o}}n & Ventajas & Desventajas & Diferencias con propuesta\\\hline 
-Rui Cao, Roy Ka-Wei Lee, Tuan-Anh Hoang\newline \includegraphics[width=1\textwidth]{1.-_Filtro_de_deteccion_de_catfishing_y_extorcion_en_aplicaciones_de_mensajeria.docx.tmp/word/media/image7.png} & DeepHate: Hate Speech Detection via Multi-Faceted Text Representations & DeepHate combina m{{\'{u}}}ltiples representaciones de texto \textemdash{}como embeddings sem{\'{a}}nticos, an{\'{a}}lisis de sentimientos y temas latentes\textemdash{} para detectar discurso de odio en redes sociales. El modelo emplea una arquitectura de red neuronal que aprende patrones complejos y muestra resultados superiores en datasets est{\'{a}}ndar de hate speech. & Utiliza m{{\'{u}}}ltiples representaciones textuales que enriquecen la comprensi{\'{o}}n contextual.\newline Supera a otros m{\'{e}}todos cl{\'{a}}sicos en tareas de clasificaci{\'{o}}n de odio. & El enfoque requiere recursos computacionales significativos.\newline No aborda escenarios m{\'{o}}viles ni procesamiento local. & Mientras DeepHate se centra en la detecci{\'{o}}n de discursos de odio en redes sociales utilizando modelos pesados y representaci{\'{o}}n textual compleja, el proyecto propuesto destaca por su orientaci{\'{o}}n pr{\'{a}}ctica y eficiente: busca implementar detecci{\'{o}}n de mensajes sensibles en el contexto de mensajer{\'{i}}a privada, usando t{\'{e}}cnicas de prompt engineering en modelos livianos ejecutables localmente en Android. La propuesta introduce una arquitectura cliente-servidor distribuida que permite el control de sesiones y clasificaci{\'{o}}n inmediata en el borde, lo cual resulta m{\'{a}}s aplicable en escenarios de bajo recurso y alto riesgo de privacidad.\\\hline 
-\end{tabularx}
-\end{table}
-
-\begin{table}
-\begin{tabularx}{\textwidth}{|p{\dimexpr 0.121\linewidth-2\tabcolsep-2\arrayrulewidth}|p{\dimexpr 0.138\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.159\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.211\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.192\linewidth-2\tabcolsep-\arrayrulewidth}|p{\dimexpr 0.178\linewidth-2\tabcolsep-\arrayrulewidth}|} \hline 
-Autores & T{\'{i}}tulo & Descripci{\'{o}}n & Ventajas & Desventajas & Diferencias con propuesta\\\hline 
-Matthew Edwards\newline \includegraphics[width=1\textwidth]{1.-_Filtro_de_deteccion_de_catfishing_y_extorcion_en_aplicaciones_de_mensajeria.docx.tmp/word/media/image6.png} & Scam Survivors Sextortion Reports & Este conjunto de datos recopila m{\'{a}}s de 41,000 testimonios de v{\'{i}}ctimas de sextorsi{\'{o}}n de la comunidad Scam Survivors. Cada entrada contiene detalles sobre los ofensores, m{\'{e}}todos utilizados, plataformas donde ocurri{\'{o}} la extorsi{\'{o}}n y reflexiones personales de las v{\'{i}}ctimas. El dataset es uno de los m{\'{a}}s extensos sobre este tipo de fraude. & Proporciona datos reales y detallados sobre casos de sextorsi{\'{o}}n.\newline Permite explorar patrones de lenguaje y comportamiento de extorsionadores. & Puede contener sesgos derivados del autoservicio de reportes.\newline No est{\'{a}} dise{\~{n}}ado para detecci{\'{o}}n en tiempo real ni procesamiento local. & Aunque este recurso es valioso como base de datos para an{\'{a}}lisis de patrones, el proyecto propuesto ofrece una capa adicional de valor al plantear una herramienta operativa en tiempo real, basada en PLN y LLM ligeros, para la detecci{\'{o}}n inmediata de mensajes de sextorsi{\'{o}}n o catfishing en aplicaciones de mensajer{\'{i}}a. A diferencia del enfoque retrospectivo del dataset, la soluci{\'{o}}n planteada por el proyecto busca anticiparse al da{\~{n}}o mediante una integraci{\'{o}}n directa en dispositivos m{\'{o}}viles, lo que representa un avance pr{\'{a}}ctico en la prevenci{\'{o}}n automatizada de amenazas digitales.\\\hline 
-\end{tabularx}
-\end{table}
-\section{\label{ref-008}Propuesta de soluci{\'{o}}n%Edgar Diego Pina VargasEP2025-05-09T22:45:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T22:45:00Z 2025-05-09T22:45:00Z 0 0 0 Es parte de la seccopm del  desarrollo, aquí se debe hablar sobre el propósito de cada uno de los elementos de la arquitectura, diferenciar el almacenamiento remoto del local, el propósito de cuentas por lado del servidor y el almacenamiento de mensajers o todo lo que sea requerido para que el llm trabaje de forma local totalmente off line Es parte de la seccopm del  desarrollo, aquí se debe hablar sobre el propósito de cada uno de los elementos de la arquitectura, diferenciar el almacenamiento remoto del local, el propósito de cuentas por lado del servidor y el almacenamiento de mensajers o todo lo que sea requerido para que el llm trabaje de forma local totalmente off line 🡺Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion 🡺Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion 🡺Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion 🡺 🡺  Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion
+\section{\label{ref-008}Propuesta de soluci{\'{o}}n%Edgar Diego Pina VargasEP2025-05-09T22:45:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T22:45:00Z 2025-05-09T22:45:00Z 0 0 0 Es parte de la seccopm del  desarrollo, aquí se debe hablar sobre el propósito de cada uno de los elementos de la arquitectura, diferenciar el almacenamiento remoto del local, el propósito de cuentas por lado del servidor y el almacenamiento de mensajers o todo lo que sea requerido para que el llm trabaje de forma local totalmente off line Es parte de la seccopm del  desarrollo, aquí se debe hablar sobre el propósito de cada uno de los elementos de la arquitectura, diferenciar el almacenamiento remoto del local, el propósito de cuentas por lado del servidor y el almacenamiento de mensajers o todo lo que sea requerido para que el llm trabaje de forma local totalmente off line   Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion   Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion   Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion        Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion
 }
 
-\includegraphics[width=1\textwidth]{1.-_Filtro_de_deteccion_de_catfishing_y_extorcion_en_aplicaciones_de_mensajeria.docx.tmp/word/media/image8.png}%Edgar Diego Pina VargasEP2025-05-12T15:01:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-12T15:01:00Z 2025-05-12T15:01:00Z 0 0 0 Considerar el comentario de calzada sobre la migración a nube y aprovechar el ecosistema azure Considerar el comentario de calzada sobre la migración a nube y aprovechar el ecosistema azure
-\includegraphics[width=1\textwidth]{1.-_Filtro_de_deteccion_de_catfishing_y_extorcion_en_aplicaciones_de_mensajeria.docx.tmp/word/media/image10.png}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{imagenes/esquema1.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
 
-\section{\label{ref-009}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{imagenes/esquema2.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+
 
 Anteriormente un objetivo demasiado amplio -{\textgreater} mediante la ejecuci{\'{o}}n de pruebas de identificaci{\'{o}}n de catphising a trav{\'{e}}s de ejemplos adaptados al espa{\~{n}}ol y a jergas propias de ciberfraude. generados a partir de ChatGPT almacenados en documentos CSV a incluir dentro de prompts automatizados para definir el modelo inicial con el cual trabajar el finetuning posteriormente 
-
-\subsection{Diagrama de flujo provisional con respecto a las tareas del calendario WBS}
-
-\includegraphics[width=1\textwidth]{1.-_Filtro_de_deteccion_de_catfishing_y_extorcion_en_aplicaciones_de_mensajeria.docx.tmp/word/media/image12.png}%Edgar Diego Pina VargasEP2025-05-11T21:03:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-11T21:03:00Z 2025-05-11T21:03:00Z 0 0 0 Posteriormente esto pasara a ser el WBS, esta es una ejemplificación momentánea para la linea Posteriormente esto pasara a ser el WBS, esta es una ejemplificación momentánea para la linea
 
 
 \foreignlanguage{spanish}{\textbf{\textit{Arquitectura general del sistema (explicaci{\'{o}}n)}}}
@@ -368,15 +339,21 @@ Anteriormente un objetivo demasiado amplio -{\textgreater} mediante la ejecuci{\
 
 Pruebas iniciales a modelos largos de lenguaje locales 
 
-Para la generaci{\'{o}}n de datos sint{\'{e}}ticos se opta por un enfoque few shot para la formulaci{\'{o}}n del prompt que se ocupara para dar la instrucci{\'{o}}n a un modelo como Chat GPT o deepseek con madurez en tareas de generaci{\'{o}}n de texto, se observo que la generaci{\'{o}}n sin datos puede dar lugar a datos poco realistas y poco variables por lo que en afinidad con las 8 practicas de generaci{\'{o}}n sintetica que plantea IBM en la secci{\'{o}}n del marco teorico se opta por few shot por sobre zero shot
+Para la generación de datos sintéticos se opta por un enfoque few shot para la formulación del prompt que se ocupara para
+dar la instrucción a un modelo como Chat GPT o deepseek con madurez en tareas de generación de texto, se observo que
+la generación sin datos puede dar lugar a datos poco realistas y poco variables por lo que en afinidad con las 8 practicas de
+generación sintetica que plantea IBM en la sección del marco teorico se opta por few shot por sobre zero shot
 
 https://huggingface.co/datasets/TExtPhish/TExtPhish
+https://www.csusm.edu/iits/services/security/security-guidance/phishing_extortion.html
+https://safecomputing.umich.edu/protect-yourself/phishing-scams/common-scams/sextortion
+https://www.ic3.gov/PSA/2016/PSA160601
 
 \section{Pruebas y resultados}
 
 \section{\label{ref-010}Conclusiones}
 
-\section{\label{ref-011}Trabajo a futuro%Edgar Diego Pina VargasEP2025-05-08T20:01:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:01:00Z 2025-05-08T20:01:00Z 0 0 0 🡺Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes 🡺Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes 🡺Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes 🡺 🡺  Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes
+\section{\label{ref-011}Trabajo a futuro%Edgar Diego Pina VargasEP2025-05-08T20:01:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:01:00Z 2025-05-08T20:01:00Z 0 0 0   Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes   Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes   Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes        Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes
 }
 
 \section{\label{ref-012}Referencias}
