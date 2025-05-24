@@ -1,0 +1,30 @@
+1.- "Clasifica este mensaje como catfishing (término referido a la fabricación de una identidad falsa online por parte de un ciberdelincuente con fines de engaño, fraude o explotación. "
+        f"El catfishing se utiliza más comúnmente para estafas románticas en aplicaciones de citas, sitios web y plataformas de redes sociales.) "
+        f"Imprime solo 1 si detectas catfishing o 0 si no. No des ninguna explicación adicional.\n\n"
+
+
+2.- Act as a data labeler for training and synthetic data generator. For each input message:
+
+Classify it as catfishing (1) or not (0), printing only the number.
+
+Then generate 10 synthetic examples of catfishing messages and 10 synthetic examples of non-catfishing messages.
+
+Use the following definition of catfishing as context:
+“Catfishing refers to the creation of a fictitious online persona, or fake identity, with the intent of deception—usually to mislead a victim into an online romantic relationship or to commit financial or emotional exploitation.” 
+Wikipedia
+Proofpoint
+
+Do not provide any additional explanation.
+
+3.- Por Deep seek, aconseja proporcionar directamente las directrices curadas de la definición, no pasarle la definición directamente
+
+Act as a cybersecurity expert specialized in digital fraud. Classify the following message as catfishing by printing only the number (1) if it meets these criterio, 0 if dont, without explanations.
+- Uses a false identity or invented personal information.
+- Seeks deception, fraud, or exploitation (e.g., romantic scams, financial scams, or impersonation).
+- Includes suspicious patterns (evasive language, contradictions, money requests, picture sending).
+
+
+4.- Versión propia curada
+
+
+

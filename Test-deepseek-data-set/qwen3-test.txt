@@ -1,0 +1,276 @@
+📡 Generando respuesta en streaming: <think>
+Okay, let's see. The user wants me to classify this message as catfishing or not. The message is in Spanish, so I need to understand it first. The message says: "Hola guapo, vi tu perfil y necesito conocerte. Soy modelo de OnlyFans pero busco algo real. Tengo 22 años, mido 1.70 y adoro los perros. ¿Podemos hablar por WhatsApp? Mi camara esta rota ahora mismo."
+
+First, I need to recall what catfishing is. It's when someone creates a fake online identity to deceive others, often for romantic fraud or exploitation. The key elements are fake identity, intent to deceive, and possibly for fraudulent purposes.
+
+Looking at the message, the person is asking to talk via WhatsApp. They mention being a model on OnlyFans, which is a platform where people sell content, often with a focus on adult material. The person is 22, 1.70 meters tall, and loves dogs. The mention of OnlyFans is a red flag because that's a site associated with adult content, and the person is trying to create a fake profile to meet someone, possibly for sexual purposes.
+
+The message is trying to get the person to communicate further, which is a common tactic in catfishing. The person is pretending to be a model on OnlyFans but is seeking real interaction, which could be for deceptive purposes. The mention of a broken camera might be a way to start a conversation, perhaps to get the person to take pictures or engage in some way that could be exploited.
+
+I should check if there are any other red flags. The person is using a fake identity, maybe not their real age or height, but the message is in Spanish, so maybe they're using a different name. However, the key is the intent to deceive. The message is trying to get the person to engage in a conversation that could be used for fraudulent or exploitative purposes, such as meeting someone for a romantic or sexual relationship, which is common in catfishing.
+
+So, based on the elements of catfishing—fake identity, intent to deceive, and possibly for exploitation—it's likely that this message is a catfishing attempt. The mention of OnlyFans is a key indicator here because that's a platform where such fraud is common.
+</think>
+
+1
+
+Texto: Hola guapo, vi tu perfil y necesito conocerte. Soy modelo de OnlyFans pero busco algo real. Tengo 22 años, mido 1.70 y adoro los perros. ¿Podemos hablar por WhatsApp? Mi camara esta rota ahora mismo.
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: <think>
+Okay, let's tackle this query. The user wants to classify the given message as catfishing or not. First, I need to recall what catfishing entails. It's when someone creates a fake online identity to deceive others, often for romantic scams.
+
+Looking at the message: "Hola! Vi que te gusta el senderismo. Yo tambien soy fan. ¿Has hecho alguna vez el Camino de Santiago? Podriamos organizar algo juntos algun fin de semana."
+
+The person starts by mentioning a shared interest in hiking. They also mention the Camino de Santiago, which is a famous pilgrimage route. Then they suggest organizing something together on the weekend. 
+
+Now, I need to determine if this is a typical catfishing scenario. Catfishing usually involves creating a fake profile to gain someone's trust for fraudulent purposes. The message here seems friendly and suggests a potential meeting. There's no obvious deception or manipulation. The person is reaching out about a shared interest and proposing a meeting, which is normal for a friend or someone interested in hiking. There's no indication of lying about their identity, intentions, or past. 
+
+I should check if there are any red flags. The message doesn't include any suspicious details like asking for personal information, threatening behavior, or anything that would suggest deceit. The suggestion to meet is vague and could be legitimate. 
+
+Therefore, the message doesn't meet the criteria for catfishing. It's a regular message of interest and potential collaboration. The user probably wants to know if this is a scam, but based on the content, it doesn't seem to be. So the answer should be 0.
+</think>
+
+0
+
+Texto: Hola! Vi que te gusta el senderismo. Yo tambien soy fan. ¿Has hecho alguna vez el Camino de Santiago? Podriamos organizar algo juntos algun fin de semana.
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: <think>
+Okay, let's see. The user wants me to classify the given message as catfishing or not. The message is in Spanish, so I need to make sure I understand it correctly.
+
+The message says: "Eres exactamente el tipo de hombre que llevo años buscando. Es increíble esta conexión que siento contigo después de solo 5 mensajes. ¿Serías capaz de enamorarte de alguien que nunca ha visto en persona?"
+
+Translating that, it's someone saying they've been looking for a man like the sender for years, and they feel a connection after only 5 messages. Then they ask if the other person would be able to fall in love with someone they've never met in person.
+
+Now, catfishing typically involves creating a false identity online for romantic fraud. The key elements here are the sudden connection, the question about falling in love with someone you've never met, and the use of a fake identity. The message seems to be trying to build a romantic connection quickly, which is a common tactic in catfishing. The person is asking if they can be enamored with someone they've never met, which is a red flag. So, I think this is a catfishing scenario. The answer should be 1.
+</think>
+
+1
+
+Texto: Eres exactamente el tipo de hombre que llevo años buscando. Es increible esta conexion que siento contigo despues de solo 5 mensajes. ¿Serias capaz de enamorarte de alguien que nunca ha visto en persona?
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: <think>
+Okay, let's see. The user wants me to classify this message as catfishing or not. The message is in Spanish, so I need to make sure I understand it correctly. The message says: "Sorry for contacting you like this, but my grandmother is very sick in the hospital and I need help paying for the medicine. If you could lend me 200€, I would return it to you tomorrow with interest. Please."
+
+First, I should recall what catfishing is. It's when someone creates a false online identity to deceive others, often for romantic fraud or scams. The key elements are a fabricated identity and intent to deceive, usually for financial gain or emotional manipulation.
+
+Looking at the message, the person is asking for a loan of 200€, claiming their grandmother is very ill. The request is for money, and they promise to return it with interest. The sender is asking for help, but there's no mention of any prior interaction or relationship. The message is straightforward, but the key is whether the person is using a false identity. 
+
+The message itself doesn't mention anything about being on a dating app or social media platform, which is common in catfishing scenarios. However, the person is asking for money under a pretense of a medical emergency. The problem is, without more context, can we determine if the identity is false? The message is from someone who might be pretending to be in a difficult situation. But the user is asking if this is a catfishing scenario. 
+
+Wait, the definition says it's more common in dating apps, but the message could be a general scam. However, the user is asking to classify it as catfishing. The message is a request for money, which is a common scam tactic. But the key is whether the person is fabricating their identity. If the person is using a fake identity to get money, then it's catfishing. But the message doesn't state that they are lying about their identity. It's possible that the person is genuinely in a difficult situation, but the request is suspicious. 
+
+However, the user is asking if the message is an example of catfishing. Since the message is a request for money under a pretense of a medical emergency, it's a scam. But the term catfishing is specifically about creating a false identity for deception. The message doesn't explicitly state that the person is lying about their identity, but the request is for money under a false pretense. 
+
+In this case, the person might be using a fake identity, but the message itself doesn't confirm that. However, the user is asking to classify it as catfishing. Given that the message is a classic scam, it's likely that the person is fabricating the situation, hence catfishing. Therefore, the answer should be 1.
+</think>
+
+1
+
+Texto: Disculpa que te contacte asi, pero mi abuela esta muy enferma en el hospital y necesito ayuda para pagar la medicina. Si pudieras prestarme 200€ te lo devolveria mañana mismo con intereses. Por favor.
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: <think>
+Okay, let's see. The user wants me to classify the given message as catfishing or not. The message is in Spanish, so first I need to understand it. The message says: "Are you going to the music festival next month? I'm deciding whether to buy tickets. I would love to meet someone who shares my musical tastes."
+
+Hmm, the key here is to determine if this is a catfishing scenario. Catfishing typically involves creating a false identity online for deceit, fraud, or exploitation, especially in dating apps or social media. The main indicators are deception, fake profiles, and intent to exploit.
+
+The message is asking if the person is going to a music festival and mentions buying tickets. The person is trying to connect with someone who shares their musical interests. There's no mention of deception, fake identity, or any indication of exploitation. It seems like a genuine request to meet someone with similar interests. The person is not pretending to be someone else but is instead seeking a connection based on shared interests. There's no evidence of fabricated information or intent to deceive. Therefore, this doesn't fit the definition of catfishing. The answer should be 0.
+</think>
+
+0
+
+Texto: ¿Vas a ir al festival de musica el proximo mes? Estoy decidiendo si comprar entradas. Me encantaria coincidir con alguien que comparta mis gustos musicales
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: <think>
+Okay, let's see. The user wants me to classify this message as catfishing or not. The message is in Spanish, so I need to make sure I understand it correctly. The message says: "Tienes unos ojos increibles en tu foto de perfil. Deberias modelar. Por cierto, ¿tienes cuenta en Instagram? El mio es @juancarlos_model (verificado con check azul)". 
+
+First, I need to break down the message. The person is complimenting the recipient on their eyes in the profile picture and suggesting they should model. Then they ask if the recipient has an Instagram account and provide their own, which is @juancarlos_model with a blue checkmark (verificado con check azul). 
+
+Now, catfishing typically involves creating a fake identity online for deceit, often in dating or social media contexts. The key elements are fabricating an identity, possibly for fraudulent purposes. The message here is a compliment and a request for an Instagram account. The person is asking if the recipient has one and then provides their own. 
+
+But wait, the person is not necessarily lying about their identity. They might be genuine, but the question is whether this is a setup for catfishing. The mention of modeling and the request for an Instagram account could be a red flag. However, the person is not necessarily pretending to be someone else. They might be genuinely interested in connecting, but the way it's phrased could be suspicious. 
+
+In catfishing, the person would create a fake profile to lure someone. Here, the person is asking for the recipient's Instagram account, which is a common way to get personal information. However, the message itself doesn't explicitly state that the person is fake. The compliment is genuine, but the request for an account might be a way to get more information. 
+
+I need to consider if the person is fabricating their identity. The message doesn't mention any false information. They just provide their own account. So maybe it's not catfishing. But sometimes, people might use such messages to get personal info. However, the user is asking for a binary classification. 
+
+Alternatively, maybe the person is trying to get the recipient to share their account details, which could be a way to access personal information. But the message itself doesn't indicate that the person is fake. The person is just asking for the recipient's account. 
+
+Hmm. I think the key is whether the person is fabricating their identity. Since they are not lying about being someone else, but rather asking for the recipient's account, maybe it's not catfishing. However, the context of modeling and the request for an account could be a setup. But without more info, it's hard to say. 
+
+Wait, the person is using the term "modelar" which is Spanish for "to model". So they might be interested in the recipient as a model. But that's a compliment. However, the request for an Instagram account might be a way to get more info. 
+
+But the message doesn't show any signs of fabrication. The person is being genuine, but the request could be a ploy. However, the user is asking if it's catfishing. Since the message doesn't have clear signs of a fake identity, maybe it's not. 
+
+Alternatively, the person could be using the message to get the recipient's Instagram account, which is a common tactic in catfishing. But the message itself is just a compliment and a request. 
+
+I think the answer is 0, not catfishing, because there's no clear fabrication of identity. The person is just asking for the recipient's account, which is a common social media interaction, even if it's suspicious. But without more context, it's hard to say. So the answer is 0.
+</think>
+
+0
+
+Texto: Tienes unos ojos increibles en tu foto de perfil. Deberias modelar. Por cierto, ¿tienes cuenta en Instagram? El mio es @juancarlos_model (verificado con check azul)
+Etiqueta real: 1 | Predicción: 0
+
+📡 Generando respuesta en streaming: <think>
+Okay, I need to determine if the given message is an example of catfishing. Let me start by recalling what catfishing means. It's when someone creates a fake online identity to deceive others, often for romantic fraud or exploitation. The key elements are a fabricated identity and intent to deceive, usually in dating contexts.
+
+Looking at the message: "Jajaja, esa foto con tu perro es genial. ¿Es un border collie? Yo tengo dos y son un terremoto. ¿Le has enseñado algun truco especial?" 
+
+The user is talking about a dog, specifically asking if it's a border collie and mentioning they have two that are "un terremoto," which I think is a colloquial way of saying they're very energetic or active. They also ask if the dog has been taught any tricks. 
+
+Now, the message doesn't seem to have any obvious signs of deception. There's no mention of fake profiles, lies about identity, or any indication of intent to exploit. The conversation seems to be a normal exchange about a dog, possibly in a dating or social context. However, without more context, it's hard to tell. But based on the given message alone, there's no clear evidence of catfishing. The person is engaging in a conversation about a dog, which is a common topic in social media interactions. Unless there's a hidden motive or deception that's not apparent here, it might not be catfishing. So the answer is probably 0.
+</think>
+
+0
+
+Texto: Jajaja, esa foto con tu perro es genial. ¿Es un border collie? Yo tengo dos y son un terremoto. ¿Le has enseñado algun truco especial?
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: <think>
+Okay, let's see. The user wants me to classify the given message as catfishing (1) or not (0). The message is in Spanish, so I need to make sure I understand it correctly.
+
+The message says: "My father is the owner of a hotel chain and I need someone trustworthy to manage the finances. You could earn 5,000€ a month working from home. I just need your bank account number to make the initial deposit."
+
+First, I should recall what catfishing typically involves. It's when someone creates a fake online identity to deceive others, often for romantic scams or financial fraud. The key elements are fake identity, deception, and intent to exploit.
+
+Looking at the message: the person claims to be the son of a hotel chain owner, which is a plausible but suspicious claim. They're offering a high salary (5k€) for managing finances from home. The request for a bank account number is a red flag because that's a way to get financial information, which is a common tactic in scams.
+
+The person is asking for a bank account number to make an initial deposit. This is suspicious because legitimate job offers wouldn't ask for bank details upfront. It's a way to get the victim's financial information, which could be used for fraud.
+
+Also, the mention of needing someone trustworthy and working from home could be a way to get personal information. The high salary is a lure to get the victim to provide sensitive data.
+
+So, based on these red flags, this message is likely a catfishing attempt. The person is creating a fake identity (son of a hotel owner) to get financial information through a job offer. The request for bank details is a key indicator of a scam. Therefore, the answer should be 1.
+</think>
+
+1
+
+Texto: Mi padre es dueño de una cadena de hoteles y necesito alguien de confianza para administrar las finanzas. Podrias ganar 5,000€ al mes trabajando desde casa. Solo necesito tu numero de cuenta para hacer el deposito inicial
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: <think>
+Okay, let's see. The user wants me to classify the given message as catfishing (1) or not (0). The message is in Spanish, so I need to understand it first.
+
+The message says: "Oye, vi que estudias informatica. ¿Has trabajado con Python para analisis de datos? Estoy haciendo un proyecto de la universidad y me vendria bien ayuda con unas librerias."
+
+Translating that: "Hi, I saw that you study computer science. Have you worked with Python for data analysis? I'm doing a university project and it would be helpful to get some help with some libraries."
+
+Now, the key here is to determine if this is a catfishing scenario. Catfishing usually involves creating a fake identity online for deceptive purposes, often in dating apps or social media. The message is asking for help with a university project related to Python and data analysis. The person is reaching out for assistance, which is a common and legitimate request. There's no indication of deception, fraud, or exploitation here. The person is genuinely seeking help, so this doesn't fit the definition of catfishing. Therefore, the answer should be 0.
+</think>
+
+0
+
+Texto: Oye, vi que estudias informatica. ¿Has trabajado con Python para analisis de datos? Estoy haciendo un proyecto de la universidad y me vendria bien ayuda con unas librerias
+Etiqueta real: 0 | Predicción: 1
+
+📡 Generando respuesta en streaming: <think>
+Okay, let's see. The user wants me to classify this message as catfishing or not. The message is in Spanish, so I need to make sure I understand it correctly. The message says: "Eres diferente a todos los demas. Nadie me entiende como tu. ¿Por que no nos vamos esta noche a un sitio privado? Te enviare fotos especiales si me envias primero una transferencia de 50€ para comprobar tu seriedad."
+
+Translating that, it's asking the person to go to a private place and send a 50€ transfer to check their seriousness, with the promise of sending special photos. The key elements here are the request for a money transfer and the promise of exclusive content, which are common red flags in catfishing scenarios. The person is being asked to send money first, which is a typical tactic to get the victim's money. So, this seems like a clear case of catfishing. The message is trying to build a romantic connection but with the intent to deceive and exploit the person financially. There's no mention of any real relationship or mutual respect, just a transactional exchange. Therefore, the answer should be 1.
+</think>
+
+1
+
+Texto: Eres diferente a todos los demas. Nadie me entiende como tu. ¿Por que no nos vamos esta noche a un sitio privado? Te enviare fotos especiales si me envias primero una transferencia de 50€ para comprobar tu seriedad
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: <think>
+Okay, I need to determine if the given message is an example of catfishing. Let me start by recalling what catfishing is. It's when someone creates a fake online identity to deceive others, often for romantic fraud or scams. The message in question is: "¿Viste el partido de ayer? Que golazo el de Mbappe! Creo que este año tienen buen chance para la Champions. ¿A quien apoyas?" Translating that, it's asking if the person saw the match yesterday, praising Mbappe's goal, and then asking who they support.
+
+First, I should check if there's any indication of fabricated identity or deception. The message seems to be a casual conversation about a football match, discussing Mbappe and the Champions League chances. There's no mention of any deceitful intent, fake profiles, or any suspicious behavior. The person is just engaging in a normal conversation, maybe trying to start a chat or get to know someone. There's no evidence of creating a false identity or using it for a scam. The questions are about sports and support, which are common in social interactions. So, based on the definition, this doesn't fit the criteria for catfishing. The answer should be 0.
+</think>
+
+0
+
+Texto: ¿Viste el partido de ayer? Que golazo el de Mbappe! Creo que este año tienen buen chance para la Champions. ¿A quien apoyas?
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: <think>
+Okay, let's tackle this. The user wants me to classify the given message as catfishing (1) or not (0). First, I need to recall what catfishing entails. It's when someone creates a fake online identity to deceive others, often for romantic scams.
+
+Looking at the message: "Soy nueva en la ciudad y no conozco a nadie. ¿Podriamos quedar hoy mismo? Aunque no tengo redes sociales, prefiere el contacto real. ¿A que hora te viene bien?" 
+
+Translating that: "I'm new in the city and don't know anyone. Could we meet today? Although I don't have social media, I prefer real contact. What time works for you?"
+
+Hmm. The person is asking to meet in person, mentions not having social media, and prefers real contact. But is there any sign of deception? The key in catfishing is the creation of a false identity. The message doesn't mention any fake details, like a fabricated profile or misleading information. The person is just asking for a meeting, maybe to meet in person. There's no indication of a fake identity or intent to exploit. The mention of not having social media might be a red herring, but it's not necessarily a sign of catfishing. The user is just trying to connect in a real way. So, I don't see catfishing here. The answer should be 0.
+</think>
+
+0
+
+Texto: Soy nueva en la ciudad y no conozco a nadie. ¿Podriamos quedar hoy mismo? Aunque no tengo redes sociales, prefiero el contacto real. ¿A que hora te viene bien?
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: <think>
+Okay, let's see. The user wants me to classify this message as catfishing or not. The message is in Spanish, so I need to make sure I understand it correctly.
+
+The message says: "Your profile says you're from Madrid, I also! What neighborhood? I'm from Chamberi. Have you gone to the new gastrobar that opened in Plaza de Olavide?"
+
+First, I need to recall what catfishing is. It's when someone creates a fake online identity to deceive others, often for romantic scams. The key elements are fake identity, intent to deceive, and usually in dating contexts.
+
+Looking at the message, the person is asking about the neighborhood and a new gastrobar. The mention of being from Madrid and Chamberi (a neighborhood in Madrid) seems genuine. The question about the new gastrobar is a bit suspicious because it's a specific place. But is that enough to conclude it's catfishing?
+
+Wait, but the person is just asking about the location and a new place. There's no clear indication of deception here. They might be trying to get information or start a conversation. The message doesn't have any obvious red flags like fake information, requests for personal details, or attempts to exploit. It seems more like a normal conversation starter. 
+
+So, since there's no clear evidence of creating a fake identity or intent to deceive, I think this isn't catfishing. The answer should be 0.
+</think>
+
+0
+
+Texto: Tu perfil dice que eres de Madrid, yo tambien! ¿De que barrio? Yo soy de Chamberi. ¿Has ido al nuevo gastrobar que abrieron en Plaza de Olavide?
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: <think>
+Okay, let's see. The user wants me to classify this message as catfishing or not. The message is in Spanish, so I need to make sure I understand it correctly. The message says: "Hola amor, soy la chica que conociste ayer en Tinder. Perdi mi cuenta. ¿Podemos seguir hablando aqui? Te enviare fotos mas intimas si me compras una tarjeta de regalo de Amazon de 100€". 
+
+First, I should recall what catfishing is. It's when someone creates a fake online identity, usually for romantic scams. The key elements are deception, fake identity, and intent to exploit or defraud.
+
+Looking at the message: the person starts by saying they are the girl the user met on Tinder. That's a common tactic in catfishing to make the person believe they're talking to someone they met online. Then they mention losing their account, which is a plausible excuse to get more information. The next part is the request to continue talking, which is normal. But the crucial part is the offer to send more intimate photos in exchange for an Amazon gift card. That's a clear red flag. Scammers often ask for money or gifts in exchange for personal information or explicit content. 
+
+So, the message includes elements of deception (faking the identity), a request for money (Amazon gift card), and an explicit offer (photos). These are all classic signs of catfishing. The user is being asked to send money in exchange for something that's likely to be illegal or exploitative. Therefore, this should be classified as catfishing. The answer should be 1.
+</think>
+
+1
+
+Texto: Hola amor, soy la chica que conociste ayer en Tinder. Perdi mi cuenta. ¿Podemos seguir hablando aqui? Te enviare fotos mas intimas si me compras una tarjeta de regalo de Amazon de 100€
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: <think>
+Okay, let's see. The user wants me to classify the given message as catfishing or not. The message is in Spanish, so I need to make sure I understand it correctly. The message says: "¿Te interesaría unirte a un grupo de lectura de ciencia ficción? Estamos organizando reuniones quincenales en la cafeteria del centro comercial. Traemos libros para intercambiar."
+
+First, I should recall what catfishing is. It's when someone creates a fake online identity to deceive others, often for romantic scams or fraud. The key elements are fake identity, intent to deceive, and maybe exploitation.
+
+Now, analyzing the message. The person is inviting someone to join a sci-fi book club. They mention meetings every two weeks at a coffee shop in a mall. They bring books to exchange. 
+
+Is there any indication of deception here? The message seems straightforward, offering a social activity. There's no mention of anything suspicious like asking for personal information, financial details, or anything that would suggest fraud. The invitation is for a group activity, which is normal. 
+
+I need to check if the message has any elements of catfishing. The key is whether the person is using a fake identity to deceive. Since the message doesn't mention any deception, fake profiles, or any red flags, it's probably just a regular invitation. 
+
+So, the answer should be 0, indicating it's not catfishing. The user wants only 1 or 0, no explanation. So the final answer is 0.
+</think>
+
+0
+
+Texto: ¿Te interearia unirte a un grupo de lectura de ciencia ficcion? Estamos organizando reuniones quincenales en la cafeteria del centro comercial. Traemos libros para intercambiar
+Etiqueta real: 0 | Predicción: 1
+
+== MÉTRICAS DE EVALUACIÓN ==
+Accuracy: 0.8
+Precision (macro): 0.8055555555555556
+Recall (macro): 0.7946428571428572
+F1 Score (macro): 0.7963800904977376
+
+== REPORTE DE CLASIFICACIÓN COMPLETO ==
+              precision    recall  f1-score   support
+
+           0       0.83      0.71      0.77         7
+           1       0.78      0.88      0.82         8
+
+    accuracy                           0.80        15
+   macro avg       0.81      0.79      0.80        15
+weighted avg       0.80      0.80      0.80        15
+
+4m 22.9seg

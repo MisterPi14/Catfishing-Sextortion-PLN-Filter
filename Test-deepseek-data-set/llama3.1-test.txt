@@ -1,0 +1,93 @@
+📡 Generando respuesta en streaming: 0
+
+Texto: Hola guapo, vi tu perfil y necesito conocerte. Soy modelo de OnlyFans pero busco algo real. Tengo 22 años, mido 1.70 y adoro los perros. ¿Podemos hablar por WhatsApp? Mi camara esta rota ahora mismo.
+Etiqueta real: 1 | Predicción: 0
+
+📡 Generando respuesta en streaming: 0
+
+Texto: Hola! Vi que te gusta el senderismo. Yo tambien soy fan. ¿Has hecho alguna vez el Camino de Santiago? Podriamos organizar algo juntos algun fin de semana.
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+Texto: Eres exactamente el tipo de hombre que llevo años buscando. Es increible esta conexion que siento contigo despues de solo 5 mensajes. ¿Serias capaz de enamorarte de alguien que nunca ha visto en persona?
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 1
+
+Texto: Disculpa que te contacte asi, pero mi abuela esta muy enferma en el hospital y necesito ayuda para pagar la medicina. Si pudieras prestarme 200€ te lo devolveria mañana mismo con intereses. Por favor.
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+Texto: ¿Vas a ir al festival de musica el proximo mes? Estoy decidiendo si comprar entradas. Me encantaria coincidir con alguien que comparta mis gustos musicales
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 0
+
+Texto: Tienes unos ojos increibles en tu foto de perfil. Deberias modelar. Por cierto, ¿tienes cuenta en Instagram? El mio es @juancarlos_model (verificado con check azul)
+Etiqueta real: 1 | Predicción: 0
+
+📡 Generando respuesta en streaming: 0
+
+Texto: Jajaja, esa foto con tu perro es genial. ¿Es un border collie? Yo tengo dos y son un terremoto. ¿Le has enseñado algun truco especial?
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+Texto: Mi padre es dueño de una cadena de hoteles y necesito alguien de confianza para administrar las finanzas. Podrias ganar 5,000€ al mes trabajando desde casa. Solo necesito tu numero de cuenta para hacer el deposito inicial
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+Texto: Oye, vi que estudias informatica. ¿Has trabajado con Python para analisis de datos? Estoy haciendo un proyecto de la universidad y me vendria bien ayuda con unas librerias
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+Texto: Eres diferente a todos los demas. Nadie me entiende como tu. ¿Por que no nos vamos esta noche a un sitio privado? Te enviare fotos especiales si me envias primero una transferencia de 50€ para comprobar tu seriedad
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+Texto: ¿Viste el partido de ayer? Que golazo el de Mbappe! Creo que este año tienen buen chance para la Champions. ¿A quien apoyas?
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 0
+
+Texto: Soy nueva en la ciudad y no conozco a nadie. ¿Podriamos quedar hoy mismo? Aunque no tengo redes sociales, prefiero el contacto real. ¿A que hora te viene bien?
+Etiqueta real: 1 | Predicción: 0
+
+📡 Generando respuesta en streaming: 0
+
+Texto: Tu perfil dice que eres de Madrid, yo tambien! ¿De que barrio? Yo soy de Chamberi. ¿Has ido al nuevo gastrobar que abrieron en Plaza de Olavide?
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+Texto: Hola amor, soy la chica que conociste ayer en Tinder. Perdi mi cuenta. ¿Podemos seguir hablando aqui? Te enviare fotos mas intimas si me compras una tarjeta de regalo de Amazon de 100€
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+Texto: ¿Te interearia unirte a un grupo de lectura de ciencia ficcion? Estamos organizando reuniones quincenales en la cafeteria del centro comercial. Traemos libros para intercambiar
+Etiqueta real: 0 | Predicción: 0
+
+== MÉTRICAS DE EVALUACIÓN ==
+Accuracy: 0.8
+Precision (macro): 0.85
+Recall (macro): 0.8125
+F1 Score (macro): 0.7963800904977376
+
+== REPORTE DE CLASIFICACIÓN COMPLETO ==
+              precision    recall  f1-score   support
+
+           0       0.70      1.00      0.82         7
+           1       1.00      0.62      0.77         8
+
+    accuracy                           0.80        15
+   macro avg       0.85      0.81      0.80        15
+weighted avg       0.86      0.80      0.79        15
+
+
+Tiempo de ejecución del modelo: 27.2941 segundos

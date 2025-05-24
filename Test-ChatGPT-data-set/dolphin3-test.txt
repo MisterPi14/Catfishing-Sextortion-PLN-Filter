@@ -1,0 +1,30 @@
+📡 Generando respuesta en streaming: 1
+
+Texto: Hola, soy un soldado en misión en Siria. Necesito que me ayudes con algo urgente.
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 0
+
+Texto: Hola, ¿cómo estás? ¿Quieres salir este fin de semana?
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 0
+
+Texto: Buen día, le informamos sobre su próxima cita médica.
+Etiqueta real: 0 | Predicción: 0
+
+📡 Generando respuesta en streaming: 1
+
+Texto: Hola hermosa, vi tu perfil y me encantó. ¿Te gustaría conocernos mejor? Soy ingeniero en Monterrey.
+Etiqueta real: 1 | Predicción: 1
+
+📡 Generando respuesta en streaming: 1
+
+Texto: ¡Qué onda! ¿Vamos por unas chelas al rato o qué?
+Etiqueta real: 0 | Predicción: 1
+...
+   macro avg       0.70      0.69      0.69        23
+weighted avg       0.70      0.70      0.69        23
+
+
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...

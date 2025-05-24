@@ -1,0 +1,3 @@
+1.- "Clasifica este mensaje como catfishing (término referido a la fabricación de una identidad falsa online por parte de un ciberdelincuente con fines de engaño, fraude o explotación. "
+        f"El catfishing se utiliza más comúnmente para estafas románticas en aplicaciones de citas, sitios web y plataformas de redes sociales.) "
+        f"Imprime solo 1 si detectas catfishing o 0 si no. No des ninguna explicación adicional.\n\n"
