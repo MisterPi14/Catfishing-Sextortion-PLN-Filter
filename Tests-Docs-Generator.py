@@ -4,7 +4,11 @@ from pytablewriter import LatexTableWriter
 
 def create_latex_tables():
     with open('classification_results.tex', 'w') as f:
-        f.write('\\documentclass{article}\n\\usepackage{booktabs}\n\\begin{document}\n')
+        # Cambiar el preámbulo para incluir geometry y el formato correcto
+        f.write('\\documentclass{article}\n')
+        f.write('\\usepackage{booktabs}\n')
+        f.write('\\usepackage[top=1.9cm, bottom=3cm, left=1.3cm, right=1.3cm]{geometry}\n\n')
+        f.write('\\begin{document}\n')
         f.write('\\title{LMMs Classification Test Results}\n\\maketitle\n\n')
         
         for filename in os.listdir('LMMs-Classification-Test-Results'):
@@ -12,8 +16,8 @@ def create_latex_tables():
                 with open(f'LMMs-Classification-Test-Results/{filename}', 'r') as jf:
                     data = json.load(jf)
                 
-                model_name = filename.replace('.json', '')
-                f.write(f'\\section{{{model_name}}}\n\n')
+                model_name = filename.replace('.json', '').replace('_', '\\_')
+                f.write(f'\\section{{{model_name}}}\n')
                 
                 # Metadata table - improved version
                 metadata = None
@@ -23,12 +27,17 @@ def create_latex_tables():
                     metadata = data['results']['metadata']
                 
                 if metadata:
-                    f.write('\\subsection{Metadata}\n')
-                    writer = LatexTableWriter(
-                        headers=['Key', 'Value'],
-                        value_matrix=[[str(k), str(v)] for k, v in metadata.items()]
-                    )
-                    f.write(writer.dumps() + '\n\n')
+                    f.write('\\subsection{Metadata}\n\n')
+                    f.write('\\begin{center}\n')
+                    f.write('\\begin{tabular}{l | l} \\hline\n')
+                    f.write('    \\verb|      Key      | & \\verb|           Value           | \\\\ \\hline\n')
+                    f.write('    \\hline\n')
+                    
+                    for key, value in metadata.items():
+                        f.write(f'    \\verb|{key:<14}| & \\verb|{str(value):<29}| \\\\ \\hline\n')
+                    
+                    f.write('\\end{tabular}\n')
+                    f.write('\\end{center}\n\n')
                 
                 # Classification report table
                 report = None
@@ -38,21 +47,35 @@ def create_latex_tables():
                     report = data['results']['classification_report']
                 
                 if report:
-                    f.write('\\subsection{Classification Report}\n')
-                    headers = ['', 'precision', 'recall', 'f1-score', 'support']
-                    value_matrix = []
+                    f.write('\\subsection{Classification Report}\n\n')
+                    f.write('\\begin{center}\n')
+                    f.write('\\begin{tabular}{l | r | r | r | r} \\hline\n')
+                    f.write('    \\verb|            | & \\verb|    precision     | & \\verb|      recall      | & \\verb|     f1-score     | & \\verb|support| \\\\ \\hline\n')
+                    f.write('    \\hline\n')
                     
                     for key, values in report.items():
                         if isinstance(values, dict):
-                            row = [key] + [values.get(h, '') for h in headers[1:]]
-                            value_matrix.append(row)
+                            # Modificar el nombre de la clase si es un número
+                            if key in ['0', '1']:
+                                class_name = f'class {key}'
+                            else:
+                                class_name = key
+                        
+                            precision = values.get('precision', '')
+                            recall = values.get('recall', '')
+                            f1_score = values.get('f1-score', '')
+                            support = values.get('support', '')
+                            
+                            f.write(f'    \\verb|{class_name:<11}| & {precision} & {recall} & {f1_score} & {support:>7} \\\\ \\hline\n')
                     
-                    writer = LatexTableWriter(headers=headers, value_matrix=value_matrix)
-                    f.write(writer.dumps() + '\n\n')
+                    f.write('\\end{tabular}\n')
+                    f.write('\\end{center}\n\n')
                     
-                    # Add accuracy line
+                    # Add accuracy line centered
                     accuracy = report.get('accuracy', 'N/A')
-                    f.write(f'Accuracy = {accuracy}\n\n')
+                    f.write('\\begin{center}\n')
+                    f.write(f'Accuracy = {accuracy}\n')
+                    f.write('\\end{center}\n\n')
         
         f.write('\\end{document}')
 
