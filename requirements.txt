@@ -1,0 +1,8 @@
+pytablewriter
+datasets #para exportar bases de datos
+
+#Uso del requirements
+# Versión exacta pytablewriter==1.2.0
+# Versión mínima pytablewriter>=1.0.0
+# Rango de versiones pytablewriter>=1.0.0,<2.0.0
+# Versión compatible pytablewriter~=1.2.0
