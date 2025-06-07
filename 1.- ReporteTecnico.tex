@@ -2,7 +2,6 @@
 \usepackage[T1]{fontenc} 
 %\usepackage[utf8]{inputenc} 
 \usepackage{graphicx}
-\usepackage{hyperref} 
 \usepackage{float}
 %\usepackage{multirow} 
 %\usepackage{tabularx} 
@@ -34,25 +33,105 @@
 %los dos de abajo para la tabla de estado del arte
 \usepackage{tabularx}
 \usepackage{array}
-%\usepackage[top=1.9cm, bottom=3cm, left=1.3cm, right=1.3cm]{geometry}
-\usepackage[margin=2cm]{geometry}
+\usepackage[top=1.9cm, bottom=3cm, left=1.3cm, right=1.3cm]{geometry}
+%\usepackage[margin=2cm]{geometry}
+%para las citas con el archivo bib
+\usepackage{cite}
+\usepackage{tikz}%para la portada
+\usepackage[spanish]{babel}%para cambiar etiquetas varias a español como el "contents" de \table of contents
+
+
+
+\usepackage{hyperref} %siempre cargarlo al final del preambulo
+\bibliographystyle{plainurl}
 
 \begin{document}
+\thispagestyle{empty}%para no enumerar
+% Crear el layout con logos laterales y líneas divisorias
+\begin{tikzpicture}[remember picture,overlay]
+    % Logo superior izquierdo (IPN)
+    \node[anchor=north west] at ([xshift=2cm,yshift=-2cm]current page.north west) {
+        \includegraphics[width=3.5cm]{imagenes/ipn-logo.png} 
+        % Descomenta cuando tengas el logo
+        %\framebox(150,150){\normalsize LOGO IPN} % Placeholder temporal más grande
+    };
+    
+    % Logo inferior izquierdo (ESIME)
+    \node[anchor=south west] at ([xshift=1.25cm,yshift=2cm]current page.south west) {
+        \includegraphics[width=5cm]{imagenes/esime-logo.png} 
+        %\framebox(150,150){\normalsize LOGO ESIME} % Placeholder temporal más grande
+    };
+    
+    % Líneas divisorias verticales dobles entre los logos (centradas con respecto al ancho de los nodos y con margen)
+    \draw[thick] ([xshift=3.5cm,yshift=-9cm]current page.north west) -- ([xshift=3.5cm,yshift=7.5cm]current page.south west);
+    \draw[thick] ([xshift=4cm,yshift=-9cm]current page.north west) -- ([xshift=4cm,yshift=7.5cm]current page.south west);
+\end{tikzpicture}
 
+% Contenido principal desplazado hacia la derecha
+\hspace*{3.5cm}
+\parbox{12cm}{
+    \begin{center}
+    
+    % Espaciado superior mínimo
+    \vspace*{0.8cm}
+    
+    % Institución
+    {\LARGE \textbf{INSTITUTO POLITÉCNICO}}\\[0.2cm]
+    {\LARGE \textbf{NACIONAL}}\\[0.3cm]
+    
+    % Línea horizontal doble debajo del título principal
+    \rule{10cm}{0.5pt}\\[0.1cm]
+    \rule{10cm}{0.5pt}\\[0.6cm]
+    
+    {\normalsize \textbf{ESCUELA SUPERIOR DE INGENIERÍA}}\\[0.1cm]
+    {\normalsize \textbf{MECÁNICA Y ELÉCTRICA}}\\[0.1cm]
+    {\normalsize \textbf{UNIDAD CULHUACÁN}}\\[0.8cm]
+    
+    % Carrera
+    {\small \textbf{CARRERA: INGENIERÍA EN}}\\[0.1cm]
+    {\small \textbf{COMPUTACIÓN}}\\[1cm]
+    
+    % Título del trabajo
+    {\large \textbf{Reporte técnico: Filtro de detección}}\\[0.15cm]
+    {\large \textbf{de catfishing y extorción en}}\\[0.15cm]
+    {\large \textbf{aplicaciones de mensajería basado}}\\[0.15cm]
+    {\large \textbf{en PLN mediante refinamiento de un}}\\[0.15cm]
+    {\large \textbf{LLM}}\\[1cm]
+    
+    % Tipo de trabajo
+    {\normalsize \textbf{Proyecto de Investigación}}\\[1cm]
+    
+    % Texto "Que para obtener..."
+    {\small Que para obtener el título de: \textbf{Ingeniero en}}\\[0.1cm]
+    {\small \textbf{Computación}}\\[0.8cm]
+    
+    % Presenta
+    {\small \textbf{Presenta:}}\\[0.2cm]
+    {\small Edgar Diego Piña Vargas}\\[1cm]
+    
 
-%Es un termino ambiguo relacionado al fine tuning o prompt engineering: especificar conforme se avance en el desarrollo Es un termino ambiguo relacionado al fine tuning o prompt engineering: especificar conforme se avance en el desarrollo
+    % Pie de página
+    {\small Ciudad de México a \underline{\hspace{1cm}} de \underline{\hspace{2cm}} del 2025}
+    
+    \end{center}
+}
 
-%\tableofcontents
+\newpage
 
-%Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática   Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática   Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática        Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática
+%"refinamiento "Es un termino ambiguo relacionado al fine tuning o prompt engineering: especificar conforme se avance en el desarrollo Es un termino ambiguo relacionado al fine tuning o prompt engineering: especificar conforme se avance en el desarrollo
 
-% Se puede hablar también sobre lo necesario que es el uso de internet y redes sociales hoy dia Se puede hablar también sobre lo necesario que es el uso de internet y redes sociales hoy dia
-
-%Acceso a internet, uso de redes sociales, redes sociales laborales Acceso a internet, uso de redes sociales, redes sociales laborales
-
-%Aquí se puede hablar conforme al por que es local el modelo considerando la cobertura que en ocasiones no es formidable y en la misma ciudad en edificios aveces se queda desconectado totalmente sin estar en zonas rurales Aquí se puede hablar conforme al por que es local el modelo considerando la cobertura que en ocasiones no es formidable y en la misma ciudad en edificios aveces se queda desconectado totalmente sin estar en zonas rurales
+\thispagestyle{empty}%para no enumerar
+\tableofcontents\newpage
 
 \section{\label{ref-001}Introducción}
+
+%Análisis estadístico sobre números de teléfono en México, estadísticas sobre fraude que demuestren la veracidad de la problemática
+
+% Se puede hablar también sobre lo necesario que es el uso de internet y redes sociales hoy dia 
+
+%Acceso a internet, uso de redes sociales, redes sociales laborales 
+
+%Aquí se puede hablar conforme al por que es local el modelo considerando la cobertura que en ocasiones no es formidable y en la misma ciudad en edificios aveces se queda desconectado totalmente sin estar en zonas rurales 
 
 El crecimiento exponencial en el uso de tecnologías móviles y plataformas de comunicación digital ha transformado la manera en que interactúan las personas. Según datos de la ENDUTIH 2023, en México el 81.2\,\% de la población utiliza teléfono celular y el 96.1\,\% de los usuarios de internet en la Ciudad de México lo hace para comunicarse, principalmente a través de redes sociales y aplicaciones de mensajería. Esta adopción masiva ha traído consigo grandes beneficios, pero también ha abierto nuevas oportunidades para la comisión de delitos como el \textit{catfishing} y la extorsión digital.
 
@@ -122,46 +201,125 @@ Seg{{\'{u}}}n la base de datos ``Usuarios de internet, por entidad federativa, s
 
 Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a. (2023). \textit{ENDUTIH 2023: Tabulados {[}Archivo de Excel{]}}. \url{https://www.inegi.org.mx/contenidos/programas/endutih/2023/tabulados/2023_u2ed244.xlsx}
 
-\section{\label{ref-002}Planteamiento del problema%Edgar Diego Pina VargasEP2025-05-08T20:09:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:09:00Z 2025-05-08T20:09:00Z 0 0 0   Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques   Hablar sobre las consecuencias económicas, psicológicas, de privacidad   Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques    Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques         Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques    Hablar sobre las consecuencias económicas, psicológicas, de privacidad   Hablar sobre las consecuencias económicas, psicológicas, de privacidad        Hablar sobre las consecuencias económicas, psicológicas, de privacidad
-}
+\section{\label{ref-002}Planteamiento del problema}
+%Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques 
 
-Hoy en d{\'{i}}a el crecimiento de internet y aspectos multifactoriales han dado como producto un crecimiento de las estafas en l{\'{i}}nea y diversos tipos de extorci{\'{o}}n a trav{\'{e}}s de las redes sociales, en la actualidad este tipo de fen{\'{o}}menos son principalmente efectuados dentro de los servicios de mensajer{\'{i}}a instant{\'{a}}nea, los cuales se convierten en una oportunidad que tienen los ciberdelincuentes para establecer contacto con diferentes usuarios a lo largo del mundo de manera an{\'{o}}nima, la falta de evidencia documentada sobre las estafas y casos de extorci{\'{o}}n en medios digitales tambi{\'{e}}n forma parte principal de los problemas en la agilizaci{\'{o}}n de los procesos que enfrentan las autoridades judiciales.
+%Hablar sobre las consecuencias económicas, psicológicas, de privacidad
 
-\section{Hip{\'{o}}tesis %Edgar Diego Pina VargasEP2025-05-08T20:05:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:05:00Z 2025-05-08T20:05:00Z 0 0 0   Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes, la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema   Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes, la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema   Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes, la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema        Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de  que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes,  que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes,  la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema
-%Edgar Diego Pina VargasEP2025-05-09T21:50:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T21:50:00Z 2025-05-09T21:50:00Z 0 0 0 Desarrollar la hipótesis que se tiene sobre “un sistema que alerta sobre mensajes con contenido de catphising prevendría el que el usuario sea victima del fraude” Desarrollar la hipótesis que se tiene sobre “un sistema que alerta sobre mensajes con contenido de catphising prevendría el que el usuario sea victima del fraude” Desarrollar la hipótesis que se tiene sobre “un sistema que alerta sobre mensajes con contenido de catphising prevendría el que el usuario sea victima del fraude” La segunda hipótesis sobre “el reporteador de evidencias y su apoyo en el proceso legal“, cuidar el afirmar como evidencias totales, se podría hablar de parciales y fundamentar desde el alcance tecnológico con el nivel de pertenencia de datos y aspectos legales sobre lo invasivo de los datos La segunda hipótesis sobre “el reporteador de evidencias y su apoyo en el proceso legal“, cuidar el afirmar como evidencias totales, se podría hablar de parciales y fundamentar desde el alcance tecnológico con el nivel de pertenencia de datos y aspectos legales sobre lo invasivo de los datos La segunda hipótesis sobre “el reporteador de evidencias y su apoyo en el proceso legal“, cuidar el afirmar como evidencias totales, se podría hablar de parciales y fundamentar desde el alcance tecnológico con el nivel de pertenencia de datos y aspectos legales sobre lo invasivo de los datos
-}
+%24/05/2025: Vincular el catfishing con el crimen organizado en México (ej. "la matanza de cerdos" y asesinatos en call centers), Contactar con fiscalia para peticion de data set, añadir citas con BibTeX, Agregar matriz de confusión y investigar la evaluación de tiempo de inferencia para añadirlo al código de pruebas, descargar los papers para facilitarlos al asesor portillo en una carpeta
 
-\section{\label{ref-003}Objetivo general \ding{52}}
+Hoy en día el crecimiento de internet y aspectos multifactoriales han dado como producto un crecimiento de las estafas en línea y diversos tipos de extorción a través de las redes sociales, en la actualidad este tipo de fenómenos son principalmente efectuados dentro de los servicios de mensajería instantánea, los cuales se convierten en una oportunidad que tienen los
+ciberdelincuentes para establecer contacto con diferentes usuarios a lo largo del mundo de manera anónima, la falta de
+evidencia documentada sobre las estafas y casos de extorción en medios digitales también forma parte principal de los problemas en la agilización de los procesos que enfrentan las autoridades judiciales
 
-\colorbox{yellow}{{\textquestiondown}Dise{\~{n}}ar/implementar?} un sistema de filtrado de mensajes de texto fraudulentos dentro de la clasificaci{\'{o}}n de extorci{\'{o}}n y catphishing mediante un LLM refinado mediante t{\'{e}}cnicas de prompt engineering y fine tuning%Edgar Diego Pina VargasEP2025-04-30T11:15:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-04-30T11:15:00Z 2025-04-30T11:15:00Z 0 0 0 Fine tuning a nivel de prompt engineering no como técnica de entrenamiento Fine tuning a nivel de prompt engineering no como técnica de entrenamiento
+video: 
+.......................................
+En este video, El Heraldo de México expone informacion proporcionada por la policia cibernetica de la ciudad de Mexico con fin de divulgar los diversos riezgos que se corren al navegar en linea, se menciona que "los niños y adolescentes no tienen consienticacion sobre los peligros de compartir informacion en internet, en especial las fotografias de menores y las historias" aspecto altamente relacionado con diversos fraudes incluidos el catfishing y la sextorcion 
 
 
-\section{\label{ref-004}Objetivos espec{\'{i}}ficos%Edgar Diego Pina VargasEP2025-05-09T21:26:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T21:26:00Z 2025-05-09T21:26:00Z 0 0 0 Simplificar la redacción de los objetivos priorizando los action verbs, ya en el marco teorico se puede hablar mas detenidamente sobre las características profundoas de los modelos y todo lo contemplado en profundidad tecnica Simplificar la redacción de los objetivos priorizando los action verbs, ya en el marco teorico se puede hablar mas detenidamente sobre las características profundoas de los modelos y todo lo contemplado en profundidad tecnica
-}
+% ESTA PARTE HABLA DE COMO LA POLICIA LIDIA CON EL PROBLEMA, DEBERIA IR EN LA PROBLEMATICA?
+
+%formas en que la policia cibernetica aborda el problema
+%* informando a la ciudaddania sobre 
+%* eortar a tener medidas de seguridad
+%* involucrar a los padres en el seguimiento de actividades de sus hijos en linea, estableciendo horarios y limites de uso, hablar con los niños para enseñar a identificar contenido inapropiado, supervizar las apps de uso, mantener dialogo constante con los menores, uso de tecnologias de control parental para proteger la privacidad, fomentar la apertura comunicativa con hijos para llevar un caso asi a la denuncia 
+
+Finalmente el video tambien da un dato alarmante que esclarece la magnitud del problema que representan este tipo de fraudes dentro del pais pues se afirma que  "Mexico supera la media global en ciberataques, el 48\% reporta ataques a sus telefonos moviles" este dato en particular otorga la prespectiva que la mayoria de fraudes en linea se efectuan dentro de telefonia movil en redes sociales y comunmente dentro de mensajeria privada 
+\cite{heraldo1youtube}
+
+los adultos mayores son frecuentemente víctimas de los ciberdelincuentes por su falta de familiaridad con la tecnología, y a que al no haber crecido en un entorno tecnológico son más susceptibles a las trampas que emplean técnicas de ingeniería social
+
+las plataformas más utilizadas para realizar este tipo de prácticas son las de mensajería instantánea en un 35 por ciento, llamadas y mensajes de texto con 26 por ciento
+
+ los especialistas de la Policía Cibernética mencionan que  Si alguien que conoció por internet declara su amor en poco tiempo y luego solicita dinero, es muy probable que sea una estafa. No enviar dinero ni compartir información personal con gente que no conozca físicamente.
+
+\cite{heraldo2025ciberdelitos}
+
+Las estafas como el catfishing y la sextorcion no son una circunstancia trivial pues estos no solo son casos efectuados por grupos cibercriminales que operan por voluntad propia, este fenomeno lamentablemente es parte de un problema mucho mayor que se afronta en Mexico,  el crimen organizado.
+
+Un ejemplo puntual de lo anterior mencionado es el caso de Andrea y Federico, un noviazgo que fue separado tras que Federico acudiera a una supuesta oferta de trabajo que "No exigía experiencia, tampoco un largo proceso de selección. Contratación inmediata", el dia siguiente 9 de diciembre, Federico envio un ultimo mensaje a su pareja Andrea, posterior a esto no se le volvio a ver, "El chico, de 23 años, se había esfumado".
+
+este caso forma parte de un fenomeno criminal de escala mundial, nombrado por la interpol como "pic butchering", "matanza de cerdos" por los cuerpos policiacos en Mexico
+
+Dada la magnitud del fenomeno en marzo del 2024 la Interpol envio un mensaje a 196 paises incluido mexico para alertar sobre el mismo.
+
+En el contexto de Mexico esta tendencia ha evolucionado al secuestro de personas como Federico para obligarlas a laborar en negocios con fachada de call centers dedicados a la estafa, ofertas falsas de empleo, protección a personas que ingresan por primera vez a una cárcel o un anexo o, incluso, a reclutamiento del crimen mediante videojuegos.
+
+Pero por sobre todas las actividades este movimiento desde sus origenes en ASIA fue reconocido por obligar a los secuestrados a establecer vinculos amorosos con victimas para estafar economicamente a cambio de su libertad, cabe mencionar que en el contexto Mexicano se afirma que el dinero obtenido de estas estafas resultan en financiamiento para el mismo CJNG que gestiona estas actividades
+%continuar redaccion de la nota
+\cite{milenio2024cjng}
+
+
+\section{Hipótesis}
+%Redactar una hipótesis hablar sobre el enfoque de la solución con la hipótesis de que el usuario no caiga en el fraude, 2da hipótesis la parte de reportes, la hipótesis por tanto permite hablar del enfoque con el que se atacara el problema 
+
+
+%Desarrollar la hipótesis que se tiene sobre “un sistema que alerta sobre mensajes con contenido de catphising prevendría el que el usuario sea victima del fraude” 
+
+%La segunda hipótesis sobre “el reporteador de evidencias y su apoyo en el proceso legal“, cuidar el afirmar como evidencias totales, se podría hablar de parciales y fundamentar desde el alcance tecnológico con el nivel de pertenencia de datos y aspectos legales sobre lo invasivo de los datos 
+
+
+\section{\label{ref-003}Objetivo general}
+
+\colorbox{yellow}{{\textquestiondown}¿Diseñar/implementar?} un sistema de filtrado de mensajeria privado para deteccion de mensajes fraudulentos dentro de la clasificación de extorción
+y catphishing mediante un LLM refinado mediante técnicas de prompt engineering y fine tuning
+%Fine tuning a nivel de prompt engineering no como técnica de entrenamiento Fine tuning a nivel de prompt engineering no como técnica de entrenamiento
+
+
+\section{\label{ref-004}Objetivos espec{\'{i}}ficos}
+
+%Simplificar la redacción de los objetivos priorizando los action verbs, ya en el marco teorico se puede hablar mas detenidamente sobre las características profundoas de los modelos y todo lo contemplado en profundidad tecnica Simplificar la redacción de los objetivos priorizando los action verbs, ya en el marco teorico se puede hablar mas detenidamente sobre las características profundoas de los modelos y todo lo contemplado en profundidad tecnica
+
 
 Generar datos sint{\'{e}}ticas puntualmente ejemplos de catphising y extorci{\'{o}}n mediante uso de modelos de lenguaje preentrenados para realizar pruebas de desempe{\~{n}}o a los diferentes modelos de lenguaje contemplados y definir el modelo base a utilizar en la solucion
 
-  	Investigaci{\'{o}}n an{\'{a}}lisis y selecci{\'{o}}n de {\ldots}
+Investigaci{\'{o}}n an{\'{a}}lisis y selecci{\'{o}}n de ...
 
-Definir el/los prompts que entreguen un mejor resultado en el modelo seleccionado mediante pruebas considerando la efectividad al detectar correctamente el catphising y/o extorci{\'{o}}n en los ejemplos suministrados para registrarlos y posteriormente implementarlos en la aplicaci{\'{o}}n de mensajer{\'{i}}a%Edgar Diego Pina VargasEP2025-05-09T21:46:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T21:46:00Z 2025-05-09T21:46:00Z 0 0 0 Como el tecnisismo prompt puede tener colision, investigar como poner notas al pie de pagina para distinguir a que se refiere en nuestro ámbito o directamente aconsejar visitar la sección de glosario de términos, analizar esto no solo para prompt sino para tantos se requieran (conviene mejor una redaccion glocal que recomiende visitar el glosario) Como el tecnisismo prompt puede tener colision, investigar como poner notas al pie de pagina para distinguir a que se refiere en nuestro ámbito o directamente aconsejar visitar la sección de glosario de términos, analizar esto no solo para prompt sino para tantos se requieran (conviene mejor una redaccion glocal que recomiende visitar el glosario)
+Definir el/los prompts que entreguen un mejor resultado en el modelo seleccionado mediante pruebas considerando la efectividad al detectar correctamente el catphising y/o extorci{\'{o}}n en los ejemplos suministrados para registrarlos y posteriormente implementarlos en la aplicaci{\'{o}}n de mensajer{\'{i}}a
+
+%Como el tecnisismo prompt puede tener colision, investigar como poner notas al pie de pagina para distinguir a que se refiere en nuestro ámbito o directamente aconsejar visitar la sección de glosario de términos, analizar esto no solo para prompt sino para tantos se requieran (conviene mejor una redaccion glocal que recomiende visitar el glosario)
 
 
 Seguir uno de los dos enfoques para llevar a cabo el fine tuning en medida de haber conseguido resultados de identificaci{\'{o}}n solidos con el modelo seleccionado y el conjunto de prompts refinados
 
-Implementar una aplicaci{\'{o}}n de mensajer{\'{i}}a nativa en Andoid %Edgar Diego Pina VargasEP2025-05-09T22:24:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T22:24:00Z 2025-05-09T22:24:00Z 0 0 0 La selección de Android debe ser justificada también, puede ser en marco teorico o en el desarrollo, en dhica parte habría que resaltar las ventajas y desventajas de cada tecnología para justificar la elección de la misma, se puede considerar la experiencia de los autores con la tecnología pero es mejor desde las características técnicas y de servicio como los que incluyen soporte técnico en contraste con el open sourse La selección de Android debe ser justificada también, puede ser en marco teorico o en el desarrollo, en dhica parte habría que resaltar las ventajas y desventajas de cada tecnología para justificar la elección de la misma, se puede considerar la experiencia de los autores con la tecnología pero es mejor desde las características técnicas y de servicio como los que incluyen soporte técnico en contraste con el open sourse un aspecto puede ser factor socioeconómico de México un aspecto puede ser factor socioeconómico de México
-mediante Android Studio para conseguir tener un primer prototipo funcional
+Implementar una aplicaci{\'{o}}n de mensajer{\'{i}}a nativa en Andoid mediante Android Studio para conseguir tener un primer prototipo funcional
+
+%La selección de Android debe ser justificada también, puede ser en marco teorico o en el desarrollo, en dhica parte habría que resaltar las ventajas y desventajas de cada tecnología para justificar la elección de la misma, se puede considerar la experiencia de los autores con la tecnología pero es mejor desde las características técnicas y de servicio como los que incluyen soporte técnico en contraste con el open sourse, un aspecto puede ser factor socioeconómico de México.
+
 
 Migrar el modelo refinado mediante fine tuning al ecosistema de Andoid mediante la tecnolog{\'{i}}a LiteRT para ejecutarlo como un servicio local en el dispositivo
 
-\section{\label{ref-005}Justificaci{\'{o}}n%Edgar Diego Pina VargasEP2025-05-09T22:42:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T22:42:00Z 2025-05-09T22:42:00Z 0 0 0 La justificación es puramente el por que se tiene que hacer, la parte de justificar las tecnologías e infraestructura esta mas de la mano del marco teorico o el desarrollo, la parte de la falta de evidencias también puede gihurar en la justificacion La justificación es puramente el por que se tiene que hacer, la parte de justificar las tecnologías e infraestructura esta mas de la mano del marco teorico o el desarrollo, la parte de la falta de evidencias también puede gihurar en la justificacion
-	%Edgar Diego Pina VargasEP2025-05-09T22:35:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T22:35:00Z 2025-05-09T22:35:00Z 0 0 0 Altamente Relacionado con la hipótesis pues en la justificación se hablara de lo que beneficiaria el desarrollo de la solución planteada desde la hipotesis Altamente Relacionado con la hipótesis pues en la justificación se hablara de lo que beneficiaria el desarrollo de la solución planteada desde la hipotesis
-}
+\section{\label{ref-005}Justificaci{\'{o}}n}
 
-\section{\label{ref-006}Marco Te{\'{o}}rico%Edgar Diego Pina VargasEP2025-05-08T20:01:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:01:00Z 2025-05-08T20:01:00Z 0 0 0   En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos   En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos   En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos        En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos   Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts  Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos   Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts   Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts        Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts      Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos   Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos        Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos
-%Edgar Diego Pina VargasEP2025-05-09T21:14:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T21:14:00Z 2025-05-09T21:14:00Z 0 0 0 Línea 2:  Línea 2:  DEP 2 (Entrega: 09-may-2025, 17:30 horas) DEP 2 (Entrega: 09-may-2025, 17:30 horas) (20\%) MARCO TEÓRICO (20\%) MARCO TEÓRICO - (10\%) Citas - (10\%) Citas - (10\%) Conceptos, definiciones y teorías que requiere el lector para entender su - (10\%) Conceptos, definiciones y teorías que requiere el lector para entender su trabajo. trabajo. (80\%) PROPUESTA DE DESARROLLO (80\%) PROPUESTA DE DESARROLLO - (30\%) Diagrama a bloques o algoritmo(s) de la propuesta de desarrollo - (30\%) Diagrama a bloques o algoritmo(s) de la propuesta de desarrollo - (30\%) Explicación con texto del diagrama a bloques o algoritmo(s) de la - (30\%) Explicación con texto del diagrama a bloques o algoritmo(s) de la propuesta de desarrollo propuesta de desarrollo - (10\%) Citas - (10\%) Citas - (10\%) Explicaciones adicionales sobre la propuesta de desarrollo - (10\%) Explicaciones adicionales sobre la propuesta de desarrollo
-}
+%La justificación es puramente el por que se tiene que hacer, la parte de justificar las tecnologías e infraestructura esta mas de la mano del marco teorico o el desarrollo, la parte de la falta de evidencias también puede gihurar en la justificacion
 
-\textbf{\textit{Que son los modelos largos de lenguaje LLM y cual es su utilidad}}
+%Altamente Relacionado con la hipótesis pues en la justificación se hablara de lo que beneficiaria el desarrollo de la solución planteada desde la hipotesis
+
+\section{\label{ref-006}Marco Te{\'{o}}rico}
+
+%En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos
+
+%Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts
+
+%Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos
+
+% ASPECTOS QUE SE REDACTARON SIGUIENDO LO REUQERIDO EN LA LINEA DE ALGORITMOS:
+%Línea 2: 
+%DEP 2 (Entrega: 09-may-2025, 17:30 horas)
+%(20%) MARCO TEÓRICO
+%- (10%) Citas
+%- (10%) Conceptos, definiciones y teorías que requiere el lector para entender su
+%trabajo.
+%(80%) PROPUESTA DE DESARROLLO
+%- (30%) Diagrama a bloques o algoritmo(s) de la propuesta de desarrollo
+%- (30%) Explicación con texto del diagrama a bloques o algoritmo(s) de la
+%propuesta de desarrollo
+%- (10%) Citas
+%- (10%) Explicaciones adicionales sobre la propuesta de desarrollo
+
+
+
+\subsection{Que son los modelos largos de lenguaje LLM y cual es su utilidad}
 
 Los modelos largos de lenguajes o modelos de lenguaje de gran tama{\~{n}}o, son modelos de aprendizaje profundo que son pre entrenados con grandes cantidades de datos 
 
@@ -171,41 +329,50 @@ Los LLMS pueden ser empleados para llevar a cabo tareas de diversas indoles como
 
 Particularmente en el presente trabajo nos centraremos particularmente en la tarea de clasificaci{\'{o}}n de textos
 
-\textbf{\textit{LLMs Como clasificadores de textos}}
+\subsection{LLMs Como clasificadores de textos}
+
 \begin{itemize}
 \item[►] \foreignlanguage{spanish}{Los modelos de lenguaje de gran escala (LLMs, por sus siglas en ingl{\'{e}}s) han transformado la forma en que se abordan las tareas de procesamiento de lenguaje natural (PLN), especialmente en el {\'{a}}mbito de la clasificaci{\'{o}}n de textos. Tradicionalmente, esta tarea depend{\'{i}}a de modelos supervisados entrenados con grandes vol{{\'{u}}}menes de datos etiquetados, los cuales requer{\'{i}}an etapas expl{\'{i}}citas de extracci{\'{o}}n de caracter{\'{i}}sticas y entrenamiento. En contraste, }\foreignlanguage{spanish}{\colorbox{yellow}{los LLMs permiten realizar tareas de clasificaci{\'{o}}n incluso en entornos con pocos o ning{{\'{u}}}n dato etiquetado, a trav{\'{e}}s de t{\'{e}}cnicas como el }}\foreignlanguage{spanish}{\colorbox{yellow}{\textit{zero-shot learning}}}\foreignlanguage{spanish}{\colorbox{yellow}{ y el }}\foreignlanguage{spanish}{\colorbox{yellow}{\textit{few-shot learning}}}\foreignlanguage{spanish}{\colorbox{yellow}{.}}
 \item[►] \foreignlanguage{spanish}{En el art{\'{i}}culo ``}\foreignlanguage{spanish}{\colorbox{yellow}{Large Language Models as Zero-Shot Classifiers: An Empirical Study}}\foreignlanguage{spanish}{'' (arXiv:2312.01044), se realiz{\'{o}} una evaluaci{\'{o}}n emp{\'{i}}rica del desempe{\~{n}}o de distintos LLMs como clasificadores sin entrenamiento adicional, usando {{\'{u}}}nicamente instrucciones (prompts) dise{\~{n}}adas cuidadosamente. Entre los hallazgos m{\'{a}}s relevantes destaca que, }\foreignlanguage{spanish}{\colorbox{yellow}{\textbf{\textit{aunque estos modelos no superan sistem{\'{a}}ticamente a clasificadores supervisados entrenados sobre datos espec{\'{i}}ficos, ofrecen una ventaja considerable en contextos donde no se dispone de datos etiquetados o los recursos computacionales para entrenamiento son limitados. }}}}\foreignlanguage{spanish}{Asimismo, se demostr{\'{o}} que el dise{\~{n}}o del prompt es determinante: un cambio sutil en la redacci{\'{o}}n de la instrucci{\'{o}}n puede afectar significativamente la precisi{\'{o}}n del modelo.}
 \end{itemize}
 \foreignlanguage{spanish}{Para el proyecto aqu{\'{i}} concebido, que busca detectar autom{\'{a}}ticamente patrones de catfishing y extorsi{\'{o}}n en mensajes dentro de aplicaciones de mensajer{\'{i}}a, el uso de LLMs como clasificadores resulta particularmente pertinente. Dado que estos delitos evolucionan constantemente y pueden adoptar m{{\'{u}}}ltiples formas ling{\"{u}}{\'{i}}sticas, los modelos tradicionales entrenados sobre conjuntos de datos fijos podr{\'{i}}an mostrar limitaciones en su capacidad de generalizaci{\'{o}}n. En cambio, un LLM permite adaptar din{\'{a}}micamente su capacidad de clasificaci{\'{o}}n mediante modificaciones en los prompts, o bien mediante t{\'{e}}cnicas de }\foreignlanguage{spanish}{\textit{fine tuning}}\foreignlanguage{spanish}{ si se desea aumentar la precisi{\'{o}}n en un dominio espec{\'{i}}fico.}
 
-\foreignlanguage{spanish}{\textbf{\textit{Definici{\'{o}}n formal del lenguaje}}}
+\foreignlanguage{spanish}
+
+\subsection{Definición formal del lenguaje}
 \begin{itemize}
 \item[►] \foreignlanguage{spanish}{Desde la perspectiva de la ling{\"{u}}{\'{i}}stica formal, el lenguaje se concibe como un sistema estructurado de signos que permite la comunicaci{\'{o}}n entre individuos. Este sistema se caracteriza por una gram{\'{a}}tica que define las reglas para la formaci{\'{o}}n de expresiones v{\'{a}}lidas dentro del idioma. }
 \item[►] \foreignlanguage{spanish}{La ling{\"{u}}{\'{i}}stica formal se enfoca en describir y analizar las estructuras gramaticales del lenguaje, utilizando herramientas matem{\'{a}}ticas y l{\'{o}}gicas para modelar fen{\'{o}}menos ling{\"{u}}{\'{i}}sticos. Este enfoque permite una comprensi{\'{o}}n precisa de c{\'{o}}mo se construyen y entienden las oraciones en un idioma, facilitando el desarrollo de modelos computacionales para el procesamiento del lenguaje natural.}
 \end{itemize}
-\foreignlanguage{spanish}{\textbf{\textit{La variabilidad en el espa{\~{n}}ol y las jergas empleadas en la extorsi{\'{o}}n y el catfishing}}}
+
+\subsection{La variabilidad en el español y las jergas empleadas en la extorsión y el catfishing}
+
 \begin{itemize}
 \item[►] \foreignlanguage{spanish}{El espa{\~{n}}ol, como lengua hablada en m{{\'{u}}}ltiples pa{\'{i}}ses y regiones, presenta una notable variabilidad dialectal y l{\'{e}}xica. Esta diversidad se manifiesta en diferencias de vocabulario, pronunciaci{\'{o}}n y uso de expresiones idiom{\'{a}}ticas, influenciadas por factores geogr{\'{a}}ficos, hist{\'{o}}ricos y sociales.}
 \item[►] \foreignlanguage{spanish}{Un estudio reciente analiz{\'{o}} mensajes p{{\'{u}}}blicos de Twitter geolocalizados en 26 pa{\'{i}}ses de habla hispana, identificando variaciones significativas en el uso del lenguaje. Estas diferencias incluyen el empleo de t{\'{e}}rminos y expresiones particulares de cada regi{\'{o}}n, as{\'{i}} como la adopci{\'{o}}n de jergas espec{\'{i}}ficas en contextos sociales determinados.}
 \item[►] \foreignlanguage{spanish}{En el {\'{a}}mbito de la extorsi{\'{o}}n y el catfishing, los delincuentes suelen utilizar jergas y modismos locales para ganarse la confianza de sus v{\'{i}}ctimas y evitar la detecci{\'{o}}n por sistemas automatizados. Esta adaptaci{\'{o}}n ling{\"{u}}{\'{i}}stica representa un desaf{\'{i}}o para los modelos de procesamiento de lenguaje natural, que deben ser capaces de reconocer y entender estas variaciones para identificar comportamientos sospechosos de manera efectiva.}
 \item[►] \foreignlanguage{spanish}{Por lo tanto, es fundamental que los sistemas de detecci{\'{o}}n de actividades fraudulentas en redes sociales incorporen mecanismos para manejar la variabilidad ling{\"{u}}{\'{i}}stica del espa{\~{n}}ol. Esto incluye el entrenamiento de modelos con datos representativos de diferentes dialectos y jergas, as{\'{i}} como la actualizaci{\'{o}}n constante de los recursos ling{\"{u}}{\'{i}}sticos utilizados para reflejar los cambios y tendencias en el uso del lenguaje.}
 \end{itemize}
+
+
 Large Lenguaje Models
 
 Desarrollar este objetivo
 
-Seleccionar un modelo de lenguaje base adecuado balanceando tama{\~{n}}o y habilidad para identificaci{\'{o}}n de catphising y extorci{\'{o}}n mediante la ejecuci{\'{o}}n de pruebas en el entorno de jypiter lab %Edgar Diego Pina VargasEP2025-05-09T21:28:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T21:28:00Z 2025-05-09T21:28:00Z 0 0 0 Sintetizado : Investigación análisis y selección de un modelo adecuado para identificación de catphishing  Sintetizado : Investigación análisis y selección de un modelo adecuado para identificación de catphishing 
+Seleccionar un modelo de lenguaje base adecuado balanceando tama{\~{n}}o y habilidad para identificaci{\'{o}}n de catphising y extorci{\'{o}}n mediante la ejecuci{\'{o}}n de pruebas en el entorno de jypiter lab 
+
+%Sintetizado : Investigación análisis y selección de un modelo adecuado para identificación de catphishing 
 
 
 Retomar a que se refiere lo de ``modelo base'' en la parte de iobjetivos
 
-\section{M{\'{e}}tricas de desempe{\~{n}}o de clasificadores}
+\subsection{M{\'{e}}tricas de desempe{\~{n}}o de clasificadores}
 
-\subsection{Presicion}
+\subsubsection{Presicion}
 
 La precisi{\'{o}}n es la habilidad que posee un clasificador para evitar clasificar como positivo un caso negativo
 
-\subsection{Recall}
+\subsubsection{Recall}
 
 Recall es la habilidad que tiene un clasificador para encontrar todos los casos positivos
 
@@ -231,8 +398,8 @@ A la empresa de servicios financieros JP Morgan, por ejemplo, le result{\'{o}} d
 
 Al preparar conjuntos de datos originales para la generaci{\'{o}}n de datos sint{\'{e}}ticos mediante algoritmos de~\href{https://www.ibm.com/mx-es/think/topics/machine-learning}{aprendizaje autom{\'{a}}tico}~(ML), aseg{{\'{u}}}rese de verificar y corregir errores, imprecisiones e incongruencias. Elimine los duplicados e ingrese los valores faltantes.
 
-\section{Glosario de t{\'{e}}rminos%Edgar Diego Pina VargasEP2025-05-08T20:03:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:03:00Z 2025-05-08T20:03:00Z 0 0 0   Presentar en orden alfabetico   Presentar en orden alfabetico   Presentar en orden alfabetico        Presentar en orden alfabetico
-}
+\section{Glosario de t{\'{e}}rminos}
+%Presentar en orden alfabetico
 
 \textbf{Catphishing}: Pr{\'{a}}ctica enga{\~{n}}osa en la que una persona crea una identidad falsa en l{\'{i}}nea para establecer relaciones con otras personas, generalmente con fines de manipulaci{\'{o}}n emocional, fraude o explotaci{\'{o}}n. Es com{{\'{u}}}n en aplicaciones de citas y redes sociales, donde los estafadores se hacen pasar por alguien m{\'{a}}s para ganarse la confianza de la v{\'{i}}ctima y, en muchos casos, obtener beneficios econ{\'{o}}micos o personales.
 
@@ -265,7 +432,9 @@ Se invita a consultar la secci{\'{o}}n ``marco teorico'' para profundizar mas en
     \textbf{Autores} & \textbf{Título} & \textbf{Descripción} & \textbf{Ventajas} & \textbf{Desventajas} & \textbf{Diferencias con propuesta} \\
     \hline\hline
     
-    Ahmed Elmagdy, Walid Magdy, Tarek El-Ganainy & Fake It Till You Make It: Profiling Fake Users on PornHub & Este estudio se enfoca en detectar perfiles falsos dentro de la plataforma PornHub. Utiliza aprendizaje automático sobre datos de perfil, comentarios y metainformación. & Se basa en datos reales y masivos. Proporciona un marco de análisis para detección de identidad falsa. & Restringido a una sola plataforma. No aborda mensajes en tiempo real. & • Análisis en tiempo real vs. atributos estáticos \newline • Procesamiento local en Android \newline • Enfoque en mensajería vs. perfiles \\
+    Ahmed Elmagdy, Walid Magdy, Tarek El-Ganainy & Fake It Till You Make It: Profiling Fake Users on PornHub
+    \cite{magdy2017faketillmakeit}
+    & Este estudio se enfoca en detectar perfiles falsos dentro de la plataforma PornHub. Utiliza aprendizaje automático sobre datos de perfil, comentarios y metainformación. & Se basa en datos reales y masivos. Proporciona un marco de análisis para detección de identidad falsa. & Restringido a una sola plataforma. No aborda mensajes en tiempo real. & • Análisis en tiempo real vs. atributos estáticos \newline • Procesamiento local en Android \newline • Enfoque en mensajería vs. perfiles \\
     \hline
     
     Rui Cao, Roy Ka-Wei Lee, Tuan-Anh Hoang & DeepHate: Hate Speech Detection via Multi-Faceted Text Representations & DeepHate combina múltiples representaciones de texto para detectar discurso de odio en redes sociales usando redes neuronales. & Utiliza múltiples representaciones textuales. Supera métodos clásicos en clasificación de odio. & Requiere recursos computacionales significativos. No aborda escenarios móviles. & • Modelos livianos vs. modelos pesados \newline • Procesamiento local vs. servidor \newline • Catfishing/extorsión vs. discurso de odio \\
@@ -277,10 +446,16 @@ Se invita a consultar la secci{\'{o}}n ``marco teorico'' para profundizar mas en
     \end{tabularx}
 \end{table}
 
-\section{\label{ref-008}Propuesta de soluci{\'{o}}n%Edgar Diego Pina VargasEP2025-05-09T22:45:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-09T22:45:00Z 2025-05-09T22:45:00Z 0 0 0 Es parte de la seccopm del  desarrollo, aquí se debe hablar sobre el propósito de cada uno de los elementos de la arquitectura, diferenciar el almacenamiento remoto del local, el propósito de cuentas por lado del servidor y el almacenamiento de mensajers o todo lo que sea requerido para que el llm trabaje de forma local totalmente off line Es parte de la seccopm del  desarrollo, aquí se debe hablar sobre el propósito de cada uno de los elementos de la arquitectura, diferenciar el almacenamiento remoto del local, el propósito de cuentas por lado del servidor y el almacenamiento de mensajers o todo lo que sea requerido para que el llm trabaje de forma local totalmente off line   Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion   Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion   Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion        Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion
-}
+\section{\label{ref-008}Propuesta de soluci{\'{o}}n}
+%Es parte de la seccopm del  desarrollo, aquí se debe hablar sobre el propósito de cada uno de los elementos de la arquitectura, diferenciar el almacenamiento remoto del local, el propósito de cuentas por lado del servidor y el almacenamiento de mensajers o todo lo que sea requerido para que el llm trabaje de forma local totalmente off line
+
+%Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion
+
+%07/06/2025: Cambio arquitectonico de Android a Web mediante el uso de cliente servidor alojando el LLM en un servicio de vps gpu hosting 
+
 
 \begin{figure}[H]
+%Considerar el comentario de calzada sobre la migración a nube y aprovechar el ecosistema azure
     \centering
     \includegraphics[width=0.5\linewidth]{imagenes/esquema1.png}
     \caption{Enter Caption}
@@ -349,14 +524,21 @@ https://www.csusm.edu/iits/services/security/security-guidance/phishing_extortio
 https://safecomputing.umich.edu/protect-yourself/phishing-scams/common-scams/sextortion
 https://www.ic3.gov/PSA/2016/PSA160601
 
-\section{Pruebas y resultados}
 
-\section{\label{ref-010}Conclusiones}
+\section{\label{ref-010}Normas}
 
-\section{\label{ref-011}Trabajo a futuro%Edgar Diego Pina VargasEP2025-05-08T20:01:00Z0 Edgar Diego Pina VargasEP Edgar Diego Pina VargasEP Edgar Diego Pina Vargas Edgar Diego Pina Vargas EP EP 2025-05-08T20:01:00Z 2025-05-08T20:01:00Z 0 0 0   Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes   Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes   Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes        Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes
-}
+\section{Cronograma de actividades}
 
-\section{\label{ref-012}Referencias}
+
+
+\section{\label{ref-011}Pruebas y resultados}
+
+\section{\label{ref-012}Conclusiones}
+
+\section{\label{ref-013}Trabajo a futuro}
+%Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes
+
+\section{\label{ref-014}Referencias}
 
 \subsubsection{Introducci{\'{o}}n}
 
@@ -373,6 +555,7 @@ IBM. (s.\,f.). \textit{{\textquestiondown}Qu{\'{e}} es la ingenier{\'{i}}a de pr
 IBM. (s.\,f.). \textit{{\textquestiondown}Qu{\'{e}} es el fine-tuning?} IBM Think. \url{https://www.ibm.com/es-es/think/topics/fine-tuning}
 
 \subsection{Estado del arte}
+
 
 Davidson, T., Warmsley, D., Macy, M., \& Weber, I. (2017). \textit{Automated Hate Speech Detection and the Problem of Offensive Language}. arXiv. \url{https://arxiv.org/abs/1705.06530}
 
@@ -411,4 +594,13 @@ Anaconda, Inc. (s.f.). Jupyter \textendash{} Anaconda Documentation. https://ana
 \subsection{Desarrollo}
 
 https://www.ibm.com/think/insights/synthetic-data-generation
+
+%ejemplo de cita \cite{ndyulo2023protecting}
+
+\bibliographystyle{plain} % estilo de bibliografía
+\bibliography{referencias} % nombre del archivo .bib sin la extensión
+
 \end{document}
+
+
+
