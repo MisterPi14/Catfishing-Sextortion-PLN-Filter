@@ -1,0 +1,24 @@
+{
+  "examples": [
+    {
+      "text": "Tengo fotos íntimas tuyas que obtuve hackeando tu teléfono. Si no me depositas $500 en bitcoins, las envío a todos tus contactos de Facebook y a tu familia.",
+      "category": "sextortion"
+    },
+    {
+      "text": "Hola, sé que visitas sitios para adultos. Tengo capturas de pantalla de todo. Si no quieres que se entere tu jefe, deposita $300 en esta cuenta bancaria: XXXX-XXXX-XXXX-XXXX.",
+      "category": "sextortion"
+    },
+    {
+      "text": "Vi que viste contenido para adultos en tu computadora. Tengo acceso a tu cámara web y grabé todo. Págame $200 o envío el video a todos tus contactos de correo electrónico.",
+      "category": "sextortion"
+    },
+    {
+      "text": "Soy un hacker y tengo pruebas de que visitas sitios para adultos. Si no me pagas $150 en Amazon gift cards, le envío toda la información a tu esposa.",
+      "category": "sextortion"
+    },
+    {
+      "text": "Tengo un video íntimo tuyo de cuando visitaste un sitio web para adultos. Si no quieres que se haga viral, envía $250 en criptomonedas a esta dirección: XXXXXXXXXXXXXXXXXX.",
+      "category": "sextortion"
+    }
+  ]
+}

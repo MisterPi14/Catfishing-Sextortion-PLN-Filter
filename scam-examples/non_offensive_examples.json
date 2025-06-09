@@ -1,0 +1,24 @@
+{
+  "examples": [
+    {
+      "text": "Hola, ¿cómo estás? ¿Quieres ir por un café esta tarde? Me gustaría platicar contigo.",
+      "category": "non-offensive"
+    },
+    {
+      "text": "¿Viste el partido de ayer? Estuvo increíble, no puedo creer que hayan ganado en el último minuto.",
+      "category": "non-offensive"
+    },
+    {
+      "text": "¿Podrías ayudarme con la tarea de matemáticas? No entiendo este problema de álgebra.",
+      "category": "non-offensive"
+    },
+    {
+      "text": "¡Feliz cumpleaños! Espero que tengas un día maravilloso lleno de alegría y buenos momentos.",
+      "category": "non-offensive"
+    },
+    {
+      "text": "¿Te gustaría que vayamos al cine este fin de semana? Estrenan esa película que querías ver.",
+      "category": "non-offensive"
+    }
+  ]
+}

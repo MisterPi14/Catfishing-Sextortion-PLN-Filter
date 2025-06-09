@@ -1,7 +1,3 @@
-results2/
-results/
-Test-ChatGPT-data-set/
-Test-deepseek-data-set/
 LMMs-Classification-Test-Results/
-Data sets anteriores/
 *.tex
+PromptVersions.txt

@@ -1,0 +1,24 @@
+{
+  "examples": [
+    {
+      "text": "Hola corazón, soy una chica rusa que busca el amor verdadero. Estoy pasando por una situación difícil y necesito ayuda económica. ¿Podrías ser mi príncipe azul?",
+      "category": "catfishing"
+    },
+    {
+      "text": "Mi amor, mi mamá está muy enferma y necesito dinero para su operación. Te lo devolveré con intereses cuando cobre mi herencia. Por favor, ayúdame.",
+      "category": "catfishing"
+    },
+    {
+      "text": "Hola guapo, me encantaría conocerte mejor. Soy modelo y viajo mucho por trabajo. ¿Te gustaría ser mi novio a distancia? No puedo hacer videollamadas porque estoy de viaje en zonas con mala señal.",
+      "category": "catfishing"
+    },
+    {
+      "text": "Soy una chica universitaria con problemas económicos. Si me ayudas con mis gastos, podemos tener una relación especial. Te enviaré fotos privadas a cambio.",
+      "category": "catfishing"
+    },
+    {
+      "text": "Hola, somos almas gemelas según nuestra compatibilidad astral. Para que nuestra conexión sea perfecta, necesito que me ayudes con un pequeño pago para un ritual de amor.",
+      "category": "catfishing"
+    }
+  ]
+}
