@@ -1,28 +1,90 @@
 {
   "examples": [
     {
-      "text": "Tengo fotos íntimas tuyas que obtuve hackeando tu teléfono. Si no me depositas $500 en bitcoins, las envío a todos tus contactos de Facebook y a tu familia.",
+      "text": "Tengo el video que me mandaste ayer. ¿No quieres que lo vea tu novio, verdad? Vas a tener que cooperar si no quieres que le llegue una sorpresita. Mándame 5 mil pesos para empezar.",
       "category": "sextortion"
     },
     {
-      "text": "Hola, sé que visitas sitios para adultos. Tengo capturas de pantalla de todo. Si no quieres que se entere tu jefe, deposita $300 en esta cuenta bancaria: XXXX-XXXX-XXXX-XXXX.",
+      "text": "Mira, pendeja, ya sé dónde vives y quién es tu familia. O te portas bien conmigo y me mandas lo que te pido, o mañana mismo todos en tu colonia van a ver tus fotitos. ¿Entendiste?",
       "category": "sextortion"
     },
     {
-      "text": "Vi que viste contenido para adultos en tu computadora. Tengo acceso a tu cámara web y grabé todo. Págame $200 o envío el video a todos tus contactos de correo electrónico.",
+      "text": "Ya vi que me bloqueaste, pero crees que no puedo encontrarte? Tengo tu cel y todos tus contactos. Si no quieres que tu jefe vea cómo te diviertes, más te vale que me deposites. Te doy una hora.",
       "category": "sextortion"
     },
     {
-      "text": "Soy un hacker y tengo pruebas de que visitas sitios para adultos. Si no me pagas $150 en Amazon gift cards, le envío toda la información a tu esposa.",
+      "text": "Confiaste en mí y me mandaste esa foto. No te voy a juzgar, al contrario. Pero ahora esa confianza tiene un precio. Necesito que me ayudes con un dinero, si no, pues tendré que compartirla.",
       "category": "sextortion"
     },
     {
-      "text": "Tengo un video íntimo tuyo de cuando visitaste un sitio web para adultos. Si no quieres que se haga viral, envía $250 en criptomonedas a esta dirección: XXXXXXXXXXXXXXXXXX.",
+      "text": "Hola, sé que visitas sitios para adultos. Tengo capturas de pantalla de todo. Si no quieres que se entere tu jefe, depositame $1000 baros en bitcoin",
+      "category": "sextortion"
+    },
+    {
+      "text": "Sabes que lo que hiciste no está bien visto. Esa foto podría arruinarte la vida. Pero yo te puedo ayudar a que nadie se entere. Solo necesito un pequeño favor económico. Piénsalo como una inversión en tu tranquilidad.",
+      "category": "sextortion"
+    },
+    {
+      "text": "No te hagas la santa, que bien que te gustó. Ahora vas a hacer lo que yo te diga. Grábate haciendo exactamente lo que te voy a pedir o ya sabes las consecuencias. No juegues conmigo.",
+      "category": "sextortion"
+    },
+    {
+      "text": "Soy un hacker y tengo pruebas de que visitas sitios para adultos. Si no me pagas $1500 en tarjetas de regalo, le envío toda la información a tu esposa.",
+      "category": "sextortion"
+    },
+    {
+      "text": "Qué decepción. Pensé que eras diferente. Pero bueno, ya que estamos en estas, más te vale que cooperes. O le enseño a tu mamá la clase de hija que tiene. Si me tiras una feria hare como que aquí no pasó nada.",
       "category": "sextortion"
     },
     {
       "text": "estafador: Sé que fuiste al antro el viernes y grabaste algo intenso… mejor transfieres $5,000 a esta cuenta si no quieres que lo suba a TikTok.",
       "category": "sextortion"
+    }
+  ],
+  "dictionary": [
+    {
+      "word": "Muñeca",
+      "meaning": "'Doll'. Un término de cariño que, en un contexto de amenaza, se usa para denigrar y establecer poder."
+    },
+    {
+      "word": "Cooperar",
+      "meaning": "En este contexto, es un eufemismo para 'ceder a las demandas'. Implica una obligación forzada, no una colaboración voluntaria."
+    },
+    {
+      "word": "Sorpresita",
+      "meaning": "Diminutivo de 'sorpresa'. Se usa sarcásticamente para referirse a una revelación dañina o un acto de venganza."
+    },
+    {
+      "word": "Para empezar",
+      "meaning": "Frase que indica que la demanda actual es solo la primera de muchas que vendrán. 'To start with'."
+    },
+    {
+      "word": "Pendeja",
+      "meaning": "Un insulto fuerte en México. Se traduce como 'idiota' o 'estúpida', pero con una carga mucho más agresiva. Se usa para intimidar y humillar."
+    },
+    {
+      "word": "Fotitos",
+      "meaning": "Diminutivo de 'fotos'. Usado en tono burlón y despectivo para minimizar a la víctima y su material íntimo."
+    },
+    {
+      "word": "Más te vale",
+      "meaning": "Una advertencia o amenaza directa. Significa 'es mejor para ti que lo hagas' o 'deberías'. 'You better...'"
+    },
+    {
+      "word": "Favor económico",
+      "meaning": "Un eufemismo para una extorsión. Disfraza una demanda de dinero como si fuera una petición de ayuda."
+    },
+    {
+      "word": "No te hagas la santa",
+      "meaning": "Expresión para acusar a alguien de ser hipócrita o de fingir inocencia. 'Don't play the saint'."
+    },
+    {
+      "word": "Salir a la luz",
+      "meaning": "Frase que significa 'hacerse público' o 'revelarse'."
+    },
+    {
+      "word": "Varos",
+      "meaning": "Término del argot muy común para referirse a los pesos, la moneda mexicana."
     }
   ]
 }

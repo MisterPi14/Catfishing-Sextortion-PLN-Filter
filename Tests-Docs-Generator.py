@@ -2,6 +2,8 @@ import json
 import os
 from pytablewriter import LatexTableWriter
 
+DIRECTORY = 'LMMs-Classification-Test-Results/Zero-Shot-Aproach'
+
 def create_latex_tables():
     with open('classification_results.tex', 'w') as f:
         # Cambiar el preámbulo para incluir geometry y el formato correcto
@@ -11,9 +13,9 @@ def create_latex_tables():
         f.write('\\begin{document}\n')
         f.write('\\title{LMMs Classification Test Results}\n\\maketitle\n\n')
         
-        for filename in os.listdir('LMMs-Classification-Test-Results'):
+        for filename in os.listdir(DIRECTORY):
             if filename.endswith('.json'):
-                with open(f'LMMs-Classification-Test-Results/{filename}', 'r') as jf:
+                with open(f'{DIRECTORY}/{filename}', 'r') as jf:
                     data = json.load(jf)
                 
                 model_name = filename.replace('.json', '').replace('_', '\\_')

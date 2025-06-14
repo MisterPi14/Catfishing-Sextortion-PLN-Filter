@@ -1,32 +1,118 @@
 {
   "examples": [
     {
-      "text": "Hola corazón, soy una chica rusa que busca el amor verdadero. Estoy pasando por una situación difícil y necesito ayuda económica. ¿Podrías ser mi príncipe azul?",
+      "text": "Mi amor, no sabes la pena que me da, pero mi mamá se puso súper mal y necesito para sus medicinas. El banco me bloqueó la tarjeta. ¿Crees que podrías prestarme algo? Te lo juro que te lo regreso en cuanto me paguen.",
       "category": "catfishing"
     },
     {
-      "text": "Mi amor, mi mamá está muy enferma y necesito dinero para su operación. Te lo devolveré con intereses cuando cobre mi herencia. Por favor, ayúdame.",
+      "text": "Neta que contigo he sentido una conexión que con nadie más. Lástima que ando atorado en un viaje de trabajo en Guadalajara, si no ya estaría invitándote un café. Oye, una pregunta, ¿qué tan seguido vienes para acá?",
+      "category": "catfishing"
+    },
+    {
+      "text": "Perdón que no te pueda hacer videollamada, chiquita. La cámara de mi cel se fregó justo ayer. Pero te mando más fotos, para que veas que soy real. Tú sí eres un ángel, ¿verdad?",
+      "category": "catfishing"
+    },
+    {
+      "text": "Eres la primera persona en mucho tiempo que me entiende. Siento que podría contarte lo que sea. Oye, cambiando de tema, ¿tú usas apps para invertir? Un amigo me pasó un tip buenísimo, chance y te interesa.",
+      "category": "catfishing"
+    },
+    {
+      "text": "Ya sé que llevamos poco tiempo hablando, pero siento algo súper fuerte por ti. Estoy planeando ir a CDMX para por fin vernos. Solo que ando corto de lana para el vuelo, ¿chance y me ayudas con una parte? Te lo pago en cuanto llegue.",
+      "category": "catfishing"
+    },
+    {
+      "text": "Qué crees, reina. Me salió una oportunidad de un negocio que no puedo dejar pasar, pero me falta un poco para completar la inversión. Si me echas la mano, te prometo que te lo multiplico. Piénsalo, seríamos socios.",
+      "category": "catfishing"
+    },
+    {
+      "text": "No manches, tenemos gustos súper parecidos. ¿También te late el rock de los 80? Uff, ya con eso me ganaste. Alguna vez fuiste a conciertos?, tienes fotos de cuando fuiste a alguno?",
+      "category": "catfishing"
+    },
+    {
+      "text": "Te veo en tus fotos y neta pareces de película. Yo soy empresaria, viajo mucho, te estoy enviando un regalito ppero aduanas me pide pagar mas importe pero deje mis tarjetas en otro lado, me puedes mandar una tarjeta de regalo de $200 para que te llegue?",
+      "category": "catfishing"
+    },
+    {
+      "text": "Hola, con todo respeto, eres todo un caballero jamas habia visto alguien como tu en esta app. No soy de aquí, pero vengo seguido por trabajo. Me encantaría conocer a alguien interesante como tú. ¿Qué dices, me das chance?",
+      "category": "catfishing"
+    },
+    {
+      "text": "Oye guapo, soy Valeria, modelo de pasarela. Quieres que te mande fotos?, antes mandame las tuyas",
+      "category": "catfishing"
+    },
+    {
+      "text": "No chiquito!, quiero ver tu carita en tus fotos si no me voy a aburrir y te dejare de hablar he",
+      "category": "catfishing"
+    },
+    {
+      "text": "Hola bebe, ahorita te hablo desde París, pero me quedé sin datos. ¿Me prestas saldo para mandar mensaje a mi familia?",
       "category": "catfishing"
     },
     {
       "text": "Hola guapo, me encantaría conocerte mejor. Soy modelo y viajo mucho por trabajo. ¿Te gustaría ser mi novio a distancia? No puedo hacer videollamadas porque estoy de viaje en zonas con mala señal.",
       "category": "catfishing"
+    }
+  ],
+  "dictionary": [
+    {
+      "word": "¿Te late?",
+      "meaning": "Expresión coloquial para preguntar si a alguien le gusta una idea o si está de acuerdo. Sinónimo de '¿Te parece bien?' o '¿Estás de acuerdo?'."
     },
     {
-      "text": "Soy una chica universitaria con problemas económicos. Si me ayudas con mis gastos, podemos tener una relación especial. Te enviaré fotos privadas a cambio.",
-      "category": "catfishing"
+      "word": "Platicamos",
+      "meaning": "Verbo que significa conversar o charlar de manera informal y amistosa."
     },
     {
-      "text": "Hola, somos almas gemelas según nuestra compatibilidad astral. Para que nuestra conexión sea perfecta, necesito que me ayudes con un pequeño pago para un ritual de amor.",
-      "category": "catfishing"
+      "word": "Pena",
+      "meaning": "En este contexto, significa vergüenza o apuro."
     },
     {
-      "text": "Hola, te hablo desde París, me quedé sin datos. ¿Me prestas saldo para mandar mensaje a mi familia?",
-      "category": "catfishing"
+      "word": "Te lo juro",
+      "meaning": "Expresión para dar énfasis a una promesa, asegurando que se dice la verdad. 'I swear'."
     },
     {
-      "text": "Oye guapo, soy Valeria, modelo de pasarela. ¿Quieres que te mande fotos?",
-      "category": "catfishing"
+      "word": "Neta",
+      "meaning": "Adjetivo o adverbio que significa 'verdad' o 'realmente'. Se usa para afirmar que algo es cierto o para preguntar si algo es en serio."
+    },
+    {
+      "word": "Ando atorado",
+      "meaning": "Frase que significa estar 'atascado' o 'detenido' en un lugar o situación, sin poder avanzar."
+    },
+    {
+      "word": "Chiquita",
+      "meaning": "Diminutivo de 'chica'. Un término de cariño que puede ser condescendiente o afectuoso dependiendo del contexto."
+    },
+    {
+      "word": "Cel",
+      "meaning": "Abreviatura común para 'teléfono celular'."
+    },
+    {
+      "word": "Se fregó",
+      "meaning": "Expresión coloquial y vulgar que significa 'se rompió' o 'se dañó'."
+    },
+    {
+      "word": "Chance",
+      "meaning": "Adaptación del inglés 'chance'. Significa 'oportunidad' o 'quizás'."
+    },
+    {
+      "word": "Lana",
+      "meaning": "Término popular en México para referirse al dinero."
+    },
+    {
+      "word": "Qué crees",
+      "meaning": "Frase para introducir una noticia o algo inesperado. 'Guess what'."
+    },
+    {
+      "word": "Reina",
+      "meaning": "Término de cariño común, similar a 'querida' o 'cielo'."
+    },
+    {
+      "word": "Echar la mano",
+      "meaning": "Frase que significa ayudar a alguien."
+    },
+    {
+      "word": "No manches",
+      "meaning": "Expresión muy común de sorpresa o incredulidad, similar a '¡No puede ser!' o '¡Estás bromeando!'."
     }
   ]
 }

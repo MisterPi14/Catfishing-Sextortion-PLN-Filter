@@ -1,24 +1,106 @@
 {
   "examples": [
     {
-      "text": "Hola, ¿cómo estás? ¿Quieres ir por un café esta tarde? Me gustaría platicar contigo.",
+      "text": "Amor, ¿pasas por mí a la chamba o nos vemos en el metro? Traigo un hambre de aquellas. chance y nos echamos unos taquitos, de paso unos becerros.",
       "category": "non-offensive"
     },
     {
-      "text": "¿Viste el partido de ayer? Estuvo increíble, no puedo creer que hayan ganado en el último minuto.",
+      "text": "Oye, ¿viste el último capítulo de la serie? Estuvo buenísimo. Hay que verlo juntos al rato. Llegas y pedimos algo de cenar, ¿va?",
       "category": "non-offensive"
     },
     {
-      "text": "¿Podrías ayudarme con la tarea de matemáticas? No entiendo este problema de álgebra.",
+      "text": "Ya voy para la casa, mi vida. ¿Necesitas que pase por algo al súper? se me antojó un buen de palomitas para ver una peli. Te amo.",
       "category": "non-offensive"
     },
     {
-      "text": "¡Feliz cumpleaños! Espero que tengas un día maravilloso lleno de alegría y buenos momentos.",
+      "text": "Neta que te extrañé hoy. Ya quiero verte y que me cuentes cómo te fue. ¿Saliste muy tarde del jale? Avísame cuando vengas para acá.",
       "category": "non-offensive"
     },
     {
-      "text": "¿Te gustaría que vayamos al cine este fin de semana? Estrenan esa película que querías ver.",
+      "text": "Mi amor, ¿qué crees? ¡Ya depositaron! Ahora sí se arma la salida del fin de semana. ¿A dónde vamos a ir a festejar? Te mando un abrazo.",
+      "category": "non-offensive"
+    },
+    {
+      "text": "Buenos días, preciosa. Espero que hayas amanecido súper bien. Que te vaya increíble hoy. No se te olvide que te quiero un chingo.",
+      "category": "non-offensive"
+    },
+    {
+      "text": "Oye, me acordé de ti porque pasé por el parque donde nos dimos el primer beso. Qué bonito recuerdo. Te veo en la noche, guapo.",
+      "category": "non-offensive"
+    },
+    {
+      "text": "Amor, la neta es que a veces eres bien menso, pero así te amo. Gracias por aguantarme. ¿Nos echamos un cafecito al rato para chismear?",
+      "category": "non-offensive"
+    },
+    {
+      "text": "¿Ya comiste, corazón? No te vayas a malpasar, ¿eh? Si quieres te caigo con una torta de chilaquiles. Avísame.",
+      "category": "non-offensive"
+    },
+    {
+      "text": "Descansa, mi vida. Mañana será otro día. Sueña bonito. Te mando mil besos y un abrazo de oso. Hasta mañana.",
       "category": "non-offensive"
     }
-  ]
+  ],
+  "dictionary": [
+    {
+      "word": "chismear",
+      "meaning": "se refiere a efectuar la accion del chisme, fenomeno social relacionado a exparsir informacion sobre un suceso"
+    },
+    {
+      "word": "Chamba",
+      "meaning": "Término coloquial muy extendido en México para referirse al trabajo o empleo."
+    },
+    {
+      "word": "Echarnos unos taquitos",
+      "meaning": "Frase que significa 'ir a comer tacos'. Es una invitación casual y amigable."
+    },
+    {
+      "word": "¿Va?",
+      "meaning": "Interjección para buscar confirmación o acuerdo, similar a '¿okey?' o '¿vale?'."
+    },
+    {
+      "word": "Mi vida",
+      "meaning": "'My life'. Un término de cariño muy común y afectuoso entre parejas y seres queridos."
+    },
+    {
+      "word": "Súper",
+      "meaning": "Abreviatura de 'supermercado'. También un prefijo que significa 'muy'."
+    },
+    {
+      "word": "Se me antojó un buen",
+      "meaning": "Expresión que denota un gran deseo o antojo por algo. 'Un buen' significa 'mucho'."
+    },
+    {
+      "word": "Jale",
+      "meaning": "Sinónimo coloquial de 'chamba', se refiere al trabajo."
+    },
+    {
+      "word": "Se arma",
+      "meaning": "Frase que significa que un plan se concreta o se va a realizar. 'It's on'."
+    },
+    {
+      "word": "Te quiero un chingo",
+      "meaning": "Expresión informal pero muy común para decir 'te quiero mucho'. 'Chingo' es una palabra vulgar que significa 'mucho'."
+    },
+    {
+      "word": "Menso",
+      "meaning": "Significa 'tonto' o 'bobo', pero en contextos afectuosos se usa de forma cariñosa."
+    },
+    {
+      "word": "Aguantarme",
+      "meaning": "En este contexto, significa 'soportarme' o 'tener paciencia conmigo'."
+    },
+    {
+      "word": "Chismear",
+      "meaning": "Significa 'cotillear', pero a menudo se usa simplemente como sinónimo de 'platicar' o 'ponerse al día'."
+    },
+    {
+      "word": "Malpasar",
+      "meaning": "Verbo que se refiere a no comer adecuadamente o a las horas correctas."
+    },
+    {
+      "word": "Te caigo",
+      "meaning": "Expresión que significa 'voy a tu casa' o 'te visito'. No tiene una connotación negativa."
+    }
+  ] 
 }
