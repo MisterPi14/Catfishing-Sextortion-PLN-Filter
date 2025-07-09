@@ -7,11 +7,12 @@ DIRECTORY = 'LMMs-Classification-Test-Results/Zero-Shot-Aproach'
 def create_latex_tables():
     with open('classification_results.tex', 'w') as f:
         # Cambiar el preámbulo para incluir geometry y el formato correcto
+        title_suffix = DIRECTORY.split('/')[-1].replace('-', ' ').replace('_', ' ')
         f.write('\\documentclass{article}\n')
         f.write('\\usepackage{booktabs}\n')
         f.write('\\usepackage[top=1.9cm, bottom=3cm, left=1.3cm, right=1.3cm]{geometry}\n\n')
         f.write('\\begin{document}\n')
-        f.write('\\title{LMMs Classification Test Results}\n\\maketitle\n\n')
+        f.write(f'\\title{{LMMs Classification Test Results: {title_suffix}}}\\n\\maketitle\\n\\n')
         
         for filename in os.listdir(DIRECTORY):
             if filename.endswith('.json'):
@@ -41,6 +42,27 @@ def create_latex_tables():
                     f.write('\\end{tabular}\n')
                     f.write('\\end{center}\n\n')
                 
+                # Timing metrics table
+                timing_metrics = None
+                if 'timing_metrics' in data:
+                    timing_metrics = data['timing_metrics']
+                elif 'results' in data and 'timing_metrics' in data['results']:
+                    timing_metrics = data['results']['timing_metrics']
+
+                if timing_metrics:
+                    f.write('\\subsection{Timing Metrics}\n\n')
+                    f.write('\\begin{center}\n')
+                    f.write('\\begin{tabular}{l | l} \\hline\n')
+                    f.write('    \\verb|      Metric     | & \\verb|           Value           | \\\\ \\hline\n')
+                    f.write('    \\hline\n')
+                    
+                    for key, value in timing_metrics.items():
+                        value_str = f'{value:.4f}' if isinstance(value, float) else str(value)
+                        f.write(f'    \\verb|{key:<14}| & \\verb|{value_str:<29}| \\\\ \\hline\n')
+                    
+                    f.write('\\end{tabular}\n')
+                    f.write('\\end{center}\n\n')
+
                 # Classification report table
                 report = None
                 if 'classification_report' in data:
