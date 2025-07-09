@@ -47,34 +47,35 @@ User -down-> Main : "Ejecuta script con 'dataset' y 'client' definidos"
 Main -right-> Orchestrator : "evaluate_all_models(dataset)"
 Orchestrator .up.> DirSetup : "ensure_output_dir()"
 Orchestrator -> DataLoader : "load_scam_examples_and_dictionary()"
-Orchestrator -> ModelGetter : "get_available_models()"
-Orchestrator --> ModelEvaluator : "evaluate_model(model)"
-Orchestrator --> Metadata : "get_metadata(...)"
-Orchestrator --> Exporter : "export_to_json(...)"
 
-' Interacciones de los componentes con sistemas externos y librerías
-DataLoader .down.> FS : "Lee archivos .json de\n'scam-examples/sintetic'"
-ModelGetter .down.> Subprocess : "Ejecuta 'ollama list'"
-ModelGetter .down.> FS : "Lee reportes JSON existentes\nde 'OUTPUT_DIR' para\nexcluir modelos"
+' --- Flujo detallado de obtención y evaluación de modelos ---
+Orchestrator -> ModelGetter : "1. get_available_models()"
+ModelGetter .down.> Subprocess : "1a. Ejecuta 'ollama list' para obtener modelos instalados"
+ModelGetter .down.> FS : "1b. Lee reportes JSON para obtener modelos ya evaluados"
+ModelGetter --> Orchestrator : "2. Devuelve lista de modelos pendientes (diferencia)"
 
-ModelEvaluator --> Predictor : "get_model_prediction(sample)"
-ModelEvaluator .down.> Sklearn : "Usa classification_report()"
+note right of ModelGetter
+  Calcula la diferencia entre
+  modelos instalados y ya
+  evaluados para obtener la
+  lista de pendientes.
+end note
 
-Predictor .right.> Ollama : "Envía prompt vía cliente HTTP"
+group for cada model_name en la lista de pendientes
+    Orchestrator -> Metadata : "3. get_metadata(model_name)"
+    Orchestrator -> ModelEvaluator : "4. evaluate_model(model_name)"
+    ModelEvaluator --> Predictor : "4a. get_model_prediction(sample)"
+    Predictor .right.> Ollama : "Envía prompt vía cliente HTTP"
+    ModelEvaluator .down.> Sklearn : "4b. Usa classification_report()"
+    
+    Orchestrator -> Exporter : "5. export_to_json(reporte, metadata)"
+end
 
 Exporter .down.> FS : "Escribe reporte JSON en\n'OUTPUT_DIR'"
-
 Main .down.> Subprocess : "Ejecuta 'shutdown' (opcional)"
 
 
 ' Notas adicionales para clarificar
-note right of Orchestrator
-  Este componente es el corazón
-  de la lógica, llamando a otros
-  para ejecutar el flujo completo
-  de evaluación.
-end note
-
 note left of Predictor
   Construye el prompt final
   combinando el texto del mensaje,
