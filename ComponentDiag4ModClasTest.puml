@@ -50,10 +50,10 @@ Orchestrator -> DataLoader : "load_scam_examples_and_dictionary()"
 Orchestrator -> ModelGetter : "models_to_eval = get_available_models()"
 
 ' Bucle para evaluar cada modelo (iteración sobre models_to_eval)
-Orchestrator --> ModelEvaluator : "evaluate_model(model_name_to_eval)"
-Orchestrator --> Metadata : "get_metadata(model_name_to_eval, ...)"
+Orchestrator --> ModelEvaluator : "evaluation_report = evaluate_model(model_name_to_eval)"
+Orchestrator --> Metadata : "current_metadata = get_metadata(model_name_to_eval, ...)"
 
-Orchestrator --> Exporter : "export_to_json(...)"
+Orchestrator --> Exporter : "export_to_json(evaluation_report, current_metadata, model_name_to_eval)"
 
 ' Interacciones de los componentes con sistemas externos y librerías
 DataLoader .down.> FS : "Lee archivos .json de\n'scam-examples/sintetic'"
