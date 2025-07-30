@@ -1,0 +1,34 @@
+{
+  "examples": [
+    {
+      "text": "",
+      "category": "catfishing"
+    },
+    {
+      "text": "Atacante: dame tu Facebook y te agrego. Victima: Me das tu perfil y te agrego va?. Atacante: Dame el tuyo, Es mejor, Holaaa Estas alli?",
+      "category": "catfishing"
+    },
+    {
+      "text": "Hola que tal, yo llevo 3 meses soltera, soy peluquera, gusto en conocerte, Bueno estoy sola en mi habitación, estoy aburrida y estoy un poco caliente, que tal si me ayudas a superar este impulso?, Pero dame tu Facebook Y te agrego solo para asegurarme de que realmente eres tú",
+      "category": "catfishing"
+    },
+    {
+      "text": "Esa foto ya la tienes en tu perfil, Coge otra y envíamelo ahora",
+      "category": "catfishing"
+    },
+    {
+      "text": "Amigo me gustaría presentarte nuestra empresa un lugar donde puedes invertir y obtener ganancias adicionales. Llevo muchos años invirtiendo allí y estoy progresando.",
+      "category": "catfishing"
+    },
+    {
+      "text": "Envíame tu número de WhatsApp para que podamos charlar ahí mejor amigo",
+      "category": "catfishing"
+    }
+  ],
+  "dictionary": [
+    {
+      "word": "",
+      "meaning": ""
+    }
+  ]
+}
