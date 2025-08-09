@@ -2,7 +2,7 @@ import json
 import os
 from pytablewriter import LatexTableWriter
 
-DIRECTORY = 'LMMs-Classification-Test-Results/Few-Shot-Sintetic-Aproach'
+DIRECTORY = 'LMMs-Classification-Test-Results/Few-Shot-Real-Aproach'
 
 def create_latex_tables():
     with open('classification_results.tex', 'w', encoding='utf-8') as f:
