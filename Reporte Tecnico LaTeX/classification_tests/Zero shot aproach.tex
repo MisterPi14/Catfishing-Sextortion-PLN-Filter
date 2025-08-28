@@ -1,0 +1,1955 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage[top=1.9cm, bottom=3cm, left=1.3cm, right=1.3cm]{geometry}
+
+\begin{document}
+\title{LMMs Classification Test Results: Zero Shot Aproach}\n\maketitle\n\n\section{akmashish15\_EmotionAI\_latest\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|akmashish15/EmotionAI:latest | \\ \hline
+    \verb|model_size    | & \verb|2.0 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:38:28.129529Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|35.0795                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|1.1687                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.2653                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|26.6929                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.8552                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.5847                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.4375 & 0.7 & 0.5384615384615384 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.7692307692307693 & 1.0 & 0.8695652173913043 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 0.1 & 0.18181818181818182 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.735576923076923 & 0.6 & 0.5299483125570082 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.7355769230769231 & 0.6 & 0.5299483125570081 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.6
+\end{center}
+
+\section{cogito\_3b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|cogito:3b                    | \\ \hline
+    \verb|model_size    | & \verb|2.2 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T01:05:01.992890Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|41.4181                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|1.3800                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.2772                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|32.7012                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.7243                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.6903                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.35714285714285715 & 0.5 & 0.4166666666666667 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.6 & 0.9 & 0.72 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 0.1 & 0.18181818181818182 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.6523809523809524 & 0.5 & 0.43949494949494955 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.6523809523809523 & 0.5 & 0.4394949494949495 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.5
+\end{center}
+
+\section{cogito\_8b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|cogito:8b                    | \\ \hline
+    \verb|model_size    | & \verb|4.9 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T01:05:43.419988Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|85.7253                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|2.8570                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.7236                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|61.8168                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.3500                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.4288                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.5714285714285714 & 0.8 & 0.6666666666666666 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.8333333333333334 & 1.0 & 0.9090909090909091 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 0.4 & 0.5714285714285714 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.8015873015873015 & 0.7333333333333334 & 0.7157287157287158 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.8015873015873016 & 0.7333333333333333 & 0.7157287157287157 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.7333333333333333
+\end{center}
+
+\section{deepcoder\_1.5b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|deepcoder:1.5b               | \\ \hline
+    \verb|model_size    | & \verb|1.1 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T01:00:13.968377Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|288.0155                     | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|9.5997                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|4.5661                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|36.4051                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.1042                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|4.8003                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.5 & 0.2 & 0.2857142857142857 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.34615384615384615 & 0.9 & 0.5 &    10.0 \\ \hline
+    \verb|sextortion | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.28205128205128205 & 0.3666666666666667 & 0.2619047619047619 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.28205128205128205 & 0.36666666666666664 & 0.2619047619047619 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.36666666666666664
+\end{center}
+
+\section{deepseek-r1\_1.5b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|deepseek-r1:1.5b             | \\ \hline
+    \verb|model_size    | & \verb|1.1 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:55:22.293023Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|291.6663                     | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|9.7216                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|3.4801                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|21.9327                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.1029                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|4.8611                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.75 & 0.3 & 0.42857142857142855 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.375 & 0.9 & 0.5294117647058824 &    10.0 \\ \hline
+    \verb|sextortion | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.375 & 0.39999999999999997 & 0.31932773109243695 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.375 & 0.4 & 0.31932773109243695 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.4
+\end{center}
+
+\section{deepseek-r1\_8b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|deepseek-r1:8b               | \\ \hline
+    \verb|model_size    | & \verb|5.2 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:33:37.211312Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|1305.0727                    | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|43.5019                      | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|18.3924                      | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|108.1736                     | \\ \hline
+    \verb|samples_per_second| & \verb|0.0230                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|21.7512                      | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.75 & 0.3 & 0.42857142857142855 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.5625 & 0.9 & 0.6923076923076923 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 1.0 & 1.0 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.7708333333333334 & 0.7333333333333334 & 0.706959706959707 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.7708333333333334 & 0.7333333333333333 & 0.7069597069597069 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.7333333333333333
+\end{center}
+
+\section{dolphin3\_8b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|dolphin3:8b                  | \\ \hline
+    \verb|model_size    | & \verb|4.9 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:31:56.910088Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|100.2932                     | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|3.3424                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.6599                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|78.2096                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.2991                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.6716                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.8333333333333334 & 0.5 & 0.625 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.7692307692307693 & 1.0 & 0.8695652173913043 &    10.0 \\ \hline
+    \verb|sextortion | & 0.8 & 0.8 & 0.8 &    10.0 \\ \hline
+    \verb|micro avg  | & 0.7931034482758621 & 0.7666666666666667 & 0.7796610169491526 &    30.0 \\ \hline
+    \verb|macro avg  | & 0.800854700854701 & 0.7666666666666666 & 0.7648550724637682 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.8008547008547009 & 0.7666666666666667 & 0.764855072463768 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = N/A
+\end{center}
+
+\section{gemma2\_2b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|gemma2:2b                    | \\ \hline
+    \verb|model_size    | & \verb|1.6 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:06:58.516900Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|33.4227                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|1.1135                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.2501                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|25.3098                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.8976                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.5570                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.8571428571428571 & 0.6 & 0.7058823529411765 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.8181818181818182 & 0.9 & 0.8571428571428571 &    10.0 \\ \hline
+    \verb|sextortion | & 0.8181818181818182 & 0.9 & 0.8571428571428571 &    10.0 \\ \hline
+    \verb|micro avg  | & 0.8275862068965517 & 0.8 & 0.8135593220338984 &    30.0 \\ \hline
+    \verb|macro avg  | & 0.8311688311688311 & 0.7999999999999999 & 0.8067226890756302 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.8311688311688312 & 0.8 & 0.8067226890756303 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = N/A
+\end{center}
+
+\section{gemma3n\_e2b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|gemma3n:e2b                  | \\ \hline
+    \verb|model_size    | & \verb|5.6 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:02:34.361256Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|124.8811                     | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|4.1624                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.7594                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|97.4659                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.2402                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|2.0814                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.5454545454545454 & 0.6 & 0.5714285714285714 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.8181818181818182 & 0.9 & 0.8571428571428571 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 0.2 & 0.3333333333333333 &    10.0 \\ \hline
+    \verb|micro avg  | & 0.7083333333333334 & 0.5666666666666667 & 0.6296296296296297 &    30.0 \\ \hline
+    \verb|macro avg  | & 0.787878787878788 & 0.5666666666666667 & 0.5873015873015872 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.7878787878787878 & 0.5666666666666667 & 0.5873015873015872 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = N/A
+\end{center}
+
+\section{gemma3n\_e4b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|gemma3n:e4b                  | \\ \hline
+    \verb|model_size    | & \verb|7.5 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T22:59:31.332986Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|183.0149                     | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|6.1002                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|2.0578                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|102.0798                     | \\ \hline
+    \verb|samples_per_second| & \verb|0.1639                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|3.0502                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 1.0 & 0.2 & 0.3333333333333333 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.8333333333333334 & 1.0 & 0.9090909090909091 &    10.0 \\ \hline
+    \verb|sextortion | & 0.625 & 1.0 & 0.7692307692307693 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.8194444444444445 & 0.7333333333333334 & 0.6705516705516706 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.8194444444444445 & 0.7333333333333333 & 0.6705516705516705 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.7333333333333333
+\end{center}
+
+\section{gemma3\_1b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|gemma3:1b                    | \\ \hline
+    \verb|model_size    | & \verb|815 MB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:04:39.249345Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|28.4016                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|0.9462                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.1971                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|21.8699                      | \\ \hline
+    \verb|samples_per_second| & \verb|1.0563                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.4734                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.7272727272727273 & 0.8 & 0.7619047619047619 &    10.0 \\ \hline
+    \verb|sextortion | & 0.47368421052631576 & 0.9 & 0.6206896551724138 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.4003189792663477 & 0.5666666666666668 & 0.46086480569239185 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.4003189792663477 & 0.5666666666666667 & 0.46086480569239185 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.5666666666666667
+\end{center}
+
+\section{gemma3\_4b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|gemma3:4b                    | \\ \hline
+    \verb|model_size    | & \verb|3.3 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:05:07.662964Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|110.8449                     | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|3.6946                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.3697                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|97.8327                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.2706                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.8474                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.8 & 0.4 & 0.5333333333333333 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.8181818181818182 & 0.9 & 0.8571428571428571 &    10.0 \\ \hline
+    \verb|sextortion | & 0.7142857142857143 & 1.0 & 0.8333333333333334 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.7774891774891776 & 0.7666666666666666 & 0.7412698412698413 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.7774891774891775 & 0.7666666666666667 & 0.7412698412698414 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.7666666666666667
+\end{center}
+
+\section{granite3.2\_2b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|granite3.2:2b                | \\ \hline
+    \verb|model_size    | & \verb|1.5 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:29:28.835366Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|35.2051                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|1.1732                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.2284                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|27.3403                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.8521                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.5868                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.375 & 0.6 & 0.46153846153846156 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.75 & 0.9 & 0.8181818181818182 &    10.0 \\ \hline
+    \verb|sextortion | & 0.5 & 0.1 & 0.16666666666666666 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.5416666666666666 & 0.5333333333333333 & 0.4821289821289822 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.5416666666666666 & 0.5333333333333333 & 0.4821289821289821 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.5333333333333333
+\end{center}
+
+\section{granite3.2\_8b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|granite3.2:8b                | \\ \hline
+    \verb|model_size    | & \verb|4.9 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:28:07.714522Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|81.1098                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|2.7034                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.6441                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|57.4358                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.3699                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.3518                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.45454545454545453 & 0.5 & 0.47619047619047616 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.625 & 1.0 & 0.7692307692307693 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 0.3 & 0.46153846153846156 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.6931818181818182 & 0.6 & 0.5689865689865691 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.6931818181818182 & 0.6 & 0.568986568986569 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.6
+\end{center}
+
+\section{granite3.3\_2b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|granite3.3:2b                | \\ \hline
+    \verb|model_size    | & \verb|1.5 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:31:27.533827Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|29.3683                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|0.9785                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.2179                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|21.5932                      | \\ \hline
+    \verb|samples_per_second| & \verb|1.0215                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.4895                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.42857142857142855 & 0.9 & 0.5806451612903226 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.8888888888888888 & 0.8 & 0.8421052631578947 &    10.0 \\ \hline
+    \verb|sextortion | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.43915343915343913 & 0.5666666666666668 & 0.4742501414827391 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.43915343915343913 & 0.5666666666666667 & 0.4742501414827391 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.5666666666666667
+\end{center}
+
+\section{granite3.3\_8b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|granite3.3:8b                | \\ \hline
+    \verb|model_size    | & \verb|4.9 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:30:04.048523Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|83.4773                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|2.7822                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.6392                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|60.4146                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.3594                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.3913                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.5384615384615384 & 0.7 & 0.6086956521739131 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.9090909090909091 & 1.0 & 0.9523809523809523 &    10.0 \\ \hline
+    \verb|sextortion | & 0.6666666666666666 & 0.4 & 0.5 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.7047397047397047 & 0.7000000000000001 & 0.6870255348516219 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.7047397047397046 & 0.7 & 0.6870255348516218 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.7
+\end{center}
+
+\section{hf.co\_LoneStriker\_Llama-3-Refueled-GGUF\_Q4\_K\_M\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|hf.co/LoneStriker/Llama-3-Refueled-GGUF:Q4_K_M| \\ \hline
+    \verb|model_size    | & \verb|4.9 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:25:12.497730Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|95.2436                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|3.1745                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.6619                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|72.5453                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.3150                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.5874                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.6666666666666666 & 0.4 & 0.5 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.7142857142857143 & 1.0 & 0.8333333333333334 &    10.0 \\ \hline
+    \verb|sextortion | & 0.8 & 0.8 & 0.8 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.7269841269841271 & 0.7333333333333334 & 0.7111111111111112 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.726984126984127 & 0.7333333333333333 & 0.7111111111111111 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.7333333333333333
+\end{center}
+
+\section{hf.co\_LoneStriker\_opus-v1.2-llama-3-8b-GGUF\_Q4\_K\_M\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|hf.co/LoneStriker/opus-v1.2-llama-3-8b-GGUF:Q4_K_M| \\ \hline
+    \verb|model_size    | & \verb|4.9 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:26:47.751353Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|79.9541                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|2.6646                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.6688                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|57.1483                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.3752                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.3326                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.46153846153846156 & 0.6 & 0.5217391304347826 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.5625 & 0.9 & 0.6923076923076923 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 0.1 & 0.18181818181818182 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.6746794871794872 & 0.5333333333333333 & 0.4652883348535522 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.6746794871794872 & 0.5333333333333333 & 0.46528833485355225 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.5333333333333333
+\end{center}
+
+\section{llama-guard3\_1b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|llama-guard3:1b              | \\ \hline
+    \verb|model_size    | & \verb|1.6 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:19:37.426488Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|27.0247                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|0.9003                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.1805                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|20.7619                      | \\ \hline
+    \verb|samples_per_second| & \verb|1.1101                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.4504                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|sextortion | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|micro avg  | & 0.0 & 0.0 & 0.0 &    30.0 \\ \hline
+    \verb|macro avg  | & 0.0 & 0.0 & 0.0 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.0 & 0.0 & 0.0 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = N/A
+\end{center}
+
+\section{llama-guard3\_8b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|llama-guard3:8b              | \\ \hline
+    \verb|model_size    | & \verb|4.9 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:58:06.581816Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|80.1308                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|2.6705                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.5854                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|59.6522                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.3744                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.3355                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|sextortion | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|micro avg  | & 0.0 & 0.0 & 0.0 &    30.0 \\ \hline
+    \verb|macro avg  | & 0.0 & 0.0 & 0.0 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.0 & 0.0 & 0.0 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = N/A
+\end{center}
+
+\section{llama3.1\_8b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|llama3.1:8b                  | \\ \hline
+    \verb|model_size    | & \verb|4.9 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:23:46.628088Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|85.8606                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|2.8614                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.6587                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|63.9403                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.3494                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.4310                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.7142857142857143 & 0.5 & 0.5882352941176471 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.7142857142857143 & 1.0 & 0.8333333333333334 &    10.0 \\ \hline
+    \verb|sextortion | & 0.8888888888888888 & 0.8 & 0.8421052631578947 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.7724867724867724 & 0.7666666666666666 & 0.7545579635362918 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.7724867724867726 & 0.7666666666666667 & 0.7545579635362917 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.7666666666666667
+\end{center}
+
+\section{llama3.2\_1b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|llama3.2:1b                  | \\ \hline
+    \verb|model_size    | & \verb|1.3 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:23:17.954812Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|28.6648                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|0.9551                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.1876                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|22.8910                      | \\ \hline
+    \verb|samples_per_second| & \verb|1.0466                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.4777                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.5714285714285714 & 0.4 & 0.47058823529411764 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.43478260869565216 & 1.0 & 0.6060606060606061 &    10.0 \\ \hline
+    \verb|sextortion | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.3354037267080745 & 0.4666666666666666 & 0.35888294711824126 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.3354037267080745 & 0.4666666666666667 & 0.3588829471182412 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.4666666666666667
+\end{center}
+
+\section{llama3.2\_3b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|llama3.2:3b                  | \\ \hline
+    \verb|model_size    | & \verb|2.0 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:22:42.030428Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|35.9164                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|1.1967                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.2600                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|27.0376                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.8353                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.5986                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.4 & 0.6 & 0.48 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.7692307692307693 & 1.0 & 0.8695652173913043 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 0.1 & 0.18181818181818182 &    10.0 \\ \hline
+    \verb|micro avg  | & 0.5862068965517241 & 0.5666666666666667 & 0.576271186440678 &    30.0 \\ \hline
+    \verb|macro avg  | & 0.7230769230769232 & 0.5666666666666668 & 0.5104611330698287 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.7230769230769231 & 0.5666666666666667 & 0.5104611330698288 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = N/A
+\end{center}
+
+\section{llama3\_8b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|llama3:8b                    | \\ \hline
+    \verb|model_size    | & \verb|4.7 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:21:14.756743Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|87.2647                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|2.9083                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.4821                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|69.6130                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.3438                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.4544                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 1.0 & 0.5 & 0.6666666666666666 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.7142857142857143 & 1.0 & 0.8333333333333334 &    10.0 \\ \hline
+    \verb|sextortion | & 0.875 & 0.7 & 0.7777777777777778 &    10.0 \\ \hline
+    \verb|micro avg  | & 0.8148148148148148 & 0.7333333333333333 & 0.7719298245614035 &    30.0 \\ \hline
+    \verb|macro avg  | & 0.8630952380952381 & 0.7333333333333334 & 0.7592592592592592 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.863095238095238 & 0.7333333333333333 & 0.7592592592592593 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = N/A
+\end{center}
+
+\section{mistral\_7b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|mistral:7b                   | \\ \hline
+    \verb|model_size    | & \verb|4.1 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:07:31.950619Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|54.9750                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|1.8322                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.3342                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|43.2521                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.5457                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.9163                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.8571428571428571 & 0.6 & 0.7058823529411765 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.7692307692307693 & 1.0 & 0.8695652173913043 &    10.0 \\ \hline
+    \verb|sextortion | & 0.9 & 0.9 & 0.9 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.8421245421245421 & 0.8333333333333334 & 0.8251491901108269 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.8421245421245421 & 0.8333333333333334 & 0.8251491901108269 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.8333333333333334
+\end{center}
+
+\section{phi4-mini-reasoning\_3.8b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|phi4-mini-reasoning:3.8b     | \\ \hline
+    \verb|model_size    | & \verb|3.2 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:59:26.721604Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|1210.6949                    | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|40.3556                      | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|1.5750                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|152.2819                     | \\ \hline
+    \verb|samples_per_second| & \verb|0.0248                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|20.1782                      | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.5714285714285714 & 0.8 & 0.6666666666666666 &    10.0 \\ \hline
+    \verb|sextortion | & 0.75 & 0.6 & 0.6666666666666666 &    10.0 \\ \hline
+    \verb|micro avg  | & 0.5833333333333334 & 0.4666666666666667 & 0.5185185185185185 &    30.0 \\ \hline
+    \verb|macro avg  | & 0.44047619047619047 & 0.4666666666666666 & 0.4444444444444444 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.44047619047619047 & 0.4666666666666667 & 0.4444444444444444 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = N/A
+\end{center}
+
+\section{phi4-mini\_3.8b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|phi4-mini:3.8b               | \\ \hline
+    \verb|model_size    | & \verb|2.5 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:57:27.653574Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|38.9202                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|1.2966                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.2928                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|29.7275                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.7708                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.6487                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.47058823529411764 & 0.8 & 0.5925925925925926 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.9 & 0.9 & 0.9 &    10.0 \\ \hline
+    \verb|sextortion | & 0.6666666666666666 & 0.2 & 0.3076923076923077 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.6790849673202614 & 0.6333333333333334 & 0.6000949667616334 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.6790849673202615 & 0.6333333333333333 & 0.6000949667616334 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.6333333333333333
+\end{center}
+
+\section{pravitor\_spam-detect\_latest\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|pravitor/spam-detect:latest  | \\ \hline
+    \verb|model_size    | & \verb|4.1 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:08:26.935671Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|73.3202                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|2.4434                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.5170                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|46.5744                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.4092                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.2220                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.47619047619047616 & 1.0 & 0.6451612903225806 &    10.0 \\ \hline
+    \verb|sextortion | & 0.6666666666666666 & 0.4 & 0.5 &    10.0 \\ \hline
+    \verb|micro avg  | & 0.5185185185185185 & 0.4666666666666667 & 0.49122807017543857 &    30.0 \\ \hline
+    \verb|macro avg  | & 0.38095238095238093 & 0.4666666666666666 & 0.3817204301075268 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.3809523809523809 & 0.4666666666666667 & 0.3817204301075269 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = N/A
+\end{center}
+
+\section{qwen2.5\_0.5b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|qwen2.5:0.5b                 | \\ \hline
+    \verb|model_size    | & \verb|397 MB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:57:09.990299Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|17.6547                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|0.5880                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.1641                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|12.5014                      | \\ \hline
+    \verb|samples_per_second| & \verb|1.6993                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.2942                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.25 & 0.2 & 0.2222222222222222 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.36363636363636365 & 0.8 & 0.5 &    10.0 \\ \hline
+    \verb|sextortion | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.20454545454545456 & 0.3333333333333333 & 0.24074074074074073 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.20454545454545456 & 0.3333333333333333 & 0.24074074074074076 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.3333333333333333
+\end{center}
+
+\section{qwen2.5\_1.5b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|qwen2.5:1.5b                 | \\ \hline
+    \verb|model_size    | & \verb|986 MB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:56:49.092770Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|20.8879                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|0.6957                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.1924                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|14.9378                      | \\ \hline
+    \verb|samples_per_second| & \verb|1.4362                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.3481                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.3448275862068966 & 1.0 & 0.5128205128205128 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 0.1 & 0.18181818181818182 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.4482758620689655 & 0.3666666666666667 & 0.23154623154623155 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.4482758620689655 & 0.36666666666666664 & 0.23154623154623152 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.36666666666666664
+\end{center}
+
+\section{qwen2.5\_3b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|qwen2.5:3b                   | \\ \hline
+    \verb|model_size    | & \verb|1.9 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:56:07.554196Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|41.5306                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|1.3838                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.2573                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|33.4425                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.7224                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|0.6922                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.47058823529411764 & 0.8 & 0.5925925925925926 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.8333333333333334 & 1.0 & 0.9090909090909091 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 0.1 & 0.18181818181818182 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.7679738562091503 & 0.6333333333333334 & 0.5611672278338945 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.7679738562091504 & 0.6333333333333333 & 0.5611672278338945 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.6333333333333333
+\end{center}
+
+\section{qwen2.5\_7b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|qwen2.5:7b                   | \\ \hline
+    \verb|model_size    | & \verb|4.7 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:54:48.739847Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|78.8063                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|2.6264                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.4503                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|64.7939                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.3807                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.3134                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.6666666666666666 & 0.4 & 0.5 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.625 & 1.0 & 0.7692307692307693 &    10.0 \\ \hline
+    \verb|sextortion | & 0.875 & 0.7 & 0.7777777777777778 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.7222222222222222 & 0.6999999999999998 & 0.6823361823361823 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.7222222222222221 & 0.7 & 0.6823361823361824 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.7
+\end{center}
+
+\section{qwen3\_0.6b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|qwen3:0.6b                   | \\ \hline
+    \verb|model_size    | & \verb|522 MB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:44:31.042149Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|169.2859                     | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|5.6424                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|3.6015                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|13.9868                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.1772                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|2.8214                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.2857142857142857 & 0.2 & 0.23529411764705882 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.43478260869565216 & 1.0 & 0.6060606060606061 &    10.0 \\ \hline
+    \verb|sextortion | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.2401656314699793 & 0.39999999999999997 & 0.2804515745692216 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.24016563146997927 & 0.4 & 0.28045157456922165 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.4
+\end{center}
+
+\section{qwen3\_1.7b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|qwen3:1.7b                   | \\ \hline
+    \verb|model_size    | & \verb|1.4 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:39:03.217013Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|327.8161                     | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|10.9266                      | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.3003                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|32.7917                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.0915                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|5.4636                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.8 & 0.4 & 0.5333333333333333 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.5555555555555556 & 1.0 & 0.7142857142857143 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 0.7 & 0.8235294117647058 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.7851851851851852 & 0.6999999999999998 & 0.6903828197945844 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.7851851851851852 & 0.7 & 0.6903828197945844 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.7
+\end{center}
+
+\section{qwen3\_4b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|qwen3:4b                     | \\ \hline
+    \verb|model_size    | & \verb|2.6 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:29:22.974834Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|545.1467                     | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|18.1709                      | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|7.8131                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|71.4189                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.0550                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|9.0858                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 1.0 & 0.2 & 0.3333333333333333 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.625 & 1.0 & 0.7692307692307693 &    10.0 \\ \hline
+    \verb|sextortion | & 0.8333333333333334 & 1.0 & 0.9090909090909091 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.8194444444444445 & 0.7333333333333334 & 0.6705516705516706 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.8194444444444445 & 0.7333333333333333 & 0.6705516705516705 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.7333333333333333
+\end{center}
+
+\section{qwen3\_8b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|qwen3:8b                     | \\ \hline
+    \verb|model_size    | & \verb|5.2 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:09:40.266839Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|1182.6990                    | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|39.4230                      | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|22.0756                      | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|129.9938                     | \\ \hline
+    \verb|samples_per_second| & \verb|0.0254                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|19.7116                      | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 1.0 & 0.3 & 0.46153846153846156 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.5263157894736842 & 1.0 & 0.6896551724137931 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 0.8 & 0.8888888888888888 &    10.0 \\ \hline
+    \verb|macro avg  | & 0.8421052631578947 & 0.7000000000000001 & 0.6800275076137146 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.8421052631578948 & 0.7 & 0.6800275076137144 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = 0.7
+\end{center}
+
+\section{smallthinker\_3b\_eval\_2025-07-23}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|smallthinker:3b              | \\ \hline
+    \verb|model_size    | & \verb|3.6 GB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-23T23:47:20.336073Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|448.3958                     | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|14.9459                      | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.2856                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|44.3515                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.0669                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|7.4733                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.4 & 0.2 & 0.26666666666666666 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.75 & 0.3 & 0.42857142857142855 &    10.0 \\ \hline
+    \verb|sextortion | & 1.0 & 0.1 & 0.18181818181818182 &    10.0 \\ \hline
+    \verb|micro avg  | & 0.6 & 0.2 & 0.3 &    30.0 \\ \hline
+    \verb|macro avg  | & 0.7166666666666667 & 0.19999999999999998 & 0.29235209235209236 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.7166666666666667 & 0.2 & 0.29235209235209236 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = N/A
+\end{center}
+
+\section{tinydolphin\_1.1b\_eval\_2025-07-24}
+\subsection{Metadata}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Key      | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|model_name    | & \verb|tinydolphin:1.1b             | \\ \hline
+    \verb|model_size    | & \verb|636 MB                       | \\ \hline
+    \verb|evaluation_date| & \verb|2025-07-24T00:20:04.459233Z  | \\ \hline
+    \verb|prompt_version| & \verb|v1.2                         | \\ \hline
+    \verb|test_dataset_size| & \verb|none examples given          | \\ \hline
+    \verb|examples_directory| & \verb|none examples given          | \\ \hline
+    \verb|dictionary_provided| & \verb|False                        | \\ \hline
+    \verb|definitions_provided| & \verb|False                        | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Timing Metrics}
+
+\begin{center}
+\begin{tabular}{l | l} \hline
+    \verb|      Metric     | & \verb|           Value           | \\ \hline
+    \hline
+    \verb|total_evaluation_time_seconds| & \verb|70.2855                      | \\ \hline
+    \verb|average_time_per_prediction_seconds| & \verb|2.3423                       | \\ \hline
+    \verb|min_prediction_time_seconds| & \verb|0.2148                       | \\ \hline
+    \verb|max_prediction_time_seconds| & \verb|13.3274                      | \\ \hline
+    \verb|samples_per_second| & \verb|0.4268                       | \\ \hline
+    \verb|total_evaluation_time_minutes| & \verb|1.1714                       | \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Classification Report}
+
+\begin{center}
+\begin{tabular}{l | r | r | r | r} \hline
+    \verb|            | & \verb|    precision     | & \verb|      recall      | & \verb|     f1-score     | & \verb|support| \\ \hline
+    \hline
+    \verb|catfishing | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|non-offensive| & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|sextortion | & 0.0 & 0.0 & 0.0 &    10.0 \\ \hline
+    \verb|micro avg  | & 0.0 & 0.0 & 0.0 &    30.0 \\ \hline
+    \verb|macro avg  | & 0.0 & 0.0 & 0.0 &    30.0 \\ \hline
+    \verb|weighted avg| & 0.0 & 0.0 & 0.0 &    30.0 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+Accuracy = N/A
+\end{center}
+
+\end{document}

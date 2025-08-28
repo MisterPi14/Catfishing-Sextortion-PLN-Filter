@@ -1,0 +1,86 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[top=1.5cm, bottom=1.5cm, left=3cm, right=2cm]{geometry}
+
+% Eliminar numeración de página
+\pagestyle{empty}
+
+\begin{document}
+
+% Crear el layout con logos laterales y líneas divisorias
+\begin{tikzpicture}[remember picture,overlay]
+    % Logo superior izquierdo (IPN)
+    \node[anchor=north west] at ([xshift=2cm,yshift=-2cm]current page.north west) {
+        \includegraphics[width=3.5cm]{imagenes/ipn-logo.png} 
+        % Descomenta cuando tengas el logo
+        %\framebox(150,150){\normalsize LOGO IPN} % Placeholder temporal más grande
+    };
+    
+    % Logo inferior izquierdo (ESIME)
+    \node[anchor=south west] at ([xshift=1.25cm,yshift=2cm]current page.south west) {
+        \includegraphics[width=5cm]{imagenes/esime-logo.png} 
+        %\framebox(150,150){\normalsize LOGO ESIME} % Placeholder temporal más grande
+    };
+    
+    % Líneas divisorias verticales dobles entre los logos (centradas con respecto al ancho de los nodos y con margen)
+    \draw[thick] ([xshift=3.5cm,yshift=-9cm]current page.north west) -- ([xshift=3.5cm,yshift=7.5cm]current page.south west);
+    \draw[thick] ([xshift=4cm,yshift=-9cm]current page.north west) -- ([xshift=4cm,yshift=7.5cm]current page.south west);
+\end{tikzpicture}
+
+% Contenido principal desplazado hacia la derecha
+\hspace*{3.5cm}
+\parbox{12cm}{
+    \begin{center}
+    
+    % Espaciado superior mínimo
+    \vspace*{0.8cm}
+    
+    % Institución
+    {\LARGE \textbf{INSTITUTO POLITÉCNICO}}\\[0.2cm]
+    {\LARGE \textbf{NACIONAL}}\\[0.3cm]
+    
+    % Línea horizontal doble debajo del título principal
+    \rule{10cm}{0.5pt}\\[0.1cm]
+    \rule{10cm}{0.5pt}\\[0.6cm]
+    
+    {\normalsize \textbf{ESCUELA SUPERIOR DE INGENIERÍA}}\\[0.1cm]
+    {\normalsize \textbf{MECÁNICA Y ELÉCTRICA, UNIDAD}}\\[0.1cm]
+    {\normalsize \textbf{CULHUACÁN}}\\[0.8cm]
+    
+    % Carrera
+    {\small \textbf{CARRERA: INGENIERÍA EN}}\\[0.1cm]
+    {\small \textbf{COMPUTACIÓN}}\\[1cm]
+    
+    % Título del trabajo
+    {\large \textbf{Reporte técnico: Filtro de detección}}\\[0.15cm]
+    {\large \textbf{de catfishing y extorción en}}\\[0.15cm]
+    {\large \textbf{aplicaciones de mensajería basado}}\\[0.15cm]
+    {\large \textbf{en PLN mediante refinamiento de un}}\\[0.15cm]
+    {\large \textbf{LLM}}\\[1cm]
+    
+    % Tipo de trabajo
+    {\normalsize \textbf{Proyecto de Investigación}}\\[1cm]
+    
+    % Texto "Que para obtener..."
+    {\small Que para obtener el título de: \textbf{Ingeniero en}}\\[0.1cm]
+    {\small \textbf{Computación}}\\[0.8cm]
+    
+    % Presenta
+    {\small \textbf{Presenta:}}\\[0.2cm]
+    {\small Edgar Diego Piña Vargas}\\[1cm]
+    
+    % Asesores
+    {\small \textbf{Asesores}}\\[0.2cm]
+    {\small Jose Portillo Portillo}\\[0.1cm]
+    {\small Olalekan Tolulope Abiola}\\[1cm]
+    
+    % Pie de página
+    {\small Ciudad de México a \underline{\hspace{1cm}} de \underline{\hspace{2cm}} del 2025}
+    
+    \end{center}
+}
+
+\end{document}
