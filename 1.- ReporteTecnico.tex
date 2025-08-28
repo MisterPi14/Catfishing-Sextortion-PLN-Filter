@@ -1,6 +1,6 @@
 \documentclass{article} 
 %\documentclass[journal]{IEEEtran}
-
+\usepackage{amsmath}
 \usepackage[T1]{fontenc} 
 %\usepackage[utf8]{inputenc} 
 \usepackage{graphicx}
@@ -98,11 +98,9 @@
     {\small \textbf{COMPUTACIÓN}}\\[1cm]
     
     % Título del trabajo
-    {\large \textbf{Reporte técnico: Filtro de detección}}\\[0.15cm]
-    {\large \textbf{de catfishing y extorción en}}\\[0.15cm]
-    {\large \textbf{aplicaciones de mensajería basado}}\\[0.15cm]
-    {\large \textbf{en PLN mediante refinamiento de un}}\\[0.15cm]
-    {\large \textbf{LLM}}\\[1cm]
+    {\large \textbf{Filtro de detección de catfishing y sextorción en aplicaciones de mensajería basado en PLN mediante refinamiento de un LLM delimitado al geolecto de la Ciudad de México.}}\\[1cm]
+    %tambien puede ser dialecto una palabra pertinente
+    %Español capitalino mexicano
     
     % Tipo de trabajo
     {\normalsize \textbf{Proyecto de Investigación}}\\[1cm]
@@ -114,7 +112,11 @@
     % Presenta
     {\small \textbf{Presenta:}}\\[0.2cm]
     {\small Edgar Diego Piña Vargas}\\[1cm]
-    
+
+    % Asesores
+    {\small \textbf{Asesores:}}\\[0.2cm]
+    {\small Jose Portillo Portillo}\\
+    {\small Olalekan Tolulope Abiola}\\[1cm]
 
     % Pie de página
     {\small Ciudad de México a \underline{\hspace{1cm}} de \underline{\hspace{2cm}} del 2025}
@@ -143,16 +145,16 @@
 
 %07-06-2025: todas las palabras que son anglisismos sin una traduccion directa deben ponerse en el glosario
 
-El crecimiento exponencial en el uso de tecnologías móviles y plataformas de comunicación digital ha transformado la manera en que interactúan las personas. Según datos de la ENDUTIH 2023, en México el 81.2\,\% de la población utiliza teléfono celular y el 96.1\,\% de los usuarios de internet en la Ciudad de México lo hace para comunicarse, principalmente a través de redes sociales y aplicaciones de mensajería. Esta adopción masiva ha traído consigo grandes beneficios, pero también ha abierto nuevas oportunidades para la comisión de delitos como el \textit{catfishing} y la extorsión digital.
+El crecimiento exponencial en el uso de tecnologías móviles y plataformas de comunicación digital ha transformado la manera en que interactúan las personas. Según datos de la ENDUTIH 2023 \cite{UsoInternetPorEstado}, en México el 81.2\,\% de la población utiliza teléfono celular y el 96.1\,\% de los usuarios de internet en la Ciudad de México lo hace para comunicarse, principalmente a través de redes sociales y aplicaciones de mensajería. Esta adopción masiva ha traído consigo grandes beneficios, pero también ha abierto nuevas oportunidades para la comisión de delitos como el \textit{catfishing} y la extorsión digital.
 
-La facilidad con la que se pueden crear perfiles falsos y establecer contacto anónimo en entornos digitales ha hecho que estos delitos proliferen, afectando especialmente a los jóvenes, quienes presentan la mayor penetración de internet (96.7\,\% en el grupo de 18 a 24 años). Además, cifras del INEGI (ENVIPE 2023) reflejan un repunte en la tasa de incidencia de fraudes y extorsiones, situando a este fenómeno como una amenaza persistente en el ámbito digital.
+La facilidad con la que se pueden crear perfiles falsos y establecer contacto anónimo en entornos digitales ha hecho que estos delitos proliferen, afectando especialmente a los jóvenes, quienes presentan la mayor penetración de internet (96.7\,\% en el grupo de 18 a 24 años). Además, cifras del INEGI (ENVIPE 2023) \cite{ENVIPE2023} reflejan un repunte en la tasa de incidencia de fraudes y extorsiones, situando a este fenómeno como una amenaza persistente en el ámbito digital.
 
 \subsubsection{Personas usuarias de tecnologías de la información y comunicación}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{imagenes/grafica1.png}
-    \caption{Porcentaje de usuarios de internet, telefonía móvil y computadora en México, 2023. Adaptado de \textit{Encuesta Nacional sobre Disponibilidad y Uso de Tecnolog{\'{i}}as de la Informaci{\'{o}}n en los Hogares (ENDUTIH) 2023}, por Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a, 2024, \url{https://www.inegi.org.mx/programas/endutih/2023/\#informacion_general}.
+    \caption{orcentaje de usuarios de internet, telefonía móvil y computadora en México, 2023. Adaptado de Encuesta Nacional sobre Disponibilidad y Uso de Tecnologías de la Información en los Hogares (ENDUTIH)2023, por Instituto Nacional de Estadística y Geografía, 2024,\url{https://www.inegi.org.mx/programas/endutih/2023/\#informacion_general}.
     {\textcopyright} INEGI}
     \label{fig:1}
 \end{figure}
@@ -160,30 +162,36 @@ La facilidad con la que se pueden crear perfiles falsos y establecer contacto an
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{imagenes/grafica2.png}
-    \caption{Personas usuarias de internet seg{{\'{u}}}n grupos de edad del 2020 al 2023\newline
-    Acceso a internet por entidad federativa, 2023. Tomado de \textit{Encuesta Nacional sobre Disponibilidad y Uso de Tecnolog{\'{i}}as de la Informaci{\'{o}}n en los Hogares (ENDUTIH) 2023: Comunicado de prensa n{{\'{u}}}m. 161/24}, por Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a, 2024, \url{https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/ENDUTIH/ENDUTIH_23.pdf}. {\textcopyright} INEGI}
+    \caption{Personas usuarias de internet según grupos de edad del 2020 al 2023\newline
+    Acceso a internet por entidad federativa, 2023. Tomado de Encuesta Nacional sobre Disponibilidad y Uso de Tecnologías de la Información en los Hogares (ENDUTIH) 2023: Comunicado de prensa núm. 161/24, por Instituto Nacional de Estadística y Geografía, 2024, \url{https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/ENDUTIH/ENDUTIH_23.pdf}. {\textcopyright} INEGI}
     \label{fig:2}
 \end{figure}
 
-Datos de la ENDUTIH 2024 muestran que los jóvenes de \textbf{18 a 24 años} presentan la mayor penetración de Internet en México (96.7 \%), lo cual coincide con su alta participaci{\'{o}}n en redes sociales y aplicaciones de citas. Esta combinaci{\'{o}}n los convierte en un grupo con mayor exposici{\'{o}}n a \textbf{estafas rom{\'{a}}nticas y catfishing}
+Datos de la ENDUTIH 2024 muestran que los jóvenes de 18 a 24 años presentan la mayor penetración
+de Internet en México (96.7 \%), lo cual coincide con su alta participación en redes sociales y aplicaciones de
+citas. Esta combinación los convierte en un grupo con mayor exposición a estafas románticas y catfishing
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{imagenes/Tasa de incidencia delictiva por cada cien mil habitantes por tipo de delito..png}
-    \caption{Tasa de incidencia delictiva por tipo de delito en México, 2023. Tomado de \textit{Encuesta Nacional de Victimizaci{\'{o}}n y Percepción sobre Seguridad P{{\'{u}}}blica (ENVIPE) \textendash{} Incidencia delictiva por tipo de delito}, por Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a, 2024, \url{https://www.inegi.org.mx/app/tabulados/interactivos/?px=ENVIPE_INCIDENCIA_TIPO_DELITO&bd=ENVIPE}. {\textcopyright} INEGI }
+    \caption{\cite{ENVIPE2023}}
     \label{fig:enter-label}
 \end{figure}
 
-\subsubsection{Servicios con los que cuenta la poblaci{\'{o}}n}
+\subsubsection{Servicios con los que cuenta la población}
 
-Seg{{\'{u}}}n la encuesta ``Hogares con equipamiento de tecnolog{\'{i}}a de informaci{\'{o}}n y comunicaciones, por entidad federativa, seg{{\'{u}}}n tipo de tecnolog{\'{i}}a, 2023'' en los hogares de la ciudad de M{\'{e}}xico se cuentan con los servicios de Internet 89.5\%, telefon{\'{i}}a 98.9\%
+Según la encuesta “Hogares con equipamiento de tecnología de información y comunicaciones, por entidad
+federativa, según tipo de tecnología, 2023” en los hogares de la ciudad de México se cuentan con los servicios
+de Internet 89.5 \%, telefonía 98.9 \%
 
-Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a. (2024). \textit{Encuesta Nacional sobre Disponibilidad y Uso de Tecnolog{\'{i}}as de la Informaci{\'{o}}n en los Hogares (ENDUTIH) 2023 \textendash{} Tabulados de resultados} {[}Archivo de Excel{]}. \url{https://www.inegi.org.mx/contenidos/programas/endutih/2023/tabulados/2023_h2ed110.xlsx}
+\cite{ENDUTIH2023}
 
-\subsubsection{Prop{\'{o}}sitos del uso de internet}
+\subsubsection{Propósitos del uso de internet}
 
-Seg{{\'{u}}}n la base de datos ``Usuarios de internet, por entidad federativa, seg{{\'{u}}}n principales usos, 2023'', El 96,1 \% de los 7,897,062 de personas encuestadas en la ciudad de M{\'{e}}xico , utilizan el {\textquestiondown} para comunicarse, el 90,7 \% para redes sociales, el 37.7 \% para realizar operaciones bancarias, el 1.3 para pagos con tarjetas de prepago
-
-Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a. (2023). \textit{ENDUTIH 2023: Tabulados {[}Archivo de Excel{]}}. \url{https://www.inegi.org.mx/contenidos/programas/endutih/2023/tabulados/2023_u2ed244.xlsx}
+Según la base de datos “Usuarios de internet, por entidad federativa, según principales usos, 2023”, El
+96,1 \% de los 7,897,062 de personas encuestadas en la ciudad de México , utilizan el ¿ para comunicarse, el
+90,7 \% para redes sociales, el 37.7 \% para realizar operaciones bancarias, el 1.3 para pagos con tarjetas de
+prepago.\cite{ENDUTIH2023}
 
 \section{\label{ref-002}Planteamiento del problema}
 %Como este ahorita el planteamiento solo aborda el problema pero no como se piensa solucionar. En el planteamiento del problema se aborda primeramente el problema y posteriormente se puede hablar sobre los posibles enfoques con los que se podría solucionar el problema y dentro de estos enfoques 
@@ -193,6 +201,8 @@ Instituto Nacional de Estad{\'{i}}stica y Geograf{\'{i}}a. (2023). \textit{ENDUT
 %24/05/2025: Vincular el catfishing con el crimen organizado en México (ej. "la matanza de cerdos" y asesinatos en call centers), Contactar con fiscalia para peticion de data set, añadir citas con BibTeX, Agregar matriz de confusión y investigar la evaluación de tiempo de inferencia para añadirlo al código de pruebas, descargar los papers para facilitarlos al asesor portillo en una carpeta
 
 %07-06-2025: mas que el uso de internet "el uso de aparatos moviles en aspectos de vida cotidiana y la dependencia de estos"
+
+%07-06-2025 00:52:55 : Mejorar la introducción del planteamiento del problema, enfocándose no solo en el crecimiento del internet, sino en el uso creciente de dispositivos móviles para resolver problemas cotidianos en ámbitos laborales, comerciales y personales (sentimentales)9.
 Hoy en día el crecimiento de internet y aspectos multifactoriales han dado como producto un crecimiento de las estafas en línea y diversos tipos de extorción a través de las redes sociales, en la actualidad este tipo de fenómenos son principalmente efectuados dentro de los servicios de mensajería instantánea, los cuales se convierten en una oportunidad que tienen los
 ciberdelincuentes para establecer contacto con diferentes usuarios a lo largo del mundo de manera anónima, la falta de
 evidencia documentada sobre las estafas y casos de extorción en medios digitales también forma parte principal de los problemas en la agilización de los procesos que enfrentan las autoridades judiciales
@@ -264,16 +274,14 @@ Pero por sobre todas las actividades este movimiento desde sus origenes en ASIA 
 
 \section{\label{ref-003}Objetivo general}
 
-Diseñar un sistema de filtrado de mensajería privada para detección de las estafas catfishing y sextorsión mediante el refinamiento de un modelo largo de lenguaje
+Diseñar un sistema de filtrado de mensajería privada para detección de las estafas catfishing y sextorsión mediante el refinamiento de un modelo largo de lenguaje delimitado al geolecto del español de la Ciudad de México.
 %El "refinamiento" de los Modelos de Lenguaje a Gran Escala (LLM, por sus siglas en inglés, Large Language Models) se refiere al proceso de adaptar o mejorar un modelo previamente entrenado para tareas o dominios específicos, o para corregir comportamientos no deseados.
 
 %Es importante distinguirlo del "preentrenamiento" inicial, donde el LLM aprende las bases del lenguaje a partir de una vasta cantidad de datos. El refinamiento toma ese modelo base y lo ajusta para un uso más preciso y contextualizado.
 
-%28-06-2025: Delimitar el alcanze en terminos del lenguaje aplicado a la region de mexico, investigar el termino linguistico adecuado para referenciar la delimitacion y despues deberia mencionarse en el titulo de la investigacion y el objetivo
-
 %28-06-2025: con repecto al problema del enmascaramiento de palabras "ej algoritmo de youtube": en las estructuras de software, existe el mantenimiento como tarea, en ese caso puede darse la actualizacion de terminologia o de cambio de modelos con nuevos emergentes
 
-%28-06-2025: considerar ventana de contexto como limite del diccionario con puro refinamiento, justificar con el acceso a hardware especializado 
+
 
 \section{\label{ref-004}Objetivos específicos}
 
@@ -288,12 +296,15 @@ Diseñar un sistema de filtrado de mensajería privada para detección de las es
     %con respecto a este de generacion, hablar de la necesidad el por que se hara sintetica,ente, esta justificacion va en marco teorico y hablar de como se realizo la base de datos esto ira en desarrollo
     %en marco teorico tambien hablar de como es el proceso de entrenamiento en un llm 
     %transfor learning = fine tuning
-    \item Planificar pruebas iniciales bajo un enfoque unicamente basado en tecnicas de prompting puntualmente zero shot y few shot contemplando datos sinteticos y reales para determinar el desempeño maximo de los modelos sin entrenamiento. 
 
-    \item En funcion de los resultados de las pruebas con enfoque en prompting determinar si el desempeño satisface el proposito de la investigacion en caso contrario planificar un enfoque basado en entrenamiento 
+    \item Recolección de datos reales sobre mensajes fraudulentos categorizados como catfishing y sextorción.
+
+    \item Evaluar el desempeño de varios modelos en la identificación de catfishing y sextorsión utilizando refinamiento a traves de estrategias de prompting (zero-shot y few-shot). 
+    
+    \item Planificar un enfoque de pruebas de desempeño basado en entrenamiento con ajuste fino en el supuesto de un desempeño deficiente con el enfoque en prompting
+
     %28-06-2025: Esta bien pero puede que se modifique mas adelante segun sea el resultado de las pruebas
 
-    %especificar a que se refiere "mejores resultados"
     \item Desarrollar una aplicacion web de mensajeria privada a manera de interfaz de usuario para montarlo como entorno de produccion 
     %07-06-2025: este objetivo se mencionara en justificacion y desarrollo, hay comentarios relacionados con esta fecha en dichas secciones
 
@@ -326,37 +337,43 @@ Seguir uno de los dos enfoques para llevar a cabo el fine tuning en medida de ha
 
 \section{\label{ref-006}Marco Teórico}
 
+\cite{llmsbyAmazon}
+
+\cite{wang2023largelanguagemodelszeroshot}
+
+\cite{llmsbyIBM}
+
+
+%2025/08/27  papper de attention is all u need: revisar si es requerido para incluir en marco teorico https://arxiv.org/abs/1706.03762
+
 %En marco teórico entrar en aspectos técnicos más profundos por sobre la redacción de los objetivos específicos
 
 %Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts
 
 %Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos
 
-% ASPECTOS QUE SE REDACTARON SIGUIENDO LO REUQERIDO EN LA LINEA DE ALGORITMOS:
-%Línea 2: 
-%DEP 2 (Entrega: 09-may-2025, 17:30 horas)
-%(20%) MARCO TEÓRICO
-%- (10%) Citas
-%- (10%) Conceptos, definiciones y teorías que requiere el lector para entender su
-%trabajo.
-%(80%) PROPUESTA DE DESARROLLO
-%- (30%) Diagrama a bloques o algoritmo(s) de la propuesta de desarrollo
-%- (30%) Explicación con texto del diagrama a bloques o algoritmo(s) de la
-%propuesta de desarrollo
-%- (10%) Citas
-%- (10%) Explicaciones adicionales sobre la propuesta de desarrollo
-
-
 
 \subsection{Que son los modelos largos de lenguaje LLM y cual es su utilidad}
 
-Los modelos largos de lenguajes o modelos de lenguaje de gran tama{\~{n}}o, son modelos de aprendizaje profundo que son pre entrenados con grandes cantidades de datos 
+% FUENTES POSIBLES DE CONSULTA (NO INCLUIDAS AUN)
+%https://developers.google.com/s/results/machine-learning?hl=es-419&q=llms%20foundations
+%https://developers.google.com/machine-learning/resources/intro-llms?hl=es-419#what_is_a_language_model
 
-Poseen una estructura fundamentada en los transformadores, un tipo de arquitectura introducido en el art{\'{i}}culo "Attention Is All You Need", este tipo de arquitectura se basa exclusivamente en mecanismos de atenci{\'{o}}n, eliminando la necesidad de recurrencias o convoluciones. Los transformadores son un conjunto de redes neuronales que cuenta con un codificador y decodificador con capacidades de autocorrecci{\'{o}}n estos extraen significados de una secuencia de texto y comprenden las relaciones entre las palabras y las frases que contiene. {[}3{]}{[}1{]}
+Los modelos largos de lenguajes o modelos de lenguaje de gran tamaño, son modelos de aprendizaje
+profundo que son pre entrenados con grandes cantidades de datos
+Poseen una estructura fundamentada en los transformadores, un tipo de arquitectura introducido en el
+artículo .Attention Is All You Need", este tipo de arquitectura se basa exclusivamente en mecanismos de
+atención, eliminando la necesidad de recurrencias o convoluciones. Los transformadores son un conjunto de
+redes neuronales que cuenta con un codificador y decodificador con capacidades de autocorrección estos
+extraen significados de una secuencia de texto y comprenden las relaciones entre las palabras y las frases que
+contiene. \cite{llmsbyAmazon} \cite{llmsbyIBM}
 
-Los LLMS pueden ser empleados para llevar a cabo tareas de diversas indoles como pueden ser, responder preguntas, resumir documentos, traducir idiomas, completar oraciones, automatizar la creaci{\'{o}}n de contenido y cambiar la forma en que las personas utilizan los motores de b{{\'{u}}}squeda y los asistentes virtuales.
+Los LLMS pueden ser empleados para llevar a cabo tareas de diversas indoles como pueden ser, responder
+preguntas, resumir documentos, traducir idiomas, completar oraciones, automatizar la creación de contenido
+y cambiar la forma en que las personas utilizan los motores de búsqueda y los asistentes virtuales.
 
-Particularmente en el presente trabajo nos centraremos particularmente en la tarea de clasificaci{\'{o}}n de textos
+Particularmente en el presente trabajo nos centraremos particularmente en la tarea de clasificación de
+textos
 
 \subsection{LLMs Como clasificadores de textos}
 
@@ -377,7 +394,8 @@ tracción de características y entrenamiento. En contraste,
     los LLMs permiten realizar tareas de clasificación incluso en entornos con pocos o ningún dato etiquetado, a través de técnicas como el zero-shot learning y el few-shot learning.
 \end{tcolorbox}
 
-En el art{\'{i}}culo "Large Language Models Are Zero-Shot Text Classifiers" \cite{wang2023largelanguagemodelszeroshot}, se realiz{\'{o}} una evaluaci{\'{o}}n emp{\'{i}}rica del desempe{\~{n}}o de distintos LLMs como clasificadores sin entrenamiento adicional, usando {{\'{u}}}nicamente instrucciones (prompts) dise{\~{n}}adas cuidadosamente. Entre los hallazgos m{\'{a}}s relevantes destaca que, }
+En el artículo "Large Language Models Are Zero-Shot Text Classifiers" \cite{wang2023largelanguagemodelszeroshot}, se realizó una evaluación empírica del desempeño de distintos LLMs como clasificadores sin entrenamiento adicional, usando únicamente
+instrucciones (prompts) diseñadas cuidadosamente. Entre los hallazgos más relevantes destaca que,
 
 \begin{tcolorbox}[
     colback=,
@@ -386,34 +404,24 @@ En el art{\'{i}}culo "Large Language Models Are Zero-Shot Text Classifiers" \cit
 ]
     aunque estos modelos no superan sistemática-
     mente a clasificadores supervisados entrenados
-    sobre datos específicos, ofrecen una ventaja con-
-    siderable en contextos donde no se dispone de
+    sobre datos específicos, ofrecen una ventaja considerable en contextos donde no se dispone de
     datos etiquetados o los recursos computacionales
     para entrenamiento son limitados.
 \end{tcolorbox}
 
 Asimismo, se demostró que el diseño del prompt es
-determinante: un cambio sutil en la redacción de la
-instrucción puede afectar significativamente la precisión
-del modelo.
+determinante: un cambio sutil en la redacción de la instrucción puede afectar significativamente la precisión del modelo.
 
-Para el proyecto aquí concebido, que busca detectar
-automáticamente patrones de catfishing y extorsión en
-mensajes dentro de aplicaciones de mensajería, el uso
-de LLMs como clasificadores resulta particularmente
-pertinente. Dado que estos delitos evolucionan constan-
-temente y pueden adoptar múltiples formas lingüísticas,
-los modelos tradicionales entrenados sobre conjuntos de
-datos fijos podrían mostrar limitaciones en su capacidad
-de generalización. En cambio, un LLM permite adaptar
-dinámicamente su capacidad de clasificación mediante
-modificaciones en los prompts, o bien mediante técnicas
-de fine tuning si se desea aumentar la precisión en un
-dominio específico.
+Para el proyecto aquí concebido, que busca detectar automáticamente patrones de catfishing y extorsión en mensajes dentro de aplicaciones de mensajería, el uso de LLMs como clasificadores resulta particularmente pertinente. Dado que estos delitos evolucionan constantemente y pueden adoptar múltiples formas
+lingüísticas, los modelos tradicionales entrenados sobre conjuntos de datos fijos podrían mostrar limitaciones en su capacidad de generalización. En cambio, un LLM permite adaptar dinámicamente su capacidad de
+clasificación mediante modificaciones en los prompts, o bien mediante técnicas de fine tuning si se desea aumentar la precisión en un dominio específico.
 
 \foreignlanguage{spanish}
 
 \subsection{Definición formal del lenguaje}
+
+% 2025/08/27 Verificar se se ocupo en la seccion: https://doi.org/10.48550/arXiv.2110.06128 https://doi.org/10.1016/j.jal.2018.07.005
+
 Desde la perspectiva de la lingüística formal, el
 lenguaje se concibe como un sistema estructura-
 do de signos que permite la comunicación entre
@@ -421,89 +429,49 @@ individuos. Este sistema se caracteriza por una
 gramática que define las reglas para la formación
 de expresiones válidas dentro del idioma.
 
-La lingüística formal se enfoca en describir y ana-
-lizar las estructuras gramaticales del lenguaje, utili-
-zando herramientas matemáticas y lógicas para mo-
-delar fenómenos lingüísticos. Este enfoque permite
-una comprensión precisa de cómo se construyen y
-entienden las oraciones en un idioma, facilitando
-el desarrollo de modelos computacionales para el
-procesamiento del lenguaje natural.
+La lingüística formal se enfoca en describir y analizar las estructuras gramaticales del lenguaje, utilizando herramientas matemáticas y lógicas para modelar fenómenos lingüísticos. Este enfoque permite una comprensión precisa de cómo se construyen y entienden las oraciones en un idioma, facilitando el desarrollo de modelos computacionales para el procesamiento del lenguaje natural.
 
 \subsection{La variabilidad en el español y las jergas empleadas en la extorsión y el catfishing}
 
-El español, como lengua hablada en múltiples paí-
-ses y regiones, presenta una notable variabilidad
-dialectal y léxica. 
-Esta diversidad se manifiesta en
-diferencias de vocabulario, pronunciación y uso de
-expresiones idiomáticas, influenciadas por factores
-geográficos, históricos y sociales.
-Un estudio reciente analizó mensajes públicos de
-Twitter geolocalizados en 26 países de habla hispa-
-na, identificando variaciones significativas en el uso
-del lenguaje. 
-Estas diferencias incluyen el empleo
-6 de términos y expresiones particulares de cada
-región, así como la adopción de jergas específicas
-en contextos sociales determinados.
-En el ámbito de la extorsión y el catfishing, los
-delincuentes suelen utilizar jergas y modismos lo-
-cales para ganarse la confianza de sus víctimas y
-evitar la detección por sistemas automatizados. Esta
-adaptación lingüística representa un desafío para
-los modelos de procesamiento de lenguaje natural,
-que deben ser capaces de reconocer y entender
-estas variaciones para identificar comportamientos
-sospechosos de manera efectiva.
-Por lo tanto, es fundamental que los sistemas
-de detección de actividades fraudulentas en redes
-sociales incorporen mecanismos para manejar la
-variabilidad lingüística del español. Esto incluye el
-entrenamiento de modelos con datos representati-
-vos de diferentes dialectos y jergas, así como la
-actualización constante de los recursos lingüísticos
-utilizados para reflejar los cambios y tendencias en
-el uso del lenguaje.
-Retomar a que se refiere lo de “modelo base” en la
-parte de objetivos
+El español, como lengua hablada en múltiples países y regiones, presenta una notable variabilidad dialectal y léxica. Esta diversidad se manifiesta en diferencias de vocabulario, pronunciación y uso de expresiones idiomáticas, influenciadas por factores geográficos, históricos y sociales. Un estudio reciente analizó mensajes públicos de Twitter geolocalizados en 26 países de habla hispa-
+na, identificando variaciones significativas en el uso del lenguaje. Estas diferencias incluyen el empleo 6 de términos y expresiones particulares de cada región, así como la adopción de jergas específicas en contextos sociales determinados. En el ámbito de la extorsión y el catfishing, los delincuentes suelen utilizar jergas y modismos locales para ganarse la confianza de sus víctimas y evitar la detección por sistemas automatizados. Esta adaptación lingüística representa un desafío para
+los modelos de procesamiento de lenguaje natural, que deben ser capaces de reconocer y entender estas variaciones para identificar comportamientos sospechosos de manera efectiva. Por lo tanto, es fundamental que los sistemas de detección de actividades fraudulentas en redes sociales incorporen mecanismos para manejar la variabilidad lingüística del español. Esto incluye el entrenamiento de modelos con datos representativos de diferentes dialectos y jergas, así como la actualización constante de los recursos lingüísticos utilizados para reflejar los cambios y tendencias en el uso del lenguaje. Retomar a qué se refiere lo de “modelo base” en la parte de objetivos
 
 %dar el preambulo de la necesidad de evaluacion del llm dentro del proyecto, se puede redactar en razon del objetivo especifico que se tiene mencionandolo en este preámbulo 
 \subsection{Métricas de desempeño de clasificadores}
 
+\subsection{Acurracy}
+\begin{equation}
+    \text{accuracy}(y, \hat{y}) = \frac{1}{n_\text{samples}} \sum_{i=0}^{n_\text{samples}-1} 1(\hat{y}_i = y_i)
+\end{equation}
+
+
+
 \subsubsection{Presicion}
 
-La precisi{\'{o}}n es la habilidad que posee un clasificador para evitar clasificar como positivo un caso negativo
+La precisión es la habilidad que posee un clasificador para evitar clasificar como positivo un caso negativo
+\cite{precisionScoreSkLearn}
 
 \subsubsection{Recall}
 
-Recall es la habilidad que tiene un clasificador para encontrar todos los casos positivos
+Recall es la habilidad que tiene un clasificador para encontrar todos los casos positivos \cite{recallScoreSkLearn}
 
-\url{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html\#sklearn.metrics.precision_score}
+\subsubsection{Buenas practicas para la generación de datos sintéticos (Pendiente de parafraseo y resumen)}
 
-\subsubsection{Buenas }
+Esta información generada artificialmente puede complementar o incluso reemplazar los datos del mundo real al entrenar o probar los modelos de inteligencia artificial \cite{AIbyIBM}. 
 
-Buenas practicas para la generaci{\'{o}}n de datos sint{\'{e}}ticos (Pendiente de parafraseo y resumen)
+En comparación con los conjuntos de datos reales, que suponen desventajas en cuestión de costo, acceso, tiempo para etiquetarlos y suministro, los conjuntos de datos sintéticos se pueden sintetizar mediante simulaciones por computadora o modelos generativos \cite{GenModelsByIbm}. 
 
-Esta informaci{\'{o}}n generada artificialmente puede complementar o incluso reemplazar los datos del mundo real al entrenar o probar los modelos de~\href{https://www.ibm.com/mx-es/think/topics/artificial-intelligence}{inteligencia artificial}. En comparaci{\'{o}}n con los conjuntos de datos reales, que suponen desventajas en cuesti{\'{o}}n de costo, acceso, tiempo para etiquetarlos y suministro, los conjuntos de datos sint{\'{e}}ticos se pueden sintetizar mediante simulaciones por computadora 
+Por lo tanto, es más económico producirlos a demanda en volúmenes casi ilimitados y personalizarlos en función de las necesidades de una organización. 
 
-o~\href{https://www.ibm.com/mx-es/think/topics/generative-model}{modelos generativos}. Por lo tanto, es m{\'{a}}s econ{\'{o}}mico producirlos a demanda en vol{{\'{u}}}menes casi ilimitados y personalizarlos en funci{\'{o}}n de las necesidades de una organizaci{\'{o}}n.
+A pesar de sus beneficios, los datos sintéticos \cite{SynthDataByImb} también conllevan dificultades. El proceso de generación puede ser complejo, ya que los científicos de datos tienen que crear datos realistas sin sacrificar su calidad y privacidad. 
 
-A pesar de sus beneficios, los~\href{https://research.ibm.com/blog/what-is-synthetic-data}{datos sint{\'{e}}ticos}~tambi{\'{e}}n conllevan dificultades. El proceso de generaci{\'{o}}n puede ser complejo, ya que los cient{\'{i}}ficos de datos tienen que crear datos realistas sin sacrificar su calidad y privacidad.
+IBM propone estas ocho mejores prácticas para la generación de datos sintéticos: 
 
-IBM propone estas ~ocho mejores pr{\'{a}}cticas para la generaci{\'{o}}n de datos sint{\'{e}}ticos:
-
-1: Conocer el prop{\'{o}}sito:
-
-Comprender por qu{\'{e}} el proyecto necesita datos sint{\'{e}}ticos y los casos de uso en los que podr{\'{i}}an ser m{\'{a}}s {{\'{u}}}tiles que los datos reales.~
-
-Los datos artificiales pueden actuar como una forma de~\href{https://www.ibm.com/mx-es/think/topics/data-augmentation}{refuerzo de datos}. Se pueden utilizar para impulsar la diversidad de los datos, especialmente para grupos subrepresentados en el entrenamiento de~\href{https://www.ibm.com/mx-es/topics/ai-model}{modelos de IA.}~Y cuando la informaci{\'{o}}n es escasa, los datos sint{\'{e}}ticos pueden llenar los vac{\'{i}}os.
-
-A la empresa de servicios financieros JP Morgan, por ejemplo, le result{\'{o}} dif{\'{i}}cil entrenar eficazmente modelos impulsados por IA para la detecci{\'{o}}n de fraudes debido a la falta de casos fraudulentos en comparaci{\'{o}}n con los no fraudulentos.
-
-2: la preparaci{\'{o}}n es clave
-
-Al preparar conjuntos de datos originales para la generaci{\'{o}}n de datos sint{\'{e}}ticos mediante algoritmos de~\href{https://www.ibm.com/mx-es/think/topics/machine-learning}{aprendizaje autom{\'{a}}tico}~(ML), aseg{{\'{u}}}rese de verificar y corregir errores, imprecisiones e incongruencias. Elimine los duplicados e ingrese los valores faltantes.
+\begin{itemize}
+    \item Conocer el propósito: Comprender por qué el proyecto necesita datos sintéticos y los casos de uso en los que podrían ser más útiles que los datos reales. Los datos artificiales pueden actuar como una forma de refuerzo de datos \cite{AugmentedDataByIbm}. Se pueden utilizar para impulsar la diversidad de los datos, especialmente para grupos subrepresentados en el entrenamiento de modelos de IA \cite{AIModelByIbm}. Y cuando la información es escasa, los datos sintéticos pueden llenar los vacíos. A la empresa de servicios financieros JP Morgan, por ejemplo, le resultó difícil entrenar eficazmente modelos impulsados por IA para la detección de fraudes debido a la falta de casos fraudulentos en comparación con los no fraudulentos.
+    \item La preparación es clave Al preparar conjuntos de datos originales para la generación de datos sintéticos mediante algoritmos de aprendizaje automático (ML) \cite{MLByIbm}, asegúrese de verificar y corregir errores, imprecisiones e incongruencias. Elimine los duplicados e ingrese los valores faltantes
+\end{itemize}
 
 \section{Glosario de términos}
 %Presentar en orden alfabetico
@@ -540,11 +508,11 @@ casos, obtener beneficios económicos o personales.}
 
 \DTLnewrow{terminos}
 \DTLnewdbentry{terminos}{termino}{Prompt Engineering}
-\DTLnewdbentry{terminos}{definicion}{Disciplina que se enfoca en diseñar y optimizar prompts para guiar eficazmente a modelos de lenguaje de gran escala (LLM) en la generación de respuestas deseadas. Implica comprender cómo formular instrucciones precisas que alineen las salidas del modelo con los objetivos específicos del usuario o aplicación.}
+\DTLnewdbentry{terminos}{definicion}{Disciplina que se enfoca en diseñar y optimizar prompts para guiar eficazmente a modelos de lenguaje de gran escala (LLM) en la generación de respuestas deseadas. Implica comprender cómo formular instrucciones precisas que alineen las salidas del modelo con los objetivos específicos del usuario o aplicación. \cite{PromptEngByIBM}}
 
 \DTLnewrow{terminos}
 \DTLnewdbentry{terminos}{termino}{Fine Tuning}
-\DTLnewdbentry{terminos}{definicion}{Proceso de adaptar un modelo de lenguaje previamente entrenado para tareas o dominios específicos mediante un entrenamiento adicional con datos relevantes. En el contexto de este proyecto, se destaca el uso de técnicas de prompt engineering para afinar el modelo sin necesidad de reentrenarlo completamente, lo que permite una personalización eficiente y menos costosa en términos computacionales.}
+\DTLnewdbentry{terminos}{definicion}{Proceso de adaptar un modelo de lenguaje previamente entrenado para tareas o dominios específicos mediante un entrenamiento adicional con datos relevantes. En el contexto de este proyecto, se destaca el uso de técnicas de prompt engineering para afinar el modelo sin necesidad de reentrenarlo completamente, lo que permite una personalización eficiente y menos costosa en términos computacionales. \cite{FineTuningByIbm}}
 
 \DTLnewrow{terminos}
 \DTLnewdbentry{terminos}{termino}{Large language model LLM}
@@ -598,6 +566,16 @@ Se invita a consultar la sección “marco teorico” para profundizar mas en ca
 
 
 \section{Propuesta de soluci{\'{o}}n}
+
+% % 2025/08/27 En caso de usar Android App (poco probable) https://ai.google.dev/edge/litert?hl=es-419
+
+% % 2025/08/27  Links a las partes tecnologicas (preguntar si esto va o no) https://www.postgresql.org 
+% https://ollama.com/ 
+% https://anaconda.org/anaconda/jupyter (este no se a usado en realidad se empleo mas VS code)
+%(posiblemente si considerando que explica sus caracteristicas mismas que han de justificar su uso)
+
+
+
 %Es parte de la seccopm del  desarrollo, aquí se debe hablar sobre el propósito de cada uno de los elementos de la arquitectura, diferenciar el almacenamiento remoto del local, el propósito de cuentas por lado del servidor y el almacenamiento de mensajers o todo lo que sea requerido para que el llm trabaje de forma local totalmente off line
 
 %Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion
@@ -666,24 +644,25 @@ Anteriormente un objetivo demasiado amplio -{\textgreater} mediante la ejecuci{\
 %07-06-2025: se tiene que justificar por que el uso de python
 %07-06-2025: se tiene que justificar el por que ocupar un web app, en funcion de la diversidad de os para movil y lo complejo asi como las metricas de incidencia en Mexico.
 
-%07-06-2025: va la jjustificacion de tecnologias aqui
+%07-06-2025 00:45:04 : Justificar la decisión de desarrollar una aplicación web en lugar de una nativa dentro del capítulo de "Desarrollo"7777. La justificación debe mencionar la compatibilidad con múltiples sistemas operativos como Android, iOS y HarmonyOS8.
 
-Pruebas iniciales a modelos largos de lenguaje locales 
+\subsection{Pruebas iniciales a modelos largos de lenguaje locales }
 
 Para la generación de datos sintéticos se opta por un enfoque few shot para la formulación del prompt que se ocupara para
 dar la instrucción a un modelo como Chat GPT o deepseek con madurez en tareas de generación de texto, se observo que
 la generación sin datos puede dar lugar a datos poco realistas y poco variables por lo que en afinidad con las 8 practicas de
-generación sintetica que plantea IBM en la sección del marco teorico se opta por few shot por sobre zero shot
+generación sintetica que plantea IBM \cite{SynthDataByIbm} en la sección del marco teorico se opta por few shot por sobre zero shot
 
 
 
-Desarrollar este objetivo
+%Desarrollar este objetivo
 
-Seleccionar un modelo de lenguaje base adecuado balanceando tama{\~{n}}o y habilidad para identificaci{\'{o}}n de catphising y extorci{\'{o}}n mediante la ejecuci{\'{o}}n de pruebas en el entorno de jypiter lab 
+Seleccionar un modelo de lenguaje base adecuado balanceando tamaño y habilidad para identificación de
+catphising y extorción mediante la ejecución de pruebas en el entorno de jypiter lab
 
 Implementar diferentes pruebas para analizar el desempeño de diferentes modelos de lenguaje en la clasificacion de catfishing y sextorcion y con los datos fundamentar la existencia de un modelo largo de lenguaje igual o menor a 8b que pueda detectar efectivamente las estafas o de caso contrario optar por un enfoque basado en el fine tuning de uno de los modelos con mejores metricas   
 
-La restriccion de emplear estrictamente un modelo menor a 8b surge por el requerimiento de tiempo de respuesta cercano al tiempo real propio de la naturaleza y definicion del proyecto el cual tiene por objetivo alertar al usuario con notificaciones antes de ser victima del fraude
+La restricción de emplear estrictamente un modelo menor a 8b surge por el requerimiento de tiempo de respuesta cercano al tiempo real propio de la naturaleza y definición del proyecto el cual tiene por objetivo alertar al usuario con notificaciones antes de ser victima del fraude
 
 El otro requerimiento esta fundamentado en los limites y alcances de esta investigacion para la cual no se contempla un presupuesto destinado a la compra de tiempo de computacion o hardware con prestaciones que permitan la ejecucion de modelos con mayor cantidad de parametros 
 
@@ -717,6 +696,8 @@ ADDITIONAL EXAMPLES FOR CONTEXT (Pay close attention to these examples to unders
 
 APPROACH: Based on the previous, classify the following message into exactly one of these three categories: catfishing, sextortion, or harmless.
 
+
+
 LIMITS: 
 - Respond ONLY with the corresponding label: catfishing, sextortion, or harmless. 
 - DO NOT include explanations, justifications, or any additional text. 
@@ -725,14 +706,13 @@ LIMITS:
 Message to analyze:
 
 
-\subsection{Metodologia de investigacion en redes sociales para encontrar una aplicacion con potenciales estafadores}
+\subsection{Metodología de investigación en redes sociales para encontrar una aplicación de citas con potenciales estafadores}
 
-%28-06-2025: pendiente justificar el adentramiento en flurtu a partir de noticias
+%28-06-2025: pendiente justificar el adentramiento en flirtu. La forma de justificarlo será argumentando que se realizó una investigación previa en redes sociales donde se identificó a esa plataforma y grupo específico como un foco de estafas, lo que motivó la recolección de muestras desde allí, posiblemente tambien articulos de noticias.
 
-https://www.eldia.es/vida-y-estilo/tecnologia/2024/04/13/seguro-telegram-seis-riesgos-enfrentas-dv-100987865.html
+\cite{telegramRisks}
 
-https://www.reddit.com/r/TelegramBots/comments/zy7q8x/anyone_found_match_on_flirtu_bot/?tl=es-419
-
+\cite{RedditFlirtu2025}
 
 Hallazgoz clave de la investigacion controlada en flirtu
 
@@ -746,7 +726,7 @@ hipotesis con (")
 
 \subsection{Lista de requerimientos funcionales}
 
-\begin{itemize}[H]
+\begin{itemize}
     \item El sistema debe permitir enviar y recibir mensajes
     \item El sistema debe tener inicio de sesión y creación de cuentas
     \item La clasificación debe activarse mediante el trigger “Se recibió un mensaje dentro del sistema de mensajería”.
@@ -757,7 +737,7 @@ hipotesis con (")
 
 \subsection{Enfoques arquitectónicos para el tiempo de ejecución de inferencia del llm}
 
-\begin{itemize}[H]
+\begin{itemize}
     \item El modelo se ejecuta en dispositivos móviles (Edge computing).
     \item El modelo corre en un servidor on-premise (core i7 4ta gen, GPU Nvidia GeForce GTX 1060 6GB Vram, 16GB Ram del sistema, 2 terabytes de almacenamiento persistente con velocidad de 500 kB/s)
     \item El modelo corre en un Azure Container Instances o un VM Spot de azure
@@ -779,24 +759,96 @@ hipotesis con (")
 %14/06/2025: añadir la explicacion de que se añadio otro enfoque de evaluacion con diccionario en el few shot, esta redaccion puede ser util, generada por gemini "Este diccionario explica los modismos y el argot mexicano utilizados en los mensajes, lo que facilitará que los modelos de lenguaje más pequeños entiendan el contexto cultural y las sutilezas de cada conversación." 
 
 
-\begin{itemize}
-    \item Pruebas con enfoque zero shot
-    \begin{figure}
-        \centering
-        \includegraphics[width=1\linewidth]{imagenes/ZeroShotResults.png}
-        \caption{Enter Caption}
-        \label{fig:enter-label}
-    \end{figure}
-    \item Pruebas con enfoque few shot sintetico
-    \begin{figure}
-        \centering
-        \includegraphics[width=1\linewidth]{imagenes/FewShotResults.png}
-        \caption{Enter Caption}
-        \label{fig:enter-label}
-    \end{figure}
-    \item Pruebas con enfoque few shot datos reales
-    \item Pruebas con enfoque few shot real/sintetico usando diccionario de palabras
-\end{itemize}
+% Resultados con Zero Shot Prompting
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{classificationTestImages/Zero Shot Acurracy.png}
+    \caption{Métrica de exactitud por cada modelo obtenida de las pruebas de identificación con la técnica de Zero Shot prompting}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{classificationTestImages/Zero Shot Catfishing.png}
+    \caption{Resultados de las pruebas de identificación de catfishing con la técnica Zero Shot prompting}
+    \label{fig:zero-shot-catfishing}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{classificationTestImages/Zero Shot Sextorción.png}
+    \caption{Resultados de las pruebas de identificación de sextorción con la técnica Zero Shot prompting}
+    \label{fig:zero-shot-sextorcion}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{classificationTestImages/Zero Shot Inofensivo.png}
+    \caption{Resultados de las pruebas de identificación de inofensivo con la técnica Zero Shot prompting}
+    \label{fig:zero-shot-inofensivo}
+\end{figure}
+
+% Resultados con Few Shot Prompting (Datos Sintéticos)
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{classificationTestImages/Few Shot Sintético Acurracy.png}
+    \caption{Métrica de exactitud por cada modelo obtenida de las pruebas de identificación con la técnica de Few Shot prompting a partir de un data set de refinamiento construido con datos sintéticos}
+    \label{fig:few-shot-sintetico-accuracy}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{classificationTestImages/Few Shot Sintético Catfishing.png}
+    \caption{Resultados de las pruebas de identificación de catfishing con la técnica Few Shot prompting a partir de un data set de refinamiento construido con datos sintéticos}
+    \label{fig:few-shot-sintetico-catfishing}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{classificationTestImages/Few Shot Sintético Sextorción.png}
+    \caption{Resultados de las pruebas de identificación de sextorción con la técnica Few Shot prompting a partir de un data set de refinamiento construido con datos sintéticos}
+    \label{fig:few-shot-sintetico-sextorcion}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{classificationTestImages/Few Shot Sintético Inofensivo.png}
+    \caption{Resultados de las pruebas de identificación de inofensivo con la técnica Few Shot prompting a partir de un data set de refinamiento construido con datos sintéticos}
+    \label{fig:few-shot-sintetico-inofensivo}
+\end{figure}
+
+% Resultados con Few Shot Prompting (Datos Reales)
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{classificationTestImages/Few Shot Real Acurracy.png}
+    \caption{Métrica de exactitud por cada modelo obtenida de las pruebas de identificación con la técnica de Few Shot prompting a partir de un data set de refinamiento construido con datos reales}
+    \label{fig:few-shot-real-accuracy}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{classificationTestImages/Few Shot Real Catfishing.png}
+    \caption{Resultados de las pruebas de identificación de catfishing con la técnica Few Shot prompting a partir de un data set de refinamiento construido con datos reales}
+    \label{fig:few-shot-real-catfishing}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{classificationTestImages/Few Shot Real Sextorción.png}
+    \caption{Resultados de las pruebas de identificación de sextorción con la técnica Few Shot prompting a partir de un data set de refinamiento construido con datos reales}
+    \label{fig:few-shot-real-sextorcion}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{classificationTestImages/Few Shot Real Inofensivo.png}
+    \caption{Resultados de las pruebas de identificación de inofensivo con la técnica Few Shot prompting a partir de un data set de refinamiento construido con datos reales}
+    \label{fig:few-shot-real-inofensivo}
+\end{figure}
+
 
 \section{Análisis de resultados}
 
@@ -815,6 +867,13 @@ Durante el desarrollo de la investigación, se identificó un fenómeno emergent
 Esta estrategia lingüística es empleada frecuentemente con el fin de evadir los filtros y mecanismos de moderación presentes en plataformas digitales como redes sociales, servicios de mensajería, plataformas de video y streaming. Un ejemplo claro de ello es la sustitución de palabras como “suicidio” por términos como “morición”, con el objetivo de evitar la detección automática por parte de algoritmos de moderación, como el conocido “algoritmo de YouTube”. Este fenómeno da lugar a una forma de enmascaramiento del lenguaje que representa un desafío crítico para los sistemas de detección automática.
 
 Considerar este comportamiento es fundamental para lograr una solución verdaderamente efectiva en el contexto del presente trabajo. En este sentido, como trabajo a futuro, se propone la ampliación de la arquitectura actual del sistema mediante la incorporación de técnicas como el web scraping, con el fin de mantener actualizados los modelos de procesamiento del lenguaje natural con la terminología emergente y el argot utilizado en plataformas digitales en tiempo real. Esta adaptación continua permitirá que la solución mantenga su efectividad a medida que evoluciona el lenguaje en los medios digitales.
+
+%28-06-2025: considerar ventana de contexto como limite del diccionario con puro refinamiento, justificar con el acceso a hardware especializado 
+
+La ventana de contexto de un LLM se puede considerar como el equivalente de su memoria de trabajo. Determina la duración de una conversación que puede llevar a cabo sin olvidar los detalles de anteriores en el intercambio. También determina el tamaño máximo de documentos o muestras de código que puede procesar a la vez.
+\cite{ibmVentanaContexto}
+\cite{AnthropicVentanaContexto}
+
 
 Hablar sobre la escalabilidad, considerar numeros de peticiones, tasas de crecimiento, temas relacionados a sistemas distribuidos
 
@@ -838,70 +897,11 @@ Mencionar la parte de la hipótesis 2 en caso de no ser incluida en la investiga
 
 
 %----------------REFERENCIAS----------------------
-%28-06-2025 segun el profe de proyecto la citacion puede involucrar el uso de "et al", ser en APA, ser IEEE, otros como APA o vancuver se usa autor 1 & autor 2. et al se usa cuando son muchos autores, se toma el apellido paterno del primero seguido de esta locucion griega y entre () el numero de la bibliografia. 
+%28-06-2025: segun el profe de proyecto la citacion puede involucrar el uso de "et al", ser en APA, ser IEEE, otros como APA o vancuver se usa autor 1 & autor 2. et al se usa cuando son muchos autores, se toma el apellido paterno del primero seguido de esta locucion griega y entre () el numero de la bibliografia. 
 %28-06-2025: lo comun es parafrasear los textos con las diferentes fuentes y posterior añadir los corchetes de citacion con todas las fuentes de donde se informo uno para producir el texto mostrado
-\section{\label{ref-014}Referencias}
-
-\subsubsection{Introducci{\'{o}}n}
-
-Usuarios de internet, por entidad federativa, seg{{\'{u}}}n principales usos, 2023: \url{https://view.officeapps.live.com/op/view.aspx?src=https\%3A\%2F\%2Fwww.inegi.org.mx\%2Fcontenidos\%2Fprogramas\%2Fendutih\%2F2023\%2Ftabulados\%2F2023_u2ed244.xlsx&wdOrigin=BROWSELINK}
-
-Tasa de incidencia delictiva por cada cien mil habitantes por tipo de delito.
-
-\url{https://www.inegi.org.mx/app/tabulados/interactivos/?px=ENVIPE_INCIDENCIA_TIPO_DELITO&bd=ENVIPE}
-
-\subsection{Glosario de t{\'{e}}rminos}
-
-IBM. (s.\,f.). \textit{{\textquestiondown}Qu{\'{e}} es la ingenier{\'{i}}a de prompts?} IBM Think. \url{https://www.ibm.com/es-es/think/topics/prompt-engineering}
-
-IBM. (s.\,f.). \textit{{\textquestiondown}Qu{\'{e}} es el fine-tuning?} IBM Think. \url{https://www.ibm.com/es-es/think/topics/fine-tuning}
-
-\subsection{Estado del arte}
-
-
-Davidson, T., Warmsley, D., Macy, M., \& Weber, I. (2017). \textit{Automated Hate Speech Detection and the Problem of Offensive Language}. arXiv. \url{https://arxiv.org/abs/1705.06530}
-
-Gupta, M., Zafar, H., \& Shukla, A. (2025). \textit{Multilingual Hate Speech Detection in Code-Mixed Data Using Prompt-Tuning}. arXiv. \url{https://arxiv.org/abs/2501.05443}
-
-Alam, F., Shaar, S., Mubarak, H., \& Nakov, P. (2022). \textit{Large-scale multilingual hate speech detection dataset from social media} {[}Data set{]}. Mendeley Data. \url{https://doi.org/10.17632/xp8n69sdtp.1}
-
-\subsection{Marco teorico}
-
-Amazon Web Services. (s.f.). \textit{What is a large language model (LLM)?} \url{https://aws.amazon.com/what-is/large-language-model/}
-
-Google for Developers. (s.f.). \textit{LLM: Ajuste, destilaci{\'{o}}n e ingenier{\'{i}}a de instrucciones}. https://developers.google.com/machine-learning/llm-foundations/llm
-
-He, J., Wang, C., Liu, J., Xie, Y., Liu, P., Zheng, C., ... \& Liu, Z. (2023). \textit{A survey on large multimodal models}. arXiv. \url{https://arxiv.org/abs/2312.01044}
-
-IBM. (s.f.). \textit{Large language models}. \url{https://www.ibm.com/think/topics/large-language-models}
-
-Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... \& Polosukhin, I. (2017). \textit{Attention is all you need}. arXiv. \url{https://arxiv.org/abs/1706.03762}
-
-\subsubsection{Definici{\'{o}}n formal de lenguaje}
-
-Tellez, E. S., Moctezuma, D., Miranda, S., Graff, M., \& Ruiz, G. (2022). \textit{Regionalized models for Spanish language variations based on Twitter}. arXiv. \url{https://doi.org/10.48550/arXiv.2110.06128}
-
-\foreignlanguage{english}{Gonz{\'{a}}lez, J. A., \& Fern{\'{a}}ndez, M. (2018). Formal approaches to language: A review. }\foreignlanguage{english}{\textit{Journal of Applied Linguistics}}\foreignlanguage{english}{, 45(3), 123\textendash{}135. }\url{https://doi.org/10.1016/j.jal.2018.07.005}
-
-\subsubsection{\foreignlanguage{spanish}{Propuesta de soluci{\'{o}}n}}
-
-Google. (s.f.). TensorFlow Lite para entornos Edge (LiteRT). Google AI. \url{https://ai.google.dev/edge/litert?hl=es-419}
-
-PostgreSQL Global Development Group. (s.f.). PostgreSQL: The World's Most Advanced Open Source Relational Database. https://www.postgresql.org/Ollama, Inc. (s.f.). 
-
-Ollama: Run large language models locally. \url{https://ollama.com/}
-
-Anaconda, Inc. (s.f.). Jupyter \textendash{} Anaconda Documentation. https://anaconda.org/anaconda/jupyter
-
-\subsection{Desarrollo}
-
-https://www.ibm.com/think/insights/synthetic-data-generation
-
-%ejemplo de cita \cite{ndyulo2023protecting}
 
 \bibliographystyle{plain} % estilo de bibliografía
 \bibliography{referencias} % nombre del archivo .bib sin la extensión
-
 \end{document}
 
 
