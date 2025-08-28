@@ -110,9 +110,9 @@ def generate_csv_for_folder(folder_path):
     if 'accuracy' in all_columns:
         ordered_columns.append('accuracy')
     
-    # 3. Métricas por etiqueta (catfishing, non-offensive, sextortion)
+    # 3. Métricas por etiqueta (catfishing, harmless, sextortion)
     label_metrics = []
-    for label in ['catfishing', 'non-offensive', 'sextortion']:
+    for label in ['catfishing', 'harmless', 'sextortion']:
         for metric in ['precision', 'recall', 'f1-score']:  # Eliminamos 'support'
             column_name = f"{label}_{metric}"
             if column_name in all_columns:
