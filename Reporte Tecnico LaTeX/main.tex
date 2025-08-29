@@ -1,53 +1,23 @@
-\documentclass{article} 
-%\documentclass[journal]{IEEEtran}
-\usepackage{amsmath}
+\documentclass{article}
+\usepackage{cite}
 \usepackage[T1]{fontenc} 
-%\usepackage[utf8]{inputenc} 
 \usepackage{graphicx}
 \usepackage{float}
-%\usepackage{multirow} 
-%\usepackage{tabularx} 
 \usepackage{color} 
-%\usepackage{textcomp} 
-%\usepackage{tipa}
-%\usepackage{amsmath} 
-%\usepackage{amssymb} 
-%\usepackage{amsfonts}
-%\usepackage{amsxtra} 
-%\usepackage{wasysym} 
-%\usepackage{isomath} 
-%\usepackage{mathtools} 
-%\usepackage{txfonts} 
-%\usepackage{upgreek} 
-%\usepackage{enumerate} 
-%\usepackage{tensor} 
-%\usepackage{pifont} 
-%\usepackage{ulem} 
-%\usepackage{xfrac} 
-%\usepackage{arydshln} 
-%\def\spanishoptions{mexico}
-%\usepackage[english,spanish]{babel}
-%\definecolor{color-DDDDDD}{rgb}{0.87,0.87,0.87}
-%\definecolor{color-F9F9F9}{rgb}{0.98,0.98,0.98}
-%\definecolor{white}{rgb}{1,1,1}
 \definecolor{yellow}{rgb}{1,1,0}
-%\definecolor{color-0F4761}{rgb}{0.06,0.28,0.38}
 %los dos de abajo para la tabla de estado del arte
 \usepackage{tabularx}
 \usepackage{array}
-%\usepackage[top=1.9cm, bottom=3cm, left=1.3cm, right=1.3cm]{geometry}
 \usepackage[margin=2.5cm]{geometry} % Establece todos los márgenes a 2.5 cm
-%\usepackage[margin=2cm]{geometry}
 %para las citas con el archivo bib
-\usepackage{cite}
 \usepackage{tikz}%para la portada
 \usepackage[spanish]{babel}%para cambiar etiquetas varias a español como el "contents" de \table of contents
 \usepackage{comment}
 
 
 \usepackage{datatool}% Necesario para personalizar las listas, usado en glosario para ordenar alfabeticamente
+\usepackage{url} % Para soporte de URLs en bibliografía
 \usepackage{hyperref} %siempre cargarlo al final del preambulo
-\bibliographystyle{plainurl}
 \usepackage{tcolorbox} % para remarcado en amarillo en cajas
 
 
@@ -398,7 +368,7 @@ En el artículo "Large Language Models Are Zero-Shot Text Classifiers" \cite{wan
 instrucciones (prompts) diseñadas cuidadosamente. Entre los hallazgos más relevantes destaca que,
 
 \begin{tcolorbox}[
-    colback=,
+    colback=yellow!10!white,
     colframe=yellow!60!black,
     width=\columnwidth, % Ancho de la página completa
 ]
@@ -900,7 +870,7 @@ Mencionar la parte de la hipótesis 2 en caso de no ser incluida en la investiga
 %28-06-2025: segun el profe de proyecto la citacion puede involucrar el uso de "et al", ser en APA, ser IEEE, otros como APA o vancuver se usa autor 1 & autor 2. et al se usa cuando son muchos autores, se toma el apellido paterno del primero seguido de esta locucion griega y entre () el numero de la bibliografia. 
 %28-06-2025: lo comun es parafrasear los textos con las diferentes fuentes y posterior añadir los corchetes de citacion con todas las fuentes de donde se informo uno para producir el texto mostrado
 
-\bibliographystyle{plain} % estilo de bibliografía
+\bibliographystyle{unsrt} % estilo de bibliografía que soporta URLs
 \bibliography{referencias} % nombre del archivo .bib sin la extensión
 \end{document}
 
