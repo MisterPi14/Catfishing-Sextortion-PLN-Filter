@@ -1,25 +1,25 @@
 \documentclass{article}
-\usepackage{cite}
+\usepackage{cite}%para las citas con el archivo bib
 \usepackage[T1]{fontenc} 
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage{color} 
-\definecolor{yellow}{rgb}{1,1,0}
+
 %los dos de abajo para la tabla de estado del arte
 \usepackage{tabularx}
 \usepackage{array}
+
 \usepackage[margin=2.5cm]{geometry} % Establece todos los márgenes a 2.5 cm
-%para las citas con el archivo bib
 \usepackage{tikz}%para la portada
 \usepackage[spanish]{babel}%para cambiar etiquetas varias a español como el "contents" de \table of contents
 \usepackage{comment}
 
-
 \usepackage{datatool}% Necesario para personalizar las listas, usado en glosario para ordenar alfabeticamente
 \usepackage{url} % Para soporte de URLs en bibliografía
 \usepackage{hyperref} %siempre cargarlo al final del preambulo
-\usepackage{tcolorbox} % para remarcado en amarillo en cajas
 
+\usepackage{color} 
+\usepackage{tcolorbox} % para remarcado en amarillo en cajas
+\definecolor{yellow}{rgb}{1,1,0}
 
 \begin{document}
 \thispagestyle{empty}%para no enumerar
@@ -306,6 +306,10 @@ Seguir uno de los dos enfoques para llevar a cabo el fine tuning en medida de ha
 %07-06-2025: se puede mencionar brevemente el aspecto de por que usar web app
 
 \section{\label{ref-006}Marco Teórico}
+
+% 2025/08/29 https://arxiv.org/pdf/2501.05443 esta es una investigacion metodologica que aborda una síntesis y un análisis crítico del estado actual de la investigación en la detección de ciberacoso textual, destacando los avances, las limitaciones y las oportunidades futuras en este campo, no es de caracter tecnico por lo que no generó nuevos datos ni modelos, evaluar si vale la pena ingresarla, parece que no pues es para un rigor mas avanzado
+% esta otra aborda la metodologia PRISMA que siguio la investigacion anterior, formaba parte de sus citas: https://pdf.sciencedirectassets.com/273450/1-s2.0-S1743919110X00061/1-s2.0-S1743919110000403/mainext.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEGwaCXVzLWVhc3QtMSJHMEUCIBJPWgyxpLa1LIbcFb9ymy2doosjB75dq9IhF2SlgZRBAiEApuQBKP2fJDCbntoua6xRQ%2FYM9CeW7gFWuR%2BfA6K6XXQquwUIxf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAFGgwwNTkwMDM1NDY4NjUiDOq%2BVZWn0qf2YsneBCqPBUGYb8woSXmswDQphKvxDKhQDkkcX2AGjB4HNAebGbd1hd1MXo6%2FPLKHj8g2QufIJIYWp3H%2FiF5oT%2Fjezd5QBkxPI6FQ8IVssEkbdlQzeBFfVUxrdov4n0VZdY2Nt6AViVF7eZqG9XkcaN8iS%2BMvHk5YnZei%2Bc51K8RJeFzTPuB14anE06pqg7lk2we9BBAwwfmghOHzh01WRrGd%2FeeTLWAYGOzQyguinkZJsMNvMGlE1FLXvFcf2R3l7gcxYGw%2BGqwFbGdKuZz74vRqS7mW9WQpiWr6fRKVoNo9FqinXtnpt20Ric1gQq5FgwjD3Ds85TL2jnXHR3cu2mcS0oedanPtlgxIcEcduKTTwEPktwNaTD9MC7k2eMr93wfjC6BNhW7zvV8S9f9ZeWdDUmeX7wZ1Qm0uKpm0roXUgaetb73gzE%2F%2BK%2FqolYDi05%2B%2FOENol0w73u%2FfVAYLRhszXN%2FVHGp%2FfQZgtWfaA0u2p%2Bf%2FPLwZxLjVKiJhQduI8uICZXKv8J50g4ZYlfvzUlvOPZTq9IDY9fy%2BmSCwxuO2JeQqBSmSHsTwz%2B9ecb4ePWnBAAa1%2FPnANUIRupIR1qmALTyAjzoLMSwyvE9udu%2BmPgS81VblSPQh5A5LCHw6VAu52FNOjZiFYaBmVGx4%2F6gsNpAa5DavYnt19os3SgvCKht5nlOqfc289nTzUoXOuhavUSKbxqvJCbrDLYy%2FJZam4pV9E%2BLTsPWtwQEIpp1nasVuHsZeJlQXhzIZBfysmy5ge72x21FYrQO8Be1uEmKhLhv6AB%2BIbucF00KeILysMmMXC34RXNiLLhPmO43ljtPMhSUSMtOVfiU1Jv2KEKZCL6O3DSCqOD%2FkfTMnkSIyXYz%2FIqUwx47IxQY6sQELGZmD9vXNbK2UvltfcCdenwGKF3uZJS2f%2B%2FAHuWeOsSl1GmamYCXxApnGMfi09z7hFg8Vqv7YKFFRmgERD%2BRgaqPneof2DJQA5BzfKFAiwglTFVZSLe4IKUuq51sMTGx8gluJcaIaI2X2KjbPO3jDbGlR%2BNwe1pKA3Fsnc4bS%2BgzzBHl5ComyylQDU3a25eB08HXi9yQAOA%2FKMfVFx1%2BJoZUI6hC23jshp%2Fp4Swa%2FY6E%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250829T204715Z&X-Amz-SignedHeaders=host&X-Amz-Expires=299&X-Amz-Credential=ASIAQ3PHCVTYZILLO7PG%2F20250829%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=04f7acc029fd49582b56be957099519b537444dd8c523dce4f9580438b409568&hash=2bc46d1615f504b60d196bb2ad3e2ed92e8afdacf6dbcbb35c1d366ce4eb2155&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S1743919110000403&tid=spdf-b9ad6fd3-b003-4fcc-88aa-e37d044138bb&sid=1587f5a13d1f68463a08051028e8599d6c0cgxrqa&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&rh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=171b5a57510a005553&rr=976ee709581f0695&cc=mx
+
 
 \cite{llmsbyAmazon}
 
@@ -870,7 +874,7 @@ Mencionar la parte de la hipótesis 2 en caso de no ser incluida en la investiga
 %28-06-2025: segun el profe de proyecto la citacion puede involucrar el uso de "et al", ser en APA, ser IEEE, otros como APA o vancuver se usa autor 1 & autor 2. et al se usa cuando son muchos autores, se toma el apellido paterno del primero seguido de esta locucion griega y entre () el numero de la bibliografia. 
 %28-06-2025: lo comun es parafrasear los textos con las diferentes fuentes y posterior añadir los corchetes de citacion con todas las fuentes de donde se informo uno para producir el texto mostrado
 
-\bibliographystyle{unsrt} % estilo de bibliografía que soporta URLs
+\bibliographystyle{plainurl} % estilo de bibliografía que soporta URLs
 \bibliography{referencias} % nombre del archivo .bib sin la extensión
 \end{document}
 
