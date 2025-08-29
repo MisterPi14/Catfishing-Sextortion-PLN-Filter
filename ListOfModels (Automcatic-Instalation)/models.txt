@@ -36,4 +36,3 @@ gemma3:4b
 gemma3:1b
 gemma3n:e2b
 gemma3n:e4b
-mxbai-embed-large:335m
