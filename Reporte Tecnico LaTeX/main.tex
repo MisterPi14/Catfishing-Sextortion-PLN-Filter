@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[letterpaper,12pt,oneside]{book}
 
 % Modificación de la plantilla original de esta url: 
 % https://es.overleaf.com/latex/templates/tesis-unam-ingenieria-energia/kfffjrxcckdp
@@ -6,10 +6,6 @@
 % Adaptada por Pedro Guevara López para Proyecto de Ingeniería - IC ESIME Culhuacan.
 % Cualquier sugerencia, corrección o comentario a: pguevara@ipn.mx
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\documentclass[letterpaper,12pt,oneside]{book}
 %\usepackage[a4paper,includeall,bindingoffset=0cm,margin=2cm,marginparsep=0cm,marginparwidth=0cm]{geometry}
 \usepackage[top=1in, left=0.9in, right=1.25in, bottom=1in]{geometry}
 \usepackage{ESIME_IC}
@@ -53,33 +49,28 @@
 
 
 \begin{document}
+   \frontmatter
+   \include{Pretexto/portada}
+   \include{Intro/resumen}
+   \include{Pretexto/frontmater}
 
-\frontmatter
-\include{Pretexto/portada}
-\include{Intro/resumen}
-\include{Pretexto/frontmater}
+   \mainmatter
+   \include{Ch1_Introducción/ch1}
+   \include{Ch2_Problema_y_Objetivos/ch2}
+   \include{Ch3_Marco_Teórico/ch3}
+   \include{Ch4_Estado_del_Arte/ch4}
+   \include{Ch5_Desarrollo/ch5}
+   \include{Ch6_Pruebas_y_resultados/ch6}
+   \include{Ch7_Glosario_adicional/ch7}
+   \backmatter
 
-\mainmatter
-\include{Ch1 Introducción problema y objetivos/ch1}[h]
-\include{Ch2 Marco Teórico/ch2}[h]
-\include{Ch3 Estado del Arte/ch3}[h]
-\include{Ch4 Desarrollo/ch4}[h]
-\include{Ch5 Pruebas y resultados/ch5}[h]
-\include{Ch6 Glosario (adicional)/ch6}[h]
+   \include{Conclusiones/conclusiones}
+   \include{Anexos/anexos}
 
-\backmatter
-\include{Conclusiones/conclusiones}
-\include{Anexos/anexos}
-
-\bibliographystyle{plainurl}
-%\bibliographystyle{plainurl} % estilo de bibliografía que soporta URLs
-\bibliography{referencias}
-
-\backmatter%@sglvgdor
-
-
+   \bibliographystyle{plainurl}
+   %\bibliographystyle{plainurl} % estilo de bibliografía que soporta URLs
+   \bibliography{referencias}
 \end{document}
-
 
 %07-06-2025: en las preguntas se habla de la parte tecnica en profundidad la exposicion deberia ir mas sobre la problematica y conclusiones de la investigacion con aspectos tecnicos relevantes
 
