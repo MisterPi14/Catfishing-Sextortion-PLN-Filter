@@ -1,0 +1,12 @@
+{
+    // Configuración de Word Wrap - se adapta al ancho de la ventana
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 120,
+    
+    // Reglas visuales para ayudar con el formato
+    "editor.rulers": [80, 120],
+    
+    // Mejora la legibilidad con wrap
+    "editor.lineNumbers": "on",
+    "editor.renderWhitespace": "boundary"
+}

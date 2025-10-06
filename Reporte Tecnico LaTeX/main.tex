@@ -46,7 +46,16 @@
    pdftitle={Sharelatex Example},
    pdfpagemode=FullScreen,
 }
-
+\begin{comment}
+% para imprimir un rango de capitulos
+\includeonly{
+   Pretexto/portada,
+   Intro/resumen,
+   Pretexto/frontmater,
+   Ch1_Introducción/ch1,
+   Ch2_Problema_y_Objetivos/ch2
+}
+\end{comment}
 
 \begin{document}
    \frontmatter
@@ -64,12 +73,13 @@
    \include{Ch7_Glosario_adicional/ch7}
    \backmatter
 
-   \include{Conclusiones/conclusiones}
+   \include{Conclusiones_Trabajo_Futuro/Conclusiones_Trabajo}
    \include{Anexos/anexos}
 
    \bibliographystyle{plainurl}
    %\bibliographystyle{plainurl} % estilo de bibliografía que soporta URLs
    \bibliography{referencias}
+   %\includepdf[pages=i-11]{main.pdf}
 \end{document}
 
 %07-06-2025: en las preguntas se habla de la parte tecnica en profundidad la exposicion deberia ir mas sobre la problematica y conclusiones de la investigacion con aspectos tecnicos relevantes
