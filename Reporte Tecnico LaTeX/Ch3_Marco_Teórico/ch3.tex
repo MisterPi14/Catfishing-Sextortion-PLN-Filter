@@ -105,10 +105,15 @@ los modelos de procesamiento de lenguaje natural, que deben ser capaces de recon
 %dar el preambulo de la necesidad de evaluacion del llm dentro del proyecto, se puede redactar en razon del objetivo especifico que se tiene mencionandolo en este preámbulo
 \subsection{Métricas de desempeño de clasificadores}
 
+para evaluar los modelos se hizo uso de scikit learn a traves del modulo Classification report (Expandir redaccion)
+\cite{classificationReportSkLearn}
+
 \subsection{Acurracy}
 \begin{equation}
     \text{accuracy}(y, \hat{y}) = \frac{1}{n_\text{samples}} \sum_{i=0}^{n_\text{samples}-1} 1(\hat{y}_i = y_i)
 \end{equation}
+
+\cite{accuracyScoreSkLearn}
 
 \subsubsection{Presicion}
 
@@ -118,6 +123,11 @@ La precisión es la habilidad que posee un clasificador para evitar clasificar c
 \subsubsection{Recall}
 
 Recall es la habilidad que tiene un clasificador para encontrar todos los casos positivos \cite{recallScoreSkLearn}
+
+\subsubsection{F1-Recall o F1-Score}
+% ver si f1 recall y f1 score es lo mismo
+\cite{f1scoreSkLearn}
+
 
 \subsubsection{Buenas practicas para la generación de datos sintéticos (Pendiente de parafraseo y resumen)}
 
