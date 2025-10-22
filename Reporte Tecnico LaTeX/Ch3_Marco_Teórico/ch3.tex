@@ -117,7 +117,16 @@ para evaluar los modelos se hizo uso de scikit learn a traves del modulo Classif
 
 \subsubsection{Presicion}
 
-La precisión es la habilidad que posee un clasificador para evitar clasificar como positivo un caso negativo
+
+\begin{equation}
+    \text{p}(a) = (\frac{tp}{tp + fp})
+\end{equation}
+La precisión es la habilidad que posee un clasificador para no clasificar como positivo una muestra negativa.
+
+el rango de este valor va de 0 (el peor caso) a 1 (el mejor caso)
+
+
+
 \cite{precisionScoreSkLearn}
 
 \subsubsection{Recall}
