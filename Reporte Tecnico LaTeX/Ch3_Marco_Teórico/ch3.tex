@@ -105,6 +105,32 @@ los modelos de procesamiento de lenguaje natural, que deben ser capaces de recon
 %dar el preambulo de la necesidad de evaluacion del llm dentro del proyecto, se puede redactar en razon del objetivo especifico que se tiene mencionandolo en este preámbulo
 \subsection{Métricas de desempeño de clasificadores}
 
+REDACCION DEL MECANISMO DE TRANSFORMACION DE PROBLEMAS MULTICLASE A BINARIOS EN EL CLASSIFICATION REPORT PARA OPERAR 
+
+El mecanismo de dividir una tarea multiclase en varios problemas binarios —conocido como **One-vs-Rest (OvR)** o **One-vs-One (OvO)**
+
+https://scikit-learn.org/stable/modules/model_evaluation.html#from-binary-to-multiclass-and-multilabel
+
+Algunas de las metricas que se emplean en la evaluacion de modelos en tareas de clasificacion desde la definicion estan consevidas para clasificacion binaria, algunos ejemplos incluyen la f1 score
+
+Cuando se trabaja con tareas de clasificacion multiclase o multietiqueta los datos son tratados como una coleccion de casos binarios uno por cada clase que se considere 
+
+Si bien esta es una caracteristica de la definicion matematica de las metricas, para efectos practicos no es suficiente puesto que no nos provee con una vision general del desempeño a lo largo de todo el conjunto de clases, por ello es necesario apoyarnos de tecnicas para promediar estas metricas obtenidas por cada clase
+
+cada una de estas formas sera de mayor utilidad dependiendo el escenario.
+
+**"Macro"** simplemente calcula la media de las métricas binarias, dando el mismo peso a cada clase. En problemas donde las clases poco frecuentes son importantes, el promedio macro puede ser una forma de resaltar su rendimiento. Sin embargo, la suposición de que todas las clases son igualmente importantes a menudo no es cierta, por lo que el promedio macro puede sobrevalorar el bajo rendimiento de una clase poco frecuente.
+
+**"Weighted"** tiene en cuenta el desequilibrio de clases al calcular el promedio de las métricas binarias, en el que la puntuación de cada clase se pondera por su presencia en la muestra de datos verdaderos.
+
+**"Micro"** da a cada par muestra-clase una contribución igual a la métrica general (excepto como resultado del peso de la muestra). En lugar de sumar la métrica por clase, se suman los dividendos y divisores que componen las métricas por clase para calcular un cociente general. El promedio micro puede ser preferido en configuraciones multilabel, incluidas las clasificaciones multiclasificación donde se desea ignorar una clase mayoritaria.
+
+**"Samples"** solo se aplica a problemas multilabel. No calcula una medida por clase, sino que calcula la métrica sobre las clases verdaderas y predichas para cada muestra en los datos de evaluación, y devuelve su promedio ponderado por el peso de la muestra.
+
+Seleccionar **average=None** devolverá un arreglo con la puntuación para cada clase.
+
+Mientras que los datos multiclasificación se proporcionan a la métrica, como las etiquetas binarias, en una matriz de indicadores multilabel, en la que la celda [i, j] tiene un valor de 1 si la muestra i tiene la etiqueta j y 0 en caso contrario.
+
 para evaluar los modelos se hizo uso de scikit learn a traves del modulo Classification report (Expandir redaccion)
 \cite{classificationReportSkLearn}
 
