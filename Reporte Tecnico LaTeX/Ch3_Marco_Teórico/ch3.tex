@@ -107,11 +107,10 @@ los modelos de procesamiento de lenguaje natural, que deben ser capaces de recon
 
 REDACCION DEL MECANISMO DE TRANSFORMACION DE PROBLEMAS MULTICLASE A BINARIOS EN EL CLASSIFICATION REPORT PARA OPERAR 
 
-El mecanismo de dividir una tarea multiclase en varios problemas binarios —conocido como **One-vs-Rest (OvR)** o **One-vs-One (OvO)**
+El mecanismo de dividir una tarea multiclase en varios problemas binarios —conocido como **One-vs-Rest (OvR)** o **One-vs-One (OvO)**
 
-https://scikit-learn.org/stable/modules/model_evaluation.html#from-binary-to-multiclass-and-multilabel
 
-Algunas de las metricas que se emplean en la evaluacion de modelos en tareas de clasificacion desde la definicion estan consevidas para clasificacion binaria, algunos ejemplos incluyen la f1 score
+Algunas de las metricas que se emplean en la evaluacion de modelos en tareas de clasificacion desde la definicion estan concebidas para clasificacion binaria, algunos ejemplos incluyen la f1 score
 
 Cuando se trabaja con tareas de clasificacion multiclase o multietiqueta los datos son tratados como una coleccion de casos binarios uno por cada clase que se considere 
 
@@ -130,8 +129,12 @@ cada una de estas formas sera de mayor utilidad dependiendo el escenario.
 Seleccionar **average=None** devolverá un arreglo con la puntuación para cada clase.
 
 Mientras que los datos multiclasificación se proporcionan a la métrica, como las etiquetas binarias, en una matriz de indicadores multilabel, en la que la celda [i, j] tiene un valor de 1 si la muestra i tiene la etiqueta j y 0 en caso contrario.
+\cite{classificationMetricsSkLearn}
+
 
 para evaluar los modelos se hizo uso de scikit learn a traves del modulo Classification report (Expandir redaccion)
+% La funcion classification report, no incluye micro ni sample average de manera nativa, en su lugar necesitan calcularse por aparte
+
 \cite{classificationReportSkLearn}
 
 \subsection{Acurracy}
@@ -141,11 +144,11 @@ para evaluar los modelos se hizo uso de scikit learn a traves del modulo Classif
 
 \cite{accuracyScoreSkLearn}
 
-\subsubsection{Presicion}
+\subsubsection{Precision (Presicion)}
 
 
 \begin{equation}
-    \text{p}(a) = (\frac{tp}{tp + fp})
+    \text{Precision} = (\frac{tp}{tp + fp})
 \end{equation}
 La precisión es la habilidad que posee un clasificador para no clasificar como positivo una muestra negativa.
 
@@ -155,12 +158,19 @@ el rango de este valor va de 0 (el peor caso) a 1 (el mejor caso)
 
 \cite{precisionScoreSkLearn}
 
-\subsubsection{Recall}
+\subsubsection{Recall (Sensibilidad)}
+\begin{equation}
+    \text{Recall} = (\frac{tp}{tp + fn})
+\end{equation}
 
 Recall es la habilidad que tiene un clasificador para encontrar todos los casos positivos \cite{recallScoreSkLearn}
 
-\subsubsection{F1-Recall o F1-Score}
-% ver si f1 recall y f1 score es lo mismo
+\subsubsection{F1-Score (puntaje F1)}
+
+\begin{equation}
+    \text{F1} = \frac{2 (\text{TP})}{2 (\text{TP}) + \text{FP} + \text{FN}}
+\end{equation}
+
 \cite{f1scoreSkLearn}
 
 
