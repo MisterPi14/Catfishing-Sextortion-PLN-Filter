@@ -1,0 +1,77 @@
+@startuml
+title MVP Arquitectura con Amplify y Worker Local (Ollama)
+
+!define RECTANGLE class
+skinparam rectangle {
+  BackgroundColor white
+  BorderColor #AAAAAA
+  RoundCorner 15
+}
+skinparam arrow {
+  Color #3366cc
+  FontSize 12
+}
+
+actor Usuario
+
+'---------------------------------------------
+' Nodos Frontend y Hosting
+rectangle "AWS Amplify\n(Despliegue CI/CD)" as Amplify #ff6666
+rectangle "Amazon CloudFront\n(CDN / Distribución)" as CloudFront #ffcc00
+rectangle "Amazon S3\n(Hosting de Frontend)" as S3 #99cc66
+
+'---------------------------------------------
+' Nodos Backend
+rectangle "Amazon API Gateway\n(WebSocket)" as APIGW #ff99cc
+rectangle "AWS Lambda\n(ReceiveMessage)" as LambdaReceive #ffcc99
+rectangle "Amazon DynamoDB\n(Base de Datos)" as Dynamo #99ccff
+rectangle "Amazon SQS\n(Cola de Mensajes)" as SQS #ff6699
+rectangle "AWS Lambda\n(SocketPush)" as LambdaPush #ffcc99
+
+'---------------------------------------------
+' Nodos Locales
+rectangle "Worker Local\n(Client-Side Processor)" as Worker #cc99ff
+rectangle "Ollama\n(Modelo LLM 4B+)" as Ollama #ccccff
+
+'---------------------------------------------
+' Relaciones de Frontend
+Usuario --> CloudFront : Acceso al Frontend
+CloudFront --> S3 : Origen de archivos estáticos
+Amplify --> S3 : Deploy del Frontend
+S3 --> CloudFront : Contenido Servido
+
+'---------------------------------------------
+' Relaciones de Comunicación Tiempo Real
+Usuario --> APIGW : Conexión WebSocket
+APIGW --> LambdaReceive : Envío de Mensajes
+
+LambdaReceive --> Dynamo : Guardar estado inicial\n(status=pending, connectionId)
+LambdaReceive --> SQS : Encolar petición para procesamiento
+
+'---------------------------------------------
+' Procesamiento en Local
+SQS --> Worker : Pull / Long Poll
+Worker --> Ollama : Inferencia local
+Worker --> Dynamo : Actualizar resultado (status=done, label)
+Worker ..> APIGW : (opcional) postToConnection\nsi autorizado
+
+'---------------------------------------------
+' Retorno al cliente (Push)
+Dynamo -[hidden]-> LambdaPush
+Dynamo --> LambdaPush : DynamoDB Streams (evento)
+LambdaPush --> APIGW : postToConnection
+APIGW --> Usuario : Respuesta push en tiempo real
+
+'---------------------------------------------
+' Leyenda
+legend right
+  == Descripción ==
+  Azul claro : Persistencia (DynamoDB)
+  Rosa : Comunicación / Mensajería
+  Amarillo : Funciones Lambda
+  Verde : Hosting Estático
+  Morado : Procesamiento Local
+  Rojo : Despliegue (Amplify)
+endlegend
+
+@enduml
