@@ -167,8 +167,42 @@ Recall es la habilidad que tiene un clasificador para encontrar todos los casos 
 
 \subsubsection{F1-Score (puntaje F1)}
 
+Antes de definir a la metrica F1-Score es necesaria la definicion de la medida F puesto que F1-Score es un caso particular de esta metrica.
+
+la medida F es la media harmonica ponderada entre las metricas precision y recall, esta metrica surge por la necesidad de balancear ambas metricas, aspecto que se logra  mediante la propiedad de la media harmonica de presentar una alta sensivilidad a valores de baja magnitud lo que conduce a una disminucion considerable en el valor resultante cuando cualquiera de las dos metricas posea un valor bajo
+
+\begin{comment}
+REDACCION DE IA CORRECTA, VERIFICAR Y MODIFICAR A UN TONO MAS PROFESIONAL
+
+    La medida F1 combina la precisión y el recall en un solo valor mediante la media armónica de ambas métricas. Esta formulación es especialmente valiosa cuando se requiere un equilibrio entre la capacidad de identificar correctamente los casos positivos (precisión) y la capacidad de encontrar todos los casos positivos existentes (recall).
+
+La elección de la media armónica sobre otros tipos de promedio (como la media aritmética) tiene una justificación matemática importante: la media armónica es particularmente sensible a valores pequeños. Esto significa que si cualquiera de las dos métricas (precisión o recall) tiene un desempeño pobre, el valor del F1-score se verá significativamente reducido, lo que refleja de manera más realista el rendimiento general del clasificador.
+
+La fórmula general de la medida F se puede ajustar mediante el parámetro β para dar diferente peso a la precisión y al recall según las necesidades específicas del problema:
+\end{comment}
+
+
+
 \begin{equation}
-    \text{F1} = \frac{2 (\text{TP})}{2 (\text{TP}) + \text{FP} + \text{FN}}
+    F_\text{meassure} = F_\beta = (1 + \beta^2) \frac{\text{precision} \times \text{recall}}{\beta^2 \text{precision} + \text{recall}}
+\end{equation}
+
+Dentro de sci kit learn se emplea esta otra expresion equivalente para evitar el error de division con denominador cero en casos donde precision y recall son iguales a cero.
+
+\begin{equation}
+    F_\text{meassure} = F_\beta = \frac{(1 + \beta^2) \text{tp}}{(1 + \beta^2) \text{tp} + \text{fp} + \beta^2 \text{fn}}
+\end{equation}
+
+\cite{fMeassureAndAveragesSkLearn}
+
+Si $\beta > 1$ → Da más peso al recall (la sensibilidad o proporción de verdaderos positivos detectados).
+
+Si $\beta < 1$ → Da más peso a la precisión (la proporción de predicciones positivas que fueron correctas).
+
+Si $\beta = 1$ → Se obtiene el F1-score, que equilibra precisión y recall por igual.
+
+\begin{equation}
+    f1_\text{Score} = \text{F1} = \frac{2 (\text{tp})}{2 (\text{tp}) + \text{fp} + \text{fn}}
 \end{equation}
 
 \cite{f1scoreSkLearn}
