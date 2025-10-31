@@ -137,7 +137,7 @@ para evaluar los modelos se hizo uso de scikit learn a traves del modulo Classif
 
 \cite{classificationReportSkLearn}
 
-\subsection{Acurracy}
+\subsubsection{Acurracy}
 \begin{equation}
     \text{accuracy}(y, \hat{y}) = \frac{1}{n_\text{samples}} \sum_{i=0}^{n_\text{samples}-1} 1(\hat{y}_i = y_i)
 \end{equation}
@@ -206,6 +206,56 @@ Si $\beta = 1$ → Se obtiene el F1-score, que equilibra precisión y recall por
 \end{equation}
 
 \cite{f1scoreSkLearn}
+
+\subsection{Promedios}
+
+%======================
+\subsubsection{micro average (promedio micro)}
+%======================
+
+\begin{equation}
+\text{Precision}_{micro} = P(y, \hat{y})
+\end{equation}
+
+\begin{equation}
+\text{Recall}_{micro} = R(y, \hat{y})
+\end{equation}
+
+\begin{equation}
+F_{\beta, micro} = F_{\beta}(y, \hat{y})
+\end{equation}
+
+%======================
+\subsubsection{macro average (promedio macro)}
+%======================
+
+\begin{equation}
+\text{Precision}_{macro} = \frac{1}{|L|} \sum_{l \in L} P(y_l, \hat{y}_l)
+\end{equation}
+
+\begin{equation}
+\text{Recall}_{macro} = \frac{1}{|L|} \sum_{l \in L} R(y_l, \hat{y}_l)
+\end{equation}
+
+\begin{equation}
+F_{\beta, macro} = \frac{1}{|L|} \sum_{l \in L} F_{\beta}(y_l, \hat{y}_l)
+\end{equation}
+
+%======================
+\subsubsection{weighted average (promedio ponderado)}
+%======================
+
+\begin{equation}
+\text{Precision}_{weighted} = \frac{1}{\sum_{l \in L} |y_l|} \sum_{l \in L} |y_l| P(y_l, \hat{y}_l)
+\end{equation}
+
+\begin{equation}
+\text{Recall}_{weighted} = \frac{1}{\sum_{l \in L} |y_l|} \sum_{l \in L} |y_l| R(y_l, \hat{y}_l)
+\end{equation}
+
+\begin{equation}
+F_{\beta, weighted} = \frac{1}{\sum_{l \in L} |y_l|} \sum_{l \in L} |y_l| F_{\beta}(y_l, \hat{y}_l)
+\end{equation}
 
 
 \subsubsection{Buenas practicas para la generación de datos sintéticos (Pendiente de parafraseo y resumen)}
