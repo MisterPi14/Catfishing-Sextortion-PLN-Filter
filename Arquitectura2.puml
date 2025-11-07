@@ -1,0 +1,112 @@
+@startuml
+' Layout hints
+skinparam dpi 150
+skinparam componentStyle rectangle
+
+title Arquitectura AWS MVP Chat con LLM local (Ollama) - Versión completa
+
+actor "Usuario (Navegador)" as User
+
+package "Cliente / Edge" {
+  component "Front-end\n(React o HTML/JS)\nAmplify / S3 + CloudFront" as Front
+}
+
+package "Autenticación" {
+  component "Amazon Cognito\n(User Pool + App Client)" as Cognito
+}
+
+package "API Layer" {
+  component "API Gateway\n(HTTP API)" as APIG
+  component "API Gateway\n(WebSocket)" as APIG_WS
+}
+
+package "Lambdas (Backend)" {
+  component "Lambda: AuthHandler\n(valida JWT)" as L_Auth
+  component "Lambda: ReceiveMessage\n(guarda en DynamoDB, Send -> SQS)" as L_Recv
+  component "Lambda: RetrieveMessages" as L_Retrieve
+  component "Lambda: AdminHandler\n(postToConnection)" as L_Admin
+  component "Lambda: OptionalPoller\n(invocada por EventBridge)\n(OPCIONAL - admin tasks)" as L_Poller
+}
+
+package "Persistencia & Mensajería" {
+  component "DynamoDB\nTable: Messages\n(PK: conversationId, SK: timestamp)" as D_Msg
+  component "DynamoDB\nTable: Connections\n(userId -> connectionId)" as D_Conn
+  component "S3 (payloads >256KB)" as S3
+  component "SNS Topic (Alertas)\n(opcional)" as SNS
+  component "SQS Queue: MessageAnalysisQueue" as SQS
+  component "SQS DLQ: MessageAnalysisDLQ" as DLQ
+}
+
+package "Observabilidad & Seguridad" {
+  component "CloudWatch\nLogs & Alarms" as CW
+  component "IAM Roles / STS" as IAM
+}
+
+package "Local Worker / Edge (On-Prem)" {
+  component "Worker Local\n(long-poll SQS)\n(require: sqs:ReceiveMessage,\n delete, dynamodb:UpdateItem)" as Worker
+  component "Ollama LLM\n(local: http://localhost:11434)\n(1B-4B params)" as Ollama
+}
+
+' Connections: Cliente -> Auth -> API
+User --> Front : Interacción UI
+Front --> Cognito : Login / Signup (email+pass)
+Cognito --> Front : JWT (ID/Access Token)
+
+Front -> APIG : HTTP API (Bearer <JWT>)
+Front -> APIG_WS : WebSocket connect / send
+
+' API -> Lambdas
+APIG --> L_Auth : Authorizer (Cognito) (or Lambda Authorizer)
+APIG --> L_Recv : POST /messages (authorized)
+APIG --> L_Retrieve : GET /messages
+APIG_WS --> L_Admin : WebSocket messages (connect/disconnect)
+
+' Lambda receive flow
+L_Recv --> D_Msg : PutItem (status = pending, messageId)
+L_Recv --> SQS : SendMessage (messageId, s3Pointer*)
+note right of SQS : *If payload >256KB upload to S3\nand send pointer
+
+' SQS DLQ redrive
+SQS --> DLQ : RedrivePolicy (maxReceiveCount)
+
+' Optional poller (administrative)
+L_Poller <-- EventBridge : schedule (e.g., rate(5 minutes))
+L_Poller --> SQS : (admin tasks, re-enqueue) 
+
+' Worker consumes SQS and calls Ollama
+Worker --> SQS : ReceiveMessage (long-poll WaitTimeSeconds=20)
+Worker --> Ollama : POST /api/generate (localhost:11434)
+Ollama --> Worker : analysis result (tags, score, risk)
+
+' Worker writes back results and notifies
+Worker --> D_Msg : UpdateItem (status=analyzed, analysis={})
+Worker --> SNS : Publish (alert) 
+SNS --> L_Admin : SNS subscription triggers Lambda
+L_Admin --> APIG_WS : PostToConnection(connectionId, alert)
+L_Admin --> D_Conn : (read connectionId) 
+
+' Alternative direct: Worker updates DB and calls Admin Lambda via API (optional)
+Worker --> L_Admin : Invoke (optional) / or publishes SNS
+
+' Monitoring & Security
+L_Recv --> CW : logs
+Worker --> CW : logs (local logs optional to CloudWatch via agent)
+L_Auth -> IAM : role usage
+L_Recv -> IAM : role usage
+L_Retrieve -> IAM : role usage
+L_Admin -> IAM : role usage
+L_Poller -> IAM : role usage
+
+' Misc
+D_Msg --> S3 : (store large payloads) 
+APIG --> CW : metrics
+
+' Legend / notes
+note bottom
+  - Use SQS FIFO if strict order per conversation required (MessageGroupId = conversationId).
+  - Configure SQS VisibilityTimeout > max expected LLM processing time.
+  - Use DLQ (dead-letter queue) to avoid message loss.
+  - Do NOT expose local machine directly to the internet; worker must pull SQS.
+end note
+
+@enduml
