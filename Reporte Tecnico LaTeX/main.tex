@@ -20,6 +20,7 @@
 \usepackage{comment}
 \usepackage{datetime}
 
+
 \usepackage{cite}%para las citas con el archivo bib
 \usepackage{float}
 
@@ -56,6 +57,29 @@
    Ch2_Problema_y_Objetivos/ch2
 }
 \end{comment}
+
+% para insertar scripts 
+\usepackage{listings}
+\usepackage{xcolor}
+\setlength{\parindent}{0pt}  % Elimina sangría de todos los párrafos
+
+
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{black!3},
+  frame=single,
+  framesep=3pt,
+  rulecolor=\color{black!30},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{teal},
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true
+}
+
+\lstset{style=mystyle}
+
 
 \begin{document}
    \frontmatter

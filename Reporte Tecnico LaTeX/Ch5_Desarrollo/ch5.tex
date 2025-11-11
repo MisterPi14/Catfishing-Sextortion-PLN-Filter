@@ -61,53 +61,179 @@ generación sintetica que plantea IBM \cite{SynthDataByIbm} en la sección del m
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{imagenes/desarrollo/propuestaSolucion/diagramaArquitectonico.png}
-    \caption{Diagrama arquitectónico de la propuesta de solución}
+    \includegraphics[width=0.9\linewidth]{imagenes/desarrollo/propuestaSolucion/diagramaArquitectonico.pdf}
+    \caption{Diagrama arquitectónico: Arquitectura de Servicios AWS de la Aplicación de mensajería}
     \label{fig:diagrama-arquitectonico}
 \end{figure}
 
-
-\begin{figure}[H]
-%Considerar el comentario de calzada sobre la migración a nube y aprovechar el ecosistema azure
-    \centering
-    \includegraphics[width=0.5\linewidth]{imagenes/esquema1.png}
-    \caption{Enter Caption}
-    \label{fig:enter-label}
-\end{figure}
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{imagenes/esquema2.png}
-    \caption{Enter Caption}
-    \label{fig:enter-label}
+    \includegraphics[width=0.9\linewidth]{imagenes/desarrollo/propuestaSolucion/diagramaComponentes.pdf}
+    \caption{Diagrama de Componentes: infraestructura AWS para Aplicación de mensajería con aoporte para modelo largo de lenguaje}
+    \label{fig:diagrama-componentes}
 \end{figure}
 
-Anteriormente un objetivo demasiado amplio -{\textgreater} mediante la ejecuci{\'{o}}n de pruebas de identificaci{\'{o}}n de catphising a trav{\'{e}}s de ejemplos adaptados al espa{\~{n}}ol y a jergas propias de ciberfraude. generados a partir de ChatGPT almacenados en documentos CSV a incluir dentro de prompts automatizados para definir el modelo inicial con el cual trabajar el finetuning posteriormente
+\subsection{Arquitectura general del sistema (explicación)}
 
-	extbf{Arquitectura general del sistema (explicación)}
+%2025/11/10: Esta seccion esta hecha con AI, revision y redaccion humanizada pendientes
 
-Implementación con enfoque edge processing.
+La arquitectura propuesta representa una solución híbrida cloud-local diseñada para implementar un sistema de mensajería instantánea con capacidades de detección de amenazas en tiempo real. Este MVP (Producto Mínimo Viable) combina la escalabilidad y confiabilidad de los servicios administrados de AWS con el procesamiento local de un modelo de lenguaje (LLM) para análisis de contenido, logrando un equilibrio óptimo entre costo, rendimiento y privacidad. La arquitectura está optimizada para operar dentro de la capa gratuita de AWS, haciendo uso de servicios serverless que eliminan la necesidad aprovisionamiento y permiten un escalamiento automático según la demanda. El sistema está diseñado para detectar técnicas de sextorsión y catfishing en conversaciones de chat, alertando a los usuarios de manera proactiva cuando se identifiquen patrones de riesgo, todo esto mientras mantiene la persistencia de datos y garantiza la entrega de mensajes incluso ante fallos temporales del módulo de análisis.
 
-La solución involucra un enfoque que distribuye los procesos en los dispositivos móviles, para ello se contempla el desarrollo de una aplicación nativa en Android sobre la implementación en aplicaciones web progresivas (PWA), por el nivel de integración con el hardware.
+\subsubsection{DESCRIPCIÓN DE SERVICIOS Y SU FUNCIONALIDAD }
 
-Dentro de la aplicación se gestionarían diferentes servicios o módulos como lo son:
+1. AWS AMPLIFY HOSTING (Frontend)
+
+AWS Amplify Hosting es el servicio encargado de alojar y distribuir la aplicación web del cliente. Este servicio proporciona hosting estático con integración continua, permitiendo desplegar aplicaciones React, Vue, Angular o HTML/CSS/JS simple de manera automática desde repositorios Git.
+
+Funcionalidad: Amplify sirve los archivos estáticos del frontend (HTML, CSS, JavaScript) a través de una red de distribución de contenido (CDN) global, garantizando tiempos de carga rápidos. Además, maneja el certificado SSL/TLS automáticamente, proporcionando conexiones HTTPS seguras sin configuración adicional.
+
+Por qué es necesario: Para un MVP, Amplify elimina la complejidad de configurar servidores web, gestionar certificados SSL y configurar pipelines de despliegue. Su capa gratuita incluye 15GB de almacenamiento y transferencia de datos, suficiente para las pruebas iniciales con 2 usuarios. La integración nativa con otros servicios de AWS (Cognito, API Gateway) simplifica significativamente el desarrollo.
+
+2. AMAZON COGNITO USER POOL (Autenticación)
+
+Amazon Cognito User Pool es el servicio de gestión de identidades y autenticación de usuarios que maneja todo el ciclo de vida de las cuentas de usuario, desde el registro hasta la autenticación y recuperación de contraseñas.
+
+Funcionalidad: Cognito proporciona un sistema completo de autenticación basado en estándares OAuth 2.0 y OpenID Connect. Valida las credenciales de los usuarios (email y contraseña), genera tokens JWT (JSON Web Tokens) firmados que contienen información de identidad del usuario, y gestiona la renovación de sesiones. Los tokens JWT se utilizan para autorizar las solicitudes a API Gateway y otros servicios de AWS.
+
+Por qué es necesario: Implementar un sistema de autenticación seguro desde cero es complejo y propenso a vulnerabilidades. Cognito ofrece una solución probada que incluye hash seguro de contraseñas (bcrypt), protección contra ataques de fuerza bruta, verificación de email, y cumplimiento con estándares de seguridad. Su capa gratuita permite hasta 50,000 usuarios activos mensuales (MAU), más que suficiente para un MVP. Además, se integra directamente con API Gateway para validar automáticamente los tokens JWT en cada solicitud.
+
+
+3. API GATEWAY WEBSOCKET API (Comunicación en Tiempo Real)
+
+API Gateway con soporte WebSocket es el servicio que gestiona las conexiones bidireccionales persistentes entre los clientes y el backend, permitiendo la comunicación en tiempo real sin necesidad de polling.
+
+Funcionalidad: API Gateway WebSocket mantiene conexiones abiertas con cada cliente conectado, asignando un connectionId único a cada sesión. Cuando un mensaje llega, lo enruta a la función Lambda correspondiente según la acción especificada (enviar mensaje, obtener historial, etc.). También permite enviar mensajes desde el backend hacia los clientes conectados de forma asíncrona, habilitando notificaciones push instantáneas.
+
+Por qué es necesario: Para lograr una experiencia de chat en tiempo real similar a WhatsApp o Telegram, se requiere comunicación bidireccional instantánea. Las alternativas tradicionales como HTTP polling son ineficientes y costosas. WebSocket mantiene una conexión TCP persistente que permite enviar datos en ambas direcciones sin la sobrecarga de establecer nuevas conexiones HTTP para cada mensaje. API Gateway gestiona automáticamente el escalamiento, la reconexión ante fallos, y la integración con Lambda, eliminando la necesidad de gestionar servidores WebSocket manualmente. Su capa gratuita incluye 1 millón de mensajes por mes.
+
+
+4. AWS LAMBDA - ReceiveMessage (Procesamiento de Mensajes Entrantes)
+
+Esta función Lambda es el punto de entrada para todos los mensajes nuevos enviados por los usuarios a través del chat.
+
+Funcionalidad: Cuando un usuario envía un mensaje, API Gateway invoca esta función con los datos del mensaje. La función realiza tres operaciones críticas en secuencia: (1) Almacena el mensaje en DynamoDB con estado "pendiente" para garantizar persistencia inmediata, (2) Encola el mensaje en SQS para análisis posterior por el LLM local, y (3) Reenvía el mensaje al destinatario conectado a través de API Gateway WebSocket para entrega instantánea.
+
+Por qué es necesario: Esta función implementa el patrón de "write-through cache" y desacoplamiento asíncrono. Al guardar primero en DynamoDB, se garantiza que ningún mensaje se pierda incluso si el sistema de análisis falla. Al encolar en SQS, se desacopla el procesamiento del LLM del flujo principal de mensajería, permitiendo que el chat funcione con baja latencia independientemente del tiempo de análisis. La arquitectura serverless de Lambda significa que solo se paga por el tiempo de ejecución real (primeros 1 millón de invocaciones gratis), sin necesidad de mantener servidores activos.
+
+
+5. AWS LAMBDA - GetMessages (Recuperación de Historial)
+
+Esta función Lambda maneja las solicitudes de los usuarios para recuperar el historial de conversaciones anteriores.
+
+Funcionalidad: Cuando un usuario abre una conversación o solicita mensajes antiguos, esta función consulta DynamoDB usando el conversationId como clave de partición y recupera todos los mensajes ordenados por timestamp. Formatea los resultados incluyendo el contenido del mensaje, información del remitente, estado de análisis, y cualquier alerta de riesgo detectada.
+
+Por qué es necesario: Separar la lógica de recuperación de historial en una función dedicada sigue el principio de responsabilidad única y permite optimizar las consultas a DynamoDB de forma independiente. Esta función puede implementar paginación para conversaciones largas, filtrado por fecha, y caché de resultados frecuentes sin afectar el rendimiento del envío de mensajes en tiempo real. La separación también facilita agregar funcionalidades futuras como búsqueda de mensajes o exportación de conversaciones.
+
+
+6. AWS LAMBDA - NotifyUser (Sistema de Alertas)
+
+Esta función Lambda se encarga de enviar notificaciones a los usuarios cuando el sistema de análisis detecta contenido de riesgo en los mensajes.
+
+Funcionalidad: El Worker local invoca esta función cuando el LLM identifica patrones de catfishing o extorsión. La función consulta DynamoDB para obtener el connectionId del usuario que debe ser alertado, construye un mensaje de alerta con detalles del riesgo detectado (tipo de amenaza, nivel de confianza, fragmentos relevantes), y lo envía a través de API Gateway WebSocket directamente al cliente conectado.
+
+Por qué es necesario: Las alertas de seguridad deben entregarse de forma inmediata y confiable. Esta función centraliza la lógica de notificaciones, permitiendo implementar diferentes canales de alerta (WebSocket, email, SMS) desde un único punto. Al ser invocada por el Worker local, mantiene el desacoplamiento entre el sistema de análisis y la infraestructura de AWS. También permite implementar lógica de negocio como evitar alertas duplicadas, escalar alertas según severidad, o registrar todas las notificaciones para auditoría.
+
+
+7. AMAZON DYNAMODB (Persistencia de Datos)
+
+DynamoDB es la base de datos NoSQL completamente administrada que almacena todos los datos del sistema: mensajes, metadatos de conversaciones, y estados de conexión.
+
+Funcionalidad: La tabla ChatMessages utiliza un modelo de datos optimizado con conversationId como clave de partición (PK) y timestamp como clave de ordenamiento (SK). Esto permite consultas eficientes de todos los mensajes de una conversación ordenados cronológicamente. Cada registro almacena: messageId, senderId, receiverId, content (contenido del mensaje), status (pendiente/analizado), analysisResult (resultado del LLM), connectionId (para enrutamiento WebSocket), y metadatos adicionales.
+
+Por qué es necesario: DynamoDB ofrece latencia de milisegundos de un solo dígito, escalamiento automático, y alta disponibilidad sin gestión de servidores. Para un MVP de chat, estas características son críticas: las consultas de historial deben ser rápidas, el sistema debe manejar picos de escritura cuando múltiples mensajes llegan simultáneamente, y los datos deben estar siempre disponibles. Su modelo de precios bajo demanda significa que solo se paga por las operaciones realmente ejecutadas. La capa gratuita incluye 25GB de almacenamiento y 25 unidades de capacidad de lectura/escritura, suficiente para miles de mensajes. El diseño de clave compuesta (PK + SK) permite consultas eficientes sin índices secundarios costosos.
+
+
+8. AMAZON SQS - MessageAnalysisQueue (Cola de Análisis)
+
+Amazon SQS (Simple Queue Service) es el servicio de cola de mensajes que actúa como buffer entre el sistema de chat en AWS y el Worker local que ejecuta el LLM.
+
+Funcionalidad: Cada mensaje de chat se encola en SQS inmediatamente después de ser almacenado en DynamoDB. La cola está configurada con long-polling (WaitTimeSeconds: 20s) para reducir solicitudes vacías y costos. El Worker local consulta continuamente esta cola, procesa los mensajes con el LLM, y los elimina de la cola solo después de actualizar exitosamente DynamoDB. Si un mensaje falla 3 veces (por ejemplo, por errores del LLM), se mueve automáticamente a la Dead Letter Queue (DLQ).
+
+Por qué es necesario: SQS es fundamental para la tolerancia a fallos del sistema. Si la computadora local con Ollama está apagada o sin conexión, los mensajes permanecen en la cola hasta por 14 días, garantizando que ningún mensaje quede sin analizar. El VisibilityTimeout de 300 segundos asegura que si el Worker falla durante el procesamiento, el mensaje vuelve a estar disponible automáticamente. La DLQ captura mensajes problemáticos para investigación manual sin bloquear el procesamiento de mensajes válidos. SQS también desacopla completamente el ritmo de envío de mensajes del ritmo de análisis del LLM, permitiendo que el chat funcione con baja latencia incluso si el análisis toma varios segundos. La capa gratuita incluye 1 millón de solicitudes mensuales.
+
+
+9. AMAZON SQS - Dead Letter Queue (Gestión de Fallos)
+
+La DLQ es una cola secundaria que recibe mensajes que no pudieron ser procesados exitosamente después de múltiples intentos.
+
+Funcionalidad: Cuando un mensaje en MessageAnalysisQueue falla 3 veces consecutivas (configurado en maxReceiveCount), SQS lo mueve automáticamente a la DLQ. Estos mensajes quedan disponibles para inspección manual, reprocesamiento con parámetros ajustados, o análisis de patrones de fallo.
+
+Por qué es necesario: Sin una DLQ, los mensajes problemáticos podrían bloquear la cola principal en un ciclo infinito de reintentos, consumiendo recursos y retrasando el procesamiento de mensajes válidos. La DLQ permite identificar problemas sistemáticos (por ejemplo, un tipo de contenido que causa errores en el LLM) sin perder datos ni afectar la operación normal. También proporciona visibilidad sobre la tasa de fallos del sistema, un indicador clave de salud para el MVP.
+
+
+10. WORKER LOCAL + OLLAMA LLM (Análisis de Contenido)
+
+El Worker es una aplicación Python que se ejecuta en una computadora local y actúa como puente entre AWS y el modelo de lenguaje Ollama.
+
+Funcionalidad: El Worker ejecuta un bucle continuo que: (1) Consulta SQS con long-polling para obtener mensajes pendientes, (2) Extrae el contenido del mensaje y lo envía a la API de Ollama (localhost:11434) con un prompt especializado para detectar catfishing y extorsión, (3) Recibe la respuesta del LLM con clasificación de riesgo, etiquetas de amenaza, y nivel de confianza, (4) Actualiza el registro en DynamoDB cambiando el status a "analizado" y guardando el resultado, (5) Si se detecta riesgo alto, invoca la función Lambda NotifyUser para alertar al usuario, y (6) Elimina el mensaje de SQS solo después de confirmar todas las operaciones.
+
+Por qué es necesario: Ejecutar el LLM localmente es un requisito del proyecto que reduce costos significativamente (evita pagar por inferencia en AWS SageMaker o Bedrock) y permite usar modelos personalizados optimizados para la detección específica de catfishing/extorsión. El Worker requiere permisos IAM para: sqs:ReceiveMessage, sqs:DeleteMessage (interactuar con la cola), dynamodb:UpdateItem (actualizar resultados), y lambda:InvokeFunction (enviar alertas). Ollama con modelos de 1B-4B parámetros puede ejecutarse en hardware consumer estándar (8-16GB RAM) y proporciona latencias de análisis razonables (1-5 segundos por mensaje). El diseño permite actualizar el modelo o ajustar prompts sin modificar la infraestructura de AWS.
+
+
+CONCLUSIÓN
+
+Esta arquitectura representa una solución pragmática y económica para el MVP, aprovechando servicios serverless de AWS que operan completamente dentro de la capa gratuita para volúmenes de prueba. El diseño prioriza la simplicidad operacional (sin servidores que gestionar), la tolerancia a fallos (SQS + DynamoDB garantizan que ningún mensaje se pierda), y la flexibilidad (el Worker local puede actualizarse independientemente). La separación de responsabilidades entre componentes facilita el desarrollo iterativo y el debugging, mientras que el uso de servicios administrados reduce el tiempo de implementación y los riesgos de seguridad. El sistema está preparado para escalar agregando más Workers locales si el volumen de mensajes aumenta, o migrando el LLM a AWS cuando el presupuesto lo permita.
+
+
+\subsection{Pruebas de desempeño de identificación en LLMs}
+
+se contempla el uso de técnicas de \textit{prompt engineering} para maximizar la capacidad de modelos de lenguaje (LLM) en la tarea de clasificación de mensajes sospechosos.
+
+La etapa inicial de esta investigación contempló efectuar un conjunto de pruebas a Una colección de modelos largos del lenguaje pertenecientes al actual estado del arte de la inteligencia artificial, se incluyen a continuación:
+
 \begin{itemize}
-    \item La ejecución del LLM
-    \item Gestor de notificaciones
-    \item Gestor de bases de datos
-    \item API de conexión con el servidor centralizado
+    \item Qwen3-VL: 4b
+        \item Gemma3n: e4b, e2b
+        \item Gemma3: 1b, 4b
+        \item Gemma2: 2b
+        \item Mistral: 7b
+        \item Spam-Detect: latest
+        \item Qwen3: 8b, 4b, 1.7b, 0.6b
+        \item EmotionAI: latest
+        \item SmallThinker: 3b
+        \item Qwen2.5: 7b, 3b, 1.5b, 0.5b
+        \item Phi4-mini: 3.8b
+        \item Phi4-mini-reasoning: 3.8b
+        \item Llama-Guard3: 8b, 1b
+        \item TinyDolphin: 1.1b
+        \item Llama3: 8b
+        \item Llama3.2: 3b, 1b
+        \item Llama3.1: 8b
+        \item Llama-3-Refueled: Q4\_K\_M
+        \item Opus-v1.2: Q4\_K\_M
+        \item Granite3.2: 8b, 2b
+        \item Granite3.3: 8b, 2b
+        \item Dolphin3: 8b
+        \item DeepSeek-R1: 8b, 1.5b
+        \item DeepCoder: 1.5b
+        \item Cogito: 3b, 8b
 \end{itemize}
-En el desarrollo se contempla la implementación de 2 bases de datos, una local y otra centralizada. Es importante diferenciar los propósitos de cada una; la base local recolectaría información sobre las interacciones del usuario de manera estrictamente local en conformidad con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) para la privacidad del usuario.
 
-	extbf{Tecnologías contempladas en la propuesta}
+El propósito de estas pruebas es determinar el conjunto de modelos con mayor ponderación mediante la comparación del desempeño de esta selección de modelos en la identificación del cafishing y sextorsión contemplando refinamiento mediante técnicas de prompting bajo 3 enfoques: zero shot, one shot y few shot para determinar el modelo que se empleara en la aplicación de mensajería.
 
-	extbf{Pruebas de desempeño de identificación en LLMs base (entorno de pruebas)}: se contempla el uso de técnicas de \textit{prompt engineering} para maximizar la capacidad de modelos de lenguaje (LLM) en la tarea de clasificación de mensajes sospechosos.
+La metodología empleada para llevar a cabo este conjunto de pruebas contempló el desarrollo de Un código de Python donde se programó la lógica de programación para la Ejecución De los modelos, evaluación A través de métricas Y almacenamiento de los resultados, La presentación de los resultados se realiza en la sección “Pruebas y resultados”.
 
-Ollama: para ejecutar modelos localmente en el entorno de pruebas.
+\section{Modulos del codigo}
 
-Jupyter: de Anaconda para automatizar la comunicación con el modelo desde Python hacia Ollama.
+Módulo con el prompt
+Módulo de almacenamiento en json
+Librerías utilizadas ollama cliente y sci kit learn
+Módulos involucrados en la lógica de la evaluación: los que miden las métricas, los que manejan el orden de atención a cada modelo encontrado mediante ollama listo, 
 
-	extbf{Implementación del lado del servidor}
+
+
+
+
+
+% ...existing code...
+\begin{lstlisting}[language=Python]
+def saludar(nombre):
+    print(f"Hola, {nombre}!")
+\end{lstlisting}
+% ...existing code...
+
+
+\subsection{Implementación del lado del servidor}
 
 PostgreSQL: sistema de gestión de bases de datos relacional utilizado para almacenar registros de conversación procesados, configuraciones personalizadas por usuario y resultados de inferencia.
 
@@ -120,6 +246,15 @@ Azure o Ngrok: según el entorno de despliegue, el servidor puede ser alojado ba
 LiteRT (TensorFlow Lite): tecnología que permite ejecutar modelos de lenguaje previamente ajustados en dispositivos Android, sin necesidad de conexión a internet o procesamiento en la nube. Esta herramienta es clave para el cumplimiento de principios de privacidad y para brindar respuestas en tiempo real.
 
 Android Studio: entorno de desarrollo integrado (IDE) utilizado para construir la interfaz de usuario, lógica de comunicación con el modelo y el servidor, y todas las funcionalidades necesarias para una aplicación de mensajería segura.
+
+
+\subsection{Tecnologías contempladas en la propuesta}
+
+\subsubsection{Entorno de Pruebas de desempeño de identificación en LLMs}
+
+Ollama: para ejecutar modelos localmente en el entorno de pruebas.
+
+Jupyter: de Anaconda para automatizar la comunicación con el modelo desde Python hacia Ollama.
 
 \subsection{Lista de requerimientos funcionales}
 
@@ -181,19 +316,56 @@ Message to analyze:
 
 \section{Metodología de investigación en redes sociales para encontrar una aplicación de citas con potenciales estafadores}
 
-%28-06-2025: pendiente justificar el adentramiento en flirtu. La forma de justificarlo será argumentando que se realizó una investigación previa en redes sociales donde se identificó a esa plataforma y grupo específico como un foco de estafas, lo que motivó la recolección de muestras desde allí, posiblemente tambien articulos de noticias.
+\subsection{Metodología de investigacion para la obtención de datos reales}
 
+La presente investigación en adición a la parte técnica presenta también una metodología que se siguió para obtener datos reales sobre estafa como lo son ejemplos de mensajería fraudulenta que busca explotar a la víctima mediante métodos afines al Catfishing y las extorsión.
+
+Como primer paso esta parte del presente trabajo, Contempló realizar una investigación exhaustiva en foros de Internet como reddit \cite{RedditFlirtu2025}
+ con el objetivo de encontrar una aplicación de mensajería donde ocurrieran frecuentemente eventualidades relacionadas a las estafas.
+
+Los resultados de esta primera fase arrojaron que una aplicación que podríamos considerar candidata por las características que referían sus usuarios a la hora de conversar dentro de la plataforma específicamente esta plataforma se trata de una red social de citas llamada Flirt U, un bot de telegram el cual se utiliza dentro de esta plataforma.
+\cite{RedditFlirtu2025}
 \cite{telegramRisks}
 
-\cite{RedditFlirtu2025}
+\subsection{Metodología: Perfil controlado de observación}
 
-Hallazgoz clave de la investigacion controlada en flirtu
+Esta tarea involucró al realizar una cuenta señuelo para poder identificar y contactar con posibles estafadores dentro de la aplicación de citas para este proceso se utilizó un proyecto de internet nombrado para realizar una identidad falsa y sintética en conformidad con la ética profesional del presente trabajo.
 
+El objetivo de esta parte puntualmente fue determinar cuáles eran los patrones clave de cada tipo de estafa a bordado en este caso cafishing y la sextorsión así como el estilo del lenguaje y la forma de la comunicación que se suele llevar a cabo por parte de los estafadores por un lado para la generación sintética de los datos y para la obtención principalmente de datos reales.
+
+La recolección de datos se remitió exclusivamente a medios de texto, no contemplando imagen.
+
+\subsection{Hallazgoz clave de la investigacion controlada en flirtu}
+
+De los atacantes
 * Se encontro que los estafadores de manera contraintuitiva con parte de los datos sinteticos, suelen pedir con frecuencia realizar videollamadas y efectivamente se registraron casos en los cuales del lado del atacante se visualizaban videos "posiblemente falsos con el fin de otorgar confianza en los estafadores"
 
-* Piden perfiles de facebook para verificar la identidad de la victima y "potencialmente acceder a la red de contactos de la persona para ddespues chantajear tras recibir material explicito al efectuar sexting"
+\subsubsection{Características sobre el catfishing}
 
-* Algunos perfiles aprovechaban la conexion emocional para reclutar participantes en un grupos de invercion en criptomonedas, sus motivaciones no son identificadas en la investigacion
+\begin{itemize}
+    \item Crear historias difíciles para generar empatía en la víctima
+    \item Establecer una comunicación que parezca genuina con fin de conectar con la víctima y establecer un lazo de confianza que posteriormente puedan explotar para obtener beneficios
+    \item Las solicitudes que efectúan a las víctimas pueden tener diferentes técnicas psicológicas
+    \item Solicitar tarjetas de pago, dinero o fotos
+    \item Algunos perfiles aprovechaban la conexión emocional para reclutar participantes en grupos de inversión en criptomonedas, cuyas motivaciones no son identificadas en la investigación
+    \item Constante solicitudes para acordar realizar una videollamada de carater intimo, mayormente con el objetivo de recabar imagenes privadas con fines de sextorsion y para utilizar posteriormente en el ejercicio de catfishing con otras victimas.
+    %2025/11/10: evaluar posibilidad de citar la entrevista que se realizo con una persona afectada
+\end{itemize}
 
-hipotesis con (")
+\subsubsection{Características de la sextorsión} 
+\begin{itemize}
+    \item Solicitan perfil de redes sociales personales con propósitos como:
+        \begin{itemize}
+            \item Conocer detalles personales de la víctima
+            \item Potencialmente acceder a la red de contactos de la persona para después chantajear tras recibir material explícito
+        \end{itemize}
+\end{itemize}
 
+
+
+
+
+
+\subsection{Recolección y etiquetado de datos}
+
+% 2025/11/10: poner aqui capturas del proceso y unos cuentos ejemplos, en la presentacion tambien iran
