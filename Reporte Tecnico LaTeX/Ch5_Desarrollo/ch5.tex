@@ -1,60 +1,23 @@
 \chapter{Método de Desarrollo}
 
-%2025-09-11: considerar el uso de oara la propuesta de solucion cuando se hable de la infraestructura de aws https://aws.amazon.com/es/architecture/well-architected/
-%07-06-2025: se tiene que justificar por que el uso de python
-%07-06-2025: se tiene que justificar el por que ocupar un web app, en funcion de la diversidad de os para movil y lo complejo asi como las metricas de incidencia en Mexico.
-
-%07-06-2025 00:45:04 : Justificar la decisión de desarrollar una aplicación web en lugar de una nativa dentro del capítulo de "Desarrollo"7777. La justificación debe mencionar la compatibilidad con múltiples sistemas operativos como Android, iOS y HarmonyOS8.
-
-%2025-09-03: para justificar al proveedor de nube seguramente AWS, se debera hablar del aprovisionamiento como caracteristica para usar las funciones serverless añadir a marco teorico "https://www.ibm.com/mx-es/think/topics/provisioning"
-
-% Datos para justificar el uso de AWS:
-% https://holori.com/cloud-market-2022/ (imagen de la comparativa entre cloud providers)
-% https://getdeploying.com/datacenters-in-mexico
-% https://aws.amazon.com/es/local/mexico/
-
-
-\section{Descripción del desarrollo del módulo o parte 1}
-Se describe detalladamente cada módulo o parte del proyecto, se sugiere usar diagramas o esquemas, pseudocódigo y tal vez fragmentos de código. No agregar códigos completos.
-\subsection{Pueden usarse subsecciones}
-\subsection{Pueden usarse subsecciones}
-
-\section{Descripción del desarrollo del módulo o parte 2}
-Se describe detalladamente cada módulo o parte del proyecto, se sugiere usar diagramas o esquemas, pseudocódigo y tal vez fragmentos de código. No agregar códigos completos.
-\subsection{Pueden usarse subsecciones}
-\subsection{Pueden usarse subsecciones}
-
-\section{Descripción del desarrollo del módulo o parte 3}
-Se describe detalladamente cada módulo o parte del proyecto, se sugiere usar diagramas o esquemas, pseudocódigo y tal vez fragmentos de código. No agregar códigos completos.
-\subsection{Pueden usarse subsecciones}
-\subsection{Pueden usarse subsecciones}
-
-
 \section{Generacion sintética de data set para refinamiento}
 
-Para la generación de datos sintéticos se opta por un enfoque few shot para la formulación del prompt que se ocupara para
-dar la instrucción a un modelo como Chat GPT o deepseek con madurez en tareas de generación de texto, se observo que
-la generación sin datos puede dar lugar a datos poco realistas y poco variables por lo que en afinidad con las 8 practicas de
-generación sintetica que plantea IBM \cite{SynthDataByIbm} en la sección del marco teorico se opta por few shot por sobre zero shot
+El presente proyecto contemplo la recoleccion de datos reales sobre estafas, correspondientemente a los limites y alcances de la investigacion, esta recoleccion no fue masiva por lo que se adopto una metodologia basada en la generacion sintetica de datos para aumentar los mismos en calidad y variedad.
+Para conseguir este proposito, se siguieron 8 buenas practicas para la generacion sintetica de datos que provee ibm IBM \cite{SynthDataByIbm} 
 
-
-
-
+Los pasos que se siguieron para generar datos sinteticos: 
+1.- Recoleccion y etiquetado de datos reales (mayores detalles en la seccion “Metodología: Perfil controlado de observación”)
+2.- Creacion de un prompt basado en la tecnica de prompting few shot donde se establecen las caracteristicas que deben tener los datos asi como los ejemplos recolectados
+3.- Sintesis de datos apartir de modelos largos de lenguaje de gran escala, incluyendo modelos como: Cloude sonnet 4, Chat GPT 5, Gemini 2.5 pro, DeepSeek-R1 y Grok 4
+4.- Revision manual de los ejemplos generados priorizando realismo y diversidad
+5.- Construccion de dataset de refinamiento y pruebas a partir de los datos reales y sintéticos
 
 \section{Propuesta de solución}
-
-% % 2025/08/27 En caso de usar Android App (poco probable) https://ai.google.dev/edge/litert?hl=es-419
+%07-06-2025: se tiene que justificar por que el uso de python
 
 % % 2025/08/27  Links a las partes tecnologicas (preguntar si esto va o no) https://www.postgresql.org
 % https://ollama.com/
-% https://anaconda.org/anaconda/jupyter (este no se a usado en realidad se empleo mas VS code)
 %(posiblemente si considerando que explica sus caracteristicas mismas que han de justificar su uso)
-
-%Es parte de la seccopm del  desarrollo, aquí se debe hablar sobre el propósito de cada uno de los elementos de la arquitectura, diferenciar el almacenamiento remoto del local, el propósito de cuentas por lado del servidor y el almacenamiento de mensajers o todo lo que sea requerido para que el llm trabaje de forma local totalmente off line
-
-%Justificar el uso del servidor local para servir como nodo central del sistema de mensajería: sobre el requerimiento de sincronicidad entre clientes esta parte va en propuesta de soluciion
-
-%07/06/2025: Cambio arquitectonico de Android a Web mediante el uso de cliente servidor alojando el LLM en un servicio de vps gpu hosting
 
 %2025-09-09: En la parte de propuesta de solución o enfoque de solución hablar sobre la calidad de la hipótesis la cuál refleja la necesidad de contar con modelos ligeros, mencionar que esto aminora la necesidad de hardware costoso o la utilización de apis para modelos con grandes capacidades contrastar con los resultados obtenidos a lo largo de las pruebas con los modelos e identificar los casos como mayores al 60% en la identificación "Aviola dice que es suficiente", falta justificar el por qué si
 
@@ -75,9 +38,22 @@ generación sintetica que plantea IBM \cite{SynthDataByIbm} en la sección del m
 
 \subsection{Arquitectura general del sistema (explicación)}
 
-%2025/11/10: Esta seccion esta hecha con AI, revision y redaccion humanizada pendientes
+%2025/11/10: Esta sección esta hecha con AI, revision y redaccion humanizada pendientes
 
-La arquitectura propuesta representa una solución híbrida cloud-local diseñada para implementar un sistema de mensajería instantánea con capacidades de detección de amenazas en tiempo real. Este MVP (Producto Mínimo Viable) combina la escalabilidad y confiabilidad de los servicios administrados de AWS con el procesamiento local de un modelo de lenguaje (LLM) para análisis de contenido, logrando un equilibrio óptimo entre costo, rendimiento y privacidad. La arquitectura está optimizada para operar dentro de la capa gratuita de AWS, haciendo uso de servicios serverless que eliminan la necesidad aprovisionamiento y permiten un escalamiento automático según la demanda. El sistema está diseñado para detectar técnicas de sextorsión y catfishing en conversaciones de chat, alertando a los usuarios de manera proactiva cuando se identifiquen patrones de riesgo, todo esto mientras mantiene la persistencia de datos y garantiza la entrega de mensajes incluso ante fallos temporales del módulo de análisis.
+https://aws.amazon.com/es/architecture/well-architected/
+
+%07-06-2025: se tiene que justificar el por que ocupar un web app, en funcion de la diversidad de os para movil y lo complejo asi como las metricas de incidencia en Mexico.
+
+%07-06-2025 00:45:04 : Justificar la decisión de desarrollar una aplicación web en lugar de una nativa dentro del capítulo de "Desarrollo"7777. La justificación debe mencionar la compatibilidad con múltiples sistemas operativos como Android, iOS y HarmonyOS8.
+
+% Datos para justificar el uso de AWS:
+% https://holori.com/cloud-market-2022/ (imagen de la comparativa entre cloud providers)
+% https://getdeploying.com/datacenters-in-mexico
+% https://aws.amazon.com/es/local/mexico/
+
+La arquitectura propuesta representa una solución híbrida cloud-local diseñada para implementar un sistema de mensajería instantánea con capacidades de detección de amenazas en tiempo real. Este MVP (Producto Mínimo Viable) combina la escalabilidad y confiabilidad de los servicios administrados de AWS con el procesamiento local de un modelo de lenguaje (LLM) para análisis de contenido, logrando un equilibrio óptimo entre costo, rendimiento y privacidad. La arquitectura está optimizada para operar dentro de la capa gratuita de AWS, haciendo uso de servicios serverless que eliminan la necesidad de aprovisionamiento y permiten un escalamiento automático según la demanda. El sistema está diseñado para detectar técnicas de sextorsión y catfishing en conversaciones de chat, alertando a los usuarios de manera proactiva cuando se identifiquen patrones de riesgo, todo esto mientras mantiene la persistencia de datos y garantiza la entrega de mensajes incluso ante fallos temporales del módulo de análisis.
+%2025-09-03: para justificar al proveedor de nube seguramente AWS, se debera hablar del aprovisionamiento como caracteristica para usar las funciones serverless añadir a marco teorico "https://www.ibm.com/mx-es/think/topics/provisioning”
+
 
 \subsubsection{DESCRIPCIÓN DE SERVICIOS Y SU FUNCIONALIDAD }
 
@@ -213,24 +189,199 @@ El propósito de estas pruebas es determinar el conjunto de modelos con mayor po
 
 La metodología empleada para llevar a cabo este conjunto de pruebas contempló el desarrollo de Un código de Python donde se programó la lógica de programación para la Ejecución De los modelos, evaluación A través de métricas Y almacenamiento de los resultados, La presentación de los resultados se realiza en la sección “Pruebas y resultados”.
 
-\section{Modulos del codigo}
+\section{Módulos del código}
+
+Librerías utilizadas ollama cliente y sci kit learn
+
+\begin{lstlisting}[language=Python]
+    import subprocess
+    import re
+    import json
+    import os
+    import time
+    import statistics
+    import sys
+    from datetime import datetime
+    from sklearn.metrics import classification_report, accuracy_score
+    from ollama import Client
+\end{lstlisting}
 
 Módulo con el prompt
+get model prediction
+
+\begin{lstlisting}[language=Python]
+    def get_model_prediction(model_name, text, additional_examples_text="", dictionary_text=""):
+    """Envia prompt al modelo y extrae la etiqueta predicha."""
+    prompt = (
+        "ROLE: You are a cybersecurity expert specialized in detecting digital fraud and malicious online behavior. "
+        
+        "CONTEXT: You are analyzing text messages written in Mexico City colloquial language to identify fraudulent behavior patterns in digital communications. "
+
+        f"{dictionary_text}" # INSERCION DEL DICCIONARIO DE REGIONALISMOS
+
+        f"{"DEFINITIONS OF THE SCAMS TO IDENTIFY "
+        "1.- catfishing: Creation of a fake online identity to emotionally deceive the victim, typically requesting money, personal information, or creating emotional dependency. "
+        "key differences: focused on establishing a romantic connection to manipulate the victim later, The tone of the characteristic speech is closer to deception, manipulation through emotional ties, persuasion and the lack of naturalness with which one tries to reach the link, usually ask for money for false emergencies or other contexts. "
+        "2.-sextortion: Sexual blackmail where the attacker threatens to publish intimate content of the victim unless they comply with demands (usually money). "
+        "key differences: it involves a video, photo or any other media, The tone of the characteristic speech is closer to blackmail, coercion, coercive or directly threatening action. "
+        "3.-harmless: Normal and legitimate communication without fraudulent or malicious intentions. "
+        "key differences: it does not represent any threat, casual conversations, real plans, cordial exchanges, normal romantic relationships conversations. " if DEFINITIONS else ''}"
+        
+        f"{additional_examples_text}" # INSERCION DE EJEMPLOS ADICIONALES
+        
+        "APPROACH: Based on the previous, classify the following message into exactly one of these three categories: catfishing, sextortion, or harmless. "
+        
+        f"{"The examples contain a real conversation that includes one of the 3 types of scams being considered. Identify the Attacker: and Victim: labels as they will indicate the participation of each actor. " if EXAMPLES_DIR == 'scam-examples/real' and EXAMPLES else ""}"
+
+        "LIMITS: "
+        "- Respond ONLY with the corresponding label: catfishing, sextortion, or harmless. "
+        "- DO NOT include explanations, justifications, or any additional text. "
+        "- DO NOT use quotes, periods, or special characters in your response. Just the label. "
+        
+        f"Message to analyze: \"{text}\" "
+    )
+    
+    # Peticion directa sin streaming
+    response = client.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False)
+    response = response['message']['content'].strip().lower()
+    response_without_thought = re.sub(r'.*\n+','',str(response), flags=re.DOTALL)#filtrado de la respuesta para eliminar la parte del pensamiento del texto
+    # Filtrar la etiqueta valida
+    labels = ['catfishing', 'sextortion', 'harmless']
+    found_labels = [label for label in labels if label in response_without_thought]
+    #descartar si no se encontro una etiqueta valida o se encontraron mas de una
+    if len(found_labels) == 1:
+        prediction = found_labels[0]
+    else:
+        prediction = 'unclassified'
+    return response_without_thought, prediction
+\end{lstlisting}
+
 Módulo de almacenamiento en json
-Librerías utilizadas ollama cliente y sci kit learn
+
+\begin{lstlisting}[language=Python]
+    def export_to_json(report_data, metadata_dict, filename_prefix):
+    """Guarda el reporte con metadatos en un archivo JSON."""
+    payload = {
+        'metadata': metadata_dict,
+        'results': report_data
+    }
+    safe_model_name = re.sub(r'[^\w\-_.]', '_', metadata_dict['model_name'])
+    date_str = metadata_dict['evaluation_date'].split('T')[0]
+    filename = f"{safe_model_name}_eval_{date_str}.json"
+    
+    path = os.path.join(OUTPUT_DIR, filename)
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(payload, f, indent=4, ensure_ascii=False)
+    print(f'JSON guardado en {path}')
+\end{lstlisting}
+
 Módulos involucrados en la lógica de la evaluación: los que miden las métricas, los que manejan el orden de atención a cada modelo encontrado mediante ollama listo, 
 
-
-
-
-
-
-% ...existing code...
 \begin{lstlisting}[language=Python]
-def saludar(nombre):
-    print(f"Hola, {nombre}!")
+    def evaluate_all_models(current_dataset):
+    """Evalua todos los modelos disponibles en Ollama usando el dataset, ejemplos y diccionario."""
+    ensure_output_dir()
+
+    print(f"Cargando ejemplos y diccionario desde: {EXAMPLES_DIR}")
+    loaded_examples_text, loaded_dictionary_text = load_scam_examples_and_dictionary()
+
+    if loaded_examples_text:
+        example_count = loaded_examples_text.count("<")
+        print(f"Se cargaron {example_count} ejemplos.")
+    # No 'else' needed due to print within load_scam_examples_and_dictionary
+
+    if loaded_dictionary_text:
+        dict_entry_count = loaded_dictionary_text.count("\n- ")
+        print(f"Se cargaron {dict_entry_count} entradas de diccionario.")
+    # No 'else' needed
+
+    models_to_evaluate = get_available_models()
+
+    if not models_to_evaluate:
+        print("No se encontraron modelos nuevos para evaluar.")
+        return
+
+    print(f"\n{len(list(models_to_evaluate))} modelos encontrados para evaluar:\n")
+    print(*list(models_to_evaluate), sep="\n") 
+    print(f"Dataset con {len(current_dataset)} muestras.")
+    print(f"Resultados se guardaran en: {OUTPUT_DIR}/")
+
+    for i, model_name_to_eval in enumerate(models_to_evaluate, 1):
+        print(f"\n{'='*60}")
+        print(f"EVALUANDO MODELO {i}/{len(models_to_evaluate)}: {model_name_to_eval}")
+        print(f"{'='*60}")
+        
+        try:
+            current_metadata = get_metadata(model_name_to_eval, models_to_evaluate[model_name_to_eval], current_dataset, bool(loaded_dictionary_text))
+            
+            evaluation_report = evaluate_model(model_name_to_eval, current_dataset, loaded_examples_text, loaded_dictionary_text)
+            
+            export_to_json(evaluation_report, current_metadata, model_name_to_eval)
+            
+            print(f"Evaluacion completada para {model_name_to_eval}")
+            if 'classification_report' in evaluation_report and 'accuracy' in evaluation_report['classification_report']:
+                print(f"   Accuracy: {evaluation_report['classification_report']['accuracy']:.4f}")
+            if 'timing_metrics' in evaluation_report:
+                print(f"Tiempo total de evaluacion: {evaluation_report['timing_metrics']['total_evaluation_time_seconds']:.2f}s")
+
+        except Exception as e:
+            print(f"Error evaluando modelo {model_name_to_eval}: {e}")
+            import traceback
+            traceback.print_exc()
+            continue
 \end{lstlisting}
-% ...existing code...
+
+
+
+2.- evaluar modelo
+\begin{lstlisting}[language=Python]
+    def evaluate_model(model_name, dataset_to_use, additional_examples_text="", dictionary_text=""):
+    """Ejecuta todas las predicciones y calcula metricas para un modelo especifico."""
+    y_true, y_pred_raw, y_pred_leaked = [], [], []
+    prediction_times = []
+    
+    total_start_time = time.time()
+    print(f"Evaluando {len(dataset_to_use)} muestras con el modelo {model_name}...")
+
+    print("Progreso: 0%", end="")
+
+    for i, sample in enumerate(dataset_to_use, 1):        
+        individual_pred_start_time = time.time()
+        rawPrediction, leakedPrediction = get_model_prediction(model_name, sample['text'], additional_examples_text, dictionary_text)
+        individual_pred_end_time = time.time()
+        
+        y_true.append(sample['label'])
+        y_pred_raw.append(rawPrediction)
+        y_pred_leaked.append(leakedPrediction)
+        prediction_times.append(individual_pred_end_time - individual_pred_start_time)
+
+        percentage = (i / len(dataset_to_use)) * 100
+        print(f"\rProgreso: {percentage:.1f}% ({i}/{len(dataset_to_use)} muestras)", end="", flush=True)
+    
+    total_end_time = time.time()
+    total_evaluation_time = total_end_time - total_start_time
+    
+    print(f"\nCompletado: {len(dataset_to_use)} muestras procesadas para {model_name}.")
+    
+    possible_labels = sorted(list(set(y_true)))#se usa set para que no existan etiquetas repetidos
+    report_dict = classification_report(y_true, y_pred_leaked, output_dict=True, zero_division=0, labels=possible_labels)
+    report_dict['accuracy'] = accuracy_score(y_true, y_pred_leaked)
+    timing_metrics = {
+        'total_evaluation_time_seconds': total_evaluation_time,
+        'average_time_per_prediction_seconds': statistics.mean(prediction_times) if prediction_times else 0,
+        'min_prediction_time_seconds': min(prediction_times) if prediction_times else 0,
+        'max_prediction_time_seconds': max(prediction_times) if prediction_times else 0,
+        'samples_per_second': len(dataset_to_use) / total_evaluation_time if total_evaluation_time > 0 else 0,
+        'total_evaluation_time_minutes': total_evaluation_time / 60
+    }
+    
+    return {
+        'labels' : {'etiquetas_reales':y_true, 'llm-output-predictions':y_pred_raw, 'leaked-prediction': y_pred_leaked},
+        'classification_report': report_dict,
+        'timing_metrics': timing_metrics
+    }
+\end{lstlisting}
+
 
 
 \subsection{Implementación del lado del servidor}
@@ -333,7 +484,7 @@ Esta tarea involucró al realizar una cuenta señuelo para poder identificar y c
 
 El objetivo de esta parte puntualmente fue determinar cuáles eran los patrones clave de cada tipo de estafa a bordado en este caso cafishing y la sextorsión así como el estilo del lenguaje y la forma de la comunicación que se suele llevar a cabo por parte de los estafadores por un lado para la generación sintética de los datos y para la obtención principalmente de datos reales.
 
-La recolección de datos se remitió exclusivamente a medios de texto, no contemplando imagen.
+La recolección de datos se remitió exclusivamente a medios de texto, no se contempló imagen.
 
 \subsection{Hallazgoz clave de la investigacion controlada en flirtu}
 
@@ -349,6 +500,7 @@ De los atacantes
     \item Solicitar tarjetas de pago, dinero o fotos
     \item Algunos perfiles aprovechaban la conexión emocional para reclutar participantes en grupos de inversión en criptomonedas, cuyas motivaciones no son identificadas en la investigación
     \item Constante solicitudes para acordar realizar una videollamada de carater intimo, mayormente con el objetivo de recabar imagenes privadas con fines de sextorsion y para utilizar posteriormente en el ejercicio de catfishing con otras victimas.
+    \item Enviar contenido de caracter explicito en ocasiones coherente en algunas ocasiones con la identidad falsa, con el fin de generar credibilidad.
     %2025/11/10: evaluar posibilidad de citar la entrevista que se realizo con una persona afectada
 \end{itemize}
 
@@ -359,13 +511,33 @@ De los atacantes
             \item Conocer detalles personales de la víctima
             \item Potencialmente acceder a la red de contactos de la persona para después chantajear tras recibir material explícito
         \end{itemize}
+    \item Solicitar contenido particularmente explicito, fotografias o videos.
+    \item Usar contenido privado de las victimas para extorcionar bajo la amenaza de publicarlo o enviarlo a cercanos, jefes, parientes con motivaciones variadas, siendo las principales dinero o más material explicito.
 \end{itemize}
-
-
-
-
-
 
 \subsection{Recolección y etiquetado de datos}
 
+%2025/11/11: esta seccion requiere condensarse y enfocarse especificamente al procedimiento tecnico probablemente, pero contiene informacion relevante a la problematica, conviene referenciar mejor a la definicion del problema.
+
+El entrándonos en la etapa de la recolección de los datos la misma incluida por un lado adentrarnos en el flirt u bot de telegram fue necesario realizar el pago para una suscripción del mes-
+
+Posteriormente tras poder acceder a la aplicación se empezó a contactar con todas las personas que sugería la app Cabe mencionar que en este proceso se identificó una cantidad de interaccion o poco orgánica considerando el promedio habitual de las aplicaciones de citas como esta
+
+La metodología incluyó definir un perfil con una determinada Personalidad atractiva para los estafadores una persona que trabaja en un Banco de 44 años.
+
+Posteriormente se procedió a contactar con todas las personas que la aplicación sugería y se estableció un diálogo dentro del mismo grupo que genera el bot de telegram el mismo bot advierte sobre no llevarlas a comunicaciones a otro sitio y priorizar establecerlas dentro del grupo creado.
+
+Cabe mencionar que la mayoría de casos Se trataban de comunicaciones fraudulentas en las cuales se observaba una transición rápida entre primer contacto y coerción. De igual manera se solicitaba trasladar las comunicaciones dentro de un chat privado.
+
+Para cada caso se procedió a comunicarse desde el chat privado y seguir un flujo Conversacional esperado por el atacante.
+
+A lo largo de los diferentes casos se identificaron Solicitudes de diversas índoles denotando los diferentes tipos de motivación relacionados a este fenómeno, De esta manera se consolidan los hallazgos documentados en la presente investigación.
+
+Posteriormente tras una muestra de 7 conversaciones se procedió con la extracción de datos aprovechando las características de telegram el cual permite exportar las conversaciones en un formato de HTML
+
+Después se procedió con un proceso de limpieza de datos para almacenar los ejemplos de manera curada eliminando ruido, dado que en parte de los casos se presentaron errores Léxicos y gramaticales. Esta ultima caracteristica ha sido relacionada con las granjas de datos y las estafas automatizadas en diferentes artículos como el trabajo "" por "" el cual aborda la problematica vivida en el pais \cite{milenio2024cjng}.
+
+
 % 2025/11/10: poner aqui capturas del proceso y unos cuentos ejemplos, en la presentacion tambien iran
+
+
