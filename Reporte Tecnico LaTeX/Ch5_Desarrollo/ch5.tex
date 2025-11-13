@@ -484,13 +484,7 @@ Funcionalidad: El Worker ejecuta un bucle continuo que: (1) Consulta SQS con lon
 
 Por qué es necesario: Ejecutar el LLM localmente es un requisito del proyecto que reduce costos significativamente (evita pagar por inferencia en AWS SageMaker o Bedrock) y permite usar una variedad de modelos largos de lenguaje para la detección de catfishing/sextorsión. El Worker requiere permisos IAM para: sqs:ReceiveMessage, sqs:DeleteMessage (interactuar con la cola), dynamodb:UpdateItem (actualizar resultados), y lambda:InvokeFunction (enviar alertas). 
 
-Para estos efectos se consideran modelos con escalas de entre 0.5 billones de parametros hasta 8 billones de parametros. Se contempla aprovisionamiento local en una instancia de computo on-premise para la ejecución de la inferencia de los distintos modelos con las siguientes caracteristicas de hardware: (CPU Intel(R) Core(TM) i7-4770 4ª generación  basada en la arquitectura Haswell Frecuencia base de 3.40GHz, GPU Nvidia GeForce GTX 1060 6GB Vram, 16GB Ram del sistema con frecuencia de 1600 MHz, Almacenamiento persistente ADATA HD720 SCSI 1.8 terabytes)
-
-El diseño permite actualizar el modelo o ajustar prompts sin modificar la infraestructura de AWS.
-
-el entorno de despliegue del worker se plantea mediante tenerlo alojado bajo un esquema on-premise mediante túneles seguros con Ngrok
-
-
+Para estos efectos se consideran modelos con escalas de entre 0.5 billones de parametros hasta 8 billones de parametros. Se contempla aprovisionamiento local en una instancia de computo on-premise para la ejecución de la inferencia de los distintos modelos con las siguientes caracteristicas de hardware: (CPU Intel(R) Core(TM) i7-4770 4ª generación  basada en la arquitectura Haswell Frecuencia base de 3.40GHz, GPU Nvidia GeForce GTX 1060 6GB Vram, 16GB Ram del sistema con frecuencia de 1600 MHz, Almacenamiento persistente ADATA HD720 SCSI 1.8 terabytes). Este diseño permite actualizar el modelo o ajustar prompts sin modificar la infraestructura de AWS.
 
 CONCLUSIÓN
 
