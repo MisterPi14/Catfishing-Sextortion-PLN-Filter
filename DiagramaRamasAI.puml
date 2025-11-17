@@ -1,0 +1,32 @@
+@startmindmap
+* Inteligencia Artificial
+  * Fuerte
+    * AGI (Inteligencia artificial general)
+    * Conciencia artificial
+  * Débil
+    * Machine Learning
+      * Supervised Learning
+        * Árboles de decisión
+        * Regresión
+        * Clasificadores
+      * Unsupervised Learning
+        * Clusterización
+      * Reinforcement Learning
+      * Deep Learning
+    * Computer Vision
+      * Image Recognition
+      * Video Analysis
+      * Facial Recognition
+    * NLP
+      * Comprensión de texto
+      * Traducción automática
+      * Clasificadores de texto
+      * Reconocimiento de voz
+    * Robotics
+      * Movimiento autónomo
+      * Vehículos autónomos 
+      * Automatización industrial
+    * Expert Systems
+      * Diagnosticos medicos
+      * Pronóstico financiero
+@endmindmap
