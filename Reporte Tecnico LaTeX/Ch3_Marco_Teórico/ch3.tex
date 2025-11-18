@@ -325,15 +325,31 @@ Se utilizan matrices de confusión, precisión, recall y F1-score para evaluar c
 Describir el software a utilizar: Android, Java, Python, Raspberry Pi OS, RT-Linux, contenedores, GNU/Linux, Xamp, Qt, SQL, Apache, C++, etc., etc.
 
 
-Python:
+\subsection{Python}
+
+Python es un lenguaje de programación poderoso, sus caracteristicas destacables incluyen:
+
+Ser el lenguaje de programacion con amplio ecosistema orientado a inteligencia artificial.
+Poseer estructuras de datos de alto nivel eficientes.
+Un enfoque simple y efectivo sobre la programación orientada a objetos
+Sintaxis elegante.
+Tipado dinámico (no requiere definición explícita de tipo de datos)
+Es un lenguaje interpretado.
+Su librería estándar así como su intérprete son de recurso abierto en versión de código abierto o archivos binarios.\cite{python_tutorial_314}
 
 Este lenguaje de programación fue ampliamente empleada a lo largo del proyecto en diferentes etapas del mismo. Presente desde el script que se construyo para la ejecucion de las  pruebas de clasificación iniciales así como también en la definición de las funciones lambda dentro del entorno de Amazon web Services mediante el serverless framework.
 
-Ollama:
+\subsection{Ollama}
+
+Ollama es una herramienta de código abierto que ejecuta modelelos largos de lenguaje de manera local \cite{hostingerOllama2025}, En el contexto actual del último año la inteligencia artificial esta tecnología Junto con los nuevos lanzamientos de modelos largos en lenguaje de pesos abiertos se han posicionado como la alternativa por excelencia a los modelos largos de lenguaje de gran escala de código cerrado, los cuales, anteriormente se consolidaban como los de mayor madurez para realizar las diversas tareas de la inteligencia artificial 
+
+Entre algunas de las principales ventajas que tiene el ejecutar modelos largos del lenguaje de manera local se encuentra la privacidad de los datos pues estos son procesados en el entorno autogestionado (on premise) \cite{hostingerOllama2025}, en contraste con los modelos de código cerrado que son alojados en servidores administrados por las diversas compañías incursionistas de la inteligencia artificial en los diferentes países del mundo. Lo anterior implica, que en cada solicitud realizada los datos tengan que ser transmitidos hasta esos territorios en legislaciones diferentes a las de Mexico. 
+
+El un aspecto ha cobrado bastante relevancia en el contexto empresarial y de investigación dadas las implicaciones que presenta el envio de datos y en esta investigacion se considera el presente enfoque por las caracteristicas de la informacion privada asi como por los recursos destinados al hardware para la ejecucion de la inferencia. 
 
 Esta tecnología fue utilizada para la ejecución de la \textit{inferencia} de modelos largos del lenguaje de \textit{pesos abiertos} en entorno local a través del cliente esta iniciativa tecnología pone a disposición para la conectividad con Python.
 
-Amazon Web Services:
+\subsection{Amazon Web Services}    
 
 Amazon Web Services fue el proveedor de servicios en la nube seleccionado para implementar la aplicación de mensajería instantánea. Dentro de su ecosistema se contemplan diferentes servicios como lo son:
 
@@ -346,20 +362,19 @@ Amazon Web Services fue el proveedor de servicios en la nube seleccionado para i
     \item Sqs
 \end{itemize}
 
-Serverless Framework:
+\subsection{Serverless Framework}
 
 El propósito de esta tecnología dentro del presente proyecto se refirio a la definición de la infraestructura como código para el despliegue y la definición de la infraestructura de la propuesta de solución presentada dentro del ecosistema el proveedor de nube de Amazon web services.
 
-PowerBi:
+
+\subsection{PowerBi}
 
 La utilidad que se le dio esta herramienta fue la visualización de los datos, tras haber efectuado las pruebas de clasificacion de los modelos mediante el worker local en python, las mismas se almacenaron en archivos de formato JSON los cuales, posteriormente fueron procesados por un script de python para integrarlos en un unico archivo csv.
  
 Finalmente esta fuente de datos fue vinculada con la aplicación de PowerBi desktop para la creacion de gráficos con la opción de actualizar con nuevos datos conforme vayan saliendo nuevos modelos largos de lenguaje o se contemplen nuevas técnicas Característica importante también para el trabajo futuro
 
-
-
-
 \section{Herramientas de hardware}
+
 Describir el hardware a utilizar: Raspberry Pi, PIC F16, Odroid, Microcontrolador STM32, Sensor de corriente, Módulo Bluetooth, Sensor infrarrojo, Receptor RFID, Microcontrolador FreeScale etc., etc.
 
 Todo debe estar correctamente referenciado.
