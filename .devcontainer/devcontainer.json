@@ -1,0 +1,18 @@
+{
+  "name": "Codespace para LaTeX",
+  // Puedes usar una imagen base de Ubuntu
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu", 
+
+  // --- 1. INSTALACIÓN DE EXTENSIONES ---
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "james-yu.latex-workshop" 
+      ]
+    }
+  },
+
+  // --- 2. INSTALACIÓN DE DEPENDENCIAS (TeX Live) ---
+  // Este comando se ejecuta una vez para instalar el compilador
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y texlive-latex-extra texlive-lang-spanish latexmk biber"
+}
