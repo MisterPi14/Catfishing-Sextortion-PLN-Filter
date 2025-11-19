@@ -1,35 +1,5 @@
 \chapter{Estado del Arte}
-
-
 %maestro de la linea: buscar mas a profundidad investigaciones en el estado del arte sobre catfishing y sextorcion que muestren tablas con las metricas que muestro en esta investigacion para contrastar con mis resultados
-
-\begin{table}[H]
-    \centering
-    \caption{Comparación de Trabajos Relacionados}
-    \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|}
-    %{|p{2cm}|p{2.5cm}|p{3cm}|p{2.8cm}|p{2.5cm}|p{2.7cm}|}
-    \hline
-    \textbf{Autores} & \textbf{Título} & \textbf{Descripción} & \textbf{Ventajas} & \textbf{Desventajas} & \textbf{Diferencias con propuesta} \\
-    \hline\hline
-   
-    Ahmed Elmagdy, Walid Magdy, Tarek El-Ganainy & Fake It Till You Make It: Profiling Fake Users on PornHub
-    \cite{magdy2017faketillmakeit}
-    & Este estudio se enfoca en detectar perfiles falsos dentro de la plataforma PornHub. Utiliza aprendizaje automático sobre datos de perfil, comentarios y metainformación. & Se basa en datos reales y masivos. Proporciona un marco de análisis para detección de identidad falsa. & Restringido a una sola plataforma. No aborda mensajes en tiempo real. & • Análisis en tiempo real vs. atributos estáticos \newline • Procesamiento local en Android \newline • Enfoque en mensajería vs. perfiles \\
-    \hline
-   
-    Rui Cao, Roy Ka-Wei Lee, Tuan-Anh Hoang & DeepHate: Hate Speech Detection via Multi-Faceted Text Representations & DeepHate combina múltiples representaciones de texto para detectar discurso de odio en redes sociales usando redes neuronales. & Utiliza múltiples representaciones textuales. Supera métodos clásicos en clasificación de odio. & Requiere recursos computacionales significativos. No aborda escenarios móviles. & • Modelos livianos vs. modelos pesados \newline • Procesamiento local vs. servidor \newline • Catfishing/extorsión vs. discurso de odio \\
-    \hline
-   
-    Matthew Edwards & Scam Survivors Sextortion Reports & Conjunto de datos con más de 41,000 testimonios de víctimas de sextorsión, incluyendo detalles sobre ofensores y métodos utilizados. & Proporciona datos reales sobre casos de sextorsión. Permite explorar patrones de comportamiento. & Puede contener sesgos de autoreporte. No diseñado para detección en tiempo real. & • Herramienta operativa vs. base de datos \newline • Detección inmediata vs. análisis retrospectivo \newline • Prevención automatizada vs. documentación \\
-    \hline
-   
-    \end{tabularx}
-\end{table}
-
-
-
-
-
 
 \section{Trabajos relacionados}
 Se deben agregar al menos 10 trabajos relacionados con el proyecto presentado. Se sugiere que la mayoría tenga como máximo 5 años de antigüedad, si hay trabajos clasicos y antiguos se pueden agregar. Por cada uno se sugiere agregar un párrafo de no más de 10 líneas. No olvidar citas y referencias. No es necesaria una subsección por trabajo.
@@ -52,265 +22,7 @@ Este trabajo explora el uso de llms dentro de la detección de esafas, ppuntualm
 Esta Investigacion (la mia)
 * contempla el diseño de una infraestructura web para la detección cercana al origen de los datos
 
-% OTRAS INVESTIGACIONES DEL ESTADO DEL ARTE BUSCADAS CON PERPLEXITY
-%2.- https://repositorio.udec.cl/server/api/core/bitstreams/938f454f-4e67-4935-95c3-065ae3e9ee4d/content
-    % Publicaciones referenciadas dentro en su estado del arte
-    % https://ieeexplore.ieee.org/abstract/document/9107945
-
-
-
-en la seccion 6 de resultados nos presentan 2 casos considerando el módulo de fugas de privacidad y no considerandolo, dado que en su definicion trabajan con el grooming, el proyecto no presenta clasificacion multicategoría en funcion del fenomeno, en su lugar se establecen 3 categorizaciones por nivel de grooming, "alta probabilidad" "media probabilidad" y "baja probabilidad" y los resultados se muestran en porcentajes generales por cada categoria sumando el 100\% entre las tres.
-
-
-
-Contraste con mi proyecto
-
-los objetivos son similares, dentro de sus resultados se visitan los modelos gpt 4o y llama de 3.8b pero no presentan una evaluacion de una coleccion amplia de modelos largos de lenguaje
-
-sus resultados se muestran en la seccion de 8. anexos, no contemplan metricas, solo muestran las respuestas en texto del modelo por tanto no se evaluo con metricas el desempeño en tareas de clasificacion
-
-
-% 3.- https://arxiv.org/abs/2308.14683
-
-* El metodo que presenta esta investigacion fue probado en los lenguajes ingles, Urdu romano y Urdu
-*NOTA:  onesize-fits-all es una expresion usada en articulos y libros para referirse, casi siempre, a modelos, métodos o soluciones que se presentan como universales pero que realmente no sirven para todos los casos, contextos o personas.
-* El contexto de esta publicacion en el estado del arte de los modelos largos de lenguaje se contemplan cerrados como: OpenAI ChatGPT,
-Google Bard, y Anthropic Claude y abiertos como: BLOOM, LLaMa-1, y Falcon modelos que como menciona la misma investigacion para el momento no se podian considerar competentes frente a los modelos cerrados.
-* dado que el estudio data de agosto del año 2023 no se contemplan modelos mas recientes como deepseek-r1
-
-
-% https://arxiv.org/abs/2508.19932 habla de un filtro aplicado a fraude financiero
-
-
-
-
-% https://www.mdpi.com/2079-9292/14/13/2551
-
-\begin{comment}
-REDACCION DE COMET AI
-
-    Propósito y alcance:
-Se realizó una revisión sistemática de los avances recientes en técnicas de procesamiento de lenguaje natural (NLP) para la detección de amenazas basadas en mensajes en plataformas digitales (redes sociales, chats, mensajería).
-
-Metodología:
-La revisión siguió las guías PRISMA, abarcando artículos desde enero 2024 para incluir trabajos con modelos grandes de lenguaje (LLM). Se analizaron 30 publicaciones seleccionadas rigurosamente de bases de datos académicas reconocidas.
-
-Aspectos analizados:
-Se examinaron las siguientes dimensiones en los trabajos:
-
-Tipos de amenazas detectadas (phishing, smishing, ingeniería social, perfiles falsos, spam, etc.)
-
-Técnicas y arquitecturas NLP utilizadas (ML tradicional, deep learning, transformers, LLMs)
-
-Métodos de evaluación (accuracy, F1, precision, recall)
-
-Fuentes de entrada (SMS, emails, chats, atributos de perfiles, comportamiento)
-
-Consideraciones éticas y de privacidad
-
-Resultados principales:
-
-La clasificación de texto es la técnica predominante para detección de amenazas.
-
-Solo el 20% de los estudios revisados emplearon LLMs; siguen prevaleciendo métodos tradicionales de ML y DL.
-
-Las LLMs sobresalen en tareas contextuales (phishing, ingeniería social), pero poco usadas en amenazas de comportamiento (e.g., perfiles falsos).
-
-Gran variabilidad en datasets y resultados de efectividad; las métricas suelen ser altas (accuracy/F1) pero dependen del contexto experimental.
-
-La mayoría de los trabajos no discute aspectos éticos o privacidad relacionados con la aplicación real (ej. GDPR).
-
-Conclusiones:
-Falta un enfoque transversal sobre patrones comunes de amenazas basadas en mensajes y escasea la discusión/prueba de aplicabilidad real considerando privacidad y regulación. Se reconoce que la adopción de LLMs está limitada por retos éticos, legales y de complejidad computacional, pero se espera mayor adopción en el futuro con modelos abiertos y personalizables.
-
-Recomendaciones:
-Se sugiere diseñar sistemas “privacy by design”, usar tecnologías como federated learning para privacidad, y priorizar la alfabetización digital para usuarios y desarrolladores.
-\end{comment}
-
-
-% https://www.mdpi.com/2076-3417/15/13/7105
-
-\begin{comment}
-    Claro, aquí tienes un resumen en viñetas y párrafos breves sobre lo que se hizo en el artículo "A Survey of Generative AI for Detecting Pedophilia Crimes":
-
-- **Propósito:** El artículo presenta una revisión sistemática sobre el uso de inteligencia artificial generativa (incluyendo modelos de lenguaje grandes, LLMs) para la detección y prevención de crímenes relacionados con la pedofilia en entornos digitales.
-
-- **Contexto:** Se describe cómo el auge de plataformas digitales facilita la explotación sexual infantil y la dificultad que tienen las fuerzas del orden para detectarla a tiempo.
-
-- **Revisión de literatura:** Se analizan tanto enfoques tradicionales de machine learning (ML) como los más recientes basados en inteligencia artificial generativa, identificando técnicas usadas para:
-  - Detectar comportamientos de grooming en chats y redes sociales.
-  - Analizar patrones de lenguaje, imágenes y comportamientos digitales sospechosos.
-
-- **Metodología:**
-  - Se hizo una búsqueda sistemática en Google Scholar usando palabras clave como "pedophile conversations", "AI", "data mining", "machine learning".
-  - Se filtraron artículos publicados entre 2010 y principios de 2025 en inglés, resultando en 24 estudios analizados en profundidad.
-  - Criterios de inclusión: relevancia directa con IA aplicada a la detección de crímenes de pedofilia y disponibilidad del texto completo.
-  - Criterios de exclusión: libros, tesis, presentaciones, textos en otros idiomas.
-
-- **Comparación de técnicas:** El artículo organiza y compara estudios usando desde reglas y SVMs, hasta LLMs y modelos como ChatGPT, Gemini y LLaMA, evaluando ventajas, limitaciones y retos éticos de cada uno.
-
-- **Hallazgos principales:** 
-  - Los modelos generativos permiten analizar grandes volúmenes de datos y detectar patrones complejos, pero enfrentan desafíos como sesgos algorítmicos, privacidad, exactitud y riesgos de mal uso.
-  - Los enfoques colaborativos y de aprendizaje federado son prometedores pues mejoran la detección temprana respetando la privacidad.
-  - Las bases de datos disponibles y los desequilibrios en los datos siguen siendo obstáculos técnicos.
-
-- **Aportes y futuro:** 
-  - El trabajo destaca las limitaciones de estudios previos.
-  - Propone líneas de investigación futura e insiste en la necesidad de marcos éticos robustos para el uso de IA en contextos tan delicados.
-
-- **Estructura del artículo:** Tras la introducción, revisa el contexto de grooming digital, compara enfoques clásicos y generativos, resume métodos y estudios principales, examina retos y riesgos, y concluye resaltando el potencial y las precauciones necesarias para la implementación real.
-
-Si quieres un resumen aún más breve o algo más específico del contenido, dime qué sección te interesa.
-
-[1](file:///C:/Users/Diego/Downloads/applsci-15-07105.pdf)
-\end{comment}
-
-% https://arxiv.org/abs/2412.15423
-
-\begin{comment}
-    Claro, aquí tienes un resumen del artículo "A Large-Scale Measurement Study of Pig-Butchering Scams" (arXiv:2412.15423v1):
-
-**Resumen general**
-El artículo presenta el primer estudio a gran escala sobre las "pig-butchering scams" (estafas tipo "engorda de cerdo"), un tipo de fraude sofisticado donde los estafadores construyen relaciones de confianza a largo plazo con las víctimas (a quienes metafóricamente “engordan” emocional y financieramente) antes de estafarlas con grandes sumas de dinero. El estudio abarca análisis de víctimas directas en redes sociales, bases públicas de reportes de abuso y estudios de caso en medios de comunicación.
-
-**Metodología**
-- **Datos**: Se recopilaron y analizaron entre marzo y octubre de 2024:
-  - Más de 430,000 cuentas y 770,000 publicaciones en redes sociales (X/Twitter, Instagram, Telegram, YouTube).
-  - Más de 3,200 reportes de abuso públicos.
-  - Unos 1,000 artículos noticiosos sobre el tema.
-  - Encuestas a 584 personas sobre experiencias con fraudes online.
-- **Filtrado**: Se combinaron métodos automáticos (LLMs, heurísticas de palabras clave) y revisión manual para extraer víctimas reales y patrones relevantes.
-
-**Resultados principales**
-- **Víctimas identificadas**: 146 usuarios en redes sociales, 2,570 narrativas de víctimas en reportes públicos, y 50 estudios de caso en medios (con un total de 834 personas).
-- **Pérdidas**: Las víctimas identificadas reportan una pérdida aproximada total de más de $521 millones de dólares.
-- **Tácticas comunes**: Los estafadores usan ingeniería social como el romance, inversiones falsas en criptomonedas, fraudes con empleos y promesas de ayuda urgente.
-- **Plataformas usadas**: Contacto inicial a través de redes sociales, apps de citas, WhatsApp, Instagram, Telegram, y mensajes inesperados.
-- **Impacto emocional**: Además de las pérdidas económicas, muchas víctimas sufren vergüenza, aislamiento social, ansiedad, trauma psicológico, y algunos incluso suicidio.
-- **Mecanismos de estafa**:
-  - Ganancia de confianza a través de conversaciones prolongadas.
-  - Manipulación psicológica (promesas románticas/financieras, urgencia, aislamiento de familiares).
-  - Solicitud de transferencias (principalmente en criptomonedas) a plataformas fraudulentas.
-  - Bloqueo o desaparición tras obtener fondos.
-  - Uso de "identidad falsa" y suplantación de figuras de autoridad.
-- **Estudio comparativo**: Encuestas revelan que el 46% de las personas consultadas fue víctima de algún fraude online en los últimos 5 años, pero solo un pequeño porcentaje reconoció este tipo de estafa en concreto.
-
-**Recomendaciones**
-- A los usuarios: extrema precaución al compartir información y entablar relaciones online.
-- A plataformas: monitorizar proactivamente cuentas y conexiones sospechosas.
-- A legisladores y fuerzas de seguridad: mayor cooperación y regulación para combatir este fenómeno transnacional.
-
-**Conclusiones**
-Las estafas tipo "pig-butchering" se han expandido rápidamente gracias al uso de múltiples plataformas y técnicas de manipulación, con estructuras criminales complejas y pérdidas masivas para individuos de diferentes edades y situaciones. Se requiere un enfoque multidisciplinar (tecnológico, legal, educativo) para su prevención y combate efectivo.[1]
-
-[1](https://arxiv.org/pdf/2412.15423.pdf)
-\end{comment}
-
-% https://arxiv.org/abs/2412.13528
-
-\begin{comment}
-    Aquí tienes un resumen del artículo "ScamGPT-J: Inside the Scammer’s Mind, A Generative AI-Based Approach Toward Combating Messaging Scams":
-
-**Resumen:**
-El artículo aborda el crecimiento de las estafas realizadas mediante mensajería instantánea y los desafíos que esto representa, tanto en términos económicos como sociales. Se calcula que, solo en 2023, las pérdidas globales por estafas superaron el billón de dólares estadounidenses, y que el 58% proviene de plataformas de mensajería.
-
-El sistema propuesto, ScamGPT-J, es un modelo generativo de lenguaje (LLM) basado en GPT-J y ajustado para simular respuestas típicas de un estafador en conversaciones reales. Su objetivo no es simplemente detectar y bloquear mensajes sospechosos: ScamGPT-J busca empoderar al usuario para que, al comparar respuestas generadas por el modelo con las que recibe en tiempo real, pueda identificar por sí mismo patrones de estafa y tomar mejores decisiones.
-
-**Puntos clave:**
-- ScamGPT-J ha sido ajustado mediante “soft prompt tuning”, usando un dataset sintético de conversaciones de estafas, ampliado a partir de ejemplos reales y variaciones generadas por otros modelos.
-- Se fundamenta en teorías psicológicas como el “procesamiento heurístico y sistemático” y el “efecto ancla”, para contrarrestar los sesgos cognitivos que los estafadores explotan en sus víctimas.
-- La arquitectura permite mostrar al usuario un “índice de similitud” entre lo que respondería un estafador y el interlocutor real, incentivando el análisis crítico antes de tomar decisiones.
-- Se evaluó tanto técnica como empíricamente. En pruebas de similitud y experimentos con voluntarios, ScamGPT-J superó ampliamente a un modelo sin ajuste en la simulación del comportamiento de estafadores, y fue mejor evaluado en utilidad para la detección de fraudes.
-- El sistema tiene el potencial de integrarse a plataformas sociales y bancarias, aunque todavía requiere mejoras, especialmente para reducir falsos positivos y evitar la sobredependencia del usuario en la herramienta autónoma.
-
-**Conclusión:**
-ScamGPT-J representa un avance en la lucha contra las estafas en mensajería al pasar de un enfoque solo predictivo a uno persuasivo y educativo, donde la IA guía y ayuda al usuario a reconocer patrones de fraude por cuenta propia. El modelo destaca la importancia de la auto-reflexión asistida en la prevención, aunque se reconoce la necesidad de desarrollar evaluaciones a mayor escala y refinar su integración en la vida real.[1]
-
-[1](https://arxiv.org/pdf/2412.13528.pdf)
-\end{comment}
-
-
-% link para referencias: https://ieeexplore.ieee.org/document/10350893
-% link alternativo de arvix: https://arxiv.org/abs/2308.03880 (usar ieee en referencias)
-% link para descarga abierta: https://openaccess.thecvf.com/content/ICCV2023W/AIHADR/html/Puentes_Guarding_the_Guardians_Automated_Analysis_of_Online_Child_Sexual_Abuse_ICCVW_2023_paper.html
-
-\begin{comment}
-    - El trabajo aborda el aumento global de la violencia y abuso sexual infantil en línea y el desafío de analizar manualmente las denuncias por parte de las autoridades.
-- Se presenta una herramienta automatizada basada en modelos de lenguaje (LLM) para analizar denuncias de abuso infantil en línea, especialmente en Latinoamérica, reduciendo la exposición de los analistas a contenido dañino.[1]
-- El sistema categoriza las denuncias en tres dimensiones: **Sujeto**, **Grado de criminalidad** y **Daño**, mejorando la comprensión de patrones y facilitando respuestas especializadas.
-- Se recopiló un dataset de 1196 denuncias recibidas por la línea Te Protejo Colombia, abarcando temas como sextorsión, grooming, y ciberacoso sexual.
-- El sistema de anotación involucra expertos multidisciplinarios, quienes categorizaron las denuncias y colaboraron en mejorar los modelos predictivos mediante un proceso iterativo de validación y ajuste.
-- Se preprocesaron los datos para anonimizar la información sensible y se aplicó un enfoque de clasificación multicategoría, usando métricas como F-score y mAP por la alta desbalance de clases.
-- El modelo utiliza **BERT Multilingüe**, y se optimizó mediante **fine-tuning** y técnicas de **data augmentation** (eliminando palabras aleatoriamente) para mejorar resultados, dado el bajo volumen de datos.
-- Los experimentos muestran que el modelo especializado supera al modelo de lenguaje base, pero persisten desafíos con el desbalance de clases y la necesidad de mayor cantidad de datos.
-- Se enfatiza la importancia ética de proteger la privacidad y confidencialidad, y de compartir metodologías con otras líneas de ayuda para mejorar la intervención.[1]
-
-[1](https://openaccess.thecvf.com/content/ICCV2023W/AIHADR/papers/Puentes_Guarding_the_Guardians_Automated_Analysis_of_Online_Child_Sexual_Abuse_ICCVW_2023_paper.pdf)
-\end{comment}
-
-% https://www.mdpi.com/2079-9292/13/23/4677
-
-\begin{comment}
-    Aquí tienes un resumen breve en viñetas de lo que se realizó en el trabajo "Survey of Transformer-Based Malicious Software Detection Systems":
-
-- **Se analiza el cambio en el panorama de ciberseguridad**, con amenazas emergentes como malware polimórfico y de día cero que superan los métodos tradicionales de detección.
-- **El trabajo discute la utilidad de modelos transformer para mejorar la detección de malware**, aumentando la precisión y eficiencia en la identificación de ransomware, spyware y troyanos, gracias a su capacidad para procesar datos secuenciales y patrones complejos.
-- **Describe y compara arquitecturas transformer** aplicadas a la detección de malware: transformers de texto, imagen (ViT), y grafos.
-- **Incluye una revisión de los avances y limitaciones en investigaciones previas**, subrayando la necesidad de grandes conjuntos de datos etiquetados y altos requerimientos computacionales.
-- **Destaca retos actuales** como la interpretabilidad de los modelos, robustez frente a ataques adversariales y la escalabilidad en escenarios reales.
-- **Sugiere líneas futuras de investigación** para reforzar la integración de modelos transformer con otros enfoques de aprendizaje automático, como métodos ensemble y meta-learning.
-- **Proporciona una comparación de conjuntos de datos y resultados de modelos existentes**, orientando hacia la mejora de la detección de amenazas en un entorno de amenazas en constante evolución.
-
-¿Te gustaría un resumen aún más breve, o necesitas la explicación de algún apartado en particular?
-
-[1](file:///K:/1.-%20Nube%20IPN/OneDrive%20-%20Instituto%20Politecnico%20Nacional/Esime%20Docs/1.-%20Proyecto%20de%20titulacion%20%E2%98%85/Estado%20del%20arte/electronics-13-04677%20(httpswww.mdpi.com2079-929213234677).pdf)
-\end{comment}
-
-
-https://academic.oup.com/iwc/article/35/6/773/7331428?login=false
-
-\begin{comment}
-    Aquí tienes un resumen breve en viñetas sobre lo que se realizó en la investigación “Tainted Love: a Systematic Literature Review of Online Romance Scam Research”:
-
-- Se realizó una **revisión sistemática de literatura** sobre estafas románticas en línea utilizando la metodología PRISMA.
-- Se analizaron **279 artículos**; se seleccionaron y revisaron **53 estudios empíricos y experimentales** relevantes publicados entre 2009 y 2023.
-- El análisis abordó tres preguntas clave: 
-    - Caracterización de estafas románticas (perfiles y tácticas).
-    - Factores socio-demográficos y psicológicos de víctimas y estafadores.
-    - Contramedidas y mitigaciones propuestas.
-- Se identificaron **modelos de procesos típicos** de estas estafas y las tácticas persuasivas usadas por los estafadores, incluyendo temas militares y perfiles fraudulentos.
-- Se revisaron datos sobre **impactos financieros y emocionales en las víctimas**: el “doble golpe” de perder dinero y sufrir daños emocionales.
-- Se encontraron **factores de riesgo** como: ser mujeres de 25-54 años con alto nivel educativo y disponible ingreso, pero también un aumento de casos en hombres y comunidades LGBT+.
-- Se estudiaron motivaciones de los estafadores (por ejemplo: factores económicos, justificación moral/ideológica).
-- Se revisaron **tecnologías de detección**, como aprendizaje automático para identificar perfiles falsos, así como estrategias humanas para prevención, apoyo y recuperación de víctimas.
-- Se concluyó que existe una **limitación de estudios empíricos** y que la colaboración interdisciplinaria con plataformas y fuerzas del orden es esencial para abordar el problema y mejorar los sistemas de apoyo a las víctimas.[1]
-
-¿Quieres una síntesis solo de los resultados principales, o de metodología y hallazgos?
-
-[1](file:///K:/1.-%20Nube%20IPN/OneDrive%20-%20Instituto%20Politecnico%20Nacional/Esime%20Docs/1.-%20Proyecto%20de%20titulacion%20%E2%98%85/Estado%20del%20arte/Tainted%20Love%20a%20Systematic%20Literature%20Review%20of%20Online%20Romance%20Scam%20Research%20.pdf)
-\end{comment}
-
-
-
-% LINKS PENDIENTES DE REVISAR
-
-\begin{comment}
-    https://www.researchgate.net/publication/385721739_A_Text_Classification_Model_Combining_Adversarial_Training_with_Pre-trained_Language_Model_and_neural_networks_A_Case_Study_on_Telecom_Fraud_Incident_Texts
-
-    https://www.researchgate.net/publication/395670233_Real-Time_Fraud_Detection_Using_Large_Language_Models_A_Context-Aware_System_for_Mitigating_Social_Engineering_Threats
-
-    https://www.researchgate.net/publication/395917963_A_Large_Language_Model_Approach_to_Real-_Time_Social_Engineering_Fraud_Detection
-
-    https://www.researchgate.net/publication/395917736_Context-Aware_Real-Time_Fraud_Detection_Leveraging_Large_Language_Models
-
-    https://www.researchgate.net/publication/395354606_AI-in-the-Loop_Privacy_Preserving_Real-Time_Scam_Detection_and_Conversational_Scambaiting_by_Leveraging_LLMs_and_Federated_Learning
-
-    https://www.researchgate.net/publication/388768407_Fraud-BERT_transformer_based_context_aware_online_recruitment_fraud_detection
-
-    https://www.researchgate.net/publication/388525951_The_Role_of_AI_in_Social_Engineering_Attack_Prevention_NLP-Based_Solutions_for_Phishing_and_Scams
-
-    https://www.researchgate.net/publication/382704155_Online_Recruitment_Fraud_ORF_Detection_Using_Deep_Learning_Approaches
-\end{comment}
+%//////////////////////////////////////
 
 ESTADO AL 04 DE NOV
 
@@ -320,8 +32,26 @@ https://wires.onlinelibrary.wiley.com/doi/epdf/10.1002/widm.70029
 El trabajo aborda el desarrollo de un sistema para detectar grooming en conversaciones de chat usando grandes modelos de lenguaje (LLM), guiado por patrones definidos por la Policía de Investigaciones de Chile. El proceso metodológico es iterativo y se enfoca en clasificar conversaciones en tres etapas clave: primer contacto, generación de confianza y migración de plataforma. Se integra el módulo Presidio para identificar fugas de privacidad y se emplean distintos modelos LLM como GPT-4o y Llama3-8B. La evaluación considera casos con y sin el módulo de privacidad, y el sistema categoriza los resultados en tres niveles de probabilidad de grooming (alta, media, baja), mostrando los resultados agregados en porcentajes que suman el 100\%. El análisis no utiliza métricas tradicionales como recall o precisión, sino distribuciones porcentuales por nivel de sospecha y expone las salidas textuales generadas por los modelos LLM como parte de sus resultados.
 https://repositorio.udec.cl/server/api/core/bitstreams/938f454f-4e67-4935-95c3-065ae3e9ee4d/content
 
+\begin{comment}
+  en la seccion 6 de resultados nos presentan 2 casos considerando el módulo de fugas de privacidad y no considerandolo, dado que en su definicion trabajan con el grooming, el proyecto no presenta clasificacion multicategoría en funcion del fenomeno, en su lugar se establecen 3 categorizaciones por nivel de grooming, "alta probabilidad" "media probabilidad" y "baja probabilidad" y los resultados se muestran en porcentajes generales por cada categoria sumando el 100\% entre las tres.
+
+Contraste con mi proyecto
+
+los objetivos son similares, dentro de sus resultados se visitan los modelos gpt 4o y llama de 3.8b pero no presentan una evaluacion de una coleccion amplia de modelos largos de lenguaje
+
+sus resultados se muestran en la seccion de 8. anexos, no contemplan metricas, solo muestran las respuestas en texto del modelo por tanto no se evaluo con metricas el desempeño en tareas de clasificacion
+\end{comment}
+
 El trabajo propone un enfoque automatizado y versátil ("one-size-fits-all") para la detección de conversaciones predatorias y textos abusivos en línea, basado en el fine-tuning del modelo abierto Llama 2, lo que permite abordar distintas tareas de clasificación de textos sin la necesidad de ajustar manualmente la extracción de características y el diseño de clasificadores para cada contexto específico. En la revisión del estado del arte, los autores distinguen entre modelos de lenguaje cerrados, tales como OpenAI ChatGPT, Google Bard y Anthropic Claude, y modelos abiertos como BLOOM, LLaMa-1 y Falcon, señalando que, hasta el momento del estudio, los modelos abiertos no alcanzaban la competencia de los cerrados. Debido a que la publicación data de agosto de 2023, no se consideran modelos más recientes como deepseek-r1. El método es evaluado en inglés, Roman Urdu y Urdu, con precisión, F1 y F0.5 entre 95\% y 1.00, dependiendo del conjunto de datos.
 https://arxiv.org/pdf/2308.14683
+
+\begin{comment}
+  * El metodo que presenta esta investigacion fue probado en los lenguajes ingles, Urdu romano y Urdu
+*NOTA:  onesize-fits-all es una expresion usada en articulos y libros para referirse, casi siempre, a modelos, métodos o soluciones que se presentan como universales pero que realmente no sirven para todos los casos, contextos o personas.
+* El contexto de esta publicacion en el estado del arte de los modelos largos de lenguaje se contemplan cerrados como: OpenAI ChatGPT,
+Google Bard, y Anthropic Claude y abiertos como: BLOOM, LLaMa-1, y Falcon modelos que como menciona la misma investigacion para el momento no se podian considerar competentes frente a los modelos cerrados.
+* dado que el estudio data de agosto del año 2023 no se contemplan modelos mas recientes como deepseek-r1
+\end{comment}
 
 %NO REVISADOS
 
@@ -336,7 +66,7 @@ https://arxiv.org/pdf/2412.15423
 Este trabajo presenta ScamGPT-J, un modelo generativo basado en GPT-J afinado por soft prompt tuning, diseñado para replicar tácticas de estafadores en mensajes instantáneos y así ayudar a los usuarios a identificar patrones fraudulentos durante conversaciones en tiempo real. La propuesta se centra en el contexto conversacional y utiliza un enfoque predictivo, mostrando respuestas simuladas de estafadores que permiten al usuario comparar la similitud con los mensajes recibidos. El entrenamiento mezcla datos sintéticos generados por ChatGPT y GPT-3.5 Turbo, diversificados con escenarios reales. El estudio destaca la ventaja de una herramienta interactiva, transparente y adaptativa, como alternativa al bloqueo binario tradicional. Como limitación se señala la dependencia de datos sintéticos en la construcción del corpus y la necesidad de pruebas más amplias en contextos reales y variados idiomas.
 https://arxiv.org/pdf/2412.13528
 El artículo propone una herramienta automatizada para el análisis de reportes de abuso sexual infantil en línea, con el objetivo de reducir la exposición de los analistas a contenido nocivo y agilizar la identificación de patrones de crimen. El sistema clasifica los reportes en tres dimensiones: sujeto, grado de criminalidad y daño, empleando métodos automáticos y una estrategia novedosa de anotación multidisciplinaria. Esta innovación mejora la comprensión de tendencias y patrones, permitiendo una mejor orientación para autoridades y políticas de protección infantil. El trabajo destaca la utilidad del enfoque automatizado y el aporte en reducir riesgos para analistas humanos. Sin embargo, limita la discusión sobre métricas cuantitativas comparativas y posibles sesgos en la automatización, y la validación se centra en la fase de categorización sin extensos resultados de campo.
-https://arxiv.org/abs/2308.03880
+https://arxiv.org/pdf/2308.03880
 Este artículo revisa sistemáticamente los sistemas de detección de software malicioso basados en arquitecturas transformer, abordando amenazas como ransomware, spyware y troyanos. Presenta tres enfoques principales: transformers aplicados a texto, imágenes y grafos, destacando su capacidad para modelar relaciones complejas y manejar datos secuenciales. El análisis compara el rendimiento con métodos tradicionales y modelos de redes profundas, mostrando ventajas en detección de patrones y adaptabilidad. Sin embargo, se identifican desafíos relevantes, como la alta demanda de recursos computacionales, la necesidad de grandes volúmenes de datos etiquetados y los riesgos de adversarial attacks. El estudio sugiere que, aunque prometedores, estos sistemas requieren mejoras en interpretabilidad, robustez y eficiencia para su aplicación práctica en entornos reales.
 https://www.mdpi.com/2079-9292/13/23/4677
 El artículo realiza una revisión sistemática sobre los fraudes románticos en línea, utilizando la metodología PRISMA y analizando 53 estudios empíricos entre 2009 y 2023. El trabajo se centra en tres aspectos principales: las características y modelos de ejecución de fraudes románticos, los factores socio-demográficos y psicológicos que influyen en víctimas y perpetradores, y las estrategias de mitigación propuestas. Los hallazgos revelan que la literatura empírica es limitada, con predominio de estudios cualitativos y frecuente sub-reporte de casos, lo que dificulta la cuantificación de pérdidas. Destacan la diversidad de tácticas persuasivas, la relevancia de la auto-presentación en perfiles fraudulentos y el alto impacto emocional en las víctimas. Las limitaciones incluyen escasez de estudios sobre la interacción directa víctima-estafador y ausencia de métricas estandarizadas, dificultando comparaciones. El documento subraya la necesidad de fortalecer la colaboración interdisciplinaria y señala como punto clave la evolución de los modelos frente a nuevas tecnologías.
