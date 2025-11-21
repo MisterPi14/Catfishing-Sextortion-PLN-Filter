@@ -18,17 +18,27 @@
 
 %Aquí añade los aspectos técnicos que habrá que cubrir, considera como guía la sección de la propuesta de solución que habla mas en profundidad sobre los aspectos técnicos
 
+\section{Técnicas computacionales}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{imagenes/marcoTeorico/DiagramaRamasAI.png}
+\caption{Diagrama de IA}
+\label{fig:iadiagram}
+\end{figure}
+
+El presente proyecto se fundamenta en la rama del aprendizaje de maquina, puntualmente en el aprendizaje profundo en lo que se refiere a los modelos largos del lenguaje.
+Los conocidos como LLMs son estructuras que contemplan redes neuronales profundas y múltiples capas, Estas redes neuronales pueden procesar textos e intrucciones al nivel del lenguaje humano lo que les permite desempeñar diferentes tareas relacionadas con texto principalmente, como lo pueden ser las tareas de generación de texto y las tareas de clasificación siendo estas últimas el tipo principal de tarea con la que se trabajara a lo largo del presente proyecto.
+
 \subsection{Que son los modelos largos de lenguaje LLM y cual es su utilidad}
 
 % FUENTES POSIBLES DE CONSULTA (NO INCLUIDAS AUN)
 %https://developers.google.com/s/results/machine-learning?hl=es-419&q=llms%20foundations
 %https://developers.google.com/machine-learning/resources/intro-llms?hl=es-419#what_is_a_language_model
 
-Los modelos largos de lenguajes o modelos de lenguaje de gran tamaño, son modelos de aprendizaje
-profundo que son pre entrenados con grandes cantidades de datos
-Poseen una estructura fundamentada en los transformadores, un tipo de arquitectura introducido en el
-artículo .Attention Is All You Need", este tipo de arquitectura se basa exclusivamente en mecanismos de
-atención, eliminando la necesidad de recurrencias o convoluciones. Los transformadores son un conjunto de
+Los modelos largos de lenguajes o modelos de lenguaje de gran tamaño, son modelos de aprendizaje profundo que son pre entrenados con grandes cantidades de datos. Poseen una estructura fundamentada en los transformadores, un tipo de arquitectura introducido en el
+artículo Attention Is All You Need, este tipo de arquitectura se basa exclusivamente en mecanismos de
+atención. Los transformadores son un conjunto de
 redes neuronales que cuenta con un codificador y decodificador con capacidades de autocorrección estos
 extraen significados de una secuencia de texto y comprenden las relaciones entre las palabras y las frases que
 contiene. \cite{llmsbyAmazon} \cite{llmsbyIBM}
@@ -37,8 +47,7 @@ Los LLMS pueden ser empleados para llevar a cabo tareas de diversas indoles como
 preguntas, resumir documentos, traducir idiomas, completar oraciones, automatizar la creación de contenido
 y cambiar la forma en que las personas utilizan los motores de búsqueda y los asistentes virtuales.
 
-Particularmente en el presente trabajo nos centraremos particularmente en la tarea de clasificación de
-textos
+Particularmente en el presente trabajo nos centraremos en la tarea de clasificación de textos.
 
 \subsection{LLMs Como clasificadores de textos}
 
@@ -49,37 +58,19 @@ abordan las tareas de procesamiento de lenguaje natural
 textos. Tradicionalmente, esta tarea dependía de modelos
 supervisados entrenados con grandes volúmenes de datos
 etiquetados, los cuales requerían etapas explícitas de ex-
-tracción de características y entrenamiento. En contraste,
+tracción de características y entrenamiento. En contraste, 
+%punto clave 1
+los LLMs permiten realizar tareas de clasificación incluso en entornos con pocos o ningún dato etiquetado, a través de técnicas como el zero-shot learning y el few-shot learning.
 
-\begin{tcolorbox}[
-    colback=yellow!10!white,
-    colframe=yellow!60!black,
-    width=\columnwidth, % Ancho de la página completa
-]
-    los LLMs permiten realizar tareas de clasificación incluso en entornos con pocos o ningún dato etiquetado, a través de técnicas como el zero-shot learning y el few-shot learning.
-\end{tcolorbox}
+En el artículo Large Language Models Are Zero-Shot Text Classifiers \cite{wang2023largelanguagemodelszeroshot}, se realizó una evaluación empírica del desempeño de distintos LLMs como clasificadores sin entrenamiento adicional, usando únicamente instrucciones (prompts) diseñadas cuidadosamente. Entre los hallazgos más relevantes destaca que,
 
-En el artículo "Large Language Models Are Zero-Shot Text Classifiers" \cite{wang2023largelanguagemodelszeroshot}, se realizó una evaluación empírica del desempeño de distintos LLMs como clasificadores sin entrenamiento adicional, usando únicamente
-instrucciones (prompts) diseñadas cuidadosamente. Entre los hallazgos más relevantes destaca que,
-
-\begin{tcolorbox}[
-    colback=yellow!10!white,
-    colframe=yellow!60!black,
-    width=\columnwidth, % Ancho de la página completa
-]
-    aunque estos modelos no superan sistemática-
-    mente a clasificadores supervisados entrenados
-    sobre datos específicos, ofrecen una ventaja considerable en contextos donde no se dispone de
-    datos etiquetados o los recursos computacionales
-    para entrenamiento son limitados.
-\end{tcolorbox}
+%punto clave 2
+aunque estos modelos no superan sistemáticamente a clasificadores supervisados entrenados sobre datos específicos, ofrecen una ventaja considerable en contextos donde no se dispone de datos etiquetados o los recursos computacionales para entrenamiento son limitados.
 
 Asimismo, se demostró que el diseño del prompt es
 determinante: un cambio sutil en la redacción de la instrucción puede afectar significativamente la precisión del modelo.
 
-Para el proyecto aquí concebido, que busca detectar automáticamente patrones de catfishing y extorsión en mensajes dentro de aplicaciones de mensajería, el uso de LLMs como clasificadores resulta particularmente pertinente. Dado que estos delitos evolucionan constantemente y pueden adoptar múltiples formas
-lingüísticas, los modelos tradicionales entrenados sobre conjuntos de datos fijos podrían mostrar limitaciones en su capacidad de generalización. En cambio, un LLM permite adaptar dinámicamente su capacidad de
-clasificación mediante modificaciones en los prompts, o bien mediante técnicas de fine tuning si se desea aumentar la precisión en un dominio específico.
+Para el objetivo de este proyecto el cual contempla la identificación de estafas como sextorsión y catfishing, emplear modelos largos del lenguaje como clasificadores es un buen enfoque de solución considerando sus características de adaptabilidad ya sea mediante refinamiento a partir de técnicas de prompting para la redacción de prompts efectivos, técnicas de fine tuning para entrenamiento en un dominio específico Y otras técnicas y protocolos como lo son RAG (Retrieval-Augmented Generation) y MCP (Model Context Protocol). En contraste, los clasificadore a partir de modelos tradicionales de Machine learning poseen capacidades de generarización limitadas.
 
 \foreignlanguage{spanish}
 
@@ -102,8 +93,23 @@ El español, como lengua hablada en múltiples países y regiones, presenta una 
 na, identificando variaciones significativas en el uso del lenguaje. Estas diferencias incluyen el empleo 6 de términos y expresiones particulares de cada región, así como la adopción de jergas específicas en contextos sociales determinados. En el ámbito de la extorsión y el catfishing, los delincuentes suelen utilizar jergas y modismos locales para ganarse la confianza de sus víctimas y evitar la detección por sistemas automatizados. Esta adaptación lingüística representa un desafío para
 los modelos de procesamiento de lenguaje natural, que deben ser capaces de reconocer y entender estas variaciones para identificar comportamientos sospechosos de manera efectiva. Por lo tanto, es fundamental que los sistemas de detección de actividades fraudulentas en redes sociales incorporen mecanismos para manejar la variabilidad lingüística del español. Esto incluye el entrenamiento de modelos con datos representativos de diferentes dialectos y jergas, así como la actualización constante de los recursos lingüísticos utilizados para reflejar los cambios y tendencias en el uso del lenguaje.
 
+
 %dar el preambulo de la necesidad de evaluacion del llm dentro del proyecto, se puede redactar en razon del objetivo especifico que se tiene mencionandolo en este preámbulo
+
+\subsection{Técnicas de promting (Prompt engineering)}
+
+
+\subsection{Verdaderos y Falsos Positivos y negativos}
+\cite{google2025clasificacion}
+
+
 \subsection{Métricas de desempeño de clasificadores}
+
+%INFO ADICIONAL SOBRE PROMEDIOS y f1 score
+%https://stackoverflow.com/questions/55740220/macro-vs-micro-vs-weighted-vs-samples-f1-score
+% https://github.com/scikit-learn/scikit-learn/blob/7b136e9/sklearn/metrics/classification.py#L620
+% https://www.cuemath.com/data/harmonic-mean/
+
 
 REDACCION DEL MECANISMO DE TRANSFORMACION DE PROBLEMAS MULTICLASE A BINARIOS EN EL CLASSIFICATION REPORT PARA OPERAR 
 
@@ -258,67 +264,21 @@ F_{\beta, weighted} = \frac{1}{\sum_{l \in L} |y_l|} \sum_{l \in L} |y_l| F_{\be
 \end{equation}
 
 
-\subsubsection{Buenas practicas para la generación de datos sintéticos (Pendiente de parafraseo y resumen)}
+\subsubsection{Buenas practicas para la generación de datos sintéticos}
 
 Esta información generada artificialmente puede complementar o incluso reemplazar los datos del mundo real al entrenar o probar los modelos de inteligencia artificial \cite{AIbyIBM}.
 
-En comparación con los conjuntos de datos reales, que suponen desventajas en cuestión de costo, acceso, tiempo para etiquetarlos y suministro, los conjuntos de datos sintéticos se pueden sintetizar mediante simulaciones por computadora o modelos generativos \cite{GenModelsByIbm}.
-
-Por lo tanto, es más económico producirlos a demanda en volúmenes casi ilimitados y personalizarlos en función de las necesidades de una organización.
+En comparación con los conjuntos de datos reales, que suponen desventajas en cuestión de costo, acceso, tiempo para etiquetarlos y suministro, los conjuntos de datos sintéticos pueden ser sintetizados mediante modelos generativos \cite{GenModelsByIbm}. En materia de costes resulta más económico generar datos en volúmen además de tener la capacidad de personalizar estos datos en función de las necesidades.
 
 A pesar de sus beneficios, los datos sintéticos \cite{SynthDataByImb} también conllevan dificultades. El proceso de generación puede ser complejo, ya que los científicos de datos tienen que crear datos realistas sin sacrificar su calidad y privacidad.
 
-IBM propone estas ocho mejores prácticas para la generación de datos sintéticos:
+Para el desarrollo de este proyecto se llevo a cabo la generación sintética de datos con ejemplos de mensajería fraudulenta bajo la modalidad de las sextorsión y catfishing siguiendo las ocho mejores prácticas para la generación sintética de datos propuesta por IBM \cite{SynthDataByIbm}
 
 \begin{itemize}
     \item Conocer el propósito: Comprender por qué el proyecto necesita datos sintéticos y los casos de uso en los que podrían ser más útiles que los datos reales. Los datos artificiales pueden actuar como una forma de refuerzo de datos \cite{AugmentedDataByIbm}. Se pueden utilizar para impulsar la diversidad de los datos, especialmente para grupos subrepresentados en el entrenamiento de modelos de IA \cite{AIModelByIbm}. Y cuando la información es escasa, los datos sintéticos pueden llenar los vacíos. A la empresa de servicios financieros JP Morgan, por ejemplo, le resultó difícil entrenar eficazmente modelos impulsados por IA para la detección de fraudes debido a la falta de casos fraudulentos en comparación con los no fraudulentos.
     \item La preparación es clave Al preparar conjuntos de datos originales para la generación de datos sintéticos mediante algoritmos de aprendizaje automático (ML) \cite{MLByIbm}, asegúrese de verificar y corregir errores, imprecisiones e incongruencias. Elimine los duplicados e ingrese los valores faltantes
 \end{itemize}
 
-
-
-
-
-
-
-\section{Técnicas computacionales}
-Describir las técnicas computacionales a utilizar, por ejemplo: redes neuronales, aprendizaje profundo, redes sociales, sistemas en tiempo real, algoritmos de reconstrucción, sistemas dinámicos, etc., etc.
-
-\section{Técnicas computacionales}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{imagenes/marcoTeorico/DiagramaRamasAI.png}
-\caption{Diagrama de IA}
-\label{fig:iadiagram}
-\end{figure}
-
-El presente proyecto se fundamenta en la rama del aprendizaje de maquina, puntualmente en el aprendizaje profundo en lo que se refiere a los modelos largos del lenguaje.
-Los conocidos como LLMs son estructuras que contemplan redes neuronales profundas y múltiples capas, Estas redes neuronales pueden procesar textos e intrucciones al nivel del lenguaje humano lo que les permite desempeñar diferentes tareas relacionadas con texto principalmente, como lo pueden ser las tareas de generación de texto y las tareas de clasificación siendo estas últimas el tipo principal de tarea con la que se trabajara a lo largo del presente proyecto.
-
-\subsection{Modelos de Lenguaje de Gran Escala (LLMs)}
-
-Los Modelos de Lenguaje de Gran Escala constituyen el núcleo tecnológico del presente trabajo. Estos modelos, entrenados en vastas cantidades de texto, poseen la capacidad de comprender relaciones semánticas complejas y patrones lingüísticos característicos de diferentes tipos de comunicación \cite{LLMRef}. Se utilizarán modelos como Llama 3, Gemma 2, Mistral y Qwen para evaluar su desempeño en la tarea de clasificación de mensajes categorizados como catfishing, sextorsión e inofensivos.
-
-\subsection{Aprendizaje por Transferencia y Refinamiento mediante Prompting}
-
-El refinamiento de modelos preentrenados mediante técnicas de prompting (zero-shot, one-shot y few-shot) permite adaptar los LLMs a la tarea específica sin reentrenamiento de pesos \cite{PromptEngByIBM}. Esta aproximación de aprendizaje por transferencia reduce significativamente los requerimientos computacionales y acelera la implementación de soluciones en dominios especializados como la detección de fraudes en línea.
-
-\subsection{Síntesis de Datos mediante Generación Sintética}
-
-Se emplean técnicas de generación de datos sintéticos siguiendo las 8 prácticas propuestas por IBM \cite{SynthDataByIbm} para crear conjuntos de entrenamiento y evaluación balanceados. Esto permite aumentar la diversidad de ejemplos de catfishing y sextorsión sin comprometer el anonimato de las víctimas, utilizando LLMs como sintetizadores de contenido.
-
-\subsection{Procesamiento del Lenguaje Natural (NLP)}
-
-Las técnicas de NLP se emplean para el análisis semántico de mensajes de texto, permitiendo la extracción de características lingüísticas relevantes tales como contexto emocional, patrones de manipulación y señales de coerción características de estafas en línea. Este análisis semántico fundamenta la capacidad del sistema para identificar fraudes de manera oportuna.
-
-\subsection{Arquitectura de Sistemas en Tiempo Real}
-
-El proyecto contempla una arquitectura de procesamiento síncrono que permite analizar y clasificar mensajes instantáneamente conforme se intercambian en la aplicación web. Esta característica de tiempo real es crítica para proporcionar alertas preventivas a los usuarios antes de que se materialice el fraude.
-
-\subsection{Evaluación mediante Matrices de Confusión y Métricas de Desempeño}
-
-Se utilizan matrices de confusión, precisión, recall y F1-score para evaluar comparativamente el desempeño de cada modelo bajo diferentes técnicas de prompting, permitiendo una selección informada del modelo óptimo para el entorno de producción.
 
 
 \section{Herramientas de software}
@@ -397,11 +357,5 @@ GPU Nvidia GeForce GTX 1060 6GB Vram
 Almacenamiento persistente ADATA HD720 SCSI 1.8 terabytes
 
 
-%2025-11-08: citar 
-%https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall?hl=es-419
-%https://www-geeksforgeeks-org.translate.goog/machine-learning/essential-metrics-for-model-assessment-tp-tn-fp-fn-in-machine-learning/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc
 
-%INFO ADICIONAL SOBRE PROMEDIOS y f1 score
-%https://stackoverflow.com/questions/55740220/macro-vs-micro-vs-weighted-vs-samples-f1-score
-% https://github.com/scikit-learn/scikit-learn/blob/7b136e9/sklearn/metrics/classification.py#L620
-% https://www.cuemath.com/data/harmonic-mean/
+
