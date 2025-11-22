@@ -501,21 +501,25 @@ CONCLUSIÓN
 
 Esta arquitectura representa una solución pragmática y económica para el MVP, aprovechando servicios serverless de AWS que operan completamente dentro de la capa gratuita para volúmenes de prueba. El diseño prioriza la simplicidad operacional (sin servidores que gestionar), la tolerancia a fallos (SQS + DynamoDB garantizan que ningún mensaje se pierda), y la flexibilidad (el Worker local puede actualizarse independientemente). La separación de responsabilidades entre componentes facilita el desarrollo iterativo y el debugging, mientras que el uso de servicios administrados reduce el tiempo de implementación y los riesgos de seguridad. El sistema está preparado para escalar agregando más Workers locales si el volumen de mensajes aumenta, o migrando el LLM a AWS cuando el presupuesto lo permita.
 
+% 2025/11/22 De manera provisional se comentan todas estas secciones dado que Requiere consultar con los profesores la relevancia para el proyecto
 
 %2025/11/12: \subsection{Tecnologías y justificación contempladas en la propuesta} pendiente de preguntar
 
-\subsection{Lista de requerimientos funcionales}% pendiente de ampliar con amazon q
+\begin{comment}
+    \subsection{Lista de requerimientos funcionales}% pendiente de ampliar con amazon q
 
-\begin{itemize}
-    \item El sistema debe permitir enviar y recibir mensajes
-    \item El sistema debe tener inicio de sesión y creación de cuentas
-    \item La clasificación debe activarse mediante el trigger “Se recibió un mensaje dentro del sistema de mensajería”.
-    \item Evaluar diferentes enfoques mediante pruebas para medir el rendimiento de la inferencia del llm al realizar la tarea de clasificación del tipo de estafa y determinar el enfoque a proceder balanceando presupuesto reducido y un desempeño mínimo requerido para el requerimiento de “alertar al usuario en un tiempo pertinente para no caer en la estafa, lo más cercano al tiempo real”, los enfoques a evaluar son (refinamiento con prompt engineering o ajuste fino “fine tuning” involucrando un entrenamiento)
-    \item La aplicación debe tener la opción de desactivar filtro (considerar también para las prácticas, tener siempre un dispositivo que envía los mensajes sospechosos)
-    \item Llevar un historial de mensajes clasificados como potencialmente peligrosos, incluyendo hora, usuario involucrado y tipo de amenaza detectada.
-\end{itemize}
+    \begin{itemize}
+        \item El sistema debe permitir enviar y recibir mensajes
+        \item El sistema debe tener inicio de sesión y creación de cuentas
+        \item La clasificación debe activarse mediante el trigger “Se recibió un mensaje dentro del sistema de mensajería”.
+        \item Evaluar diferentes enfoques mediante pruebas para medir el rendimiento de la inferencia del llm al realizar la tarea de clasificación del tipo de estafa y determinar el enfoque a proceder balanceando presupuesto reducido y un desempeño mínimo requerido para el requerimiento de “alertar al usuario en un tiempo pertinente para no caer en la estafa, lo más cercano al tiempo real”, los enfoques a evaluar son (refinamiento con prompt engineering o ajuste fino “fine tuning” involucrando un entrenamiento)
+        \item La aplicación debe tener la opción de desactivar filtro (considerar también para las prácticas, tener siempre un dispositivo que envía los mensajes sospechosos)
+        \item Llevar un historial de mensajes clasificados como potencialmente peligrosos, incluyendo hora, usuario involucrado y tipo de amenaza detectada.
+    \end{itemize}
 
 \section{Justificación del proveedor de IaaS}
+\end{comment}
+
 
 %2025-08-31: Considerar un aspecto fuente para la justificación del proveedor de IaaS el que tengan data centers en cdmx o en méxico para la baja latencia, puede ser un punto fuerte para justificar azure frente aws aunque aparentemente según gpt sea predominante
 % pagina para justificar https://getdeploying.com/
