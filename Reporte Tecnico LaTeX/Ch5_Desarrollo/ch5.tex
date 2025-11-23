@@ -135,11 +135,7 @@ El propósito de estas pruebas es determinar el conjunto de modelos con mayor po
 
 La metodología empleada para llevar a cabo este conjunto de pruebas contempló el desarrollo de Un código de Python donde se programó la lógica de programación para la Ejecución De los modelos, evaluación A través de métricas Y almacenamiento de los resultados, La presentación de los resultados se realiza en la sección “Pruebas y resultados”.
 
-\subsubsection{Entorno de Pruebas de desempeño de identificación en LLMs}
-Ollama: para ejecutar modelos localmente en el entorno de pruebas.
-Jupyter: de Anaconda para automatizar la comunicación con el modelo desde Python hacia Ollama.
-
-\section{Versión v1.2 del prompt compatible con las 3 técnicas de prompting empleado para la ejecución de la tarea y el refinamiento del modelo}
+\section{Prompt de refinamiento compatible con las 3 técnicas de prompting empleado para la ejecución de la tarea y el refinamiento del modelo}
 
 ROLE: You are a cybersecurity expert specialized in detecting digital fraud and malicious online behavior.
        
@@ -169,7 +165,7 @@ Message to analyze:
 
 \subsubsection{Módulos principales del código en lenguaje de programación Python}
 
-Librerías utilizadas ollama cliente y sci kit learn
+Paquetes empleados en el script, incluidos el cliente de ollama y la libreria de sci kit learn metrics.
 
 \begin{lstlisting}[language=Python]
     import subprocess
@@ -184,8 +180,7 @@ Librerías utilizadas ollama cliente y sci kit learn
     from ollama import Client
 \end{lstlisting}
 
-Módulo con el prompt
-get model prediction
+Módulo que gestiona el envío del prompt al modelo (get model prediction) y la recepción de las etiquetas predichas. 
 
 \begin{lstlisting}[language=Python]
     def get_model_prediction(model_name, text, additional_examples_text="", dictionary_text=""):
@@ -234,7 +229,7 @@ get model prediction
     return response_without_thought, prediction
 \end{lstlisting}
 
-Módulo de almacenamiento en json
+Módulo encargado del almacenamiento persistente de las metricas computadas y recolectadas en formato json.
 
 \begin{lstlisting}[language=Python]
     def export_to_json(report_data, metadata_dict, filename_prefix):
@@ -253,7 +248,7 @@ Módulo de almacenamiento en json
     print(f'JSON guardado en {path}')
 \end{lstlisting}
 
-Módulos involucrados en la lógica de la evaluación: los que miden las métricas, los que manejan el orden de atención a cada modelo encontrado mediante ollama listo, 
+Módulos encargados de la lógica de evaluación: calculan las métricas mediante la libreria de sci kit learn, también gestionan el orden de atención por modelo. 
 
 \begin{lstlisting}[language=Python]
     def evaluate_all_models(current_dataset):
@@ -309,9 +304,8 @@ Módulos involucrados en la lógica de la evaluación: los que miden las métric
             continue
 \end{lstlisting}
 
+Gestiona la evaluación individual por modelo.
 
-
-2.- evaluar modelo
 \begin{lstlisting}[language=Python]
     def evaluate_model(model_name, dataset_to_use, additional_examples_text="", dictionary_text=""):
     """Ejecuta todas las predicciones y calcula metricas para un modelo especifico."""
@@ -360,7 +354,6 @@ Módulos involucrados en la lógica de la evaluación: los que miden las métric
     }
 \end{lstlisting}
 
-
 \section{Propuesta de solución}
 %07-06-2025: se tiene que justificar por que el uso de python
 
@@ -370,6 +363,7 @@ Módulos involucrados en la lógica de la evaluación: los que miden las métric
 
 %2025-09-09: En la parte de propuesta de solución o enfoque de solución hablar sobre la calidad de la hipótesis la cuál refleja la necesidad de contar con modelos ligeros, mencionar que esto aminora la necesidad de hardware costoso o la utilización de apis para modelos con grandes capacidades contrastar con los resultados obtenidos a lo largo de las pruebas con los modelos e identificar los casos como mayores al 60% en la identificación "Aviola dice que es suficiente", falta justificar el por qué si
 
+\subsection{Arquitectura general del sistema (explicación)}
 
 \begin{figure}[H]
     \centering
@@ -385,8 +379,7 @@ Módulos involucrados en la lógica de la evaluación: los que miden las métric
     \label{fig:diagrama-componentes}
 \end{figure}
 
-
-\subsection{Arquitectura general del sistema (explicación)}
+\subsection{Descripción de la arquitectura por servicio de Amazon web services}
 
 %2025/11/10: Esta sección está hecha con AI, revisión y redacción humanizada pendientes
 
@@ -405,9 +398,7 @@ La arquitectura propuesta representa una solución híbrida cloud-local diseñad
 %2025-09-03: para justificar al proveedor de nube seguramente AWS, se debera hablar del aprovisionamiento como caracteristica para usar las funciones serverless añadir a marco teorico "https://www.ibm.com/mx-es/think/topics/provisioning”
 
 
-\subsubsection{Descripción de servicios y su funcionalidad}
-
-1. AWS AMPLIFY HOSTING (Frontend)
+\subsubsection{1. AWS AMPLIFY HOSTING (Frontend)}
 
 AWS Amplify Hosting es el servicio encargado de alojar y distribuir la aplicación web del cliente. Este servicio proporciona hosting estático con integración continua, permitiendo desplegar aplicaciones React, Vue, Angular o HTML/CSS/JS simple de manera automática desde repositorios Git.
 
@@ -415,7 +406,7 @@ Funcionalidad: Amplify sirve los archivos estáticos del frontend (HTML, CSS, Ja
 
 Por qué es necesario: Para un MVP, Amplify elimina la complejidad de configurar servidores web, gestionar certificados SSL y configurar pipelines de despliegue. Su capa gratuita incluye 15GB de almacenamiento y transferencia de datos, suficiente para las pruebas iniciales con 2 usuarios. La integración nativa con otros servicios de AWS (Cognito, API Gateway) simplifica significativamente el desarrollo.
 
-2. AMAZON COGNITO USER POOL (Autenticación)
+\subsubsection{2. AMAZON COGNITO USER POOL (Autenticación)}
 
 Amazon Cognito User Pool es el servicio de gestión de identidades y autenticación de usuarios que maneja todo el ciclo de vida de las cuentas de usuario, desde el registro hasta la autenticación y recuperación de contraseñas.
 
@@ -423,8 +414,7 @@ Funcionalidad: Cognito proporciona un sistema completo de autenticación basado 
 
 Por qué es necesario: Implementar un sistema de autenticación seguro desde cero es complejo y propenso a vulnerabilidades. Cognito ofrece una solución probada que incluye hash seguro de contraseñas (bcrypt), protección contra ataques de fuerza bruta, verificación de email, y cumplimiento con estándares de seguridad. Su capa gratuita permite hasta 50,000 usuarios activos mensuales (MAU), más que suficiente para un MVP. Además, se integra directamente con API Gateway para validar automáticamente los tokens JWT en cada solicitud.
 
-
-3. API GATEWAY WEBSOCKET API (Comunicación en Tiempo Real)
+\subsubsection{3. API GATEWAY WEBSOCKET API (Comunicación en Tiempo Real)}
 
 API Gateway con soporte WebSocket es el servicio que gestiona las conexiones bidireccionales persistentes entre los clientes y el backend, permitiendo la comunicación en tiempo real sin necesidad de polling.
 
@@ -432,8 +422,7 @@ Funcionalidad: API Gateway WebSocket mantiene conexiones abiertas con cada clien
 
 Por qué es necesario: Para lograr una experiencia de chat en tiempo real similar a WhatsApp o Telegram, se requiere comunicación bidireccional instantánea. Las alternativas tradicionales como HTTP polling son ineficientes y costosas. WebSocket mantiene una conexión TCP persistente que permite enviar datos en ambas direcciones sin la sobrecarga de establecer nuevas conexiones HTTP para cada mensaje. API Gateway gestiona automáticamente el escalamiento, la reconexión ante fallos, y la integración con Lambda, eliminando la necesidad de gestionar servidores WebSocket manualmente. Su capa gratuita incluye 1 millón de mensajes por mes.
 
-
-4. AWS LAMBDA - ReceiveMessage (Procesamiento de Mensajes Entrantes)
+\subsubsection{4. AWS LAMBDA - ReceiveMessage (Procesamiento de Mensajes Entrantes)}
 
 Esta función Lambda es el punto de entrada para todos los mensajes nuevos enviados por los usuarios a través del chat.
 
@@ -441,8 +430,7 @@ Funcionalidad: Cuando un usuario envía un mensaje, API Gateway invoca esta func
 
 Por qué es necesario: Esta función implementa el patrón de "write-through cache" y desacoplamiento asíncrono. Al guardar primero en DynamoDB, se garantiza que ningún mensaje se pierda incluso si el sistema de análisis falla. Al encolar en SQS, se desacopla el procesamiento del LLM del flujo principal de mensajería, permitiendo que el chat funcione con baja latencia independientemente del tiempo de análisis. La arquitectura serverless de Lambda significa que solo se paga por el tiempo de ejecución real (primeros 1 millón de invocaciones gratis), sin necesidad de mantener servidores activos.
 
-
-5. AWS LAMBDA - GetMessages (Recuperación de Historial)
+\subsubsection{5. AWS LAMBDA - GetMessages (Recuperación de Historial)}
 
 Esta función Lambda maneja las solicitudes de los usuarios para recuperar el historial de conversaciones anteriores.
 
@@ -450,8 +438,7 @@ Funcionalidad: Cuando un usuario abre una conversación o solicita mensajes anti
 
 Por qué es necesario: Separar la lógica de recuperación de historial en una función dedicada sigue el principio de responsabilidad única y permite optimizar las consultas a DynamoDB de forma independiente. Esta función puede implementar paginación para conversaciones largas, filtrado por fecha, y caché de resultados frecuentes sin afectar el rendimiento del envío de mensajes en tiempo real. La separación también facilita agregar funcionalidades futuras como búsqueda de mensajes o exportación de conversaciones.
 
-
-6. AWS LAMBDA - NotifyUser (Sistema de Alertas)
+\subsubsection{6. AWS LAMBDA - NotifyUser (Sistema de Alertas)}
 
 Esta función Lambda se encarga de enviar notificaciones a los usuarios cuando el sistema de análisis detecta contenido de riesgo en los mensajes.
 
@@ -459,8 +446,7 @@ Funcionalidad: El Worker local invoca esta función cuando el LLM identifica pat
 
 Por qué es necesario: Las alertas de seguridad deben entregarse de forma inmediata y confiable. Esta función centraliza la lógica de notificaciones, permitiendo implementar diferentes canales de alerta (WebSocket, email, SMS) desde un único punto. Al ser invocada por el Worker local, mantiene el desacoplamiento entre el sistema de análisis y la infraestructura de AWS. También permite implementar lógica de negocio como evitar alertas duplicadas, escalar alertas según severidad, o registrar todas las notificaciones para auditoría.
 
-
-7. AMAZON DYNAMODB (Persistencia de Datos)
+\subsubsection{7. AMAZON DYNAMODB (Persistencia de Datos)}
 
 DynamoDB es la base de datos NoSQL completamente administrada que almacena todos los datos del sistema: mensajes, metadatos de conversaciones, y estados de conexión.
 
@@ -468,8 +454,7 @@ Funcionalidad: La tabla ChatMessages utiliza un modelo de datos optimizado con c
 
 Por qué es necesario: DynamoDB ofrece latencia de milisegundos de un solo dígito, escalamiento automático, y alta disponibilidad sin gestión de servidores. Para un MVP de chat, estas características son críticas: las consultas de historial deben ser rápidas, el sistema debe manejar picos de escritura cuando múltiples mensajes llegan simultáneamente, y los datos deben estar siempre disponibles. Su modelo de precios bajo demanda significa que solo se paga por las operaciones realmente ejecutadas. La capa gratuita incluye 25GB de almacenamiento y 25 unidades de capacidad de lectura/escritura, suficiente para miles de mensajes. El diseño de clave compuesta (PK + SK) permite consultas eficientes sin índices secundarios costosos.
 
-
-8. AMAZON SQS - MessageAnalysisQueue (Cola de Análisis)
+\subsubsection{8. AMAZON SQS - MessageAnalysisQueue (Cola de Análisis)}
 
 Amazon SQS (Simple Queue Service) es el servicio de cola de mensajes que actúa como buffer entre el sistema de chat en AWS y el Worker local que ejecuta el LLM.
 
@@ -477,8 +462,7 @@ Funcionalidad: Cada mensaje de chat se encola en SQS inmediatamente después de 
 
 Por qué es necesario: SQS es fundamental para la tolerancia a fallos del sistema. Si la computadora local con Ollama está apagada o sin conexión, los mensajes permanecen en la cola hasta por 14 días, garantizando que ningún mensaje quede sin analizar. El VisibilityTimeout de 300 segundos asegura que si el Worker falla durante el procesamiento, el mensaje vuelve a estar disponible automáticamente. La DLQ captura mensajes problemáticos para investigación manual sin bloquear el procesamiento de mensajes válidos. SQS también desacopla completamente el ritmo de envío de mensajes del ritmo de análisis del LLM, permitiendo que el chat funcione con baja latencia incluso si el análisis toma varios segundos. La capa gratuita incluye 1 millón de solicitudes mensuales.
 
-
-9. AMAZON SQS - Dead Letter Queue (Gestión de Fallos)
+\subsubsection{9. AMAZON SQS - Dead Letter Queue (Gestión de Fallos)}
 
 La DLQ es una cola secundaria que recibe mensajes que no pudieron ser procesados exitosamente después de múltiples intentos.
 
@@ -486,8 +470,7 @@ Funcionalidad: Cuando un mensaje en MessageAnalysisQueue falla 3 veces consecuti
 
 Por qué es necesario: Sin una DLQ, los mensajes problemáticos podrían bloquear la cola principal en un ciclo infinito de reintentos, consumiendo recursos y retrasando el procesamiento de mensajes válidos. La DLQ permite identificar problemas sistemáticos (por ejemplo, un tipo de contenido que causa errores en el LLM) sin perder datos ni afectar la operación normal. También proporciona visibilidad sobre la tasa de fallos del sistema, un indicador clave de salud para el MVP.
 
-
-10. WORKER LOCAL + OLLAMA LLM (Análisis de Contenido)
+\subsubsection{10. WORKER LOCAL + OLLAMA LLM (Análisis de Contenido)}
 
 El Worker es una aplicación Python que se ejecuta en una computadora local y actúa como puente entre AWS y el modelo de lenguaje Ollama.
 
@@ -497,7 +480,7 @@ Por qué es necesario: Ejecutar el LLM localmente es un requisito del proyecto q
 
 Para estos efectos se consideran modelos con escalas de entre 0.5 billones de parametros hasta 8 billones de parametros. Se contempla aprovisionamiento local en una instancia de computo on-premise para la ejecución de la inferencia de los distintos modelos con las siguientes caracteristicas de hardware: (CPU Intel(R) Core(TM) i7-4770 4ª generación  basada en la arquitectura Haswell Frecuencia base de 3.40GHz, GPU Nvidia GeForce GTX 1060 6GB Vram, 16GB Ram del sistema con frecuencia de 1600 MHz, Almacenamiento persistente ADATA HD720 SCSI 1.8 terabytes). Este diseño permite actualizar el modelo o ajustar prompts sin modificar la infraestructura de AWS.
 
-CONCLUSIÓN
+\subsubsection{Conclusión sobre la arquitectura}
 
 Esta arquitectura representa una solución pragmática y económica para el MVP, aprovechando servicios serverless de AWS que operan completamente dentro de la capa gratuita para volúmenes de prueba. El diseño prioriza la simplicidad operacional (sin servidores que gestionar), la tolerancia a fallos (SQS + DynamoDB garantizan que ningún mensaje se pierda), y la flexibilidad (el Worker local puede actualizarse independientemente). La separación de responsabilidades entre componentes facilita el desarrollo iterativo y el debugging, mientras que el uso de servicios administrados reduce el tiempo de implementación y los riesgos de seguridad. El sistema está preparado para escalar agregando más Workers locales si el volumen de mensajes aumenta, o migrando el LLM a AWS cuando el presupuesto lo permita.
 
