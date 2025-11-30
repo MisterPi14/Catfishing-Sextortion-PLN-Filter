@@ -11,14 +11,11 @@ https://arxiv.org/pdf/2412.15423
 
 \cite{Acharya2024} % 20251118: REVISAR
 \end{comment}
+En adición a la parte técnica, el proyecto contempló bajo una metodología, la obtención de datos reales sobre estafa, puntualmente ejemplos de mensajería fraudulenta que busca explotar a la víctima mediante métodos afines al catfishing y la sextorsión.
 
+Se llevo a cabo una investigación en foros de Internet como reddit \cite{RedditFlirtu2025} con el objetivo de encontrar una aplicación de mensajería con reportes frecuentes de estafas.
 
-La presente investigación en adición a la parte técnica presenta también una metodología que se siguió para obtener datos reales sobre estafa como lo son ejemplos de mensajería fraudulenta que busca explotar a la víctima mediante métodos afines al Catfishing y las extorsión.
-
-Como primer paso esta parte del presente trabajo, Contempló realizar una investigación exhaustiva en foros de Internet como reddit \cite{RedditFlirtu2025}
- con el objetivo de encontrar una aplicación de mensajería donde ocurrieran frecuentemente eventualidades relacionadas a las estafas.
-
-Los resultados de esta primera fase arrojaron que una aplicación que podríamos considerar candidata por las características que referían sus usuarios a la hora de conversar dentro de la plataforma específicamente esta plataforma se trata de una red social de citas llamada Flirt U, un bot de telegram el cual se utiliza dentro de esta plataforma.
+Los resultados de esta primera fase arrojaron una aplicación candidata por las características difundidas por sus usuarios en el uso de esta plataforma. Se trata de un chat de citas llamado Flirt U, en sentido estricto, un bot de telegram el cual se utiliza dentro de dicha plataforma.
 \cite{RedditFlirtu2025}
 \cite{telegramRisks}
 
@@ -63,7 +60,7 @@ De los atacantes
 
 %2025/11/11: esta seccion requiere condensarse y enfocarse especificamente al procedimiento tecnico probablemente, pero contiene informacion relevante a la problematica, conviene referenciar mejor a la definicion del problema.
 
-El entrándonos en la etapa de la recolección de los datos la misma incluida por un lado adentrarnos en el flirt u bot de telegram fue necesario realizar el pago para una suscripción del mes-
+El entrándonos en la etapa de la recolección de los datos la misma incluida por un lado adentrarnos en el flirt u bot de telegram fue necesario realizar el pago para una suscripción del mes- 
 
 Posteriormente tras poder acceder a la aplicación se empezó a contactar con todas las personas que sugería la app Cabe mencionar que en este proceso se identificó una cantidad de interaccion o poco orgánica considerando el promedio habitual de las aplicaciones de citas como esta
 
@@ -131,9 +128,16 @@ La etapa inicial de esta investigación contempló efectuar un conjunto de prueb
         \item Cogito: 3b, 8b
 \end{itemize}
 
-El propósito de estas pruebas es determinar el conjunto de modelos con mayor ponderación mediante la comparación del desempeño de esta selección de modelos en la identificación del cafishing y sextorsión contemplando refinamiento mediante técnicas de prompting bajo 3 enfoques: zero shot, one shot y few shot para determinar el modelo que se empleara en la aplicación de mensajería.
+El propósito de estas pruebas es determinar el conjunto de modelos con mayor ponderación mediante la comparación del desempeño de esta selección de modelos en la clasificación del cafishing y sextorsión contemplando refinamiento mediante técnicas de prompting bajo 3 enfoques: zero shot, one shot y few shot para determinar el modelo que se empleara en la aplicación de mensajería.
 
 La metodología empleada para llevar a cabo este conjunto de pruebas contempló el desarrollo de Un código de Python donde se programó la lógica de programación para la Ejecución De los modelos, evaluación A través de métricas Y almacenamiento de los resultados, La presentación de los resultados se realiza en la sección “Pruebas y resultados”.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{imagenes/desarrollo/ArquitecturaEntornoPruebas/diagEnvTest.png}
+    \caption{Diagrama arquitectónico del entorno de pruebas de clasificación para evaluación de LLMs}
+    \label{fig:diagrama-entorno-pruebas}
+\end{figure}
 
 \section{Prompt de refinamiento compatible con las 3 técnicas de prompting empleado para la ejecución de la tarea y el refinamiento del modelo}
 
