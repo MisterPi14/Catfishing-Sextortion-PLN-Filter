@@ -1,0 +1,87 @@
+@startuml comp
+!define AWSPUML https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v14.0/dist
+!include AWSPUML/AWSCommon.puml
+!include AWSPUML/MachineLearning/SageMaker.puml
+!include AWSPUML/Storage/SimpleStorageService.puml
+
+title Diagrama de Componentes - Sistema de Clasificación de Fraudes
+
+package "Sistema de Clasificación PLN" {
+    
+    package "Entrada de Datos" {
+        component [Dataset\nTestDataset] as dataset
+        component [Ejemplos JSON\n(scam-examples/)] as examples
+        component [Diccionario\nRegionalismos] as dictionary
+    }
+    
+    package "Procesamiento" {
+        component [Ollama Client\nConexión Local] as ollama_client
+        component [Gestor de Modelos\nget_available_models()] as model_manager
+        component [Cargador de Ejemplos\nload_scam_examples_and_dictionary()] as example_loader
+    }
+    
+    package "Evaluación" {
+        component [Evaluador de Modelos\nevaluate_model()] as evaluator
+        component [Predictor\nget_model_prediction()] as predictor
+        component [Generador de Prompts\nPrompt Engineering] as prompt_gen
+    }
+    
+    package "Modelos LLM" {
+        component [Ollama\nModelos Instalados] as ollama_models
+        component [Modelos Seleccionados\n(mxbai-embed-large, etc)] as selected_models
+    }
+    
+    package "Análisis de Resultados" {
+        component [Métricas\nAccuracy, Precision, Recall] as metrics
+        component [Timing Metrics\nTiempos de Predicción] as timing
+        component [Clasificador\nclassification_report()] as classifier
+    }
+    
+    package "Salida de Datos" {
+        component [JSON Reports\nLMMs-Classification-Test-Results/] as json_output
+        component [Metadatos\nEvaluación] as metadata
+    }
+    
+    ' Conexiones
+    dataset --> evaluator
+    examples --> example_loader
+    dictionary --> example_loader
+    
+    example_loader --> prompt_gen
+    model_manager --> evaluator
+    ollama_client --> predictor
+    
+    evaluator --> predictor
+    prompt_gen --> predictor
+    
+    predictor --> ollama_models
+    ollama_models --> selected_models
+    selected_models --> predictor
+    
+    predictor --> classifier
+    classifier --> metrics
+    evaluator --> timing
+    
+    metrics --> json_output
+    timing --> json_output
+    metadata --> json_output
+}
+
+note right of ollama_client
+    Conexión a Ollama
+    en localhost:11434
+end note
+
+note right of prompt_gen
+    Incluye:
+    - Definiciones de fraudes
+    - Ejemplos adicionales
+    - Diccionario regional
+end note
+
+note right of json_output
+    Formato: model_name_eval_date.json
+    Contiene metadata + resultados
+end note
+
+@enduml

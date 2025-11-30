@@ -1,0 +1,112 @@
+@startuml flujo
+title Diagrama de Flujo - Proceso de Evaluación de Modelos
+
+start
+
+:Inicializar cliente Ollama
+en localhost:11434;
+
+if (¿Conexión exitosa?) then (No)
+    :Mostrar error de conexión;
+    stop
+else (Sí)
+    :Cargar testDataset;
+endif
+
+:Crear directorio de salida
+OUTPUT_DIR;
+
+:Cargar ejemplos y diccionario
+desde scam-examples/;
+
+:Obtener lista de modelos
+instalados en Ollama;
+
+:Filtrar modelos ya evaluados
+del OUTPUT_DIR;
+
+if (¿SELECTED_MODELS_ONLY?) then (Sí)
+    :Usar solo modelos en
+    MODELS_SELECTION;
+else (No)
+    :Usar todos los modelos
+    no evaluados;
+endif
+
+:Mostrar modelos a evaluar;
+
+repeat
+    :Seleccionar siguiente modelo;
+    
+    :Crear metadatos de evaluación
+    (fecha, versión, tamaño dataset);
+    
+    repeat
+        :Obtener siguiente muestra
+        del testDataset;
+        
+        :Construir prompt con:
+        - Rol y contexto
+        - Definiciones de fraudes
+        - Diccionario regional
+        - Ejemplos adicionales
+        - Mensaje a analizar;
+        
+        :Enviar prompt a Ollama
+        via client.chat();
+        
+        :Extraer respuesta del modelo;
+        
+        :Filtrar etiqueta válida
+        (catfishing|sextortion|harmless);
+        
+        if (¿Etiqueta válida?) then (Sí)
+            :Asignar predicción;
+        else (No)
+            :Marcar como 'unclassified';
+        endif
+        
+        :Registrar tiempo de predicción;
+        
+        :Guardar predicción en listas
+        (y_true, y_pred_leaked);
+        
+        :Mostrar progreso (%);
+        
+    repeat while (¿Más muestras?)
+    
+    :Calcular métricas:
+    - Accuracy
+    - Precision
+    - Recall
+    - F1-Score;
+    
+    :Calcular timing metrics:
+    - Tiempo total
+    - Promedio por predicción
+    - Muestras/segundo;
+    
+    :Crear payload JSON con:
+    - Metadata
+    - Resultados
+    - Métricas;
+    
+    :Guardar JSON en OUTPUT_DIR
+    (model_name_eval_date.json);
+    
+    :Mostrar resumen de evaluación;
+    
+repeat while (¿Más modelos?)
+
+:Mostrar mensaje de finalización;
+
+if (¿APAGADO == True?) then (Sí)
+    :Programar apagado del equipo
+    en 60 segundos;
+else (No)
+    :Finalizar sin apagado;
+endif
+
+stop
+
+@enduml
