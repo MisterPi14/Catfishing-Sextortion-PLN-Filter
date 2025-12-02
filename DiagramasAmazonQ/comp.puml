@@ -4,41 +4,41 @@
 !include AWSPUML/MachineLearning/SageMaker.puml
 !include AWSPUML/Storage/SimpleStorageService.puml
 
-title Diagrama de Componentes - Sistema de Clasificación de Fraudes
+title Diagrama de Componentes - Entorno de pruebas de clasificación (catfishing y sextorsión)
 
-package "Sistema de Clasificación PLN" {
+package "Entorno de pruebas de clasificación" {
     
     package "Entrada de Datos" {
-        component [Dataset\nTestDataset] as dataset
-        component [Ejemplos JSON\n(scam-examples/)] as examples
+        component [Conjunto de datos de prueba\nTestDataset] as dataset
+        component [Ejemplos en Archivos JSON\n(scam-examples/)] as examples
         component [Diccionario\nRegionalismos] as dictionary
     }
     
     package "Procesamiento" {
         component [Ollama Client\nConexión Local] as ollama_client
-        component [Gestor de Modelos\nget_available_models()] as model_manager
-        component [Cargador de Ejemplos\nload_scam_examples_and_dictionary()] as example_loader
+        component [Gestor de modelos\nget_available_models()] as model_manager
+        component [Módulo de carga de ejemplos\nload_scam_examples_and_dictionary()] as example_loader
     }
     
     package "Evaluación" {
-        component [Evaluador de Modelos\nevaluate_model()] as evaluator
+        component [MódEvaluador de Modelos\nevaluate_model()] as evaluator
         component [Predictor\nget_model_prediction()] as predictor
         component [Generador de Prompts\nPrompt Engineering] as prompt_gen
     }
     
     package "Modelos LLM" {
         component [Ollama\nModelos Instalados] as ollama_models
-        component [Modelos Seleccionados\n(mxbai-embed-large, etc)] as selected_models
+        component [Modelos Seleccionados\n(gemma3, deepseek-r1, etc)] as selected_models
     }
     
     package "Análisis de Resultados" {
-        component [Métricas\nAccuracy, Precision, Recall] as metrics
-        component [Timing Metrics\nTiempos de Predicción] as timing
-        component [Clasificador\nclassification_report()] as classifier
+        component [Cálculo de métricas\nAccuracy, Precision, Recall] as metrics
+        component [Módulo (tiempos de predicción)\nTiming Metrics] as timing
+        component [Módulo (Sci-Kit Learn)\nclassification_report()] as classifier
     }
     
     package "Salida de Datos" {
-        component [JSON Reports\nLMMs-Classification-Test-Results/] as json_output
+        component [Resoltados exportados a archivos JSON\nLMMs-Classification-Test-Results/] as json_output
         component [Metadatos\nEvaluación] as metadata
     }
     
@@ -69,14 +69,15 @@ package "Sistema de Clasificación PLN" {
 
 note right of ollama_client
     Conexión a Ollama
-    en localhost:11434
+    en localhost puerto 11434
 end note
 
 note right of prompt_gen
     Incluye:
-    - Definiciones de fraudes
-    - Ejemplos adicionales
-    - Diccionario regional
+    - Instruccion (prompt)
+    - Definiciones de catfishing y sextorsión
+    - Conjunto de datos de ejemplo
+    - Diccionario con regionalismos
 end note
 
 note right of json_output
