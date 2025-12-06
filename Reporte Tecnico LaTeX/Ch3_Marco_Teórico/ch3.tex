@@ -89,6 +89,10 @@ FN (falsos negativos): Acontecen cuando la etiqueta verdadera posee el valor "po
 
 El mecanismo de dividir una tarea multiclase en varios problemas binarios —conocido como One-vs-Rest (OvR) o One-vs-One (OvO)
 
+\cite{datacampClassificacion2024}
+\cite{sklearnOneVsRest}
+\cite{sklearnMultiClass}
+
 Algunas de las metricas que se emplean en la evaluacion de modelos en tareas de clasificacion desde la definicion estan concebidas para clasificacion binaria, algunos ejemplos incluyen la f1 score
 
 Cuando se trabaja con tareas de clasificacion multiclase o multietiqueta los datos son tratados como una coleccion de casos binarios uno por cada clase que se considere 
@@ -224,6 +228,8 @@ A pesar de sus beneficios, los datos sintéticos \cite{SynthDataByImb} también 
 
 Para el desarrollo de este proyecto se llevo a cabo la generación sintética de datos con ejemplos de mensajería fraudulenta bajo la modalidad de las sextorsión y catfishing siguiendo las ocho mejores prácticas para la generación sintética de datos propuesta por IBM \cite{SynthDataByIbm}
 
+En el dominio particular de este proyecto la generación sintética de datos se refiere precisamente a la síntesis de datos a partir de un modelo largo de lenguaje de gran escala (GPT 5.1, Gemini3 Pro, Claude Sonnet 4.5) los cuales, mediante su capacidad para generar textos se vuelven una herramienta muy útil para llevar a cabo este proceso. \cite{artificialanalysis}
+
 %2025/11/22: Esta parte de la redacción se omite en este momento dado que se contempla como información adicional Antonio innecesario pendiente de prof de preguntarle a los profesores de la materia
 
 \begin{comment}
@@ -233,7 +239,7 @@ Para el desarrollo de este proyecto se llevo a cabo la generación sintética de
 
 
 \section{Herramientas de software}
-Describir el software a utilizar: Android, Java, Python, Raspberry Pi OS, RT-Linux, contenedores, GNU/Linux, Xamp, Qt, SQL, Apache, C++, etc., etc.
+%Describir el software a utilizar: Android, Java, Python, Raspberry Pi OS, RT-Linux, contenedores, GNU/Linux, Xamp, Qt, SQL, Apache, C++, etc., etc.
 
 \subsection{Python}
 
@@ -261,7 +267,7 @@ Esta tecnología fue utilizada para la ejecución de la \textit{inferencia} de m
 
 \subsection{Amazon Web Services}   
 
-Amazon Web Services (AWS) es una plataforma que ofrece servicios de infraestructura de TI en la nube altamente confiable, escalable y de bajo costo. Hoy dia conocido como cómputo en la nube, un modelo de negocio que representa una ventaja a empresas e investigadores al permitir poner en marcha un buen numero de servicios con escalamiento horizontal y vertical al instante en cuestión de minutos sin requerir del aprovisionamiento de infraestructura autogestionada.
+Amazon Web Services (AWS) es una plataforma que ofrece servicios de infraestructura de TI en la nube altamente confiable, escalable y de bajo costo. Hoy dia conocido como cómputo en la nube, un modelo de negocio que representa una ventaja a empresas e investigadores al permitir poner en marcha un buen numero de servicios con escalamiento horizontal y vertical al instante en cuestión de minutos sin requerir del aprovisionamiento de infraestructura autogestionada. \cite{WhatIsAws}
 
 Ademas una de las principales caracteristicas por las que se selecciono como el proveedor de nube para esta investigacion fue la cantidad de servicios ofertados en la capa gratuita, ademas de la 
 
@@ -278,13 +284,13 @@ Amazon Web Services fue el proveedor de servicios en la nube seleccionado para i
 
 \subsection{Serverless Framework}
 
-El propósito de esta tecnología dentro del presente proyecto se refirio a la definición de la infraestructura como código para el despliegue y la definición de la infraestructura de la propuesta de solución presentada dentro del ecosistema el proveedor de nube de Amazon web services.
+El propósito de esta tecnología dentro del presente proyecto se refirio a la definición de la infraestructura como código para el despliegue y la definición de la infraestructura de la propuesta de solución presentada dentro del ecosistema el proveedor de nube de Amazon web services. \cite{WhatIsSLS}
 
 \subsection{PowerBi}
 
 La utilidad que se le dio esta herramienta fue la visualización de los datos, tras haber efectuado las pruebas de clasificacion de los modelos mediante el worker local en python, las mismas se almacenaron en archivos de formato JSON los cuales, posteriormente fueron procesados por un script de python para integrarlos en un unico archivo csv.
  
-Finalmente esta fuente de datos fue vinculada con la aplicación de PowerBi desktop para la creacion de gráficos con la opción de actualizar con nuevos datos conforme vayan saliendo nuevos modelos largos de lenguaje o se contemplen cambios en los enfoques del prompting, importante también para el trabajo futuro.
+Finalmente esta fuente de datos fue vinculada con la aplicación de PowerBi desktop para la creacion de gráficos con la opción de actualizar con nuevos datos conforme vayan saliendo nuevos modelos largos de lenguaje o se contemplen cambios en los enfoques del prompting, importante también para el trabajo futuro. \cite{WhatIsPB}
 
 \section{Herramientas de hardware}
 

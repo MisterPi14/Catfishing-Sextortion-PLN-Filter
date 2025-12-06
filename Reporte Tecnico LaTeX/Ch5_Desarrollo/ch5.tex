@@ -398,7 +398,7 @@ Gestiona la evaluación individual por modelo.
 % https://getdeploying.com/datacenters-in-mexico
 % https://aws.amazon.com/es/local/mexico/
 
-La arquitectura propuesta representa una solución híbrida cloud-local diseñada para implementar un sistema de mensajería instantánea con capacidades de detección de amenazas en tiempo real. Este MVP (Producto Mínimo Viable) combina la escalabilidad y confiabilidad de los servicios administrados de AWS con el procesamiento local de un modelo de lenguaje (LLM) para análisis de contenido, logrando un equilibrio óptimo entre costo, rendimiento y privacidad. La arquitectura está optimizada para operar dentro de la capa gratuita de AWS, haciendo uso de servicios serverless que eliminan la necesidad de aprovisionamiento y permiten un escalamiento automático según la demanda. El sistema está diseñado para detectar técnicas de sextorsión y catfishing en conversaciones de chat, alertando a los usuarios de manera proactiva cuando se identifiquen patrones de riesgo, todo esto mientras mantiene la persistencia de datos y garantiza la entrega de mensajes incluso ante fallos temporales del módulo de análisis.
+La arquitectura propuesta representa una solución híbrida cloud-local diseñada para implementar un sistema de mensajería instantánea con capacidades de detección de amenazas. La solución combina la escalabilidad y confiabilidad de los servicios administrados de AWS con el procesamiento local de un modelo de lenguaje (LLM) para análisis de contenido. La arquitectura está construida con el objetivo de operar dentro de la capa gratuita de AWS, es una solucion implementada bajo servicios serverless que eliminan la necesidad de aprovisionamiento. El sistema está diseñado para detectar técnicas de sextorsión y catfishing en conversaciones de chat, alertando a los usuarios de manera preventiva cuando se identifiquen patrones de riesgo, mientras se cuenta con persistencia de datos y se entrega un sistema de mensajería.
 %2025-09-03: para justificar al proveedor de nube seguramente AWS, se debera hablar del aprovisionamiento como caracteristica para usar las funciones serverless añadir a marco teorico "https://www.ibm.com/mx-es/think/topics/provisioning”
 
 
@@ -418,13 +418,13 @@ Funcionalidad: Cognito proporciona un sistema completo de autenticación basado 
 
 Por qué es necesario: Implementar un sistema de autenticación seguro desde cero es complejo y propenso a vulnerabilidades. Cognito ofrece una solución probada que incluye hash seguro de contraseñas (bcrypt), protección contra ataques de fuerza bruta, verificación de email, y cumplimiento con estándares de seguridad. Su capa gratuita permite hasta 50,000 usuarios activos mensuales (MAU), más que suficiente para un MVP. Además, se integra directamente con API Gateway para validar automáticamente los tokens JWT en cada solicitud.
 
-\subsubsection{3. API GATEWAY WEBSOCKET API (Comunicación en Tiempo Real)}
+\subsubsection{3. API GATEWAY WEBSOCKET API (Comunicación en tiempo síncrono.)}
 
-API Gateway con soporte WebSocket es el servicio que gestiona las conexiones bidireccionales persistentes entre los clientes y el backend, permitiendo la comunicación en tiempo real sin necesidad de polling.
+API Gateway con soporte WebSocket es el servicio que gestiona las conexiones bidireccionales persistentes entre los clientes y el backend, permitiendo la comunicación en tiempo síncrono sin necesidad de polling.
 
 Funcionalidad: API Gateway WebSocket mantiene conexiones abiertas con cada cliente conectado, asignando un connectionId único a cada sesión. Cuando un mensaje llega, lo enruta a la función Lambda correspondiente según la acción especificada (enviar mensaje, obtener historial, etc.). También permite enviar mensajes desde el backend hacia los clientes conectados de forma asíncrona, habilitando notificaciones push instantáneas.
 
-Por qué es necesario: Para lograr una experiencia de chat en tiempo real similar a WhatsApp o Telegram, se requiere comunicación bidireccional instantánea. Las alternativas tradicionales como HTTP polling son ineficientes y costosas. WebSocket mantiene una conexión TCP persistente que permite enviar datos en ambas direcciones sin la sobrecarga de establecer nuevas conexiones HTTP para cada mensaje. API Gateway gestiona automáticamente el escalamiento, la reconexión ante fallos, y la integración con Lambda, eliminando la necesidad de gestionar servidores WebSocket manualmente. Su capa gratuita incluye 1 millón de mensajes por mes.
+Por qué es necesario: Para lograr una experiencia de chat similar a WhatsApp o Telegram, se requiere comunicación bidireccional instantánea. Las alternativas tradicionales como HTTP polling son ineficientes y costosas. WebSocket mantiene una conexión TCP persistente que permite enviar datos en ambas direcciones sin la sobrecarga de establecer nuevas conexiones HTTP para cada mensaje. API Gateway gestiona automáticamente el escalamiento, la reconexión ante fallos, y la integración con Lambda, eliminando la necesidad de gestionar servidores WebSocket manualmente. Su capa gratuita incluye 1 millón de mensajes por mes.
 
 \subsubsection{4. AWS LAMBDA - ReceiveMessage (Procesamiento de Mensajes Entrantes)}
 
@@ -440,7 +440,7 @@ Esta función Lambda maneja las solicitudes de los usuarios para recuperar el hi
 
 Funcionalidad: Cuando un usuario abre una conversación o solicita mensajes antiguos, esta función consulta DynamoDB usando el conversationId como clave de partición y recupera todos los mensajes ordenados por timestamp. Formatea los resultados incluyendo el contenido del mensaje, información del remitente, estado de análisis, y cualquier alerta de riesgo detectada.
 
-Por qué es necesario: Separar la lógica de recuperación de historial en una función dedicada sigue el principio de responsabilidad única y permite optimizar las consultas a DynamoDB de forma independiente. Esta función puede implementar paginación para conversaciones largas, filtrado por fecha, y caché de resultados frecuentes sin afectar el rendimiento del envío de mensajes en tiempo real. La separación también facilita agregar funcionalidades futuras como búsqueda de mensajes o exportación de conversaciones.
+Por qué es necesario: Separar la lógica de recuperación de historial en una función dedicada sigue el principio de responsabilidad única y permite optimizar las consultas a DynamoDB de forma independiente. Esta función puede implementar paginación para conversaciones largas, filtrado por fecha, y caché de resultados frecuentes sin afectar el rendimiento del envío de mensajes. La separación también facilita agregar funcionalidades futuras como búsqueda de mensajes o exportación de conversaciones.
 
 \subsubsection{6. AWS LAMBDA - NotifyUser (Sistema de Alertas)}
 
@@ -499,7 +499,7 @@ Esta arquitectura representa una solución pragmática y económica para el MVP,
         \item El sistema debe permitir enviar y recibir mensajes
         \item El sistema debe tener inicio de sesión y creación de cuentas
         \item La clasificación debe activarse mediante el trigger “Se recibió un mensaje dentro del sistema de mensajería”.
-        \item Evaluar diferentes enfoques mediante pruebas para medir el rendimiento de la inferencia del llm al realizar la tarea de clasificación del tipo de estafa y determinar el enfoque a proceder balanceando presupuesto reducido y un desempeño mínimo requerido para el requerimiento de “alertar al usuario en un tiempo pertinente para no caer en la estafa, lo más cercano al tiempo real”, los enfoques a evaluar son (refinamiento con prompt engineering o ajuste fino “fine tuning” involucrando un entrenamiento)
+        \item Evaluar diferentes enfoques mediante pruebas para medir el rendimiento de la inferencia del llm al realizar la tarea de clasificación del tipo de estafa y determinar el enfoque a proceder balanceando presupuesto reducido y un desempeño mínimo requerido para el requerimiento de “alertar al usuario en un tiempo pertinente para no caer en la estafa, lo más cercano al tiempo síncrono", los enfoques a evaluar son (refinamiento con prompt engineering o ajuste fino “fine tuning” involucrando un entrenamiento)
         \item La aplicación debe tener la opción de desactivar filtro (considerar también para las prácticas, tener siempre un dispositivo que envía los mensajes sospechosos)
         \item Llevar un historial de mensajes clasificados como potencialmente peligrosos, incluyendo hora, usuario involucrado y tipo de amenaza detectada.
     \end{itemize}
