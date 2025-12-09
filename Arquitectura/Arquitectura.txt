@@ -1,0 +1,85 @@
+La arquitectura propuesta representa una solución híbrida nube-local diseñada para implementar un sistema de mensajería instantánea con capacidades de detección de amenazas por estafa en modalidad de catfishing y/o sextorsión. La solución combina la escalabilidad y confiabilidad de los servicios administrados de AWS con procesamiento local de un modelo de lenguaje (LLM) para clasificación de contenido. La arquitectura está construida con el objetivo de operar dentro de la capa gratuita de AWS, es una solucion implementada bajo servicios serverless que eliminan la necesidad de aprovisionamiento en nube. El sistema está diseñado para detectar técnicas de sextorsión y catfishing en conversaciones de chat, alertando a los usuarios de manera preventiva cuando se identifiquen patrones de riesgo, mientras se cuenta con persistencia de datos y se entrega un sistema de mensajería funcional.
+%2025-09-03: para justificar al proveedor de nube seguramente AWS, se debera hablar del aprovisionamiento como caracteristica para usar las funciones serverless añadir a marco teorico "https://www.ibm.com/mx-es/think/topics/provisioning”
+
+
+\subsubsection{1. AWS AMPLIFY HOSTING (Frontend)}
+
+AWS Amplify Hosting es el servicio encargado de alojar y distribuir la aplicación web del cliente. Este servicio proporciona hosting estático con integración continua, permitiendo desplegar aplicaciones React, Vue, Angular o HTML/CSS/JS simple de manera automática desde repositorios Git.
+
+Funcionalidad: Amplify sirve los archivos estáticos del frontend (HTML, CSS, JavaScript) a través de una red de distribución de contenido (CDN) global, garantizando tiempos de carga rápidos. Además, maneja el certificado SSL/TLS automáticamente, proporcionando conexiones HTTPS seguras sin configuración adicional.
+
+Por qué es necesario: Para un MVP, Amplify elimina la complejidad de configurar servidores web, gestionar certificados SSL y configurar pipelines de despliegue. Su capa gratuita incluye 15GB de almacenamiento y transferencia de datos, suficiente para las pruebas iniciales con 2 usuarios. La integración nativa con otros servicios de AWS (Cognito, API Gateway) simplifica significativamente el desarrollo.
+
+\subsubsection{2. AMAZON COGNITO USER POOL (Autenticación)}
+
+Amazon Cognito User Pool es el servicio de gestión de identidades y autenticación de usuarios que maneja todo el ciclo de vida de las cuentas de usuario, desde el registro hasta la autenticación y recuperación de contraseñas.
+
+Funcionalidad: Cognito proporciona un sistema completo de autenticación basado en estándares OAuth 2.0 y OpenID Connect. Valida las credenciales de los usuarios (email y contraseña), genera tokens JWT (JSON Web Tokens) firmados que contienen información de identidad del usuario, y gestiona la renovación de sesiones. Los tokens JWT se utilizan para autorizar las solicitudes a API Gateway y otros servicios de AWS.
+
+Por qué es necesario: Implementar un sistema de autenticación seguro desde cero es complejo y propenso a vulnerabilidades. Cognito ofrece una solución probada que incluye hash seguro de contraseñas (bcrypt), protección contra ataques de fuerza bruta, verificación de email, y cumplimiento con estándares de seguridad. Su capa gratuita permite hasta 50,000 usuarios activos mensuales (MAU), más que suficiente para un MVP. Además, se integra directamente con API Gateway para validar automáticamente los tokens JWT en cada solicitud.
+
+\subsubsection{3. API GATEWAY WEBSOCKET API (Comunicación en tiempo síncrono.)}
+
+API Gateway con soporte WebSocket es el servicio que gestiona las conexiones bidireccionales persistentes entre los clientes y el backend, permitiendo la comunicación en tiempo síncrono sin necesidad de polling.
+
+Funcionalidad: API Gateway WebSocket mantiene conexiones abiertas con cada cliente conectado, asignando un connectionId único a cada sesión. Cuando un mensaje llega, lo enruta a la función Lambda correspondiente según la acción especificada (enviar mensaje, obtener historial, etc.). También permite enviar mensajes desde el backend hacia los clientes conectados de forma asíncrona, habilitando notificaciones push instantáneas.
+
+Por qué es necesario: Para lograr una experiencia de chat similar a WhatsApp o Telegram, se requiere comunicación bidireccional instantánea. Las alternativas tradicionales como HTTP polling son ineficientes y costosas. WebSocket mantiene una conexión TCP persistente que permite enviar datos en ambas direcciones sin la sobrecarga de establecer nuevas conexiones HTTP para cada mensaje. API Gateway gestiona automáticamente el escalamiento, la reconexión ante fallos, y la integración con Lambda, eliminando la necesidad de gestionar servidores WebSocket manualmente. Su capa gratuita incluye 1 millón de mensajes por mes.
+
+\subsubsection{4. AWS LAMBDA - ReceiveMessage (Procesamiento de Mensajes Entrantes)}
+
+Esta función Lambda es el punto de entrada para todos los mensajes nuevos enviados por los usuarios a través del chat.
+
+Funcionalidad: Cuando un usuario envía un mensaje, API Gateway invoca esta función con los datos del mensaje. La función realiza tres operaciones críticas en secuencia: (1) Almacena el mensaje en DynamoDB con estado "pendiente" para garantizar persistencia inmediata, (2) Encola el mensaje en SQS para análisis posterior por el LLM local, y (3) Reenvía el mensaje al destinatario conectado a través de API Gateway WebSocket para entrega instantánea.
+
+Por qué es necesario: Esta función implementa el patrón de "write-through cache" y desacoplamiento asíncrono. Al guardar primero en DynamoDB, se garantiza que ningún mensaje se pierda incluso si el sistema de análisis falla. Al encolar en SQS, se desacopla el procesamiento del LLM del flujo principal de mensajería, permitiendo que el chat funcione con baja latencia independientemente del tiempo de análisis. La arquitectura serverless de Lambda significa que solo se paga por el tiempo de ejecución real (primeros 1 millón de invocaciones gratis), sin necesidad de mantener servidores activos.
+
+\subsubsection{5. AWS LAMBDA - GetMessages (Recuperación de Historial)}
+
+Esta función Lambda maneja las solicitudes de los usuarios para recuperar el historial de conversaciones anteriores.
+
+Funcionalidad: Cuando un usuario abre una conversación o solicita mensajes antiguos, esta función consulta DynamoDB usando el conversationId como clave de partición y recupera todos los mensajes ordenados por timestamp. Formatea los resultados incluyendo el contenido del mensaje, información del remitente, estado de análisis, y cualquier alerta de riesgo detectada.
+
+Por qué es necesario: Separar la lógica de recuperación de historial en una función dedicada sigue el principio de responsabilidad única y permite optimizar las consultas a DynamoDB de forma independiente. Esta función puede implementar paginación para conversaciones largas, filtrado por fecha, y caché de resultados frecuentes sin afectar el rendimiento del envío de mensajes. La separación también facilita agregar funcionalidades futuras como búsqueda de mensajes o exportación de conversaciones.
+
+\subsubsection{6. AWS LAMBDA - NotifyUser (Sistema de Alertas)}
+
+Esta función Lambda se encarga de enviar notificaciones a los usuarios cuando el sistema de análisis detecta contenido de riesgo en los mensajes.
+
+Funcionalidad: El Worker local invoca esta función cuando el LLM identifica patrones de catfishing o sextorsión. La función consulta DynamoDB para obtener el connectionId del usuario que debe ser alertado, construye un mensaje de alerta con detalles del riesgo detectado (tipo de amenaza), y lo envía a través de API Gateway WebSocket directamente al cliente conectado. %visualmente se observa en el front end como un mensaje cuya caja de texto se resalta en rojo y arriba aparece un texto indicando que tipo de etiqueta fue predicha.
+
+Por qué es necesario: Las alertas de seguridad deben entregarse de forma inmediata y confiable. Esta función centraliza la lógica de notificaciones, permitiendo implementar canales de alerta (WebSocket) desde un único punto. Al ser invocada por el Worker local, mantiene el desacoplamiento entre el sistema de análisis y la infraestructura de AWS. También permite implementar lógica de negocio como evitar alertas duplicadas, escalar alertas según severidad, o registrar todas las notificaciones para auditoría.
+
+\subsubsection{7. AMAZON DYNAMODB (Persistencia de Datos)}
+
+DynamoDB es la base de datos NoSQL completamente administrada que almacena todos los datos del sistema: mensajes, metadatos de conversaciones, y estados de conexión.
+
+Funcionalidad: La tabla ChatMessages utiliza un modelo de datos optimizado con conversationId como clave de partición (PK) y timestamp como clave de ordenamiento (SK). Esto permite consultas eficientes de todos los mensajes de una conversación ordenados cronológicamente. Cada registro almacena: messageId, senderId, receiverId, content (contenido del mensaje), status (pendiente/analizado), analysisResult (resultado del LLM), connectionId (para enrutamiento WebSocket), y metadatos adicionales.
+
+Por qué es necesario: DynamoDB ofrece latencia de milisegundos de un solo dígito, escalamiento automático, y alta disponibilidad sin gestión de servidores. Para un MVP de chat, estas características son críticas: las consultas de historial deben ser rápidas, el sistema debe manejar picos de escritura cuando múltiples mensajes llegan simultáneamente, y los datos deben estar siempre disponibles. Su modelo de precios bajo demanda significa que solo se paga por las operaciones realmente ejecutadas. La capa gratuita incluye 25GB de almacenamiento y 25 unidades de capacidad de lectura/escritura, suficiente para miles de mensajes. El diseño de clave compuesta (PK + SK) permite consultas eficientes sin índices secundarios costosos.
+
+\subsubsection{8. AMAZON SQS - MessageAnalysisQueue (Cola de Análisis)}
+
+Amazon SQS (Simple Queue Service) es el servicio de cola de mensajes que actúa como buffer entre el sistema de chat en AWS y el Worker local que ejecuta el LLM.
+
+Funcionalidad: Cada mensaje de chat se encola en SQS inmediatamente después de ser almacenado en DynamoDB. La cola está configurada con long-polling (WaitTimeSeconds: 20s) para reducir solicitudes vacías y costos. El Worker local consulta continuamente esta cola, procesa los mensajes con el LLM, y los elimina de la cola solo después de actualizar exitosamente DynamoDB. Si un mensaje falla 3 veces (por ejemplo, por errores del LLM), se mueve automáticamente a la Dead Letter Queue (DLQ).
+
+Por qué es necesario: SQS es fundamental para la tolerancia a fallos del sistema. Si la computadora local con Ollama está apagada o sin conexión, los mensajes permanecen en la cola hasta por 14 días, garantizando que ningún mensaje quede sin analizar. El VisibilityTimeout de 300 segundos asegura que si el Worker falla durante el procesamiento, el mensaje vuelve a estar disponible automáticamente. La DLQ captura mensajes problemáticos para investigación manual sin bloquear el procesamiento de mensajes válidos. SQS también desacopla completamente el ritmo de envío de mensajes del ritmo de análisis del LLM, permitiendo que el chat funcione con baja latencia incluso si el análisis toma varios segundos. La capa gratuita incluye 1 millón de solicitudes mensuales.
+
+\subsubsection{9. AMAZON SQS - Dead Letter Queue (Gestión de Fallos)}
+
+La DLQ es una cola secundaria que recibe mensajes que no pudieron ser procesados exitosamente después de múltiples intentos.
+
+Funcionalidad: Cuando un mensaje en MessageAnalysisQueue falla 3 veces consecutivas (configurado en maxReceiveCount), SQS lo mueve automáticamente a la DLQ. Estos mensajes quedan disponibles para inspección manual, reprocesamiento con parámetros ajustados, o análisis de patrones de fallo.
+
+Por qué es necesario: Sin una DLQ, los mensajes problemáticos podrían bloquear la cola principal en un ciclo infinito de reintentos, consumiendo recursos y retrasando el procesamiento de mensajes válidos. La DLQ permite identificar problemas sistemáticos (por ejemplo, un tipo de contenido que causa errores en el LLM) sin perder datos ni afectar la operación normal. También proporciona visibilidad sobre la tasa de fallos del sistema, un indicador clave de salud para el MVP.
+
+\subsubsection{10. WORKER LOCAL + OLLAMA LLM (Análisis de Contenido)}
+
+El Worker es una aplicación Python que se ejecuta en una computadora local y actúa como puente entre AWS y el modelo de lenguaje Ollama.
+
+Funcionalidad: El Worker ejecuta un bucle continuo que: (1) Consulta SQS con long-polling para obtener mensajes pendientes, (2) Extrae el contenido del mensaje y lo envía a la API de Ollama (localhost:11434) con un prompt especializado para detectar catfishing y sextorsión, (3) Recibe la respuesta del LLM con clasificación de riesgo, etiquetas de amenaza, y nivel de confianza, (4) Actualiza el registro en DynamoDB cambiando el status a "analizado" y guardando el resultado, (5) Si se detecta riesgo alto, invoca la función Lambda NotifyUser para alertar al usuario, y (6) Elimina el mensaje de SQS solo después de confirmar todas las operaciones.
+
+Por qué es necesario: Ejecutar el LLM localmente es un requisito del proyecto que reduce costos significativamente (evita pagar por inferencia en AWS SageMaker o Bedrock) y permite usar una variedad de modelos largos de lenguaje para la detección de catfishing/sextorsión. El Worker requiere permisos IAM para: sqs:ReceiveMessage, sqs:DeleteMessage (interactuar con la cola), dynamodb:UpdateItem (actualizar resultados), y lambda:InvokeFunction (enviar alertas). 
+
+Para estos efectos se consideran modelos con escalas de entre 0.5 billones de parametros hasta 8 billones de parametros. Se contempla aprovisionamiento local en una instancia de computo on-premise para la ejecución de la inferencia de los distintos modelos con las siguientes caracteristicas de hardware: (CPU Intel(R) Core(TM) i7-4770 4ª generación  basada en la arquitectura Haswell Frecuencia base de 3.40GHz, GPU Nvidia GeForce GTX 1060 6GB Vram, 16GB Ram del sistema con frecuencia de 1600 MHz, Almacenamiento persistente ADATA HD720 SCSI 1.8 terabytes). Este diseño permite actualizar el modelo o ajustar prompts sin modificar la infraestructura de AWS.

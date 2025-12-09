@@ -1,0 +1,27 @@
+{
+  "name": "pln-filter-backend",
+  "version": "1.0.0",
+  "description": "Backend serverless para PLN Filter",
+  "main": "serverless.yml",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "deploy:prod": "serverless deploy --stage prod",
+    "logs": "serverless logs -f receiveMessage --tail",
+    "invoke": "serverless invoke local",
+    "remove": "serverless remove",
+    "info": "serverless info"
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "lambda",
+    "dynamodb",
+    "websocket"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless": "^3.38.0",
+    "serverless-python-requirements": "^6.0.0"
+  }
+}

@@ -1,0 +1,141 @@
+service: pln-filter-backend
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.11
+  region: ${env:AWS_REGION, 'us-east-1'}
+  stage: ${env:STAGE, 'dev'}
+  
+  environment:
+    AWS_REGION: ${self:provider.region}
+    DYNAMODB_TABLE: ${self:service}-${self:provider.stage}-messages
+    DYNAMODB_USERS_TABLE: ${self:service}-${self:provider.stage}-users
+    DYNAMODB_CONVERSATIONS_TABLE: ${self:service}-${self:provider.stage}-conversations
+    SQS_QUEUE_URL: !Ref MessageQueue
+    WEBSOCKET_API_ENDPOINT: !Sub 'https://${WebsocketApi}.execute-api.${AWS::Region}.amazonaws.com/${self:provider.stage}'
+  
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - !GetAtt MessagesTable.Arn
+            - !GetAtt UsersTable.Arn
+            - !GetAtt ConversationsTable.Arn
+        
+        - Effect: Allow
+          Action:
+            - sqs:SendMessage
+            - sqs:ReceiveMessage
+            - sqs:DeleteMessage
+          Resource: !GetAtt MessageQueue.Arn
+        
+        - Effect: Allow
+          Action:
+            - execute-api:ManageConnections
+          Resource: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${WebsocketApi}/*'
+
+functions:
+  receiveMessage:
+    handler: handlers/receive_message.lambda_handler
+    timeout: 30
+    memorySize: 256
+    events:
+      - websocket:
+          route: sendMessage
+          authorizer:
+            name: authorizer
+            identitySource: method.request.header.Authorization
+  
+  getMessages:
+    handler: handlers/get_messages.lambda_handler
+    timeout: 30
+    memorySize: 256
+    events:
+      - websocket:
+          route: getMessages
+          authorizer:
+            name: authorizer
+            identitySource: method.request.header.Authorization
+  
+  notifyUser:
+    handler: handlers/notify_user.lambda_handler
+    timeout: 30
+    memorySize: 256
+
+resources:
+  Resources:
+    MessagesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: conversationId
+            AttributeType: S
+          - AttributeName: timestamp
+            AttributeType: N
+        KeySchema:
+          - AttributeName: conversationId
+            KeyType: HASH
+          - AttributeName: timestamp
+            KeyType: RANGE
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
+    
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.DYNAMODB_USERS_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+    
+    ConversationsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.DYNAMODB_CONVERSATIONS_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: conversationId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: conversationId
+            KeyType: HASH
+    
+    MessageQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:service}-${self:provider.stage}-messages
+        VisibilityTimeout: 300
+        MessageRetentionPeriod: 1209600
+    
+    WebsocketApi:
+      Type: AWS::ApiGatewayV2::Api
+      Properties:
+        Name: ${self:service}-${self:provider.stage}-websocket
+        ProtocolType: WEBSOCKET
+        RouteSelectionExpression: $request.body.action
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    slim: true
+    strip: false
+    layer: true

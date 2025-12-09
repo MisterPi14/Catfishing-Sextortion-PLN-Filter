@@ -1,1 +1,74 @@
-Arquitectura
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Serverless
+.serverless/
+.serverless_plugins/
+node_modules/
+package-lock.json
+
+# Build
+dist/
+build/
+*.zip
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Frontend
+frontend/dist/
+frontend/node_modules/
+
+# Worker
+worker/__pycache__/
+worker/*.pyc
+
+# Backend
+backend/.serverless/
+backend/node_modules/
+backend/package-lock.json
+backend/.env
+
+# AWS
+.aws/
+credentials
