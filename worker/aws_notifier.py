@@ -1,0 +1,63 @@
+import boto3
+import json
+import logging
+from config import AWS_REGION, NOTIFY_USER_LAMBDA_NAME
+
+logger = logging.getLogger(__name__)
+
+class AWSNotifier:
+    def __init__(self):
+        self.lambda_client = boto3.client('lambda', region_name=AWS_REGION)
+        self.dynamodb = boto3.resource('dynamodb', region_name=AWS_REGION)
+
+    def notify_user(self, user_id, message_id, threat_type, confidence, risk_level):
+        """Invoca la Lambda NotifyUser para alertar al usuario"""
+        try:
+            payload = {
+                'userId': user_id,
+                'messageId': message_id,
+                'threatType': threat_type,
+                'confidence': confidence,
+                'riskLevel': risk_level
+            }
+            
+            response = self.lambda_client.invoke(
+                FunctionName=NOTIFY_USER_LAMBDA_NAME,
+                InvocationType='Event',  # Asincrónico
+                Payload=json.dumps(payload)
+            )
+            
+            logger.info(f"Notification sent to user {user_id} for message {message_id}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error notifying user: {str(e)}")
+            return False
+
+    def update_message_analysis(self, conversation_id, timestamp, analysis_data):
+        """Actualiza el análisis de un mensaje en DynamoDB"""
+        try:
+            table = self.dynamodb.Table('ChatMessages')
+            
+            table.update_item(
+                Key={
+                    'conversationId': conversation_id,
+                    'timestamp': int(timestamp)
+                },
+                UpdateExpression='SET riskAnalysis = :analysis',
+                ExpressionAttributeValues={
+                    ':analysis': {
+                        'analyzed': True,
+                        'riskLevel': analysis_data.get('risk_level'),
+                        'threatType': analysis_data.get('threat_type'),
+                        'confidence': analysis_data.get('confidence')
+                    }
+                }
+            )
+            
+            logger.info(f"Message analysis updated for {conversation_id}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error updating message analysis: {str(e)}")
+            return False
