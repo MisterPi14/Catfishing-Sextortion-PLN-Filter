@@ -4,9 +4,23 @@ import os
 
 class WebSocketClient:
     def __init__(self):
-        self.api_gateway = boto3.client('apigatewaymanagementapi', 
-                                       endpoint_url=os.getenv('WEBSOCKET_API_ENDPOINT'),
-                                       region_name=os.getenv('AWS_REGION', 'us-east-1'))
+        is_offline = os.getenv('IS_OFFLINE')
+        endpoint_url = os.getenv('WEBSOCKET_API_ENDPOINT')
+        
+        if is_offline:
+            self.api_gateway = boto3.client(
+                'apigatewaymanagementapi',
+                endpoint_url=endpoint_url,
+                region_name='localhost',
+                aws_access_key_id='DEFAULT_ACCESS_KEY',
+                aws_secret_access_key='DEFAULT_SECRET_KEY'
+            )
+        else:
+            self.api_gateway = boto3.client(
+                'apigatewaymanagementapi', 
+                endpoint_url=endpoint_url,
+                region_name=os.getenv('AWS_REGION', 'us-east-1')
+            )
 
     def send_message(self, connection_id, message_data):
         """Envía un mensaje a un cliente conectado por WebSocket"""

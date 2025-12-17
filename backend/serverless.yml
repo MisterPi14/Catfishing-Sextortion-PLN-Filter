@@ -1,20 +1,26 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: ipnesimecu
 service: pln-filter-backend
 
-frameworkVersion: '3'
+frameworkVersion: '4'
 
 provider:
   name: aws
   runtime: python3.11
   region: ${env:AWS_REGION, 'us-east-1'}
-  stage: ${env:STAGE, 'dev'}
+  stage: ${opt:stage, 'dev'} #cambio ia
   
   environment:
+    IS_OFFLINE: ${param:offline, false} #cuando ejecutas sls invoke local Serverless NO inyecta IS_OFFLINE=true automáticamente python Asume que está en la nube, intenta conectarse a AWS real
+    #${param:offline, false} significa: "Busca si en el comando escribieron --param="offline=true"", "Si lo escribieron, usa ese valor (true)." o "Si NO lo escribieron, usa el valor por defecto (false)."
     AWS_REGION: ${self:provider.region}
     DYNAMODB_TABLE: ${self:service}-${self:provider.stage}-messages
     DYNAMODB_USERS_TABLE: ${self:service}-${self:provider.stage}-users
     DYNAMODB_CONVERSATIONS_TABLE: ${self:service}-${self:provider.stage}-conversations
-    SQS_QUEUE_URL: !Ref MessageQueue
-    WEBSOCKET_API_ENDPOINT: !Sub 'https://${WebsocketApi}.execute-api.${AWS::Region}.amazonaws.com/${self:provider.stage}'
+    #CAMBIO EN ESTAS 2 para usar la configuracion en el bloque custom
+    SQS_QUEUE_URL: ${self:custom.config.${self:provider.stage}.SQS_QUEUE_URL}
+    WEBSOCKET_API_ENDPOINT: ${self:custom.config.${self:provider.stage}.WEBSOCKET_API_ENDPOINT}
+
   
   iam:
     role:
@@ -131,11 +137,39 @@ resources:
         RouteSelectionExpression: $request.body.action
 
 plugins:
-  - serverless-python-requirements
-
+  - serverless-dynamodb-local
+  - serverless-offline
 custom:
   pythonRequirements:
     dockerizePip: true
     slim: true
     strip: false
     layer: true
+  
+  dynamodb:
+    stages:
+      - local
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+      
+  config:
+    local:
+      SQS_QUEUE_URL: 'https://sqs.us-east-1.amazonaws.com/000000000000/local-queue'
+      WEBSOCKET_API_ENDPOINT: 'http://localhost:3001'
+    dev:
+      SQS_QUEUE_URL: !Ref MessageQueue
+      WEBSOCKET_API_ENDPOINT: !Sub 'https://${WebsocketApi}.execute-api.${AWS::Region}.amazonaws.com/${self:provider.stage}'
+    prod:
+      SQS_QUEUE_URL: !Ref MessageQueue
+      WEBSOCKET_API_ENDPOINT: !Sub 'https://${WebsocketApi}.execute-api.${AWS::Region}.amazonaws.com/${self:provider.stage}'
+
+  serverless-offline-sqs:
+    autoCreate: true                 # Crea la cola automáticamente
+    apiVersion: '2012-11-05'
+    endpoint: http://localhost:9324  # Puerto estándar de SQS local
+    region: us-east-1
+    accessKeyId: root
+    secretAccessKey: root
+    skipCacheInvalidation: false

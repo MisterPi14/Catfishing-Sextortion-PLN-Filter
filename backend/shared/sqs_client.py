@@ -4,7 +4,19 @@ import os
 
 class SQSClient:
     def __init__(self):
-        self.sqs = boto3.client('sqs', region_name=os.getenv('AWS_REGION', 'us-east-1'))
+        is_offline = os.getenv('IS_OFFLINE')
+        
+        if is_offline:
+            self.sqs = boto3.client(
+                'sqs',
+                region_name='localhost',
+                endpoint_url='http://localhost:9324', # Puerto estándar de ElasticMQ/SQS local
+                aws_access_key_id='DEFAULT_ACCESS_KEY',
+                aws_secret_access_key='DEFAULT_SECRET_KEY'
+            )
+        else:
+            self.sqs = boto3.client('sqs', region_name=os.getenv('AWS_REGION', 'us-east-1'))
+            
         self.queue_url = os.getenv('SQS_QUEUE_URL')
 
     def send_message(self, message_data):

@@ -5,7 +5,21 @@ from datetime import datetime
 
 class DynamoDBClient:
     def __init__(self):
-        self.dynamodb = boto3.resource('dynamodb', region_name=os.getenv('AWS_REGION', 'us-east-1'))
+        is_offline = os.getenv('IS_OFFLINE')
+        print(f"DEBUG: IS_OFFLINE={is_offline}") # Debug print
+        
+        if is_offline:
+            print("DEBUG: Connecting to Local DynamoDB")
+            self.dynamodb = boto3.resource(
+                'dynamodb',
+                region_name='us-east-1',
+                endpoint_url='http://localhost:8000',
+                aws_access_key_id='fake',
+                aws_secret_access_key='fake'
+            )
+        else:
+            self.dynamodb = boto3.resource('dynamodb', region_name=os.getenv('AWS_REGION', 'us-east-1'))
+            
         self.messages_table = self.dynamodb.Table(os.getenv('DYNAMODB_TABLE', 'ChatMessages'))
         self.users_table = self.dynamodb.Table(os.getenv('DYNAMODB_USERS_TABLE', 'Users'))
         self.conversations_table = self.dynamodb.Table(os.getenv('DYNAMODB_CONVERSATIONS_TABLE', 'Conversations'))

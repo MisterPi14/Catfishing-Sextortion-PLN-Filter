@@ -5,6 +5,7 @@
 
 # Dependencies
 node_modules/
+python_venv
 __pycache__/
 *.py[cod]
 *$py.class
@@ -42,6 +43,9 @@ wheels/
 .serverless_plugins/
 node_modules/
 package-lock.json
+
+#dynamodb
+.dynamodb
 
 # Build
 dist/
