@@ -24,6 +24,10 @@
     "serverless": "*",
     "serverless-dynamodb-local": "^0.2.40",
     "serverless-offline": "^14.4.0",
+    "serverless-offline-sqs": "^8.0.0",
     "serverless-python-requirements": "*"
+  },
+  "dependencies": {
+    "@serverless/utils": "^6.15.0"
   }
 }
