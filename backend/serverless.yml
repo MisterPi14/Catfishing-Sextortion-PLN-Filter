@@ -127,7 +127,7 @@ resources:
     MessageQueue:
       Type: AWS::SQS::Queue
       Properties:
-        QueueName: ${self:service}-${self:provider.stage}-messages
+        QueueName: ${self:custom.queueName}
         VisibilityTimeout: 300
         MessageRetentionPeriod: 1209600
     
@@ -139,11 +139,13 @@ resources:
         RouteSelectionExpression: $request.body.action
 
 plugins:
-  - serverless-dynamodb-local
-  - serverless-offline
+  - serverless-dynamodb
   - serverless-offline-sqs
+  - serverless-offline
   - serverless-python-requirements
 custom:
+  queueName: ${self:service}-${self:provider.stage}-messages
+
   pythonRequirements:
     dockerizePip: true
     slim: true
@@ -156,14 +158,15 @@ custom:
     start:
       port: 8000
       inMemory: true
-      migrate: false
+      migrate: true
       sharedDb: true
-      accessKeyId: root
-      secretAccessKey: root
+      accessKeyId: local
+      secretAccessKey: local
+      region: us-east-1
       
   config:
     local:
-      SQS_QUEUE_URL: 'http://localhost:9324/queue/local-queue'
+      SQS_QUEUE_URL: 'http://127.0.0.1:9324/queue/${self:custom.queueName}'
       WEBSOCKET_API_ENDPOINT: 'http://localhost:3001'
     dev:
       SQS_QUEUE_URL: !Ref MessageQueue
@@ -175,10 +178,12 @@ custom:
   serverless-offline-sqs:
     autoCreate: true                 # Crea la cola automáticamente
     apiVersion: '2012-11-05'
-    endpoint: http://localhost:9324  # Puerto estándar de SQS local
+    host: 127.0.0.1                  # Forzar IP IPv4
+    port: 9324
+    endpoint: http://127.0.0.1:9324  # Endpoint explícito
     region: us-east-1
-    accessKeyId: root
-    secretAccessKey: root
+    accessKeyId: local
+    secretAccessKey: local
     skipCacheInvalidation: false
   
   awsKeys:

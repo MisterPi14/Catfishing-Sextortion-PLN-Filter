@@ -10,7 +10,7 @@ class SQSClient:
             self.sqs = boto3.client(
                 'sqs',
                 region_name='localhost',
-                endpoint_url='http://localhost:9324', # Puerto estándar de ElasticMQ/SQS local
+                endpoint_url='http://127.0.0.1:9324', # Puerto estándar de ElasticMQ/SQS local
                 aws_access_key_id='DEFAULT_ACCESS_KEY',
                 aws_secret_access_key='DEFAULT_SECRET_KEY'
             )
