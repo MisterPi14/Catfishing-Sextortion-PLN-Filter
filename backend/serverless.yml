@@ -19,6 +19,7 @@ provider:
     DYNAMODB_CONVERSATIONS_TABLE: ${self:service}-${self:provider.stage}-conversations
     #CAMBIO EN ESTAS 2 para usar la configuracion en el bloque custom
     SQS_QUEUE_URL: ${self:custom.config.${self:provider.stage}.SQS_QUEUE_URL}
+    SQS_ENDPOINT: http://localhost:4566
     WEBSOCKET_API_ENDPOINT: ${self:custom.config.${self:provider.stage}.WEBSOCKET_API_ENDPOINT}
     AWS_ACCESS_KEY_ID: ${self:custom.awsKeys.${self:provider.stage}.accessKey}
     AWS_SECRET_ACCESS_KEY: ${self:custom.awsKeys.${self:provider.stage}.secretKey}
@@ -141,10 +142,17 @@ resources:
 plugins:
   - serverless-dynamodb
   - serverless-offline-sqs
+  - serverless-localstack
   - serverless-offline
   - serverless-python-requirements
+  
 custom:
   queueName: ${self:service}-${self:provider.stage}-messages
+
+  localstack:
+    stages:
+      - local
+    endpointFile: localstack_endpoints.json
 
   pythonRequirements:
     dockerizePip: true
