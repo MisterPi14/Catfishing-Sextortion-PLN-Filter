@@ -13,9 +13,9 @@ class DynamoDBClient:
             self.dynamodb = boto3.resource(
                 'dynamodb',
                 region_name='us-east-1',
-                endpoint_url='http://localhost:8000',
-                aws_access_key_id='fake',
-                aws_secret_access_key='fake'
+                endpoint_url=os.getenv('DYNAMODB_ENDPOINT', 'http://localhost:4566'),
+                aws_access_key_id='test',
+                aws_secret_access_key='test'
             )
         else:
             self.dynamodb = boto3.resource('dynamodb', region_name=os.getenv('AWS_REGION', 'us-east-1'))

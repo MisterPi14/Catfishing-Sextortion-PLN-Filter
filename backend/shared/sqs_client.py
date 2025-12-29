@@ -9,10 +9,10 @@ class SQSClient:
         if is_offline:
             self.sqs = boto3.client(
                 'sqs',
-                region_name='localhost',
-                endpoint_url='http://127.0.0.1:9324', # Puerto estándar de ElasticMQ/SQS local
-                aws_access_key_id='DEFAULT_ACCESS_KEY',
-                aws_secret_access_key='DEFAULT_SECRET_KEY'
+                region_name='us-east-1',
+                endpoint_url=os.getenv('SQS_ENDPOINT', 'http://localhost:4566'),
+                aws_access_key_id='test',
+                aws_secret_access_key='test'
             )
         else:
             self.sqs = boto3.client('sqs', region_name=os.getenv('AWS_REGION', 'us-east-1'))

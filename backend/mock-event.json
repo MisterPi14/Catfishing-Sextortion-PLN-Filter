@@ -7,5 +7,5 @@
       }
     }
   },
-  "body": "{\"action\": \"sendMessage\", \"data\": {\"conversationId\": \"conv_user1_user2\", \"receiverId\": \"user2\", \"content\": \"Hola mundo desde local\"}}"
+  "body": "{\"action\": \"sendMessage\", \"data\": {\"conversationId\": \"conv_user1_user2\", \"receiverId\": \"user2\", \"content\": \"Este es un segundo mensaje\"}}"
 }

@@ -17,9 +17,11 @@ provider:
     DYNAMODB_TABLE: ${self:service}-${self:provider.stage}-messages
     DYNAMODB_USERS_TABLE: ${self:service}-${self:provider.stage}-users
     DYNAMODB_CONVERSATIONS_TABLE: ${self:service}-${self:provider.stage}-conversations
+    
     #CAMBIO EN ESTAS 2 para usar la configuracion en el bloque custom
     SQS_QUEUE_URL: ${self:custom.config.${self:provider.stage}.SQS_QUEUE_URL}
-    SQS_ENDPOINT: http://localhost:4566
+    SQS_ENDPOINT: ${self:custom.config.${self:provider.stage}.SQS_ENDPOINT}
+    DYNAMODB_ENDPOINT: ${self:custom.config.${self:provider.stage}.DYNAMODB_ENDPOINT}
     WEBSOCKET_API_ENDPOINT: ${self:custom.config.${self:provider.stage}.WEBSOCKET_API_ENDPOINT}
     AWS_ACCESS_KEY_ID: ${self:custom.awsKeys.${self:provider.stage}.accessKey}
     AWS_SECRET_ACCESS_KEY: ${self:custom.awsKeys.${self:provider.stage}.secretKey}
@@ -54,6 +56,9 @@ provider:
           Resource: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${WebsocketApi}/*'
 
 functions:
+  authorizer:
+    handler: handlers/auth.lambda_handler
+
   receiveMessage:
     handler: handlers/receive_message.lambda_handler
     timeout: 30
@@ -140,11 +145,8 @@ resources:
         RouteSelectionExpression: $request.body.action
 
 plugins:
-  - serverless-dynamodb
-  - serverless-offline-sqs
   - serverless-localstack
   - serverless-offline
-  - serverless-python-requirements
   
 custom:
   queueName: ${self:service}-${self:provider.stage}-messages
@@ -152,7 +154,14 @@ custom:
   localstack:
     stages:
       - local
-    endpointFile: localstack_endpoints.json
+      - dev
+    host: http://localhost
+    edgePort: 4566
+    autostart: false
+    lambda:
+      mountCode: true
+    docker:
+      sudo: false
 
   pythonRequirements:
     dockerizePip: true
@@ -160,40 +169,23 @@ custom:
     strip: false
     layer: true
   
-  dynamodb:
-    stages:
-      - local
-    start:
-      port: 8000
-      inMemory: true
-      migrate: true
-      sharedDb: true
-      accessKeyId: local
-      secretAccessKey: local
-      region: us-east-1
-      
   config:
     local:
-      SQS_QUEUE_URL: 'http://127.0.0.1:9324/queue/${self:custom.queueName}'
+      SQS_QUEUE_URL: 'http://localhost:4566/000000000000/${self:custom.queueName}'
+      SQS_ENDPOINT: 'http://localhost:4566'
+      DYNAMODB_ENDPOINT: 'http://localhost:4566'
       WEBSOCKET_API_ENDPOINT: 'http://localhost:3001'
     dev:
       SQS_QUEUE_URL: !Ref MessageQueue
+      SQS_ENDPOINT: ''
+      DYNAMODB_ENDPOINT: ''
       WEBSOCKET_API_ENDPOINT: !Sub 'https://${WebsocketApi}.execute-api.${AWS::Region}.amazonaws.com/${self:provider.stage}'
     prod:
       SQS_QUEUE_URL: !Ref MessageQueue
+      SQS_ENDPOINT: ''
+      DYNAMODB_ENDPOINT: ''
       WEBSOCKET_API_ENDPOINT: !Sub 'https://${WebsocketApi}.execute-api.${AWS::Region}.amazonaws.com/${self:provider.stage}'
 
-  serverless-offline-sqs:
-    autoCreate: true                 # Crea la cola automáticamente
-    apiVersion: '2012-11-05'
-    host: 127.0.0.1                  # Forzar IP IPv4
-    port: 9324
-    endpoint: http://127.0.0.1:9324  # Endpoint explícito
-    region: us-east-1
-    accessKeyId: local
-    secretAccessKey: local
-    skipCacheInvalidation: false
-  
   awsKeys:
     local:
       accessKey: local
