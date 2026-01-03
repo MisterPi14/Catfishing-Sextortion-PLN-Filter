@@ -45,7 +45,7 @@ node_modules/
 package-lock.json
 
 #dynamodb
-.dynamodb
+backend/.dynamodb
 
 # Build
 dist/

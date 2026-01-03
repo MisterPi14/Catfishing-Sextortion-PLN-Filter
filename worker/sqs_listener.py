@@ -1,13 +1,17 @@
 import boto3
 import json
 import logging
-from config import AWS_REGION, SQS_QUEUE_URL
+from config import AWS_REGION, SQS_QUEUE_URL, AWS_ENDPOINT_URL
 
 logger = logging.getLogger(__name__)
 
 class SQSListener:
     def __init__(self):
-        self.sqs = boto3.client('sqs', region_name=AWS_REGION)
+        self.sqs = boto3.client(
+            'sqs', 
+            region_name=AWS_REGION,
+            endpoint_url=AWS_ENDPOINT_URL
+        )
         self.queue_url = SQS_QUEUE_URL
 
     def receive_messages(self, max_messages=1, wait_time=20):

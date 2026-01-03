@@ -1,14 +1,22 @@
 import boto3
 import json
 import logging
-from config import AWS_REGION, NOTIFY_USER_LAMBDA_NAME
+from config import AWS_REGION, NOTIFY_USER_LAMBDA_NAME, AWS_ENDPOINT_URL, DYNAMODB_TABLE
 
 logger = logging.getLogger(__name__)
 
 class AWSNotifier:
     def __init__(self):
-        self.lambda_client = boto3.client('lambda', region_name=AWS_REGION)
-        self.dynamodb = boto3.resource('dynamodb', region_name=AWS_REGION)
+        self.lambda_client = boto3.client(
+            'lambda', 
+            region_name=AWS_REGION,
+            endpoint_url=AWS_ENDPOINT_URL
+        )
+        self.dynamodb = boto3.resource(
+            'dynamodb', 
+            region_name=AWS_REGION,
+            endpoint_url=AWS_ENDPOINT_URL
+        )
 
     def notify_user(self, user_id, message_id, threat_type, confidence, risk_level):
         """Invoca la Lambda NotifyUser para alertar al usuario"""
@@ -37,7 +45,7 @@ class AWSNotifier:
     def update_message_analysis(self, conversation_id, timestamp, analysis_data):
         """Actualiza el análisis de un mensaje en DynamoDB"""
         try:
-            table = self.dynamodb.Table('ChatMessages')
+            table = self.dynamodb.Table(DYNAMODB_TABLE)
             
             table.update_item(
                 Key={

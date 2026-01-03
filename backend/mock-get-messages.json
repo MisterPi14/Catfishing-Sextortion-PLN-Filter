@@ -1,0 +1,11 @@
+{
+  "requestContext": {
+    "connectionId": "mock-connection-id",
+    "authorizer": {
+      "claims": {
+        "sub": "user1"
+      }
+    }
+  },
+  "body": "{\"action\": \"getMessages\", \"data\": {\"conversationId\": \"conv_user1_user2\", \"limit\": 10}}"
+}
