@@ -1,0 +1,11 @@
+{
+  "body": "{\"action\":\"sendMessage\",\"data\":{\"conversationId\":\"conv_test_1\",\"receiverId\":\"user1\",\"content\":\" Tengo fotos tuyas muy privadas. Envíame $500 en bitcoin ahora mismo o se las enviaré a todos tus amigos y familiares. Sé dónde vives.\"}}",
+  "requestContext": {
+    "connectionId": "sender-conn-id",
+    "authorizer": {
+      "claims": {
+        "sub": "attacker_user"
+      }
+    }
+  }
+}
