@@ -1,0 +1,7 @@
+{
+  "userId": "user1",
+  "messageId": "msg_12345",
+  "threatType": "Insulto",
+  "confidence": 0.95,
+  "riskLevel": "HIGH"
+}

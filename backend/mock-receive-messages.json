@@ -7,5 +7,5 @@
       }
     }
   },
-  "body": "{\"action\": \"sendMessage\", \"data\": {\"conversationId\": \"conv_user1_user2\", \"receiverId\": \"user2\", \"content\": \"Este es un segundo mensaje\"}}"
+  "body": "{\"action\": \"sendMessage\", \"data\": {\"conversationId\": \"conv_user1_user2\", \"receiverId\": \"user2\", \"content\": \"Hola amigo como te encuentras, queria preguntarte si me recomiendas el remedio de limon con miel para la tos\"}}"
 }
