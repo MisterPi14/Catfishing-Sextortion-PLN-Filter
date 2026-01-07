@@ -34,7 +34,7 @@ class LLMProcessor:
                     "prompt": prompt,
                     "stream": False
                 },
-                timeout=30
+                timeout=300
             )
             
             if response.status_code != 200:

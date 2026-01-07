@@ -1,6 +1,7 @@
 import boto3
 import json
 import logging
+from decimal import Decimal
 from config import AWS_REGION, NOTIFY_USER_LAMBDA_NAME, AWS_ENDPOINT_URL, DYNAMODB_TABLE
 
 logger = logging.getLogger(__name__)
@@ -46,6 +47,19 @@ class AWSNotifier:
         """Actualiza el análisis de un mensaje en DynamoDB"""
         try:
             table = self.dynamodb.Table(DYNAMODB_TABLE)
+
+            # Preparar datos y convertir floats a Decimal
+            analysis_payload = {
+                'analyzed': True,
+                'riskLevel': analysis_data.get('risk_level'),
+                'threatType': analysis_data.get('threat_type'),
+                'confidence': analysis_data.get('confidence')
+            }
+
+            analysis_to_save = json.loads(
+                json.dumps(analysis_payload), 
+                parse_float=Decimal
+            )
             
             table.update_item(
                 Key={
@@ -54,12 +68,7 @@ class AWSNotifier:
                 },
                 UpdateExpression='SET riskAnalysis = :analysis',
                 ExpressionAttributeValues={
-                    ':analysis': {
-                        'analyzed': True,
-                        'riskLevel': analysis_data.get('risk_level'),
-                        'threatType': analysis_data.get('threat_type'),
-                        'confidence': analysis_data.get('confidence')
-                    }
+                    ':analysis': analysis_to_save
                 }
             )
             
@@ -68,4 +77,4 @@ class AWSNotifier:
             
         except Exception as e:
             logger.error(f"Error updating message analysis: {str(e)}")
-            return False
+            raise e
