@@ -59,6 +59,21 @@ functions:
   authorizer:
     handler: handlers/auth.lambda_handler
 
+  connect:
+    handler: handlers/connect.lambda_handler
+    events:
+      - websocket:
+          route: $connect
+          authorizer:
+            name: authorizer
+            identitySource: method.request.header.Authorization
+
+  disconnect:
+    handler: handlers/connect.disconnect_handler
+    events:
+      - websocket:
+          route: $disconnect
+
   receiveMessage:
     handler: handlers/receive_message.lambda_handler
     timeout: 30
@@ -66,9 +81,6 @@ functions:
     events:
       - websocket:
           route: sendMessage
-          authorizer:
-            name: authorizer
-            identitySource: method.request.header.Authorization
   
   getMessages:
     handler: handlers/get_messages.lambda_handler
@@ -77,9 +89,6 @@ functions:
     events:
       - websocket:
           route: getMessages
-          authorizer:
-            name: authorizer
-            identitySource: method.request.header.Authorization
   
   notifyUser:
     handler: handlers/notify_user.lambda_handler

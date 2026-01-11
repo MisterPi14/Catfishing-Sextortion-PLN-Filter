@@ -1,8 +1,14 @@
 def lambda_handler(event, context):
     """
-    Simple Lambda Authorizer that allows all requests.
-    In a real app, you would validate the token here.
+    Simple Lambda Authorizer.
     """
+    print(f"DEBUG AUTH EVENT: {event}") # Debug print
+    
+    method_arn = event.get('methodArn')
+    if not method_arn:
+        # Fallback for some local environments
+        method_arn = event.get('routeArn', '*')
+
     return {
         "principalId": "user",
         "policyDocument": {
@@ -11,7 +17,7 @@ def lambda_handler(event, context):
                 {
                     "Action": "execute-api:Invoke",
                     "Effect": "Allow",
-                    "Resource": event["methodArn"]
+                    "Resource": "*" # Allow all for local testing to avoid ARN mismatch issues
                 }
             ]
         }
