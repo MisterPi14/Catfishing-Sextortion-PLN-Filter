@@ -4,7 +4,24 @@
       <h1>PLN Filter</h1>
       <p class="subtitle">Chat Seguro con Detección de Amenazas</p>
 
-      <form @submit.prevent="handleLogin">
+      <div class="auth-tabs">
+        <button 
+          type="button"
+          :class="['tab-btn', { active: !isRegistering }]" 
+          @click="isRegistering = false"
+        >
+          Iniciar Sesión
+        </button>
+        <button 
+          type="button"
+          :class="['tab-btn', { active: isRegistering }]" 
+          @click="isRegistering = true"
+        >
+          Registrarse
+        </button>
+      </div>
+
+      <form @submit.prevent="handleSubmit">
         <div class="form-group">
           <label for="username">Usuario</label>
           <input
@@ -28,7 +45,7 @@
         </div>
 
         <button type="submit" class="btn-login" :disabled="isLoading">
-          {{ isLoading ? 'Iniciando sesión...' : 'Iniciar Sesión' }}
+          {{ isLoading ? 'Procesando...' : (isRegistering ? 'Registrarse' : 'Iniciar Sesión') }}
         </button>
       </form>
 
@@ -61,9 +78,10 @@ const username = ref('')
 const password = ref('')
 const isLoading = ref(false)
 const error = ref('')
+const isRegistering = ref(false)
 const store = useChatStore()
 
-const handleLogin = async () => {
+const handleSubmit = async () => {
   if (!username.value || !password.value) {
     error.value = 'Por favor completa todos los campos'
     return
@@ -73,14 +91,21 @@ const handleLogin = async () => {
   error.value = ''
 
   try {
-    // Mock login
-    const user = authService.mockLogin(username.value, username.value)
+    let user
+    if (isRegistering.value) {
+      await authService.register(username.value, password.value)
+      // Login automático tras registro exitoso
+      user = await authService.login(username.value, password.value)
+    } else {
+      user = await authService.login(username.value, password.value)
+    }
+    
     store.setCurrentUser(user)
 
     // Conectar WebSocket
     await websocketService.connect(authService.getToken())
   } catch (err) {
-    error.value = 'Error al iniciar sesión: ' + err.message
+    error.value = (isRegistering.value ? 'Error al registrar: ' : 'Error al iniciar sesión: ') + err.message
     isLoading.value = false
   }
 }
@@ -220,5 +245,33 @@ input:focus {
   border-radius: 5px;
   font-size: 14px;
   text-align: center;
+}
+
+.auth-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-weight: 600;
+  color: #888;
+  margin-bottom: -2px;
+  transition: all 0.3s;
+}
+
+.tab-btn.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+}
+
+.tab-btn:hover {
+  color: #667eea;
 }
 </style>

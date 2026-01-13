@@ -2,6 +2,7 @@ class AuthService {
   constructor() {
     this.token = localStorage.getItem('authToken')
     this.user = JSON.parse(localStorage.getItem('user') || 'null')
+    this.apiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:3000/dev').replace(/\/$/, '')
   }
 
   setToken(token) {
@@ -33,17 +34,52 @@ class AuthService {
     localStorage.removeItem('user')
   }
 
-  // Mock login para desarrollo
-  mockLogin(userId, username) {
-    const mockToken = `mock_token_${userId}_${Date.now()}`
-    const mockUser = {
-      userId,
-      username,
-      email: `${username}@example.com`
+  async login(username, password) {
+    try {
+      const response = await fetch(`${this.apiUrl}/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Error al iniciar sesión')
+      }
+
+      this.setToken(data.token)
+      this.setUser(data.user)
+      return data.user
+    } catch (error) {
+      console.error('Login error:', error)
+      throw error
     }
-    this.setToken(mockToken)
-    this.setUser(mockUser)
-    return mockUser
+  }
+
+  async register(username, password) {
+    try {
+      const response = await fetch(`${this.apiUrl}/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Error al registrar usuario')
+      }
+
+      return data
+    } catch (error) {
+      console.error('Registration error:', error)
+      throw error
+    }
   }
 }
 
