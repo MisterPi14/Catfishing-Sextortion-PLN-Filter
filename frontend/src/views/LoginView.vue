@@ -1,84 +1,87 @@
 <template>
-  <div class="login-container">
-    <div class="login-box">
-      <h1>PLN Filter</h1>
-      <p class="subtitle">Chat Seguro con Detección de Amenazas</p>
-
-      <div class="auth-tabs">
-        <button 
-          type="button"
-          :class="['tab-btn', { active: !isRegistering }]" 
-          @click="isRegistering = false"
-        >
-          Iniciar Sesión
-        </button>
-        <button 
-          type="button"
-          :class="['tab-btn', { active: isRegistering }]" 
-          @click="isRegistering = true"
-        >
-          Registrarse
-        </button>
+  <div class="auth-container">
+    <div class="background-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    
+    <div class="auth-card glass">
+      <div class="logo-section">
+        <div class="logo-icon glass">
+          <ShieldAlert :size="32" class="icon-vibrant" />
+        </div>
+        <h1>PLN Filter</h1>
+        <p class="subtitle">Chat Seguro e Inteligente</p>
       </div>
 
-      <form @submit.prevent="handleSubmit">
+      <form @submit.prevent="handleSubmit" class="auth-form">
         <div class="form-group">
           <label for="username">Usuario</label>
-          <input
-            id="username"
-            v-model="username"
-            type="text"
-            placeholder="Ingresa tu usuario"
-            required
-          />
+          <div class="input-wrapper glass">
+            <User :size="18" class="input-icon" />
+            <input
+              id="username"
+              v-model="username"
+              type="text"
+              placeholder="Tu nombre de usuario"
+              required
+            />
+          </div>
         </div>
 
         <div class="form-group">
           <label for="password">Contraseña</label>
-          <input
-            id="password"
-            v-model="password"
-            type="password"
-            placeholder="Ingresa tu contraseña"
-            required
-          />
+          <div class="input-wrapper glass">
+            <Lock :size="18" class="input-icon" />
+            <input
+              id="password"
+              v-model="password"
+              type="password"
+              placeholder="••••••••"
+              required
+            />
+          </div>
         </div>
 
-        <button type="submit" class="btn-login" :disabled="isLoading">
-          {{ isLoading ? 'Procesando...' : (isRegistering ? 'Registrarse' : 'Iniciar Sesión') }}
+        <button type="submit" class="btn-primary" :disabled="isLoading">
+          <span v-if="!isLoading">Iniciar Sesión</span>
+          <Loader2 v-else class="spin" />
         </button>
       </form>
 
-      <div class="demo-section">
-        <p>O prueba con usuarios de demostración:</p>
-        <div class="demo-buttons">
-          <button @click="demoLogin('user1')" class="btn-demo">
-            Usuario 1
-          </button>
-          <button @click="demoLogin('user2')" class="btn-demo">
-            Usuario 2
-          </button>
-        </div>
+      <div class="auth-footer">
+        <p>¿No tienes cuenta? <router-link to="/signup">Regístrate</router-link></p>
       </div>
 
-      <div v-if="error" class="error-message">
-        {{ error }}
-      </div>
+      <Transition name="fade">
+        <div v-if="error" class="error-toast">
+          <AlertCircle :size="16" /> {{ error }}
+        </div>
+      </Transition>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useChatStore } from '../stores/chatStore'
 import authService from '../services/authService'
 import websocketService from '../services/websocketService'
+import { 
+  ShieldAlert, 
+  User, 
+  Lock, 
+  Loader2, 
+  AlertCircle
+} from 'lucide-vue-next'
 
+const router = useRouter()
 const username = ref('')
 const password = ref('')
 const isLoading = ref(false)
 const error = ref('')
-const isRegistering = ref(false)
 const store = useChatStore()
 
 const handleSubmit = async () => {
@@ -91,187 +94,309 @@ const handleSubmit = async () => {
   error.value = ''
 
   try {
-    let user
-    if (isRegistering.value) {
-      await authService.register(username.value, password.value)
-      // Login automático tras registro exitoso
-      user = await authService.login(username.value, password.value)
-    } else {
-      user = await authService.login(username.value, password.value)
-    }
-    
+    const user = await authService.login(username.value, password.value)
     store.setCurrentUser(user)
-
-    // Conectar WebSocket
     await websocketService.connect(authService.getToken())
+    router.push({ name: 'Home' })
   } catch (err) {
-    error.value = (isRegistering.value ? 'Error al registrar: ' : 'Error al iniciar sesión: ') + err.message
+    error.value = 'Error al iniciar sesión: ' + err.message
     isLoading.value = false
   }
 }
 
-const demoLogin = async (userId) => {
-  isLoading.value = true
-  error.value = ''
-
-  try {
-    const user = authService.mockLogin(userId, userId)
-    store.setCurrentUser(user)
-    await websocketService.connect(authService.getToken())
-  } catch (err) {
-    error.value = 'Error al conectar: ' + err.message
-    isLoading.value = false
-  }
-}
 </script>
 
 <style scoped>
-.login-container {
+.auth-container {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #0f172a;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
 }
 
-.login-box {
-  background: white;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+.background-blobs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.blob {
+  position: absolute;
+  filter: blur(80px);
+  opacity: 0.4;
+  border-radius: 50%;
+  animation: move 20s infinite alternate;
+}
+
+.blob-1 {
+  width: 400px;
+  height: 400px;
+  background: #3b82f6;
+  top: -100px;
+  left: -100px;
+}
+
+.blob-2 {
+  width: 350px;
+  height: 350px;
+  background: #8b5cf6;
+  bottom: -50px;
+  right: -50px;
+  animation-delay: -5s;
+}
+
+.blob-3 {
+  width: 300px;
+  height: 300px;
+  background: #ec4899;
+  top: 40%;
+  left: 60%;
+  animation-delay: -10s;
+}
+
+@keyframes move {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(100px, 50px) scale(1.1); }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auth-card {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
+  padding: 40px;
+  border-radius: 24px;
+  z-index: 1;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.logo-section {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.icon-vibrant {
+  color: #60a5fa;
+  filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.5));
 }
 
 h1 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 10px;
   font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
-  text-align: center;
-  color: #666;
-  margin-bottom: 30px;
+  color: #94a3b8;
   font-size: 14px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 label {
-  display: block;
-  margin-bottom: 8px;
-  color: #333;
+  font-size: 13px;
   font-weight: 500;
+  color: #cbd5e1;
+  margin-left: 4px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.input-wrapper:focus-within {
+  border-color: #3b82f6;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.input-icon {
+  color: #64748b;
+  margin-right: 12px;
 }
 
 input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 14px;
-  transition: border-color 0.3s;
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 12px 0;
+  color: #fff;
+  font-size: 15px;
 }
 
 input:focus {
   outline: none;
-  border-color: #667eea;
 }
 
-.btn-login {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+input::placeholder {
+  color: #475569;
+}
+
+.btn-primary {
+  margin-top: 10px;
+  padding: 14px;
+  background: #3b82f6;
+  color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.3s;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn-login:hover:not(:disabled) {
-  opacity: 0.9;
+.btn-primary:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
 }
 
-.btn-login:disabled {
-  opacity: 0.6;
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
   cursor: not-allowed;
 }
 
-.demo-section {
-  margin-top: 30px;
-  padding-top: 30px;
-  border-top: 1px solid #eee;
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.auth-footer {
+  margin-top: 24px;
   text-align: center;
-}
-
-.demo-section p {
-  color: #666;
-  margin-bottom: 15px;
   font-size: 14px;
+  color: #94a3b8;
 }
 
-.demo-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.btn-demo {
-  flex: 1;
-  padding: 10px;
-  background: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s;
-}
-
-.btn-demo:hover {
-  background: #e0e0e0;
-}
-
-.error-message {
-  margin-top: 20px;
-  padding: 12px;
-  background: #fee;
-  color: #c33;
-  border-radius: 5px;
-  font-size: 14px;
-  text-align: center;
-}
-
-.auth-tabs {
-  display: flex;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #eee;
-}
-
-.tab-btn {
-  flex: 1;
-  padding: 10px;
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
+.auth-footer a {
+  color: #3b82f6;
+  text-decoration: none;
   font-weight: 600;
-  color: #888;
-  margin-bottom: -2px;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+.demo-divider {
+  margin: 24px 0;
+  display: flex;
+  align-items: center;
+  color: #475569;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.demo-divider::before,
+.demo-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.demo-divider span {
+  padding: 0 12px;
+}
+
+.demo-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-secondary {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   transition: all 0.3s;
 }
 
-.tab-btn.active {
-  color: #667eea;
-  border-bottom-color: #667eea;
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
-.tab-btn:hover {
-  color: #667eea;
+.error-toast {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  right: 0;
+  background: #ef4444;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.2);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
 }
 </style>

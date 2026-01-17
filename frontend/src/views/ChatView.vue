@@ -1,522 +1,473 @@
 <template>
-  <div class="chat-container">
-    <div class="sidebar">
-      <div class="user-info">
-        <div class="user-avatar">{{ currentUser?.username?.[0]?.toUpperCase() }}</div>
-        <div class="user-details">
-          <p class="username">{{ currentUser?.username }}</p>
-          <p class="status" :class="{ online: isConnected }">
-            {{ isConnected ? '● En línea' : '● Desconectado' }}
-          </p>
+  <div class="chat-layout">
+    <aside class="sidebar glass">
+      <div class="sidebar-header">
+        <div class="user-profile">
+          <div class="avatar glass">
+            {{ currentUser?.username?.[0]?.toUpperCase() }}
+            <div class="status-indicator" :class="{ connected: isConnected }"></div>
+          </div>
+          <div class="user-info">
+            <span class="user-name">{{ currentUser?.username }}</span>
+            <span class="connection-status">{{ isConnected ? 'En línea' : 'Desconectado' }}</span>
+          </div>
         </div>
-        <button @click="handleLogout" class="btn-logout">Salir</button>
+        <button @click="handleLogout" class="btn-icon glass" title="Cerrar Sesión">
+          <LogOut :size="18" />
+        </button>
       </div>
 
-      <div class="conversations-list">
-        <h3>Conversaciones</h3>
-        <div class="add-conversation">
-          <input
-            v-model="newConversationUser"
-            type="text"
-            placeholder="ID del usuario"
-            @keyup.enter="startConversation"
+      <div class="search-section">
+        <div class="search-wrapper glass">
+          <Search :size="16" />
+          <input 
+            v-model="searchQuery" 
+            type="text" 
+            placeholder="Buscar chats..." 
           />
-          <button @click="startConversation" class="btn-add">+</button>
-        </div>
-
-        <div
-          v-for="(conv, id) in conversations"
-          :key="id"
-          class="conversation-item"
-          :class="{ active: currentConversationId === id }"
-          @click="selectConversation(id)"
-        >
-          <div class="conv-avatar">{{ conv.participant?.[0]?.toUpperCase() }}</div>
-          <div class="conv-info">
-            <p class="conv-name">{{ conv.participant }}</p>
-            <p class="conv-last-msg">{{ conv.lastMessage || 'Sin mensajes' }}</p>
-          </div>
         </div>
       </div>
-    </div>
 
-    <div class="main-chat">
-      <div v-if="!currentConversationId" class="empty-state">
-        <p>Selecciona una conversación para comenzar</p>
-      </div>
-
-      <div v-else class="chat-content">
-        <div class="chat-header">
-          <h2>{{ conversations[currentConversationId]?.participant }}</h2>
-        </div>
-
-        <div class="alerts-container">
-          <div
-            v-for="alert in alerts"
-            :key="alert.messageId"
-            class="alert"
-            :class="`alert-${alert.riskLevel}`"
-          >
-            <strong>⚠️ {{ alert.threatType }}</strong>
-            <p>{{ alert.message }}</p>
-            <small>Confianza: {{ (alert.confidence * 100).toFixed(0) }}%</small>
-          </div>
-        </div>
-
-        <div class="messages-container">
-          <div
-            v-for="msg in currentMessages"
-            :key="msg.messageId"
-            class="message"
-            :class="{ sent: msg.senderId === currentUser?.userId }"
-          >
-            <div class="message-content">
-              <p>{{ msg.content }}</p>
-              <small>{{ formatTime(msg.timestamp) }}</small>
-            </div>
-            <div
-              v-if="msg.riskAnalysis?.analyzed && msg.riskAnalysis?.threatType"
-              class="risk-badge"
-              :class="`risk-${msg.riskAnalysis.riskLevel}`"
-            >
-              {{ msg.riskAnalysis.threatType }}
-            </div>
-          </div>
-        </div>
-
-        <div class="message-input">
-          <input
-            v-model="messageContent"
-            type="text"
-            placeholder="Escribe un mensaje..."
-            @keyup.enter="sendMessage"
-          />
-          <button @click="sendMessage" class="btn-send" :disabled="!messageContent || !isConnected">
-            Enviar
+      <div class="conversations-nav">
+        <div class="nav-header">
+          <span>MENSAJES</span>
+          <button @click="showAddModal = true" class="btn-add glass">
+            <Plus :size="16" />
           </button>
         </div>
+
+        <div class="conversations-list">
+          <div
+            v-for="(conv, id) in filteredConversations"
+            :key="id"
+            class="conversation-item"
+            :class="{ active: currentConversationId === id }"
+            @click="selectConversation(id)"
+          >
+            <div class="conv-avatar glass">
+              {{ conv.participant?.[0]?.toUpperCase() }}
+            </div>
+            <div class="conv-details">
+              <div class="conv-top">
+                <span class="conv-name">{{ conv.participant }}</span>
+                <span class="conv-time">{{ formatTime(conv.lastMessageTime) }}</span>
+              </div>
+              <p class="conv-last-msg">{{ conv.lastMessage || 'Empieza a chatear...' }}</p>
+            </div>
+            <div v-if="conv.unreadCount" class="unread-badge">
+              {{ conv.unreadCount }}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </aside>
+
+    <main class="main-content">
+      <router-view v-slot="{ Component }">
+        <transition name="fade-slide" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </main>
+
+    <!-- Modal para nueva conversación -->
+    <Transition name="fade">
+      <div v-if="showAddModal" class="modal-overlay" @click.self="showAddModal = false">
+        <div class="modal-content glass">
+          <h3>Nueva Conversación</h3>
+          <p>Introduce el nombre de usuario del destinatario.</p>
+          <div class="input-wrapper glass">
+            <User :size="18" />
+            <input 
+              v-model="newUserId" 
+              type="text" 
+              placeholder="Username" 
+              @keyup.enter="startConversation"
+            />
+          </div>
+          <div class="modal-actions">
+            <button @click="showAddModal = false" class="btn-text">Cancelar</button>
+            <button @click="startConversation" class="btn-primary" :disabled="!newUserId">Crear Chat</button>
+          </div>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useChatStore } from '../stores/chatStore'
 import authService from '../services/authService'
 import websocketService from '../services/websocketService'
+import { 
+  LogOut, 
+  Search, 
+  Plus, 
+  User,
+  MessageSquare
+} from 'lucide-vue-next'
 
 const store = useChatStore()
-const messageContent = ref('')
-const newConversationUser = ref('')
+const router = useRouter()
+const searchQuery = ref('')
+const showAddModal = ref(false)
+const newUserId = ref('')
 
 const currentUser = computed(() => store.currentUser)
 const conversations = computed(() => store.conversations)
 const currentConversationId = computed(() => store.currentConversationId)
-const currentMessages = computed(() => store.currentMessages)
-const alerts = computed(() => store.alerts)
 const isConnected = computed(() => store.isConnected)
 
-const selectConversation = (conversationId) => {
-  store.setCurrentConversation(conversationId)
-  store.clearMessages()
-  websocketService.getMessages(conversationId)
+const filteredConversations = computed(() => {
+  const list = Object.values(conversations.value)
+  if (!searchQuery.value) return list
+  return list.filter(c => 
+    c.participant.toLowerCase().includes(searchQuery.value.toLowerCase())
+  )
+})
+
+const selectConversation = (id) => {
+  store.setCurrentConversation(id)
+  router.push({ name: 'ChatRoom', params: { id } })
+  websocketService.getMessages(id)
 }
 
 const startConversation = () => {
-  if (!newConversationUser.value) return
-
-  const receiverId = newConversationUser.value
+  if (!newUserId.value) return
+  
+  const receiverId = newUserId.value
   const conversationId = [currentUser.value.userId, receiverId].sort().join('_')
-
+  
   store.addConversation(conversationId, receiverId)
-  store.setCurrentConversation(conversationId)
-  newConversationUser.value = ''
-  store.clearMessages()
-}
-
-const sendMessage = () => {
-  if (!messageContent.value || !isConnected.value) return
-
-  websocketService.sendMessage(
-    currentConversationId.value,
-    conversations.value[currentConversationId.value].participant,
-    messageContent.value
-  )
-
-  messageContent.value = ''
+  showAddModal.value = false
+  newUserId.value = ''
+  selectConversation(conversationId)
 }
 
 const handleLogout = () => {
   authService.logout()
   websocketService.disconnect()
   store.$reset()
+  router.push({ name: 'Login' })
 }
 
 const formatTime = (timestamp) => {
+  if (!timestamp) return ''
   const date = new Date(timestamp)
   return date.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
 }
 
 onMounted(() => {
-  // Agregar conversación de demostración
-  const otherUser = currentUser.value.userId === 'user1' ? 'user2' : 'user1'
-  const conversationId = [currentUser.value.userId, otherUser].sort().join('_')
-  store.addConversation(conversationId, otherUser)
-})
-
-onUnmounted(() => {
-  websocketService.disconnect()
+  // Logic after mounting if needed
 })
 </script>
 
 <style scoped>
-.chat-container {
+.chat-layout {
   display: flex;
   height: 100vh;
-  background: #fff;
+  background: #0f172a;
+  color: #f8fafc;
 }
 
 .sidebar {
-  width: 300px;
-  background: #f8f9fa;
-  border-right: 1px solid #e0e0e0;
+  width: 340px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 10;
 }
 
-.user-info {
-  padding: 20px;
-  background: white;
-  border-bottom: 1px solid #e0e0e0;
+.glass {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+}
+
+.sidebar-header {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-profile {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.user-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: #3b82f6;
+  position: relative;
+  background: rgba(59, 130, 246, 0.1) !important;
+  border-color: rgba(59, 130, 246, 0.2);
 }
 
-.user-details {
-  flex: 1;
-  min-width: 0;
+.status-indicator {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #64748b;
+  border: 2px solid #0f172a;
 }
 
-.username {
+.status-indicator.connected {
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
   font-weight: 600;
-  color: #333;
-  margin: 0;
+  font-size: 15px;
+}
+
+.connection-status {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #94a3b8;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-icon:hover {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #ef4444;
+}
+
+.search-section {
+  padding: 0 24px 20px;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 12px;
+  color: #64748b;
+}
+
+.search-wrapper input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px 12px;
+  color: #fff;
   font-size: 14px;
 }
 
-.status {
-  color: #999;
-  font-size: 12px;
-  margin: 4px 0 0 0;
+.search-wrapper input:focus {
+  outline: none;
 }
 
-.status.online {
-  color: #4caf50;
+.conversations-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.btn-logout {
-  padding: 6px 12px;
-  background: #fee;
-  color: #c33;
-  border: none;
-  border-radius: 4px;
+.nav-header {
+  padding: 0 24px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #475569;
+}
+
+.btn-add {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  font-size: 12px;
-  flex-shrink: 0;
+  color: #3b82f6;
+  border: none;
 }
 
 .conversations-list {
   flex: 1;
-  padding: 15px;
   overflow-y: auto;
-}
-
-.conversations-list h3 {
-  margin: 0 0 15px 0;
-  font-size: 14px;
-  color: #666;
-  text-transform: uppercase;
-}
-
-.add-conversation {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 15px;
-}
-
-.add-conversation input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 12px;
-}
-
-.btn-add {
-  padding: 8px 12px;
-  background: #667eea;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
+  padding: 0 12px;
 }
 
 .conversation-item {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 12px;
   padding: 12px;
-  margin-bottom: 8px;
-  background: white;
-  border-radius: 6px;
+  margin-bottom: 4px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
 }
 
 .conversation-item:hover {
-  background: #f0f0f0;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .conversation-item.active {
-  background: #e8eaf6;
-  border-left: 3px solid #667eea;
+  background: rgba(59, 130, 246, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.2);
 }
 
 .conv-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #ddd;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #e2e8f0;
   flex-shrink: 0;
 }
 
-.conv-info {
+.conv-details {
   flex: 1;
   min-width: 0;
 }
 
+.conv-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
 .conv-name {
   font-weight: 600;
-  color: #333;
-  margin: 0;
   font-size: 14px;
+  color: #f1f5f9;
+}
+
+.conv-time {
+  font-size: 11px;
+  color: #64748b;
 }
 
 .conv-last-msg {
-  color: #999;
-  font-size: 12px;
-  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #94a3b8;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.main-chat {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.active .conv-name {
+  color: #3b82f6;
 }
 
-.empty-state {
+.main-content {
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100%;
-  color: #999;
-  font-size: 16px;
+  align-items: center;
+  z-index: 100;
 }
 
-.chat-content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.modal-content {
+  width: 360px;
+  padding: 32px;
+  border-radius: 24px;
+  text-align: center;
 }
 
-.chat-header {
-  padding: 20px;
-  background: white;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.chat-header h2 {
-  margin: 0;
-  font-size: 18px;
-  color: #333;
-}
-
-.alerts-container {
-  padding: 10px 20px;
-  max-height: 150px;
-  overflow-y: auto;
-}
-
-.alert {
-  padding: 12px;
+.modal-content h3 {
   margin-bottom: 8px;
-  border-radius: 6px;
-  font-size: 13px;
-  border-left: 4px solid;
 }
 
-.alert strong {
-  display: block;
-  margin-bottom: 4px;
-}
-
-.alert p {
-  margin: 4px 0;
-}
-
-.alert small {
-  display: block;
-  margin-top: 4px;
-  opacity: 0.8;
-}
-
-.alert-high {
-  background: #ffebee;
-  border-left-color: #f44336;
-  color: #c62828;
-}
-
-.alert-medium {
-  background: #fff3e0;
-  border-left-color: #ff9800;
-  color: #e65100;
-}
-
-.alert-low {
-  background: #f1f8e9;
-  border-left-color: #8bc34a;
-  color: #558b2f;
-}
-
-.messages-container {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.message {
-  display: flex;
-  gap: 8px;
-  align-items: flex-end;
-}
-
-.message.sent {
-  justify-content: flex-end;
-}
-
-.message-content {
-  max-width: 60%;
-  padding: 12px 16px;
-  background: #f0f0f0;
-  border-radius: 12px;
-  word-wrap: break-word;
-}
-
-.message.sent .message-content {
-  background: #667eea;
-  color: white;
-}
-
-.message-content p {
-  margin: 0;
+.modal-content p {
   font-size: 14px;
+  color: #94a3b8;
+  margin-bottom: 24px;
 }
 
-.message-content small {
-  display: block;
-  margin-top: 4px;
-  font-size: 12px;
-  opacity: 0.7;
-}
-
-.risk-badge {
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 11px;
+.btn-text {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
   font-weight: 600;
-  text-transform: uppercase;
+  cursor: pointer;
+  padding: 10px 20px;
 }
 
-.risk-high {
-  background: #ffcdd2;
-  color: #c62828;
-}
-
-.risk-medium {
-  background: #ffe0b2;
-  color: #e65100;
-}
-
-.risk-low {
-  background: #c8e6c9;
-  color: #2e7d32;
-}
-
-.message-input {
-  padding: 20px;
-  background: white;
-  border-top: 1px solid #e0e0e0;
-  display: flex;
-  gap: 10px;
-}
-
-.message-input input {
-  flex: 1;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.message-input input:focus {
-  outline: none;
-  border-color: #667eea;
-}
-
-.btn-send {
-  padding: 12px 24px;
-  background: #667eea;
+.btn-primary {
+  padding: 10px 24px;
+  background: #3b82f6;
   color: white;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  border-radius: 12px;
   font-weight: 600;
-  transition: opacity 0.2s;
+  cursor: pointer;
 }
 
-.btn-send:hover:not(:disabled) {
-  opacity: 0.9;
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
 }
 
-.btn-send:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
 }
 </style>

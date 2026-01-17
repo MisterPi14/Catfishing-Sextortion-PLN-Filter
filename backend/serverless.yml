@@ -180,11 +180,11 @@ custom:
     stages:
       - local
       - dev
-    host: http://localhost
+    host: localhost
     edgePort: 4566
     autostart: false
     lambda:
-      mountCode: true
+      mountCode: false
     docker:
       sudo: false
 

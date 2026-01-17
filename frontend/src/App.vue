@@ -1,17 +1,11 @@
 <template>
   <div class="app">
-    <LoginView v-if="!isAuthenticated" />
-    <ChatView v-else />
+    <router-view />
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import authService from './services/authService'
-import LoginView from './views/LoginView.vue'
-import ChatView from './views/ChatView.vue'
-
-const isAuthenticated = computed(() => authService.isAuthenticated())
+// No local state needed here, router handles it
 </script>
 
 <style>

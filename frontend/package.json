@@ -8,8 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lucide-vue-next": "^0.562.0",
+    "pinia": "^2.1.6",
     "vue": "^3.3.4",
-    "pinia": "^2.1.6"
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.3.4",

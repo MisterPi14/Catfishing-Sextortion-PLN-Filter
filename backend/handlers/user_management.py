@@ -6,16 +6,21 @@ from datetime import datetime
 
 # Inicializar DynamoDB
 # En local o nube, serverless inyecta las variables de entorno o usamos boto3 por defecto
+# Inicializar DynamoDB usando configuración centralizada
 is_offline = os.environ.get('IS_OFFLINE') == 'true'
+region = os.environ.get('AWS_REGION', 'us-east-1')
 
 if is_offline:
+    endpoint_url = os.environ.get('DYNAMODB_ENDPOINT', 'http://localhost:4566')
     dynamodb = boto3.resource(
         'dynamodb',
-        region_name='localhost',
-        endpoint_url='http://localhost:8000'
+        region_name=region,
+        endpoint_url=endpoint_url,
+        aws_access_key_id='local',
+        aws_secret_access_key='local'
     )
 else:
-    dynamodb = boto3.resource('dynamodb')
+    dynamodb = boto3.resource('dynamodb', region_name=region)
 
 USERS_TABLE = os.environ['DYNAMODB_USERS_TABLE']
 
