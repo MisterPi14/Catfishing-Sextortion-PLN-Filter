@@ -37,6 +37,10 @@ def register(event, context):
         if not username or not password:
             return {
                 'statusCode': 400,
+                'headers': {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': 'true'
+                },
                 'body': json.dumps({'error': 'Username and password are required'})
             }
 
@@ -47,6 +51,10 @@ def register(event, context):
         if 'Item' in response:
             return {
                 'statusCode': 400,
+                'headers': {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': 'true'
+                },
                 'body': json.dumps({'error': 'User already exists'})
             }
 
@@ -62,6 +70,10 @@ def register(event, context):
 
         return {
             'statusCode': 201,
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true'
+            },
             'body': json.dumps({'message': 'User registered successfully', 'userId': username})
         }
 
@@ -69,6 +81,10 @@ def register(event, context):
         print(f"Error in register: {e}")
         return {
             'statusCode': 500,
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true'
+            },
             'body': json.dumps({'error': 'Internal server error'})
         }
 
@@ -81,6 +97,10 @@ def login(event, context):
         if not username or not password:
             return {
                 'statusCode': 400,
+                'headers': {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': 'true'
+                },
                 'body': json.dumps({'error': 'Username and password are required'})
             }
 
@@ -90,6 +110,10 @@ def login(event, context):
         if 'Item' not in response:
             return {
                 'statusCode': 401,
+                'headers': {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': 'true'
+                },
                 'body': json.dumps({'error': 'Invalid credentials'})
             }
 
@@ -99,6 +123,10 @@ def login(event, context):
         if user.get('password') != password:
             return {
                 'statusCode': 401,
+                'headers': {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': 'true'
+                },
                 'body': json.dumps({'error': 'Invalid credentials'})
             }
 
@@ -108,6 +136,10 @@ def login(event, context):
         
         return {
             'statusCode': 200,
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true'
+            },
             'body': json.dumps({
                 'token': token,
                 'user': {
@@ -121,5 +153,9 @@ def login(event, context):
         print(f"Error in login: {e}")
         return {
             'statusCode': 500,
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true'
+            },
             'body': json.dumps({'error': 'Internal server error'})
         }
