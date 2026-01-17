@@ -11,14 +11,12 @@ provider:
   stage: ${opt:stage, 'dev'} #cambio ia
   
   environment:
-    IS_OFFLINE: ${param:offline, false} #cuando ejecutas sls invoke local Serverless NO inyecta IS_OFFLINE=true automáticamente python Asume que está en la nube, intenta conectarse a AWS real
-    #${param:offline, false} significa: "Busca si en el comando escribieron --param="offline=true"", "Si lo escribieron, usa ese valor (true)." o "Si NO lo escribieron, usa el valor por defecto (false)."
+    IS_OFFLINE: ${env:IS_OFFLINE, 'true'}
     AWS_REGION: ${self:provider.region}
     DYNAMODB_TABLE: ${self:service}-${self:provider.stage}-messages
     DYNAMODB_USERS_TABLE: ${self:service}-${self:provider.stage}-users
     DYNAMODB_CONVERSATIONS_TABLE: ${self:service}-${self:provider.stage}-conversations
     
-    #CAMBIO EN ESTAS 2 para usar la configuracion en el bloque custom
     SQS_QUEUE_URL: ${self:custom.config.${self:provider.stage}.SQS_QUEUE_URL}
     SQS_ENDPOINT: ${self:custom.config.${self:provider.stage}.SQS_ENDPOINT}
     DYNAMODB_ENDPOINT: ${self:custom.config.${self:provider.stage}.DYNAMODB_ENDPOINT}

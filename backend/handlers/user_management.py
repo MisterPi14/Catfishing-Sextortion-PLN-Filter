@@ -12,6 +12,10 @@ region = os.environ.get('AWS_REGION', 'us-east-1')
 
 if is_offline:
     endpoint_url = os.environ.get('DYNAMODB_ENDPOINT', 'http://localhost:4566')
+    # If running inside LocalStack container, use localized hostname
+    if os.environ.get('LOCALSTACK_HOSTNAME'):
+        endpoint_url = endpoint_url.replace('localhost', os.environ.get('LOCALSTACK_HOSTNAME'))
+        
     dynamodb = boto3.resource(
         'dynamodb',
         region_name=region,
