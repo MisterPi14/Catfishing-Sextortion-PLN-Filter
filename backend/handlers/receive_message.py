@@ -53,6 +53,11 @@ def lambda_handler(event, context):
         if not all([receiver_id, content, conversation_id]):
             return {'statusCode': 400, 'body': json.dumps({'error': 'Missing required fields'})}
         
+        # Validar existencia del usuario receptor
+        receiver_user = dynamodb.get_user(receiver_id)
+        if not receiver_user:
+            return {'statusCode': 400, 'body': json.dumps({'error': f"User '{receiver_id}' does not exist"})}
+
         message_id = f"msg_{uuid.uuid4().hex[:12]}"
         timestamp = int(datetime.utcnow().timestamp() * 1000)
         
@@ -65,6 +70,15 @@ def lambda_handler(event, context):
         
         if not dynamodb.save_message(conversation_id, timestamp, message_data):
             return {'statusCode': 500, 'body': json.dumps({'error': 'Failed to save message'})}
+
+        # Actualizar metadatos de la conversación
+        conversation_data = {
+            'participant1': sender_id,
+            'participant2': receiver_id,
+            'lastMessage': content,
+            'lastMessageTime': timestamp
+        }
+        dynamodb.update_conversation(conversation_id, conversation_data)
         
         sqs_message = {
             'messageId': message_id,
@@ -77,7 +91,6 @@ def lambda_handler(event, context):
         
         sqs.send_message(sqs_message)
         
-        receiver_user = dynamodb.get_user(receiver_id)
         if receiver_user and receiver_user.get('isOnline'):
             receiver_connection_id = receiver_user.get('connectionId')
             

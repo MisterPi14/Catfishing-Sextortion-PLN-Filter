@@ -88,6 +88,50 @@ def register(event, context):
             'body': json.dumps({'error': 'Internal server error'})
         }
 
+def check_user(event, context):
+    try:
+        # Check if username is in path parameters or body
+        username = None
+        if event.get('pathParameters') and event['pathParameters'].get('username'):
+             username = event['pathParameters']['username']
+        elif event.get('body'):
+            data = json.loads(event.get('body', '{}'))
+            username = data.get('username')
+
+        if not username:
+            return {
+                'statusCode': 400,
+                'headers': {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': 'true'
+                },
+                'body': json.dumps({'error': 'Username is required'})
+            }
+
+        table = dynamodb.Table(USERS_TABLE)
+        response = table.get_item(Key={'userId': username})
+        
+        exists = 'Item' in response
+        
+        return {
+            'statusCode': 200,
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true'
+            },
+            'body': json.dumps({'exists': exists, 'userId': username if exists else None})
+        }
+    except Exception as e:
+        print(f"Error in check_user: {e}")
+        return {
+            'statusCode': 500,
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true'
+            },
+            'body': json.dumps({'error': str(e)})
+        }
+
 def login(event, context):
     try:
         data = json.loads(event.get('body', '{}'))

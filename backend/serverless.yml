@@ -106,6 +106,18 @@ functions:
               - Authorization
             allowCredentials: true
             
+  checkUser:
+    handler: handlers/user_management.check_user
+    events:
+      - http:
+          path: check-user/{username}
+          method: get
+          cors:
+            origin: 'http://localhost:5173'
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: true
 
   login:
     handler: handlers/user_management.login

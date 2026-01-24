@@ -127,3 +127,19 @@ class DynamoDBClient:
         except Exception as e:
             print(f"Error updating user connection: {str(e)}")
             return False
+
+    def update_conversation(self, conversation_id, conversation_data):
+        """Actualiza o crea una conversación con el último mensaje"""
+        try:
+            self.conversations_table.put_item(Item={
+                'conversationId': conversation_id,
+                'participant1': conversation_data.get('participant1'),
+                'participant2': conversation_data.get('participant2'),
+                'lastMessage': conversation_data.get('lastMessage'),
+                'lastMessageTime': Decimal(str(conversation_data.get('lastMessageTime'))),
+                'updatedAt': datetime.utcnow().isoformat() + 'Z'
+            })
+            return True
+        except Exception as e:
+            print(f"Error updating conversation: {str(e)}")
+            return False
