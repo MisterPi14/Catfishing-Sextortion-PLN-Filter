@@ -193,8 +193,12 @@ resources:
 plugins:
   - serverless-localstack
   - serverless-offline
+  - serverless-plugin-scripts
   
 custom:
+  scripts:
+    hooks:
+      'deploy:finalize': node scripts/update-env.js
   queueName: ${self:service}-${self:provider.stage}-messages
 
   localstack:
