@@ -81,6 +81,28 @@ class AuthService {
       throw error
     }
   }
+
+  async checkUser(username) {
+    try {
+      const response = await fetch(`${this.apiUrl}/check-user/${username}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': this.token
+        }
+      })
+
+      if (!response.ok) {
+        throw new Error('Error checking user')
+      }
+
+      const data = await response.json()
+      return data.exists
+    } catch (error) {
+      console.error('Check user error:', error)
+      return false
+    }
+  }
 }
 
 export default new AuthService()

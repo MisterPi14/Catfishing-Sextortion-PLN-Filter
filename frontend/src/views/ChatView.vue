@@ -83,11 +83,21 @@
               type="text" 
               placeholder="Username" 
               @keyup.enter="startConversation"
+              @input="addError = ''"
             />
           </div>
+          <p v-if="addError" style="color: #ff6b6b; font-size: 0.85rem; margin: 10px 0 0 5px;">
+            {{ addError }}
+          </p>
           <div class="modal-actions">
             <button @click="showAddModal = false" class="btn-text">Cancelar</button>
-            <button @click="startConversation" class="btn-primary" :disabled="!newUserId">Crear Chat</button>
+            <button 
+              @click="startConversation" 
+              class="btn-primary" 
+              :disabled="!newUserId || isCheckingUser"
+            >
+              {{ isCheckingUser ? 'Verificando...' : 'Crear Chat' }}
+            </button>
           </div>
         </div>
       </div>
@@ -114,6 +124,8 @@ const router = useRouter()
 const searchQuery = ref('')
 const showAddModal = ref(false)
 const newUserId = ref('')
+const isCheckingUser = ref(false)
+const addError = ref('')
 
 const currentUser = computed(() => store.currentUser)
 const conversations = computed(() => store.conversations)
@@ -134,16 +146,42 @@ const selectConversation = (id) => {
   websocketService.getMessages(id)
 }
 
-const startConversation = () => {
+const startConversation = async () => {
   if (!newUserId.value) return
   
-  const receiverId = newUserId.value
-  const conversationId = [currentUser.value.userId, receiverId].sort().join('_')
-  
-  store.addConversation(conversationId, receiverId)
-  showAddModal.value = false
-  newUserId.value = ''
-  selectConversation(conversationId)
+  // Resetear estados
+  isCheckingUser.value = true
+  addError.value = ''
+
+  try {
+    // 1. Validar que el usuario exista
+    const exists = await authService.checkUser(newUserId.value)
+    if (!exists) {
+      addError.value = 'El usuario no existe'
+      return
+    }
+
+    // 2. Si existe, crear la conversación localmente
+    const receiverId = newUserId.value
+    
+    // Evitar chat con uno mismo
+    if (receiverId === currentUser.value.userId) {
+      addError.value = 'No puedes chatear contigo mismo'
+      return
+    }
+
+    const conversationId = [currentUser.value.userId, receiverId].sort().join('_')
+    
+    store.addConversation(conversationId, receiverId)
+    showAddModal.value = false
+    newUserId.value = ''
+    selectConversation(conversationId)
+
+  } catch (error) {
+    addError.value = 'Error de conexión'
+  } finally {
+    isCheckingUser.value = false
+  }
 }
 
 const handleLogout = () => {
