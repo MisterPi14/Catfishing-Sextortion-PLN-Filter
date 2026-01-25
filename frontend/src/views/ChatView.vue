@@ -187,7 +187,7 @@ const startConversation = async () => {
 const handleLogout = () => {
   authService.logout()
   websocketService.disconnect()
-  store.$reset()
+  store.resetState()
   router.push({ name: 'Login' })
 }
 

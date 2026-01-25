@@ -94,18 +94,50 @@ def lambda_handler(event, context):
         if receiver_user and receiver_user.get('isOnline'):
             receiver_connection_id = receiver_user.get('connectionId')
             
+            print(f"DEBUG: Enviando mensaje {message_id} a {receiver_id} (ConnectionId: {receiver_connection_id})")
+
             websocket_message = {
                 'action': 'messageReceived',
                 'data': {
                     'messageId': message_id,
+                    'conversationId': conversation_id,
                     'senderId': sender_id,
+                    'receiverId': receiver_id,
                     'content': content,
                     'timestamp': timestamp,
                     'status': 'delivered'
                 }
             }
             
-            websocket.send_message(receiver_connection_id, websocket_message)
+            try:
+                websocket.send_message(receiver_connection_id, websocket_message)
+                print(f"DEBUG: Mensaje enviado exitosamente a {receiver_id}")
+            except Exception as wse:
+                 print(f"ERROR: Fallo al enviar WebSocket a {receiver_id}: {str(wse)}")
+
+        else:
+            print(f"DEBUG: Usuario {receiver_id} no está online o no tiene connectionId. Datos usuario: {receiver_user}")
+
+        # Echo al remitente para que vea su propio mensaje
+        # Esto soluciona que "desaparezca" si no hay Optimistic UI
+        if connection_id:
+            echo_message = {
+                'action': 'messageReceived',
+                'data': {
+                    'messageId': message_id,
+                    'conversationId': conversation_id,
+                    'senderId': sender_id,
+                    'receiverId': receiver_id,
+                    'content': content,
+                    'timestamp': timestamp,
+                    'status': 'sent'
+                }
+            }
+            try:
+                websocket.send_message(connection_id, echo_message)
+                print(f"DEBUG: Echo enviado exitosamente a remitente {sender_id}")
+            except Exception as wse:
+                 print(f"ERROR: Fallo al enviar Echo WebSocket: {str(wse)}")
         
         return {
             'statusCode': 200,

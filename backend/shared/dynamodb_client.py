@@ -111,6 +111,20 @@ class DynamoDBClient:
             print(f"Error getting user: {str(e)}")
             return None
 
+    def get_user_by_connection_id(self, connection_id):
+        """Obtiene usuario por connectionId"""
+        try:
+            # Scan con filtro (aceptable para uso local/bajo volumen)
+            response = self.users_table.scan(
+                FilterExpression='connectionId = :conn_id',
+                ExpressionAttributeValues={':conn_id': connection_id}
+            )
+            items = response.get('Items', [])
+            return items[0] if items else None
+        except Exception as e:
+            print(f"Error getting user by connection id: {str(e)}")
+            return None
+
     def update_user_connection(self, user_id, connection_id):
         """Actualiza el connectionId de un usuario"""
         try:

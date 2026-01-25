@@ -74,6 +74,16 @@ export const useChatStore = defineStore('chat', () => {
     isLoading.value = loading
   }
 
+  const resetState = () => {
+    currentUser.value = null
+    conversations.value = {}
+    currentConversationId.value = null
+    messages.value = []
+    alerts.value = []
+    isConnected.value = false
+    isLoading.value = false
+  }
+
   return {
     // Estado
     currentUser,
@@ -96,6 +106,7 @@ export const useChatStore = defineStore('chat', () => {
     addAlert,
     addConversation,
     updateConversationLastMessage,
-    setLoading
+    setLoading,
+    resetState
   }
 })

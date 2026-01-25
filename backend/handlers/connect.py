@@ -21,8 +21,14 @@ def lambda_handler(event, context):
         user_id = event['requestContext'].get('authorizer', {}).get('principalId')
         
         if not user_id:
-             print("ERROR: No principalId found in requestContext")
-             return {'statusCode': 401, 'body': 'Unauthorized'}
+            # Fallback for some local environments or dev tools
+             print("WARNING: No principalId found in requestContext. Checking query params.")
+             qs = event.get('queryStringParameters')
+             if qs and qs.get('token'):
+                 user_id = qs.get('token')
+             else:
+                 print("ERROR: Could not resolve user_id.")
+                 return {'statusCode': 401, 'body': 'Unauthorized'}
 
         print(f"New connection: {connection_id} for user: {user_id}")
         

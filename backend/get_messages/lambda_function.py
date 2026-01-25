@@ -28,7 +28,31 @@ def lambda_handler(event, context):
     
     try:
         # Extraer información del evento
-        user_id = event['requestContext']['authorizer']['claims']['sub']
+        # Intentar obtener usuario por connectionId primero (WebSocket)
+        user_id = None
+        connection_id = event.get('requestContext', {}).get('connectionId')
+        
+        if connection_id:
+            user = dynamodb.get_user_by_connection_id(connection_id)
+            if user:
+                user_id = user['userId']
+                
+        # Fallback a authorizer claims (HTTP o si falla DB)
+        if not user_id:
+            try:
+                claims = event['requestContext']['authorizer'].get('claims')
+                if not claims: 
+                    # Intenta extraer de authorizer plano (custom authorizer en local)
+                    authorizer_data = event['requestContext']['authorizer']
+                    user_id = authorizer_data.get('sub') or authorizer_data.get('principalId')
+                else:
+                    user_id = claims.get('sub')
+            except (KeyError, TypeError):
+                print(f"Error getting user_id. Context: {event.get('requestContext')}")
+                pass
+        
+        if not user_id:
+            return {'statusCode': 401, 'body': json.dumps({'error': 'Unauthorized - User not found'})}
         
         body = json.loads(event.get('body', '{}'))
         action = body.get('action')
