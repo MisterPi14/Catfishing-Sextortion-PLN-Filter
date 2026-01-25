@@ -49,11 +49,30 @@ class WebSocketService {
 
     switch (action) {
       case 'messageReceived':
+        // Determinar el ID real de la conversación desde el payload
+        const realConversationId = payload.conversationId;
+        
+        // Determinar quién es la "otra persona" para mostrar en la lista
+        // Si yo mandé el mensaje (Echo), el otro es el receiver. Si recibí (Inbound), es el sender.
+        const otherParticipant = payload.senderId === store.currentUser?.userId 
+            ? payload.receiverId 
+            : payload.senderId;
+
+        // Si la conversación no existe en el store local, crearla automáticamente
+        if (realConversationId && !store.conversations[realConversationId]) {
+             store.addConversation(realConversationId, otherParticipant);
+        }
+
+        // Agregar mensaje usando el ID correcto
         store.addMessage({
           ...payload,
-          conversationId: store.currentConversationId
+          conversationId: realConversationId
         })
-        store.updateConversationLastMessage(store.currentConversationId, payload)
+        
+        // Actualizar la vista previa en la barra lateral
+        if (realConversationId) {
+            store.updateConversationLastMessage(realConversationId, payload)
+        }
         break
 
       case 'messagesHistory':

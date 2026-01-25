@@ -67,7 +67,20 @@ def lambda_handler(event, context):
         
         # Validar datos
         if not conversation_id:
-            return {'statusCode': 400, 'body': json.dumps({'error': 'Missing conversationId'})}
+             # Si no viene conversationId, intentar construirlo si tenemos participant
+            data = body.get('data', {})
+            participant = data.get('participant') # podria venir del front
+            if not conversation_id and participant and user_id:
+                 conversation_id = '_'.join(sorted([user_id, participant]))
+
+        # Si aun falta
+        if not conversation_id:
+            # Fallback temporal para dev: intentar deducirlo del body si el front envio 'receiverId' en lugar de conversationId (error comun)
+            receiver_id = data.get('receiverId')
+            if receiver_id and user_id:
+                conversation_id = '_'.join(sorted([user_id, receiver_id]))
+            else:
+                 return {'statusCode': 400, 'body': json.dumps({'error': 'Missing conversationId'})}
         
         # Obtener mensajes
         messages = dynamodb.get_messages(conversation_id, limit=limit)
