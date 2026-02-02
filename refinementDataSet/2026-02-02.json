@@ -1,0 +1,88 @@
+{
+  "testDataset" : [
+    {
+      "text": "Amor, me da pena contarte esto pero confío en ti. Hoy se enfermó mi mamá y no tengo cómo pagar el medicamento. No te pido mucho, con que me compres una tarjeta de regalo de Amazon y me envíes el código podría salir del apuro.",
+      "label": "catfishing"
+    },
+    {
+      "text": "Jajaja estuvo bueno lo de ayer, aunque sigo pensando que ese lugar estaba sobrevalorado. ¿Esta semana andas libre o mejor lo dejamos para la siguiente?",
+      "label": "harmless"
+    },
+    {
+      "text": "¿Estás solo ahora? Necesito que aceptes la videollamada ya. Solo un momento con la cámara encendida y prometo que nadie más lo verá.",
+      "label": "sextortion"
+    },
+    {
+      "text": "Desde que hablamos siento que eres la única persona que realmente me entiende. Por eso quiero proponerte algo, si invertimos juntos puedo manejar el dinero por ti y repartir las ganancias, empezamos con algo pequeño, unos 5,000 pesos.",
+      "label": "catfishing"
+    },
+    {
+      "text": "Hoy fue un día pesado, puro tráfico y juntas eternas. Mañana seguro mejora, ¿tú qué tal cerraste el día?",
+      "label": "harmless"
+    },
+    {
+      "text": "Pensé que confiabas en mí. No te estoy obligando, pero si no muestras tu cara ahora no sé si quiera seguir hablando contigo.",
+      "label": "sextortion"
+    },
+    {
+      "text": "No hagas caso a lo que dicen, esa gente siempre critica lo que no entiende. Si quieres podemos hacerlo juntos, mándame el código de la tarjeta y yo me encargo de todo.",
+      "label": "catfishing"
+    },
+    {
+      "text": "Entonces quedamos el viernes a las siete, si se me complica te aviso con tiempo. Y si no, pues lo movemos, sin estrés.",
+      "label": "harmless"
+    },
+    {
+      "text": "Mira, si no aceptas la llamada voy a pensar que me hiciste perder el tiempo. Abre la cámara y ya, es solo entre tú y yo.",
+      "label": "sextortion"
+    },
+    {
+      "text": "Estoy pasando por un momento muy difícil y no suelo pedir ayuda, pero pensé en ti. Si pudieras transferirme algo hoy, mañana mismo te lo devuelvo, te lo prometo.",
+      "label": "catfishing"
+    },
+    {
+      "text": "Jajaja no inventes, claro que llegué bien. Oye, ¿ya viste que abrieron un café nuevo por aquí?",
+      "label": "harmless"
+    },
+    {
+      "text": "Si no cooperas ahora, no puedo garantizar que esto quede en privado. Todavía estamos a tiempo de arreglarlo.",
+      "label": "sextortion"
+    },
+    {
+      "text": "He pensado mucho en nuestro futuro juntos, pero antes necesito resolver algo urgente. Si me compras una tarjeta iTunes y me mandas el código, mañana seguimos planeando lo nuestro.",
+      "label": "catfishing"
+    },
+    {
+      "text": "Buen plan lo de hoy, algo tranquilo y sin prisas. Luego vemos si se arma algo más el fin de semana.",
+      "label": "harmless"
+    },
+    {
+      "text": "No quiero llegar a amenazas, pero si no haces lo que te digo podría enviar esto a tus contactos. Mejor solucionémoslo ahora.",
+      "label": "sextortion"
+    },
+    {
+      "text": "Sé que dudas, es normal, pero confía en mí. Pásame el código de la tarjeta y verás cómo todo empieza a mejorar para los dos.",
+      "label": "catfishing"
+    },
+    {
+      "text": "Jajaja va, tú eliges la película pero si es mala no me hago responsable. ¿Palomitas dulces o saladas?",
+      "label": "harmless"
+    },
+    {
+      "text": "Solo una foto más y listo, después paramos. No exageres, esto es algo que hace todo el mundo.",
+      "label": "sextortion"
+    },
+    {
+      "text": "Nunca me había sentido así con alguien, por eso quiero que avancemos. Si me ayudas hoy con ese dinero, te juro que mañana hablamos con calma.",
+      "label": "catfishing"
+    },
+    {
+      "text": "Llegué tarde pero todo bien. Mañana con más calma te cuento el chisme completo.",
+      "label": "harmless"
+    },
+    {
+      "text": "Si no respondes ahora voy a asumir que no te importa y tendré que hacer algo con el material que tengo.",
+      "label": "sextortion"
+    }
+  ]
+}
