@@ -1,15 +1,11 @@
 {
   "examples": [
     {
-      "text": "Jajajajaja, si, soy un poco nerviosa, esque me cogió desprevenida. Y tenía prisa.",
+      "text": "Jajajajaja, si, soy un poco nerviosa, esque me tomaste desprevenida. Y llevaba prisa.",
       "category": "harmless"
     },
     {
-      "text": "Es domingo creo que no tengo nada. Estoy apuntada al gimnasio pero no voy apenas. Oye que es que había quedado con mis amigas para ir al cine y no me acordaba.",
-      "category": "harmless"
-    },
-    {
-      "text": "El miércoles estoy libre. O el finde. Si, por las tardes puedo. Jaja. Lo malo son las mañanas.",
+      "text": "El domingo estoy libre. Estoy apuntada al gimnasio pero no voy apenas. Oye que es que había quedado con mis amigas para ir al cine y no me acordaba.",
       "category": "harmless"
     },
     {
@@ -29,15 +25,7 @@
     "category": "harmless"
     },
     {
-      "text": "Jajaja fue épico, aún me duelen los oídos.",
-      "category": "harmless"
-    },
-    {
-      "text": "Entonces misión cumplida, ya tengo anécdota para contar a mis nietos. ¿Qué tal va tu domingo, plan tranquilo o de hacer mil cosas?",
-      "category": "harmless"
-    },
-    {
-      "text": "Buen plan, sofá mas serie siempre suma puntos. Solo asegúrate de no engancharte a algo peor que mis gallos de ayer.",
+      "text": "Carnal ya tirale un fortnite si o que?, apuesto a que te gano 3 veces seguidas",
       "category": "harmless"
     },
     {
@@ -45,11 +33,7 @@
       "category": "harmless"
     },
     {
-      "text": "Estoy viendo una serie de suspenso, está bastante buena.",
-      "category": "harmless"
-    },
-    {
-      "text": "Suena bien, aunque si me asusto fácil voy a tener que ver caricaturas después para dormir tranquilo.",
+      "text": "Si mi bro, pues la neta hoy si me dio flojera la chamba, ahorita estoy viendo una serie de suspenso, está bastante buena.",
       "category": "harmless"
     },
     {
