@@ -6,7 +6,7 @@ Write-Host "Modelos encontrados: $($modelosInstalados.Count)"
 echo ""
 
 # 2. Leer la lista de modelos deseados desde models.txt
-$modelosDeseados = Get-Content .\models.txt
+$modelosDeseados = Get-Content ".\models 2025-08.txt"
 
 # 3. Comparar y descargar solo los que faltan
 foreach ($modelo in $modelosDeseados) {
