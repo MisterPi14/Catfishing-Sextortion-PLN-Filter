@@ -11,6 +11,8 @@
     Información proporcionada por la SSC sostiene que “es fundamental que la ciudadanía, especialmente adolescentes, adultos mayores o personas emocionalmente vulnerables, adopten medidas preventivas de ciberseguridad” \cite{SSC2555}.
 \end{comment}
 
+La basta cantidad de entornos de comunicación digital de distintos propósitos y otros fenómenos como el auge reciente de la inteligencia artificial han resultado en el incremento de fraudes digitales en los cuales las modalidades de catfishing y sextorsión presentan estragos notables como depresión y conductas suicidas en sus victimas que van desde infantes que navegan sin supervisión hasta adultos mayores con analfabetismo digital.[34]
+
 La masificación del uso de dispositivos móviles y de los sistemas de mensajería instantánea en México ha generado un entorno propicio para la proliferación de fraudes en línea de manera masiva, El Heraldo de México sostiene que México supera la media global en ciberataques, teniendo que el 48 \% de los usuarios informan haber recibido ataques en sus teléfonos móviles \cite{heraldo1youtube}. Consolidándose como parte de estas estadísticas el catfishing y la sextorsión. En esta fuente se menciona de igual manera que los sistemas de mensajería instantánea en un 35 \% y las llamadas y mensajes de texto con el 26 \% son las plataformas más utilizadas para realizar este tipo de prácticas \cite{heraldo1youtube}. Estos delitos emplean el anonimato, la creación de identidades falsas y la manipulación emocional o sexual, y se caracterizan por una transición acelerada entre el primer contacto y la coerción sobre las víctimas. El sector poblacional objetivo de los estafadores contempla principalmente a grupos vulnerables, como niños, adolescentes y adultos mayores con baja alfabetización digital. Dentro de este panorama la policía cibernética recomienda que los padres de familia enseñen a los menores a identificar contenido inapropiado \cite{SSC2321}. 
 Información proporcionada por la SSC sostiene que "es fundamental que la ciudadanía, especialmente adolescentes, adultos mayores o personas emocionalmente vulnerables, adopten medidas preventivas de ciberseguridad" \cite{SSC2555}.
 
@@ -45,7 +47,7 @@ Información proporcionada por la SSC sostiene que "es fundamental que la ciudad
 
 
 \section{Objetivo general}
-Diseñar un sistema de detección de mensajería instantánea para detección de estafas, puntualmente al catfishing y la sextorsión mediante el refinamiento de un modelo largo de lenguaje delimitado al español.
+Diseñar un sistema de detección de mensajería para detección de estafas, puntualmente al catfishing y la sextorsión mediante el refinamiento de un modelo largo de lenguaje delimitado al español.
 
 %El "refinamiento" de los Modelos de Lenguaje a Gran Escala (LLM, por sus siglas en inglés, Large Language Models) se refiere al proceso de adaptar o mejorar un modelo previamente entrenado para tareas o dominios específicos, o para corregir comportamientos no deseados.
 
@@ -63,7 +65,7 @@ Diseñar un sistema de detección de mensajería instantánea para detección de
 
 
 \begin{itemize}
-    \item Generar datos siguiendo las 8 practicas de generación de datos sintéticos propuestas por IBM \cite{SynthDataByIbm}, puntualmente ejemplos de mensajes categorizados como catfishing, sextorsión e inofensivos mediante el uso de modelos largos de lenguaje de gran escala como elemento sintetizador.
+    \item Generar datos siguiendo las 8 practicas de generación de datos sintéticos propuestas por IBM \cite{SynthDataByIbm}, puntualmente ejemplos de mensajes categorizados como catfishing, sextorsión e inofensivos mediante el uso de modelos largos de lenguaje de frontera como elemento sintetizador.
     %con respecto a este de generacion, hablar de la necesidad el por que se hara sintetica,ente, esta justificacion va en marco teorico y hablar de como se realizo la base de datos esto ira en desarrollo
     %en marco teorico tambien hablar de como es el proceso de entrenamiento en un llm
     %transfor learning = fine tuning
@@ -72,7 +74,7 @@ Diseñar un sistema de detección de mensajería instantánea para detección de
 
     \item Realizar pruebas de desempeño mediante un enfoque basado en refinamiento a través de técnicas de prompting \cite{PromptEngByIBM}
 
-    \item Comparar el desempeño de una colección de modelos largos de lenguaje como llama3, gemma2, gemma3, mistral, qwen3, qwen2.5, phi4-mini, deepseek-r1, dolphin3, entre otros en la clasificación de las etiquetas: catfishing, sextorsión e inofensivo, utilizando refinamiento a través de técnicas de prompting: zero-shot, one-shot y few-shot.
+    \item Comparar el desempeño de una colección de modelos largos de lenguaje como llama3, gemma2, gemma3, mistral, qwen3, qwen2.5, phi4-mini, deepseek-r1, dolphin3, entre otros en la clasificación de las etiquetas: catfishing, sextorsión e inofensivo, utilizando refinamiento a través de técnicas de prompting: zero-shot y few-shot.
 
     \item Realizar el diseño de una aplicación web de mensajería instantánea.
 \end{itemize}
@@ -107,13 +109,13 @@ Mediante los resultados de las pruebas, seleccionar un modelo largo de lenguaje 
 \subsection{Límites}
 
 \begin{itemize}
-    \item El presente proyecto no contempla en su diseño un enfoque de arquitectura RAG que otorgue alguna funcionalidad de software que actualice el contexto del modelo largo de lenguaje con neologismos, Eufemismos o jergas emergentes en la cultura de internet.
+    \item El presente proyecto no contempla en su diseño un enfoque de arquitectura RAG que otorgue alguna funcionalidad de software que actualice el contexto del modelo largo de lenguaje con neologismos, eufemismos o jergas emergentes en la cultura de internet.
 
     \item El proyecto no contempla la creación de información destinada a cadena de custodia.
 
     \item El diseño de la aplicación de mensajería no contemplara la funcionalidad de chat grupal, será implementado únicamente para comunicación uno a uno.
 
-    \item A lo largo del proyecto se contemplaran modelos largos de lenguaje con rangos de escala de entre 0.5 billones y 8 billones de parámetros, debido a características del sistema como lo son la clasificación en tiempo síncrono y el balance con hardware limitado.
+    \item A lo largo del proyecto se contemplaran modelos largos de lenguaje con rangos de escala de entre 0.5 billones y 8 billones de parámetros, debido a requerimientos del sistema como la clasificación en tiempo síncrono y el balance con hardware limitado.
 
     \item El presente proyecto no contempla el entrenamiento o ajuste fino de los pesos de los modelos largos de lenguaje.
 
@@ -151,7 +153,7 @@ Mediante los resultados de las pruebas, seleccionar un modelo largo de lenguaje 
 \section{Justificación del proyecto} 
 % Proyecto de ing: ¿Que problema resuelve este proyecto?, ¿para quien será de utilidad?, ¿quien se ve beneficiado?, ¿qué  ventajas tiene con respecto a otros proyectos parecidos?
 
-Este proyecto es un esfuerzo destinado a afrontar las estafas en línea dentro de sistemas de mensajería instantánea, con un enfoque particular en modalidades como el catfishing y sextorsión. Su utilidad práctica radica en proveer un entorno de mensajería que, mediante el análisis de carácter semántico efectuado a las conversaciones, pueda alertar de manera oportuna a los usuarios antes de convertirse en víctimas de este tipo de fraudes. De esta manera, el beneficio está orientado a personas de cualquier edad y género que utilicen sistemas de mensajería instantánea, fundamentándose en la prevención. La principal ventaja de esta propuesta, en comparación con las investigaciones que conforman el actual estado del arte, recae en el enfoque de solución pues, mientras los trabajos existentes se orientan principalmente a evaluar la efectividad o aplicabilidad de los modelos largos de lenguaje en la identificación de estafas, este proyecto propone el diseño de una solución web, la cual, mediante el uso de modelos largos de lenguaje, permita concebir un sistema de mensajería orientado a la prevención de fraudes.
+Este proyecto representa un esfuerzo destinado a la prevención las estafas en línea dentro del ámbito de los sistemas de mensajería instantánea, con un enfoque particular en modalidades como el catfishing y sextorsión. Su utilidad práctica radica en el diseño de un sistema de mensajería que, mediante el análisis de carácter semántico efectuado a conversaciones, pueda alertar de manera oportuna a los usuarios antes de convertirse en víctimas de este tipo de fraudes. De esta manera, el beneficio está orientado a personas de cualquier edad y género que utilicen sistemas de mensajería instantánea, fundamentándose en la prevención. 
 
 
 %La justificación es puramente el por que se tiene que hacer, la parte de justificar las tecnologías e infraestructura esta mas de la mano del marco teorico o el desarrollo, la parte de la falta de evidencias también puede gihurar en la justificacion

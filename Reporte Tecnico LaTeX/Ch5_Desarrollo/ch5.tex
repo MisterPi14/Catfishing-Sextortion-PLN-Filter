@@ -2,15 +2,6 @@
 
 \section{Metodología de investigación para la obtención de datos reales}
 
-%2025-11-18: en caso de no verse aprobada la recoleccion de datos reales incluso bajo anonimato de actores, se puede considerar esta investigacion que documenta caracteristicas de la sextorcion en funcion de una muestra social https://www.sciencedirect.com/science/article/pii/S2949791423000386
-
-\begin{comment}
-    %2025-11-19:
-    Este artículo realiza un estudio integral sobre el fenómeno de estafas tipo “pig-butchering”, caracterizadas por la construcción prolongada de relaciones mediante técnicas de ingeniería social antes de efectuar el fraude financiero. Recopila información de más de 430,000 cuentas en redes sociales, 3,213 reportes públicos y más de 1,000 artículos de prensa entre marzo y octubre de 2024, identificando al menos 146 usuarios directamente afectados y pérdidas calculadas en más de \$521 millones. Utiliza análisis automatizado y revisión cualitativa para identificar tácticas de los estafadores, canales preferidos, métodos de pago y el impacto emocional en las víctimas. Destacan la amplitud del conjunto de datos, la segmentación por plataforma y la caracterización de procesos de grooming, pero faltan consideraciones sobre la evolución de técnicas algorítmicas para detección temprana y comparativas con estrategias automatizadas existentes. El estudio sugiere una respuesta multidisciplinar para mejorar la detección y la protección.
-https://arxiv.org/pdf/2412.15423
-
-\cite{Acharya2024} % 20251118: REVISAR
-\end{comment}
 En adición a la parte técnica, el proyecto contempló bajo una metodología, la obtención de datos reales sobre estafa, puntualmente ejemplos de mensajería fraudulenta que busca explotar a la víctima mediante métodos afines al catfishing y la sextorsión.
 
 Se llevo a cabo una investigación en foros de Internet como reddit \cite{RedditFlirtu2025} con el objetivo de encontrar una aplicación de mensajería con reportes frecuentes de estafas.
@@ -19,11 +10,11 @@ Los resultados de esta primera fase arrojaron una aplicación candidata por las 
 \cite{RedditFlirtu2025}
 \cite{telegramRisks}
 
-\subsection{Metodología: Perfil controlado de observación}
+\subsection{Metodología: Perfil señuelo}
 
-Esta tarea involucró al realizar una cuenta señuelo para poder identificar y contactar con posibles estafadores dentro de la aplicación de citas para este proceso se utilizó un proyecto de internet nombrado para realizar una identidad falsa y sintética en conformidad con la ética profesional del presente trabajo.
+Esta tarea involucró al realizar una cuenta señuelo para poder identificar y contactar con posibles estafadores dentro de la aplicación de citas.
 
-El objetivo de esta parte puntualmente fue determinar cuáles eran los patrones clave de cada tipo de estafa a bordado en este caso cafishing y la sextorsión así como el estilo del lenguaje y la forma de la comunicación que se suele llevar a cabo por parte de los estafadores por un lado para la generación sintética de los datos y para la obtención principalmente de datos reales.
+El objetivo de esta etapa fue puntualmente, determinar cuáles eran los patrones clave de cada tipo de estafa: cafishing y la sextorsión así como el estilo del lenguaje y la forma de la comunicación que se suele llevar a cabo por parte de los estafadores por un lado para la generación sintética de los datos y para la obtención principalmente de datos reales.
 
 La recolección de datos se remitió exclusivamente a medios de texto, no se contempló imagen.
 
@@ -42,7 +33,6 @@ De los atacantes
     \item Algunos perfiles aprovechaban la conexión emocional para reclutar participantes en grupos de inversión en criptomonedas, cuyas motivaciones no son identificadas en la investigación
     \item Constante solicitudes para acordar realizar una videollamada de carater intimo, mayormente con el objetivo de recabar imagenes privadas con fines de sextorsion y para utilizar posteriormente en el ejercicio de catfishing con otras victimas.
     \item Enviar contenido de caracter explicito en ocasiones coherente en algunas ocasiones con la identidad falsa, con el fin de generar credibilidad.
-    %2025/11/10: evaluar posibilidad de citar la entrevista que se realizo con una persona afectada
 \end{itemize}
 
 \subsubsection{Características de la sextorsión} 
@@ -57,8 +47,6 @@ De los atacantes
 \end{itemize}
 
 \subsection{Recolección y etiquetado de datos}
-
-%2025/11/11: esta seccion requiere condensarse y enfocarse especificamente al procedimiento tecnico probablemente, pero contiene informacion relevante a la problematica, conviene referenciar mejor a la definicion del problema.
 
 El entrándonos en la etapa de la recolección de los datos la misma incluida por un lado adentrarnos en el flirt u bot de telegram fue necesario realizar el pago para una suscripción del mes- 
 
@@ -78,10 +66,6 @@ Posteriormente tras una muestra de 7 conversaciones se procedió con la extracci
 
 Después se procedió con un proceso de limpieza de datos para almacenar los ejemplos de manera curada eliminando ruido, dado que en parte de los casos se presentaron errores Léxicos y gramaticales. Esta ultima caracteristica ha sido relacionada con las granjas de datos y las estafas automatizadas en diferentes artículos como el trabajo "" por "" el cual aborda la problematica vivida en el pais \cite{milenio2024cjng}.
 
-
-% 2025/11/10: poner aqui capturas del proceso y unos cuentos ejemplos, en la presentacion tambien iran
-
-
 \section{Generación sintética de data set para refinamiento}
 
 El presente proyecto contempló la recolección de datos reales sobre estafas, correspondientemente a los límites y alcances de la investigación, esta recolección no fue masiva por lo que se adoptó una metodología basada en la generación sintética de datos para aumentar los mismos en calidad y variedad.
@@ -90,11 +74,11 @@ Para conseguir este propósito, se siguieron 8 buenas practicas para la generaci
 Los pasos que se siguieron para generar datos sintéticos: 
 1.- Recolección y etiquetado de datos reales (mayores detalles en la sección “Metodología: Perfil controlado de observación”)
 2.- Creación de un prompt basado en la técnica de prompting few shot donde se establecen las características que deben tener los datos así como los ejemplos recolectados
-3.- Síntesis de datos a partir de modelos largos de lenguaje de gran escala, incluyendo modelos como: Cloude sonnet 4, Chat GPT 5, Gemini 2.5 pro, DeepSeek-R1 y Grok 4
+3.- Síntesis de datos a partir de modelos largos de lenguaje de gran escala, incluyendo modelos como: Cloude Opus 4.6, GPT-5.2, Gemini 3 pro, DeepSeek-R1 y Grok 4
 4.- Revisión manual de los ejemplos generados priorizando realismo y diversidad
-5.- Construcción de dataset de refinamiento y pruebas a partir de los datos reales y sintéticos
+5.- Construcción de conjunto de datos de refinamiento a partir de datos sinteticos y conjunto de datos de pruebas a partir de los datos reales.
 
-\subsection{Pruebas de desempeño de identificación en LLMs}
+\subsection{Pruebas de desempeño de clasificación en LLMs}
 
 Se contempla el uso de técnicas de \textit{prompt engineering} para maximizar la capacidad de modelos de lenguaje (LLM) en la tarea de clasificación de mensajes sospechosos.
 
@@ -126,6 +110,53 @@ La etapa inicial de esta investigación contempló efectuar un conjunto de prueb
         \item DeepSeek-R1: 8b, 1.5b
         \item DeepCoder: 1.5b
         \item Cogito: 3b, 8b
+        \item ALIENTELLIGENCE/emotionalintelligenceanalysis:latest
+        \item ahmadwaqar/smolvlm2-500m-video:fp16
+        \item ahmadwaqar/smolvlm2-500m-video:q8
+        \item llama-pro:instruct
+        \item granite3.2-vision:2b
+        \item minicpm-v:8b
+        \item bakllava:7b
+        \item qwen2.5vl:3b
+        \item qwen2.5vl:7b
+        \item qwen3-vl:2b
+        \item qwen3-vl:4b
+        \item qwen3-vl:8b
+        \item llava:7b
+        \item codegemma:2b
+        \item codegemma:7b
+        \item starcoder2:3b
+        \item starcoder2:7b
+        \item wizard-vicuna-uncensored:7b
+        \item openthinker:7b
+        \item granite3.1-moe:1b
+        \item granite3.1-moe:3b
+        \item smollm:135m
+        \item smollm2:135m
+        \item smollm:360m
+        \item smollm2:360m
+        \item falcon3:1b
+        \item smollm:1.7b
+        \item smollm2:1.7b
+        \item tinyllama:1.1b
+        \item phi:2.7b
+        \item orca-mini:3b
+        \item falcon3:3b
+        \item stablelm2:1.6b
+        \item exaone-deep:2.4b
+        \item exaone-deep:7.8b
+        \item neural-chat:7b
+        \item falcon:7b
+        \item dolphin-llama3:8b
+        \item zephyr:7b
+        \item openchat:7b
+        \item orca-mini:7b
+        \item falcon3:7b
+        \item olmo2:7b
+        \item olmo-3:7b
+        \item phi3:3.8b
+        \item ministral-3:3b
+        \item ministral-3:8b
 \end{itemize}
 
 El propósito de estas pruebas es determinar el conjunto de modelos con mayor ponderación mediante la comparación del desempeño de esta selección de modelos en la clasificación del cafishing y sextorsión contemplando refinamiento mediante técnicas de prompting bajo 3 enfoques: zero shot, one shot y few shot para determinar el modelo que se empleara en la aplicación de mensajería.
@@ -134,7 +165,7 @@ La metodología empleada para llevar a cabo este conjunto de pruebas contempló 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{imagenes/desarrollo/ArquitecturaEntornoPruebas/diagEnvTest.png}
+    \includegraphics[width=0.9\linewidth]{imagenes/pruebas/diagEnvTest.png}
     \caption{Diagrama arquitectónico del entorno de pruebas de clasificación para evaluación de LLMs}
     \label{fig:diagrama-entorno-pruebas}
 \end{figure}
@@ -358,14 +389,7 @@ Gestiona la evaluación individual por modelo.
     }
 \end{lstlisting}
 
-\section{Propuesta de solución}
-%07-06-2025: se tiene que justificar por que el uso de python
-
-% % 2025/08/27  Links a las partes tecnologicas (preguntar si esto va o no) https://www.postgresql.org
-% https://ollama.com/
-%(posiblemente si considerando que explica sus caracteristicas mismas que han de justificar su uso)
-
-%2025-09-09: En la parte de propuesta de solución o enfoque de solución hablar sobre la calidad de la hipótesis la cuál refleja la necesidad de contar con modelos ligeros, mencionar que esto aminora la necesidad de hardware costoso o la utilización de apis para modelos con grandes capacidades contrastar con los resultados obtenidos a lo largo de las pruebas con los modelos e identificar los casos como mayores al 60% en la identificación "Aviola dice que es suficiente", falta justificar el por qué si
+\section{Arquitectura de solución}
 
 \subsection{Arquitectura general del sistema (explicación)}
 
@@ -376,6 +400,10 @@ Gestiona la evaluación individual por modelo.
     \label{fig:diagrama-arquitectonico}
 \end{figure}
 
+Se propone una solución híbrida contemplando cómputo en la nube mediante los servicios administrados de AWS y procesamiento local para la ejecución de la inferencia del modelo a largo de lenguaje para el análisis de contenido.
+
+El sistema está diseñado para detectar técnicas de sextorsión y catfishing en conversaciones de chat, alertando a los usuarios de manera preventiva cuando se identifiquen patrones de riesgo, mientras se cuenta con persistencia de datos y se entrega un sistema de mensajería.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{imagenes/desarrollo/propuestaSolucion/diagramaComponentes.pdf}
@@ -385,54 +413,39 @@ Gestiona la evaluación individual por modelo.
 
 \subsection{Descripción de la arquitectura por servicio de Amazon web services}
 
-%2025/11/10: Esta sección está hecha con AI, revisión y redacción humanizada pendientes
-
-%https://aws.amazon.com/es/architecture/well-architected/
-
-%07-06-2025: se tiene que justificar el por que ocupar un web app, en funcion de la diversidad de os para movil y lo complejo asi como las metricas de incidencia en Mexico.
-
-%07-06-2025 00:45:04 : Justificar la decisión de desarrollar una aplicación web en lugar de una nativa dentro del capítulo de "Desarrollo"7777. La justificación debe mencionar la compatibilidad con múltiples sistemas operativos como Android, iOS y HarmonyOS8.
-
-% Datos para justificar el uso de AWS:
-% https://holori.com/cloud-market-2022/ (imagen de la comparativa entre cloud providers)
-% https://getdeploying.com/datacenters-in-mexico
-% https://aws.amazon.com/es/local/mexico/
-
 La arquitectura propuesta representa una solución híbrida nube-local diseñada para implementar un sistema de mensajería instantánea con capacidades de detección de amenazas por estafa en modalidad de catfishing y/o sextorsión. La solución combina la escalabilidad y confiabilidad de los servicios administrados de AWS con procesamiento local de un modelo de lenguaje (LLM) para clasificación de contenido. La arquitectura está construida con el objetivo de operar dentro de la capa gratuita de AWS, es una solucion implementada bajo servicios serverless que eliminan la necesidad de aprovisionamiento en nube. El sistema está diseñado para detectar técnicas de sextorsión y catfishing en conversaciones de chat, alertando a los usuarios de manera preventiva cuando se identifiquen patrones de riesgo, mientras se cuenta con persistencia de datos y se entrega un sistema de mensajería funcional.
-%2025-09-03: para justificar al proveedor de nube seguramente AWS, se debera hablar del aprovisionamiento como caracteristica para usar las funciones serverless añadir a marco teorico "https://www.ibm.com/mx-es/think/topics/provisioning”
-
 
 \subsubsection{1. AWS AMPLIFY HOSTING (Frontend)}
 
-AWS Amplify Hosting es el servicio encargado de alojar y distribuir la aplicación web del cliente. Este servicio proporciona hosting estático con integración continua, permitiendo desplegar aplicaciones React, Vue, Angular o HTML/CSS/JS simple de manera automática desde repositorios Git.
+AWS Amplify es un servicio de aws empleado para alojar y servir el front end de la aplicacion web, el lado del cliente. Este seervicio permite desplegar aplicaciones desde repositorios Git.
 
-Funcionalidad: Amplify sirve los archivos estáticos del frontend (HTML, CSS, JavaScript) a través de una red de distribución de contenido (CDN) global, garantizando tiempos de carga rápidos. Además, maneja el certificado SSL/TLS automáticamente, proporcionando conexiones HTTPS seguras sin configuración adicional.
+Su funcion es servir los archivos estaticos del front end que incluyen html, css y JavaScript, es compatible con el certificado SSL/TLS por lo que sirve conexiones seguras a traves de HTTPS. 
 
-Por qué es necesario: Para un MVP, Amplify elimina la complejidad de configurar servidores web, gestionar certificados SSL y configurar pipelines de despliegue. Su capa gratuita incluye 15GB de almacenamiento y transferencia de datos, suficiente para las pruebas iniciales con 2 usuarios. La integración nativa con otros servicios de AWS (Cognito, API Gateway) simplifica significativamente el desarrollo.
+Su uso dentro del presente proyecto radica en simplificar la complejidad del desarrollo en relacion a la configuracion de servidores web y aspectos relacionados a la gestion certificados SSL. De entre las caracteristicas por las que se contempla dentro del proyecto es su generosa capa gratuita que incluye 15GB de almacenamiento en la infraestructura de AWS asi como la compatibilidad con los demas servicios de la capa gratuita de AWS. 
 
 \subsubsection{2. AMAZON COGNITO USER POOL (Autenticación)}
 
-Amazon Cognito User Pool es el servicio de gestión de identidades y autenticación de usuarios que maneja todo el ciclo de vida de las cuentas de usuario, desde el registro hasta la autenticación y recuperación de contraseñas.
+Amazon Cognito User Pool es un servicio de AWS orientado a la autenticación de usuarios, maneja funcionalidades desde el registro hasta la recuperación de credenciales.
 
-Funcionalidad: Cognito proporciona un sistema completo de autenticación basado en estándares OAuth 2.0 y OpenID Connect. Valida las credenciales de los usuarios (email y contraseña), genera tokens JWT (JSON Web Tokens) firmados que contienen información de identidad del usuario, y gestiona la renovación de sesiones. Los tokens JWT se utilizan para autorizar las solicitudes a API Gateway y otros servicios de AWS.
+Su funcion es servir como un sistema de autenticacion estable, gracias a que esta basado en estandares como OAuth 2.0 y OpenID Connect. mediante la generacion de Json Web Tokens permiten validar las credenciales de usuarios, estos son empleados para autorizar peticiones hacia API Gateway y otros servicios dentro del ecosistema AWS. 
 
-Por qué es necesario: Implementar un sistema de autenticación seguro desde cero es complejo y propenso a vulnerabilidades. Cognito ofrece una solución probada que incluye hash seguro de contraseñas (bcrypt), protección contra ataques de fuerza bruta, verificación de email, y cumplimiento con estándares de seguridad. Su capa gratuita permite hasta 50,000 usuarios activos mensuales (MAU), más que suficiente para un MVP. Además, se integra directamente con API Gateway para validar automáticamente los tokens JWT en cada solicitud.
+Su uso dentro del presente proyecto es requerido para implementar un sistema de autentificacion seguro, lo cual es un proyecto de amplia madurez y complejidad en si mismo, ademas de ser propenso a vulnerabilidades. Cognito provee de una solucion robusta que brinda hash de contraseñas bcrypt, protección contra ataques de fuerza bruta, verificación de email, y cumplimiento con estándares de seguridad.
 
 \subsubsection{3. API GATEWAY WEBSOCKET API (Comunicación en tiempo síncrono.)}
 
-API Gateway con soporte WebSocket es el servicio que gestiona las conexiones bidireccionales persistentes entre los clientes y el backend, permitiendo la comunicación en tiempo síncrono sin necesidad de polling.
+API Gateway con soporte WebSocket es el servicio dentro de AWS que establece conexiones bidireccionales entre clientes y backend, permitiendo la comunicación en tiempo síncrono.
 
-Funcionalidad: API Gateway WebSocket mantiene conexiones abiertas con cada cliente conectado, asignando un connectionId único a cada sesión. Cuando un mensaje llega, lo enruta a la función Lambda correspondiente según la acción especificada (enviar mensaje, obtener historial, etc.). También permite enviar mensajes desde el backend hacia los clientes conectados de forma asíncrona, habilitando notificaciones push instantáneas.
+Su funcion es servir como medio de enlace con cada uno de los clientes que consumen la aplicacion, este asigna un connectionId a cada sesión. Entre otras cosas gestiona el envio de los mensajes dentro de la aplicación, esta es la responsable del enrrutamiento hacia la funcion Lambda dependiento del flujo de datos, ejemplos como "enviar mensaje", "obtener historial", "recibir mensaje". También sera empleado por el requierimiento de envio de mensajes desde el backend hasta los clientes para gestionar el alertamiento oportuno mediante mensajes que lleguen a la inferaz de usuario.
 
-Por qué es necesario: Para lograr una experiencia de chat similar a WhatsApp o Telegram, se requiere comunicación bidireccional instantánea. Las alternativas tradicionales como HTTP polling son ineficientes y costosas. WebSocket mantiene una conexión TCP persistente que permite enviar datos en ambas direcciones sin la sobrecarga de establecer nuevas conexiones HTTP para cada mensaje. API Gateway gestiona automáticamente el escalamiento, la reconexión ante fallos, y la integración con Lambda, eliminando la necesidad de gestionar servidores WebSocket manualmente. Su capa gratuita incluye 1 millón de mensajes por mes.
+Su uso es requerido dentro del proyecto en alineacion con el objetivo del diseño de un sistema de mnsajeria similar a los medios de redes sociales actuales como WhatsApp o Telegram, en estos casos se emplea una comunicación bidireccional de tiempo sincrono, esto se lograra mediante una API de tipo WebSocket las cuales mantienen una conexion TCP persistente que permite comunicacion bidireccional, el servicio de AWS tiene incorporadas caracteristicas propias de los sistemas de comunicación como lo son el manejo de errores y la reconexión, en adición posee la integración con AWS Lambda. 
 
 \subsubsection{4. AWS LAMBDA - ReceiveMessage (Procesamiento de Mensajes Entrantes)}
 
-Esta función Lambda es el punto de entrada para todos los mensajes nuevos enviados por los usuarios a través del chat.
+Las funciones Lambda de AWS son su alternativa a las denominadas funciones serverless, caracterizadas por no requeriri aprovisionamiento de alli la descripcion serverless equivalente a "sin servidor".
 
-Funcionalidad: Cuando un usuario envía un mensaje, API Gateway invoca esta función con los datos del mensaje. La función realiza tres operaciones críticas en secuencia: (1) Almacena el mensaje en DynamoDB con estado "pendiente" para garantizar persistencia inmediata, (2) Encola el mensaje en SQS para análisis posterior por el LLM local, y (3) Reenvía el mensaje al destinatario conectado a través de API Gateway WebSocket para entrega instantánea.
+La funcion de este servicio se concentra en el procesamiento de la logica de programacion definida, algunas de sus tareas incluyen: Almacenar los mensajes recibidos en la base de datos de AWS dynamodb, Encolar el mensaje empleando el servicio AWS SQS para su analisis posterior por parte del worker local (el modelo gestionado en maquina local) y Reenviar el mensaje a su destinatario a traves del servicio AWS API Gateway WebSocket.
 
-Por qué es necesario: Esta función implementa el patrón de "write-through cache" y desacoplamiento asíncrono. Al guardar primero en DynamoDB, se garantiza que ningún mensaje se pierda incluso si el sistema de análisis falla. Al encolar en SQS, se desacopla el procesamiento del LLM del flujo principal de mensajería, permitiendo que el chat funcione con baja latencia independientemente del tiempo de análisis. La arquitectura serverless de Lambda significa que solo se paga por el tiempo de ejecución real (primeros 1 millón de invocaciones gratis), sin necesidad de mantener servidores activos.
+Su uso en el proyecto es fundamental para la implementacion de la logica del backend, son requeridas de igual manera para la gestion de la logica de desacoplamiento asincrono gracias a la encolacion desde SQS se consigue que el procesamiento de la inferencia del LLM en el worker local sea independiente del flujo de datos principal perteneciente a la funcionalidad del sistema de mensajeria, de esta manera la ejecución del modelo no retraza el envio y recepcion de mensajes, en adicion una de las principales caracteristicas de las funciones lambda es la facturacion la cual puede ser en funcion de las ejecuciones lo cual ahorra costes de aprovisionamiento despediciado y solo se cobra por las ejecuciones realizadas.
 
 \subsubsection{5. AWS LAMBDA - GetMessages (Recuperación de Historial)}
 
@@ -446,7 +459,7 @@ Por qué es necesario: Separar la lógica de recuperación de historial en una f
 
 Esta función Lambda se encarga de enviar notificaciones a los usuarios cuando el sistema de análisis detecta contenido de riesgo en los mensajes.
 
-Funcionalidad: El Worker local invoca esta función cuando el LLM identifica patrones de catfishing o sextorsión. La función consulta DynamoDB para obtener el connectionId del usuario que debe ser alertado, construye un mensaje de alerta con detalles del riesgo detectado (tipo de amenaza), y lo envía a través de API Gateway WebSocket directamente al cliente conectado. %visualmente se observa en el front end como un mensaje cuya caja de texto se resalta en rojo y arriba aparece un texto indicando que tipo de etiqueta fue predicha.
+Funcionalidad: El Worker local invoca esta función cuando el LLM identifica patrones de catfishing o sextorsión. La función consulta DynamoDB para obtener el connectionId del usuario que debe ser alertado, construye un mensaje de alerta con detalles del riesgo detectado (tipo de amenaza), y lo envía a través de API Gateway WebSocket directamente al cliente conectado.
 
 Por qué es necesario: Las alertas de seguridad deben entregarse de forma inmediata y confiable. Esta función centraliza la lógica de notificaciones, permitiendo implementar canales de alerta (WebSocket) desde un único punto. Al ser invocada por el Worker local, mantiene el desacoplamiento entre el sistema de análisis y la infraestructura de AWS. También permite implementar lógica de negocio como evitar alertas duplicadas, escalar alertas según severidad, o registrar todas las notificaciones para auditoría.
 
@@ -487,31 +500,4 @@ Para estos efectos se consideran modelos con escalas de entre 0.5 billones de pa
 \subsubsection{Conclusión sobre la arquitectura}
 
 Esta arquitectura representa una solución pragmática y económica para el MVP, aprovechando servicios serverless de AWS que operan completamente dentro de la capa gratuita para volúmenes de prueba. El diseño prioriza la simplicidad operacional (sin servidores que gestionar), la tolerancia a fallos (SQS + DynamoDB garantizan que ningún mensaje se pierda), y la flexibilidad (el Worker local puede actualizarse independientemente). La separación de responsabilidades entre componentes facilita el desarrollo iterativo y el debugging, mientras que el uso de servicios administrados reduce el tiempo de implementación y los riesgos de seguridad. El sistema está preparado para escalar agregando más Workers locales si el volumen de mensajes aumenta, o migrando el LLM a AWS cuando el presupuesto lo permita.
-
-% 2025/11/22 De manera provisional se comentan todas estas secciones dado que Requiere consultar con los profesores la relevancia para el proyecto
-
-%2025/11/12: \subsection{Tecnologías y justificación contempladas en la propuesta} pendiente de preguntar
-
-\begin{comment}
-    \subsection{Lista de requerimientos funcionales}% pendiente de ampliar con amazon q
-
-    \begin{itemize}
-        \item El sistema debe permitir enviar y recibir mensajes
-        \item El sistema debe tener inicio de sesión y creación de cuentas
-        \item La clasificación debe activarse mediante el trigger “Se recibió un mensaje dentro del sistema de mensajería”.
-        \item Evaluar diferentes enfoques mediante pruebas para medir el rendimiento de la inferencia del llm al realizar la tarea de clasificación del tipo de estafa y determinar el enfoque a proceder balanceando presupuesto reducido y un desempeño mínimo requerido para el requerimiento de “alertar al usuario en un tiempo pertinente para no caer en la estafa, lo más cercano al tiempo síncrono", los enfoques a evaluar son (refinamiento con prompt engineering o ajuste fino “fine tuning” involucrando un entrenamiento)
-        \item La aplicación debe tener la opción de desactivar filtro (considerar también para las prácticas, tener siempre un dispositivo que envía los mensajes sospechosos)
-        \item Llevar un historial de mensajes clasificados como potencialmente peligrosos, incluyendo hora, usuario involucrado y tipo de amenaza detectada.
-    \end{itemize}
-
-\section{Justificación del proveedor de IaaS}
-\end{comment}
-
-
-%2025-08-31: Considerar un aspecto fuente para la justificación del proveedor de IaaS el que tengan data centers en cdmx o en méxico para la baja latencia, puede ser un punto fuerte para justificar azure frente aws aunque aparentemente según gpt sea predominante
-% pagina para justificar https://getdeploying.com/
-
-
-
-
 

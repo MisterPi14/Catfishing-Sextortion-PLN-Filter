@@ -13,9 +13,8 @@ El presente proyecto fundamenta el nucleo técnico en la rama del aprendizaje pr
 Los conocidos como LLMs son estructuras que contemplan redes neuronales profundas y múltiples capas, Estas redes neuronales pueden procesar textos e intrucciones al nivel del lenguaje humano lo que les permite desempeñar diferentes tareas para el contexto de esta investigacion, relacionadas con texto, como lo pueden ser las tareas de generación de texto y las tareas de clasificación siendo estas últimas el tipo principal de tarea con la que se trabajara a lo largo del presente proyecto.
 
 \subsection{Que son los modelos largos de lenguaje LLM y cual es su utilidad}
-%2025/08/27  papper de attention is all u need: revisar si es requerido para incluir en marco teorico https://arxiv.org/abs/1706.03762
 
-Los modelos largos de lenguajes son modelos de aprendizaje profundo que son pre entrenados con grandes cantidades de datos, su función es predecir y generar lenguaje humano a partir de la estimación de probabilidades de que un \textit{token} %palabras, sobpalabras o subcadenas o letras 
+Los modelos largos de lenguajes son modelos de aprendizaje profundo que son pre entrenados con grandes cantidades de datos, su función es predecir y generar lenguaje humano a partir de la estimación de probabilidades de que un \textit{token} 
 o secuencia de tokens ocurra dentro de una secuencia más larga de tokens, en este contexto comprender ``secuencia de tokens'' como una oración completa o parrafos o incluso documentos completos. \cite{googleLlmIntro2024}
 
 Poseen una estructura fundamentada en los transformadores, un tipo de arquitectura introducido en el
@@ -26,22 +25,16 @@ Los LLMS pueden ser empleados para llevar a cabo tareas de diversas indoles como
 
 \subsection{LLMs Como clasificadores de textos}
 Los modelos de lenguaje de gran escala (LLMs, por sus siglas en inglés) han transformado la forma en que se abordan las tareas de procesamiento de lenguaje natural (PLN), especialmente en el ámbito de la clasificación de textos. Tradicionalmente, esta tarea dependía de modelos supervisados entrenados con grandes volúmenes de datos etiquetados, los cuales requerían etapas explícitas de extracción de características y entrenamiento. En contraste,
-%punto clave 1
+
 \textbf{los LLMs permiten realizar tareas de clasificación incluso en entornos con pocos o ningún dato etiquetado, a través de técnicas de prompting como lo son zero-shot one-shot y few-shot learning.}
 
 En el artículo Large Language Models Are Zero-Shot Text Classifiers \cite{wang2023largelanguagemodelszeroshot}, se realizó una evaluación empírica del desempeño de distintos LLMs como clasificadores sin entrenamiento adicional, usando únicamente instrucciones (prompts) diseñadas cuidadosamente. Entre los hallazgos más relevantes destaca que, aunque estos modelos no superan sistemáticamente a clasificadores supervisados entrenados sobre datos específicos, 
-%punto clave 2
 \textbf{ofrecen una ventaja considerable en contextos donde no se dispone de datos etiquetados o los recursos computacionales para entrenamiento son limitados.}
-%punto clave 3
 Asimismo, se demostró que \textbf{el diseño del prompt es determinante: un cambio sutil en la redacción de la instrucción puede afectar significativamente la precisión del modelo.}
 
 Para el objetivo de este proyecto el cual contempla la identificación de estafas como sextorsión y catfishing, emplear modelos largos del lenguaje como clasificadores es un buen enfoque de solución considerando sus características de adaptabilidad ya sea mediante refinamiento a partir de técnicas de prompting para la redacción de prompts efectivos, técnicas de fine tuning para entrenamiento en un dominio específico Y otras técnicas y protocolos como lo son RAG (Retrieval-Augmented Generation) y MCP (Model Context Protocol). En contraste, los clasificadores a partir de modelos tradicionales de Machine learning poseen capacidades de generarización limitadas.
 
 \subsection{Definición formal del lenguaje}
-
-% 2025/08/27 Verificar se se ocupo en la seccion: https://doi.org/10.48550/arXiv.2110.06128 https://doi.org/10.1016/j.jal.2018.07.005
-
-%Incluir definición de lenguaje en una sección del marco teórico, identificándolo como un ente vivo y cambiante a lo largo del tiempo, que posee regionalismos, jergas posteriormente relacionar estas características del lenguaje con las características que debe del tener el llm base para el filtro se argumenta la complejidad de la existencia de un modelo con tales modismos y posteriormente se justifica la necesidad de refinar con fine tuning a nivel de prompts
 
 Desde la perspectiva de la lingüística formal, el lenguaje se concibe como un sistema estructurado de signos que permite la comunicación entre individuos. Este sistema se caracteriza por una gramática que define las reglas para la formación de expresiones válidas dentro del idioma.
 
@@ -57,11 +50,18 @@ El español, como lengua hablada en múltiples países y regiones, presenta una 
 
 Las tecnicas de ingenieria de prompt o tecnicas de prompting son estrategias para redactar instrucciones para guiar a los modelos largos de lenguaje en la producción de los resultados deseados, estas tecnicas son fundamentales por la influencia directa en la calidad, relevancia y precisión de los resultados generados por LLMs.
 
-Dentro de estas tecnicas se encuentran el zero-shot, en donde al modelo se le asigna una tarea para la que no fue entrenado explícitamente, few-shot, que proporciona al modelo resultados de muestra para definir las cualidades que debe cumplir el resultado generado, de manera intermedia existe one-shot tecnica caracterizada por incluir una sola muestra. 
-En adición se cuenta con la tecnica chain-of-thought, la cual desglosa tareas complejas en un razonamiento paso a paso para mejorar la comprensión y precisión por parte del LLM.
+Dentro de estas tecnicas se encuentran:
+
+\begin{itemize}
+    \item \textbf{Zero-shot}: Técnica de prompting en donde se le pide al modelo generar contenido sin proporcionar un ejemplo del resultado esperado.
+    \item \textbf{One-shot}: Técnica de prompting en donde se le pide al modelo generar contenido y se proporciona un solo ejemplo del resultado esperado para definir las cualidades que debe cumplir la salida del llm.
+    \item \textbf{Few-shot}: Técnica de prompting en donde se le pide al modelo generar contenido y se proporciona una colección de ejemplos de los resultados esperados para definir las cualidades que debe cumplir la salida del llm.
+    \item \textbf{Chain-of-thought}: Técnica de prompting que desglosa tareas complejas en un razonamiento paso a paso para mejorar la comprensión y exactitud del modelo.
+\end{itemize}
+
 \cite{PromptEngByIBM}
 
-\subsection{Verdaderos y Falsos Positivos y negativos}
+\subsection{Métricas de desempeño iniciales (Verdaderos y Falsos Positivos y negativos)}
 
 En el contexto de las tareas de clasificación multiclase se realiza un procedimiento para dividir el problema inicial presentado en múltiples clases a varios problemas binarios tantos como número de clases se contemplen. En la siguiente sección se retomará este tema en detalle. Considerando lo anterior, se contemplan 4 escenarios posibles en la clasificación binaria por clase:
 
@@ -75,53 +75,10 @@ FN (falsos negativos): Acontecen cuando la etiqueta verdadera posee el valor "po
 
 \subsection{Métricas de desempeño de clasificadores}
 
-%INFO ADICIONAL SOBRE PROMEDIOS y f1 score
-%https://stackoverflow.com/questions/55740220/macro-vs-micro-vs-weighted-vs-samples-f1-score
-% https://github.com/scikit-learn/scikit-learn/blob/7b136e9/sklearn/metrics/classification.py#L620
-% https://www.cuemath.com/data/harmonic-mean/
-
-
-\subsubsection{Manupulación de problemas multiclase a binarios}
-
-%2025/11/24: redactar que es clasificación binaria y como se adapta a multiclase https://www.datacamp.com/es/blog/classification-machine-learning
-% https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsOneClassifier.html
-% https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html
-
-El mecanismo de dividir una tarea multiclase en varios problemas binarios —conocido como One-vs-Rest (OvR) o One-vs-One (OvO)
-
-\cite{datacampClassificacion2024}
-\cite{sklearnOneVsRest}
-\cite{sklearnMultiClass}
-
-Algunas de las metricas que se emplean en la evaluacion de modelos en tareas de clasificacion desde la definicion estan concebidas para clasificacion binaria, algunos ejemplos incluyen la f1 score
-
-Cuando se trabaja con tareas de clasificacion multiclase o multietiqueta los datos son tratados como una coleccion de casos binarios uno por cada clase que se considere 
-
-Si bien esta es una caracteristica de la definicion matematica de las metricas, para efectos practicos no es suficiente puesto que no nos provee con una vision general del desempeño a lo largo de todo el conjunto de clases, por ello es necesario apoyarnos de tecnicas para promediar estas metricas obtenidas por cada clase, cada una sera de mayor utilidad dependiendo el escenario.
-
-\subsection{técnicas para promediar métricas de clasificación binaria en clasificación multiclase}
-
-"Macro" simplemente calcula la media de las métricas binarias, dando el mismo peso a cada clase. En problemas donde las clases poco frecuentes son importantes, el promedio macro puede ser una forma de resaltar su rendimiento. Sin embargo, la suposición de que todas las clases son igualmente importantes a menudo no es cierta, por lo que el promedio macro puede sobrevalorar el bajo rendimiento de una clase poco frecuente.
-
-"Weighted" tiene en cuenta el desequilibrio de clases al calcular el promedio de las métricas binarias, en el que la puntuación de cada clase se pondera por su presencia en la muestra de datos verdaderos.
-
-"Micro" da a cada par muestra-clase una contribución igual a la métrica general (excepto como resultado del peso de la muestra). En lugar de sumar la métrica por clase, se suman los dividendos y divisores que componen las métricas por clase para calcular un cociente general. El promedio micro puede ser preferido en configuraciones multilabel, incluidas las clasificaciones multiclasificación donde se desea ignorar una clase mayoritaria.
-
-"Samples" solo se aplica a problemas multilabel. No calcula una medida por clase, sino que calcula la métrica sobre las clases verdaderas y predichas para cada muestra en los datos de evaluación, y devuelve su promedio ponderado por el peso de la muestra.
-
-Mientras que los datos multiclasificación se proporcionan a la métrica, como las etiquetas binarias, en una matriz de indicadores multilabel, en la que la celda [i, j] tiene un valor de 1 si la muestra i tiene la etiqueta j y 0 en caso contrario.
-\cite{classificationMetricsSkLearn}
-
-A lo largo del desarrollo del presente proyecto se empleó la librería de scikit learn a traves del modulo Classification report para la ejecución de los cálculos correspondientes a las diversas pruebas de clasificación realizadas a los modelos largos de lenguaje
-% La funcion classification report, no incluye micro ni sample average de manera nativa, en su lugar necesitan calcularse por aparte
-
-\cite{classificationReportSkLearn}
-
 \subsubsection{Acurracy}
 \begin{equation}
     \text{accuracy}(y, \hat{y}) = \frac{1}{n_\text{samples}} \sum_{i=0}^{n_\text{samples}-1} 1(\hat{y}_i = y_i)
 \end{equation}
-%2025/11/22: En algunos casos la ponen como (tp + tn) / (tp + tn + fp + fn) en clasificaciones de 2 clases y en casos de mas de 2 clases tp / (tp + tn + fp + fn) pero esto lo hacen por dar una explicacion sencilla, matematicamente la que esta en esta seccion representa lo mismo: "el n de casos exitosos donde ypred y ytrue coinciden entre los n samples contemplados"
 \cite{accuracyScoreSkLearn}
 
 \subsubsection{Precision (Presicion)}
@@ -167,11 +124,71 @@ Si $\beta = 1$ → Se obtiene el F1-score, que equilibra precisión y recall por
 
 \cite{f1scoreSkLearn}
 
+
+\subsubsection{Manupulación de problemas multiclase a binarios}
+
+El mecanismo de dividir una tarea multiclase en varios problemas binarios —conocido como One-vs-Rest (OvR).
+
+\cite{datacampClassificacion2024}
+\cite{sklearnOneVsRest}
+\cite{sklearnMultiClass}
+
+Algunas de las metricas que se emplean en la evaluacion de modelos en tareas de clasificacion desde la definicion estan concebidas para clasificacion binaria, algunos ejemplos incluyen la f1 score
+
+Cuando se trabaja con tareas de clasificacion multiclase o multietiqueta los datos son tratados como una coleccion de casos binarios uno por cada clase que se considere 
+
+Si bien esta es una caracteristica de la definicion matematica de las metricas, para efectos practicos no es suficiente puesto que no nos provee con una vision general del desempeño a lo largo de todo el conjunto de clases, por ello es necesario apoyarnos de tecnicas para promediar estas metricas obtenidas por cada clase, cada una sera de mayor utilidad dependiendo el escenario.
+
+\subsection{técnicas para promediar métricas de clasificación binaria en clasificación multiclase}
+
+"Macro" simplemente calcula la media de las métricas binarias, dando el mismo peso a cada clase. En problemas donde las clases poco frecuentes son importantes, el promedio macro puede ser una forma de resaltar su rendimiento. Sin embargo, la suposición de que todas las clases son igualmente importantes a menudo no es cierta, por lo que el promedio macro puede sobrevalorar el bajo rendimiento de una clase poco frecuente.
+
+"Weighted" tiene en cuenta el desequilibrio de clases al calcular el promedio de las métricas binarias, en el que la puntuación de cada clase se pondera por su presencia en la muestra de datos verdaderos.
+
+"Micro" da a cada par muestra-clase una contribución igual a la métrica general (excepto como resultado del peso de la muestra). En lugar de sumar la métrica por clase, se suman los dividendos y divisores que componen las métricas por clase para calcular un cociente general. El promedio micro puede ser preferido en configuraciones multilabel, incluidas las clasificaciones multiclasificación donde se desea ignorar una clase mayoritaria.
+
 \subsection{Promedios}
 
-%======================
+\begin{itemize}
+    \item $y$: el conjunto de pares verdaderos $(\text{muestra}, \text{etiqueta})$.
+    
+    \item $\hat{y}$: el conjunto de pares predichos $(\text{muestra}, \text{etiqueta})$.
+    
+    \item $L$: el conjunto de etiquetas.
+    
+    \item $S$: el conjunto de muestras.
+    
+    \item $y_s$: el subconjunto de $y$ correspondiente a la muestra $s$, es decir:
+    \[
+    y_s := \{(s', l) \in y \mid s' = s\}
+    \]
+    
+    \item $y_l$: el subconjunto de $y$ correspondiente a la etiqueta $l$.
+    
+    \item De manera análoga, $\hat{y}_s$ y $\hat{y}_l$ son subconjuntos de $\hat{y}$.
+    
+    \item $P(A, B)$: precisión definida como:
+    \[
+    P(A, B) := \frac{|A \cap B|}{|B|}
+    \]
+    para algunos conjuntos $A$ y $B$.
+    
+    \item $R(A, B)$: recall definido como:
+    \[
+    R(A, B) := \frac{|A \cap B|}{|A|}
+    \]
+    (Las convenciones varían cuando $A = \varnothing$; en esta implementación se utiliza
+    $R(A, B) := 0$, y de forma análoga para $P$.)
+    
+    \item $F_{\beta}(A, B)$: métrica $F_{\beta}$ definida como:
+    \[
+    F_{\beta}(A, B) := (1 + \beta^2)\,
+    \frac{P(A, B)\, R(A, B)}{\beta^2 P(A, B) + R(A, B)}
+    \]
+\end{itemize}
+
+
 \subsubsection{micro average (promedio micro)}
-%======================
 
 \begin{equation}
 \text{Precision}_{micro} = P(y, \hat{y})
@@ -185,9 +202,7 @@ Si $\beta = 1$ → Se obtiene el F1-score, que equilibra precisión y recall por
 F_{\beta, micro} = F_{\beta}(y, \hat{y})
 \end{equation}
 
-%======================
 \subsubsection{macro average (promedio macro)}
-%======================
 
 \begin{equation}
 \text{Precision}_{macro} = \frac{1}{|L|} \sum_{l \in L} P(y_l, \hat{y}_l)
@@ -201,9 +216,7 @@ F_{\beta, micro} = F_{\beta}(y, \hat{y})
 F_{\beta, macro} = \frac{1}{|L|} \sum_{l \in L} F_{\beta}(y_l, \hat{y}_l)
 \end{equation}
 
-%======================
 \subsubsection{weighted average (promedio ponderado)}
-%======================
 
 \begin{equation}
 \text{Precision}_{weighted} = \frac{1}{\sum_{l \in L} |y_l|} \sum_{l \in L} |y_l| P(y_l, \hat{y}_l)
@@ -217,6 +230,8 @@ F_{\beta, macro} = \frac{1}{|L|} \sum_{l \in L} F_{\beta}(y_l, \hat{y}_l)
 F_{\beta, weighted} = \frac{1}{\sum_{l \in L} |y_l|} \sum_{l \in L} |y_l| F_{\beta}(y_l, \hat{y}_l)
 \end{equation}
 
+\cite{classificationMetricsSkLearn}
+\cite{classificationReportSkLearn}
 
 \subsection{Generación sintética de datos}
 
@@ -230,16 +245,7 @@ Para el desarrollo de este proyecto se llevo a cabo la generación sintética de
 
 En el dominio particular de este proyecto la generación sintética de datos se refiere precisamente a la síntesis de datos a partir de un modelo largo de lenguaje de gran escala (GPT 5.1, Gemini3 Pro, Claude Sonnet 4.5) los cuales, mediante su capacidad para generar textos se vuelven una herramienta muy útil para llevar a cabo este proceso. \cite{artificialanalysis}
 
-%2025/11/22: Esta parte de la redacción se omite en este momento dado que se contempla como información adicional Antonio innecesario pendiente de prof de preguntarle a los profesores de la materia
-
-\begin{comment}
-    \item Conocer el propósito: Comprender por qué el proyecto necesita datos sintéticos y los casos de uso en los que podrían ser más útiles que los datos reales. Los datos artificiales pueden actuar como una forma de refuerzo de datos \cite{AugmentedDataByIbm}. Se pueden utilizar para impulsar la diversidad de los datos, especialmente para grupos subrepresentados en el entrenamiento de modelos de IA \cite{AIModelByIbm}. Y cuando la información es escasa, los datos sintéticos pueden llenar los vacíos. A la empresa de servicios financieros JP Morgan, por ejemplo, le resultó difícil entrenar eficazmente modelos impulsados por IA para la detección de fraudes debido a la falta de casos fraudulentos en comparación con los no fraudulentos.
-    \item La preparación es clave Al preparar conjuntos de datos originales para la generación de datos sintéticos mediante algoritmos de aprendizaje automático (ML) \cite{MLByIbm}, asegúrese de verificar y corregir errores, imprecisiones e incongruencias. Elimine los duplicados e ingrese los valores faltantes
-\end{comment}
-
-
 \section{Herramientas de software}
-%Describir el software a utilizar: Android, Java, Python, Raspberry Pi OS, RT-Linux, contenedores, GNU/Linux, Xamp, Qt, SQL, Apache, C++, etc., etc.
 
 \subsection{Python}
 
@@ -293,8 +299,6 @@ La utilidad que se le dio esta herramienta fue la visualización de los datos, t
 Finalmente esta fuente de datos fue vinculada con la aplicación de PowerBi desktop para la creacion de gráficos con la opción de actualizar con nuevos datos conforme vayan saliendo nuevos modelos largos de lenguaje o se contemplen cambios en los enfoques del prompting, importante también para el trabajo futuro. \cite{WhatIsPB}
 
 \section{Herramientas de hardware}
-
-%Describir el hardware a utilizar: Raspberry Pi, PIC F16, Odroid, Microcontrolador STM32, Sensor de corriente, Módulo Bluetooth, Sensor infrarrojo, Receptor RFID, Microcontrolador FreeScale etc., etc. Todo debe estar correctamente referenciado.
 
 El nucleo técnico se relaciona con el desarrollo de software, en el desarrollo web y el refinamiento de modelos largos de lenguaje a travez de tenicas de prompting asi como la ejecucion de pruebas. Considerando lo anterior, las características del hardware empleado para estos propósitos se remiten al entorno local de desarrollo, pruebas y produccion (respecto al alojamiento del LLM), entre sus características se encuentran las siguientes:
 

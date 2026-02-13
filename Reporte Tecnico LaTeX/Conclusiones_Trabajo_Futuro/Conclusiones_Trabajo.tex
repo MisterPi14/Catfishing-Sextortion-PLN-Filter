@@ -1,69 +1,24 @@
-\chapter{Conclusiones y Trabajo Futuro}
-Son las conclusiones de todo el proyecto, se pueden escribir tomando como base las conclusiones de cada capítulo. Es necesario resaltar el impacto social y tecnológico del proyecto. La mayoría de los sinodales pregunta sobre las conclusiones y si se concluye que se cumplen los objetivos y se resuelve el problema.
-
-
-
 \section{Conclusiones}
-%07-06-2025: discusion de resultados, se puede hablar con los resultados de la prueba de los test de clasificacion que la hipotesis puede llegar a cuplirse
 
-%28-06-2025: las conclusiones es donde se presenta si la hipotesis se cumplio o no, dentro de conclusiones una forma de demostrar la parte de la hipotesis 1 podria optarse por hacer encuestas con google forms donde se asigne a los usuarios la tarea de identificacion y posteriormente se contraste con las predicciones del modelo, acercarse con profesora de humanidades para difusion de la encuesta en el desarrollo o en el analisis se pueden poner las encuestas mencionando cual es su intencion "considerando los fp, vp etc falsos positivos comparar que haria el usuario y comparar con el modelo de IA", puede hacer mas sustento, y recopilar esos datos mientras se desarrolla la plataforma a la vez favorece.
+Se cumplió el objetivo del proyecto satisfactoriamente, efectivamente se presento el diseño de un sistema de mensajería para detección de estafas con las modalidades de catfishing y sextorsión, adicionalmente se llevaron a cabo un conjunto de pruebas sobre el desempeño de clasificación a través de modelos de escala pequeña y mediana (0.25b - 8b) y se obtuvieron resultados de clasificación mayores al 80\% de los datos reales.
+
+El ámbito de la aplicación de inteligencia artificial dentro del análisis de estafas se ha consolidado como una buena alternativa de alto impacto social, algunas aplicaciones del presente proyecto incluyen:
+
+Aplicaciones de mensajería
+Apps de citas
+Chats de videojuegos
+Chats habilitados para atención a usuarios: gubernamentales y privados
+Entornos digitales variados (ejemplo: Chatroulette vs Omegle) -> factor diferenciador en la prevalencia de la plataforma
+
 
 \section{Trabajo a futuro}
-%Trabajo a futuro podría implicar trabajar colaborativamente con estudiantes de leyes
 
-% 2025-09-08 se podría hablar sobre contemplar el desarrollo de una app nativa la cuál pueda contener un llm embebido de pocos parámetros considerando realizarle fine tuning y llevando una metodología similar a la efectuada en este proyecto al momento de evaluar la identificación de los modelos: la justificación sobre este otro enfoque con un llms local el modelo es onsiderar la cobertura que en ocasiones no es formidable y en la misma ciudad en edificios aveces se queda desconectado totalmente sin estar en zonas rurales
+Evaluar la viabilidad de un nuevo enque sustentado en entrenamiento o fine tuning en los modelos para conseguir optimizar el tamaño y mejorar el desempeño dentro de la clasificacion de estafas.
 
-%Es parte de la seccopm del  desarrollo, aquí se debe hablar sobre el propósito de cada uno de los elementos de la arquitectura, diferenciar el almacenamiento remoto del local, el propósito de cuentas por lado del servidor y el almacenamiento de mensajers o todo lo que sea requerido para que el llm trabaje de forma local totalmente off line%
+A lo largo de la investigacion se analizo un fenomeno dentro del uso de redes sociales e internet, este plantea crear una nueva delimitacion como parte del trabajo a futuro, el mismo se identifica por la cualidad dinaminca del lenguaje que es empleado en las redes sociales, de manera general se ha observado por parte de los usuarios una suerte de enmascaramiento de palabras, empleando terminología diferente, palabras alternativas "aveces inventadas" e incluso lenguaje figurativo.   
 
-%07/06/2025 retomar mejores practicas para alojamiento y ejecucion de la inferencia del llm como el uso de un servicio de vps gpu hosting
+Los usuarios emplearon tecnicas semejantes a la anterior descrita con el proposito de evadir sistemas de filtrado o moderacion presentes en plataformas digitales desde redes sociales, servicios de mensajería y servicios de streming. Un ejemplo concreto se ha dado en canales de youtube incluyendo canales de noticieros mexicanos que emplean palabras como "moricion" para referir "suicidio" en pro de evitar la deteccion automática que realizan los algoritmos de moderacion de contenido como el apodado "algoritmo de youtube". Este fenomeno implica la construccion de nuevas funcionalidades para obtener un mayor control sobre la clasificacion bajo condiciones semejantes.
 
-%11/01/2026: Añadir en trabajo futuro el implementar modelos de mas prestaciones e incluso del lado de nube con los ultimos cambios que ha tenido ollama [https://ollama.com/blog/cloud-models](https://ollama.com/blog/cloud-models) pero en esta investigacion no se contemplan por la sensibilidad de los datos 
+En este sentido, como trabajo a futuro, se propone la ampliación de la arquitectura actual del sistema mediante la incorporación de técnicas como RAG en conjunto con web scraping, en fin de mantener actualizados los modelos largos de lenguaje con la terminología emergente y el argot utilizado en plataformas digitales en tiempo real. Esta adaptación continua permitirá que la solución mantenga su efectividad a medida que evoluciona el lenguaje en los medios digitales.
 
-% 11/01/2026: Contemplar los siguientes modelos destilados de BERET a futuro, requieren integrar tecnologia de hugging face no son nativos de ollama: https://huggingface.co/austinb/fraud_text_detection?utm_source=chatgpt.com https://huggingface.co/Bilic/Mistral-7B-LLM-Fraud-Detection?utm_source=chatgpt.com https://huggingface.co/ealvaradob/bert-finetuned-phishing?utm_source=chatgpt.com
-
-%{Enfoques arquitectónicos para el tiempo de ejecución de inferencia del llm}
-\subsection{otros enfoques arquitectonicos para la inferencia del modelo}
-\begin{itemize}
-    \item El modelo se ejecuta en dispositivos móviles (Edge computing).
-    \item El modelo corre en un Azure Container Instances o un VM Spot de azure
-    \item El modelo corre en un VPS GPU hosting de wordpress
-\end{itemize}
-
-
-
-
-Considerar un enfoque basado en el fine tuning ya sea para optimizar el tamaño del modelo o calibrar su presision en la tarea especifica    (REVISAR Y REDACTAR MEJOR)
-
-Durante el desarrollo de la investigación, se identificó un fenómeno emergente que da lugar a un nuevo requerimiento no contemplado inicialmente. Este fenómeno se refiere a la evolución y variabilidad del lenguaje utilizado en redes sociales, el cual ha alcanzado niveles de complejidad significativos, manifestándose en la sustitución intencional de palabras comunes por términos alternativos que enmascaran su significado original.
-
-Esta estrategia lingüística es empleada frecuentemente con el fin de evadir los filtros y mecanismos de moderación presentes en plataformas digitales como redes sociales, servicios de mensajería, plataformas de video y streaming. Un ejemplo claro de ello es la sustitución de palabras como “suicidio” por términos como “morición”, con el objetivo de evitar la detección automática por parte de algoritmos de moderación, como el conocido “algoritmo de YouTube”. Este fenómeno da lugar a una forma de enmascaramiento del lenguaje que representa un desafío crítico para los sistemas de detección automática.
-
-Considerar este comportamiento es fundamental para lograr una solución verdaderamente efectiva en el contexto del presente trabajo. En este sentido, como trabajo a futuro, se propone la ampliación de la arquitectura actual del sistema mediante la incorporación de técnicas como el web scraping, con el fin de mantener actualizados los modelos de procesamiento del lenguaje natural con la terminología emergente y el argot utilizado en plataformas digitales en tiempo real. Esta adaptación continua permitirá que la solución mantenga su efectividad a medida que evoluciona el lenguaje en los medios digitales.
-
-%28-06-2025: considerar ventana de contexto como limite del diccionario con puro refinamiento, justificar con el acceso a hardware especializado
-
-La ventana de contexto de un LLM se puede considerar como el equivalente de su memoria de trabajo. Determina la duración de una conversación que puede llevar a cabo sin olvidar los detalles de anteriores en el intercambio. También determina el tamaño máximo de documentos o muestras de código que puede procesar a la vez.
-\cite{ibmVentanaContexto}
-\cite{AnthropicVentanaContexto}
-
-Hablar sobre la escalabilidad, considerar numeros de peticiones, tasas de crecimiento, temas relacionados a sistemas distribuidos
-
-Mencionar la parte de la hipótesis 2 en caso de no ser incluida en la investigación
-
-%REDACCION ORIGINAL
-% Con el trascurso de la investigación se observó un fenómeno que da lugar a un nuevo requerimiento
-% que inicialmente no estaba contemplado, este fenómeno hace alusión a la variabilidad del lenguaje
-% dentro de redes sociales pero llegando a mayor profundidad implicando un enmascaramiento de significados
-% en las palabras usadas en el día a día. Muchos de los incentivos para hacer esto suelen ser el evadir los
-% filtros actualmente disponibles en redes sociales y plataformas de video y streaming.
-% Un ejemplo puntual es sustituir palabras como "suicidio" por "morición" con propósito de evadir la detección
-% del popularmente llamado “algoritmo de YouTube”, dando como resultado un enmascaramiento en el lenguaje.
-%
-% Este fenómeno es algo crítico a considerar para satisfacer totalmente el objetivo de la investigación.
-% Trabajo a futuro consideraría ampliar la arquitectura de la solución actual para, mediante técnicas como
-% el web scraping, mantener a los modelos actualizados con la terminología popular en medios de mensajería
-% a la fecha en que se esté utilizando el servicio.
-
-%----------------REFERENCIAS----------------------
-%28-06-2025: segun el profe de proyecto la citacion puede involucrar el uso de "et al", ser en APA, ser IEEE, otros como APA o vancuver se usa autor 1 & autor 2. et al se usa cuando son muchos autores, se toma el apellido paterno del primero seguido de esta locucion griega y entre () el numero de la bibliografia.
-%28-06-2025: lo comun es parafrasear los textos con las diferentes fuentes y posterior añadir los corchetes de citacion con todas las fuentes de donde se informo uno para producir el texto mostrado
+Colaborar de la mano de perfiles relacionados al area legal que proporcionen expertiz en el analisis y delimitacion debidos para trasladar este sistema al ambito de la recoleccion de pruebas para cadena de custodia.

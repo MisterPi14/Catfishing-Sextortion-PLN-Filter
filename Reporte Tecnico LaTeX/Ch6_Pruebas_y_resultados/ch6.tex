@@ -1,115 +1,102 @@
-\chapter{Resultados experimentales y puesta en marcha}%Pruebas y resultados
+\chapter{Resultados experimentales y puesta en marcha}
 
+\section{Pruebas: desempeño en tarea de clasificacion de estafa catfishing y sextorsión}
 
-\section{Descripción de la prueba 1}
-Puede usarse un caso de estudio para esta prueba, indicando las condiciones controladas o limitantes.
-\subsection{Pueden usarse subsecciones}
+En correspondencia con el objetivo del presente proyeco se efectuo un conjunto de pruebas que involucro desde la creacion de un entorno de pruebas funcional descrito en la seccion "Pruebas de desempeño de clasificación en LLMs" en el capitulo del desarrollo
 
-\section{Descripción de la prueba 2}
-Puede usarse un caso de estudio para esta prueba, indicando las condiciones controladas o limitantes
-\subsection{Pueden usarse subsecciones}
+Puntualmente esta seccion concentra sus detalles en la metodologia seguida para la presentacion de los siguientes resultados.
 
-\section{Descripción de la prueba 3}
-Puede usarse un caso de estudio para esta prueba, indicando las condiciones controladas o limitantes
-\subsection{Pueden usarse subsecciones}
+En el diagrama subsecuente puede obtener una referencia visual para esclarecer los siguientes conceptos:
 
-
-
-
-
-\section{Prueba 1: Identificacion}
-%07-06-2025: aqui debe ponerse los resultados de las pruebas para definir el llm base, debera de tener una seccion que inicialmente explique que es lo que se presenta, despues presentar las tablas titulando por cada enfoque y despues poner los resultados observados y una conclusion, esto se relaciona con lo de discucion de resultados en la seccion de conclusiones
-
-%14/06/2025: añadir la explicacion de que se añadio otro enfoque de evaluacion con diccionario en el few shot, esta redaccion puede ser util, generada por gemini "Este diccionario explica los modismos y el argot mexicano utilizados en los mensajes, lo que facilitará que los modelos de lenguaje más pequeños entiendan el contexto cultural y las sutilezas de cada conversación."
-
-% Resultados con Zero Shot Prompting
+\begin{itemize}
+    \item Las metricas descritas en el capítulo del marco teorico como "metricas de  clasificacion" se calculan para cada etiqueta contemplada, esto se debe a la naturaleza matematica de las mismas, se establecen para evaluar probnlemas de clasificacion binaria.
+    \item Inicialmente el problema de clasificacion multietiqueta es dividido o segmentado en un conjunto de pruebas binarias una por cada etiqueta contemplada.
+    \item La forma de obtener una evaluacion integral que contemple el desempeño del modelo para clasificar todas y cada una de las etiquetas es mediante promedios aritmeticos y ponderados. 
+\end{itemize}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Zero Shot Acurracy.png}
-    \caption{Métrica de exactitud por cada modelo obtenida de las pruebas de identificación con la técnica de Zero Shot prompting}
-    \label{fig:enter-label}
+    \includegraphics[width=1\linewidth]{imagenes/pruebas/diagramaConceptualPruebas.png}
+    \caption{Diagrama conceptual sobre las métricas presentadas en la sección pruebas}
+    \label{fig:puntuacion-mayor-80-a}
+\end{figure}
+
+Considerando lo anterior descrito conjuntamente se presentan resultados mediante el promedio ponderado sobre los resultados de las metricas de clasificacion por cada etiqueta, de esta manera se puede consolidar una vision general sobre el rendimiento del modelo al clasificr todas las etiquetas contempladas.
+
+Notas: El promedio ponderado sobre la metrica f1 score resulta en la metrica unificada para observar el desempeño, considerando su definicion matematica, el mismo se considera como la media harmonica que pondera las metricas precision y recall. 
+
+\subsection{Resultados con puntuación mayor a 8/10}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Puntuacion mayor al 80/image.png}
+    \caption{Modelos con puntuación mayor a 8/10 con la técnica de Zero Shot prompting}
+    \label{fig:puntuacion-mayor-80-a}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Zero Shot Catfishing.png}
-    \caption{Resultados de las pruebas de identificación de catfishing con la técnica Zero Shot prompting}
-    \label{fig:zero-shot-catfishing}
+    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Puntuacion mayor al 80/image2.png}
+    \caption{Modelos con puntuación mayor a 8/10 con la técnica de Few Shot prompting}
+    \label{fig:puntuacion-mayor-80-b}
+\end{figure}
+
+\subsection{Resultados con tiempo promedio por predicción menor a 4 segundos y puntuación mayor a 7/10}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/tiempo menor a 4 segundos y puntuación mayor al 70/image.png}
+    \caption{Modelos con tiempo menor a 4 segundos y puntuación mayor a 7 (Zero shot)}
+    \label{fig:tiempo-menor-4s-a}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Zero Shot Sextorción.png}
-    \caption{Resultados de las pruebas de identificación de sextorción con la técnica Zero Shot prompting}
-    \label{fig:zero-shot-sextorcion}
+    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/tiempo menor a 4 segundos y puntuación mayor al 70/image2.png}
+    \caption{Modelos con tiempo menor a 4 segundos y puntuación mayor a 7 (Few shot)}
+    \label{fig:tiempo-menor-4s-b}
+\end{figure}
+
+\subsection{Resultados de puntuaciones por escalas de modelos}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/modelos de 250m a 750m/zero.png}
+    \caption{Resultados Zero Shot para modelos de 250m a 750m}
+    \label{fig:zero-shot-250m-750m}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Zero Shot Inofensivo.png}
-    \caption{Resultados de las pruebas de identificación de inofensivo con la técnica Zero Shot prompting}
-    \label{fig:zero-shot-inofensivo}
-\end{figure}
-
-% Resultados con Few Shot Prompting (Datos Sintéticos)
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Few Shot Sintético Acurracy.png}
-    \caption{Métrica de exactitud por cada modelo obtenida de las pruebas de identificación con la técnica de Few Shot prompting a partir de un data set de refinamiento construido con datos sintéticos}
-    \label{fig:few-shot-sintetico-accuracy}
+    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/modelos de 250m a 750m/few.png}
+    \caption{Resultados Few Shot para modelos de 250m a 750m}
+    \label{fig:few-shot-250m-750m}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Few Shot Sintético Catfishing.png}
-    \caption{Resultados de las pruebas de identificación de catfishing con la técnica Few Shot prompting a partir de un data set de refinamiento construido con datos sintéticos}
-    \label{fig:few-shot-sintetico-catfishing}
+    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/modelos de 3b a 4b/zero.png}
+    \caption{Resultados Zero Shot para modelos de 3b a 4b}
+    \label{fig:zero-shot-3b-4b}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Few Shot Sintético Sextorción.png}
-    \caption{Resultados de las pruebas de identificación de sextorción con la técnica Few Shot prompting a partir de un data set de refinamiento construido con datos sintéticos}
-    \label{fig:few-shot-sintetico-sextorcion}
+    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/modelos de 3b a 4b/few.png}
+    \caption{Resultados Few Shot para modelos de 3b a 4b}
+    \label{fig:few-shot-3b-4b}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Few Shot Sintético Inofensivo.png}
-    \caption{Resultados de las pruebas de identificación de inofensivo con la técnica Few Shot prompting a partir de un data set de refinamiento construido con datos sintéticos}
-    \label{fig:few-shot-sintetico-inofensivo}
-\end{figure}
-
-% Resultados con Few Shot Prompting (Datos Reales)
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Few Shot Real Acurracy.png}
-    \caption{Métrica de exactitud por cada modelo obtenida de las pruebas de identificación con la técnica de Few Shot prompting a partir de un data set de refinamiento construido con datos reales}
-    \label{fig:few-shot-real-accuracy}
+    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/modelos de 7b a 8b/zero.png}
+    \caption{Resultados Zero Shot para modelos de 7.75b a 8.25b}
+    \label{fig:zero-shot-7b-8b}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Few Shot Real Catfishing.png}
-    \caption{Resultados de las pruebas de identificación de catfishing con la técnica Few Shot prompting a partir de un data set de refinamiento construido con datos reales}
-    \label{fig:few-shot-real-catfishing}
+    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/modelos de 7b a 8b/few.png}
+    \caption{Resultados Few Shot para modelos de 7.75b a 8.25b}
+    \label{fig:few-shot-7b-8b}
 \end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Few Shot Real Sextorción.png}
-    \caption{Resultados de las pruebas de identificación de sextorción con la técnica Few Shot prompting a partir de un data set de refinamiento construido con datos reales}
-    \label{fig:few-shot-real-sextorcion}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{imagenes/classificationTestsResults/Few Shot Real Inofensivo.png}
-    \caption{Resultados de las pruebas de identificación de inofensivo con la técnica Few Shot prompting a partir de un data set de refinamiento construido con datos reales}
-    \label{fig:few-shot-real-inofensivo}
-\end{figure}
-
-%28-06-2025: analisis de resultados: se puede decir que se pudieron identificar mensajes relacionados con catfishing y que estas pueden ser el factor inicial pero que habria que vincularlo con un proceso de cadena de custodia para proporcionarlo en un ambiente legal, lo de la hipotesis 2 por tanto podria quedar en analisis de resultados y conclusiones referenciandola como otra posible problematica a atacar a futuro con colaboracion de la mano de perfiles relacionados al area legal que proporcionen expertiz en la cadena de custodia

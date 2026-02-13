@@ -1,12 +1,5 @@
 \documentclass[letterpaper,12pt,oneside]{book}
 
-% Modificación de la plantilla original de esta url: 
-% https://es.overleaf.com/latex/templates/tesis-unam-ingenieria-energia/kfffjrxcckdp
-
-% Adaptada por Pedro Guevara López para Proyecto de Ingeniería - IC ESIME Culhuacan.
-% Cualquier sugerencia, corrección o comentario a: pguevara@ipn.mx
-
-%\usepackage[a4paper,includeall,bindingoffset=0cm,margin=2cm,marginparsep=0cm,marginparwidth=0cm]{geometry}
 \usepackage[top=1in, left=0.9in, right=1.25in, bottom=1in]{geometry}
 \usepackage{ESIME_IC}
 \usepackage[utf8]{inputenc}
@@ -19,6 +12,8 @@
 \usepackage{setspace}
 \usepackage{comment}
 \usepackage{datetime}
+\usepackage{amssymb}
+
 
 
 \usepackage{cite}%para las citas con el archivo bib
@@ -27,7 +22,6 @@
 %los dos de abajo para la tabla de estado del arte
 \usepackage{tabularx}
 \usepackage{array}
-%\usepackage[spanish]{babel} para cambiar etiquetas varias a español como el "contents" de \table of contents
 \usepackage{datatool}% Necesario para personalizar las listas, usado en glosario para ordenar alfabeticamente
 \usepackage{url} % Para soporte de URLs en bibliografía
 \usepackage{hyperref} %siempre cargarlo al final del preambulo
@@ -47,16 +41,6 @@
    pdftitle={Sharelatex Example},
    pdfpagemode=FullScreen,
 }
-\begin{comment}
-% para imprimir un rango de capitulos
-\includeonly{ss
-   Pretexto/portada,
-   Intro/resumen,
-   Pretexto/frontmater,
-   Ch1_Introducción/ch1,
-   Ch2_Problema_y_Objetivos/ch2
-}
-\end{comment}
 
 % para insertar scripts 
 \usepackage{listings}
@@ -107,4 +91,5 @@
 
 %07-06-2025: en las preguntas se habla de la parte tecnica en profundidad la exposicion deberia ir mas sobre la problematica y conclusiones de la investigacion con aspectos tecnicos relevantes
 
-%07-06-2025: crear diapositivas que se usen para tener respaldo tecnico sobre los aspectos realizados despues de la diapositiva de despedida seran ocultos al desarrollo de la presentacion, conceptos etc y usar usar hipervinculos tanto en las tablas donde se referwencien aspectos tecnicos como la evaluacion de los llms, hasta 
+%07-06-2025: crear diapositivas que se usen para tener respaldo tecnico sobre los aspectos realizados despues de la diapositiva de despedida seran ocultos al desarrollo de la presentacion, conceptos etc y usar usar hipervinculos tanto en las tablas donde se referwencien aspectos tecnicos como la evaluacion de los llms, hasta \bibliography{referencias}
+\end{document}

@@ -1,10 +1,8 @@
 
 \chapter{Glosario de términos}
-%Presentar en orden alfabetico
 
-\DTLnewdb{terminos}% Base de datos donde se almacenan los terminos necesaria para ordenan alfabeticamente
+\DTLnewdb{terminos}
 
-% Aqui Añadir elementos (no necesitan estar ordenados)
 \DTLnewrow{terminos}
 \DTLnewdbentry{terminos}{termino}{Catfishing/Catphishing}
 \DTLnewdbentry{terminos}{definicion}{Práctica engañosa en la que una persona crea una identidad falsa en línea para establecer relaciones con otras personas,
@@ -15,6 +13,13 @@ casos, obtener beneficios económicos o personales.}
 \DTLnewrow{terminos}
 \DTLnewdbentry{terminos}{termino}{Zero-shot}
 \DTLnewdbentry{terminos}{definicion}{Es una técnica de prompt engineering que se identifica por redactar el prompt con una instrucción directa sin incluir ejemplos sobre la tarea asignada}
+
+\DTLnewrow{terminos}
+\DTLnewdbentry{terminos}{termino}{ventana de contexto}
+\DTLnewdbentry{terminos}{definicion}{La ventana de contexto de un LLM se puede considerar como el equivalente de su memoria de trabajo. Determina la cantidad de conversación que puede llevar a cabo sin olvidar los detalles de anteriores en el intercambio. También determina el tamaño máximo de tokens, documentos o muestras de código que puede procesar.
+\cite{ibmVentanaContexto}
+\cite{AnthropicVentanaContexto}
+}
 
 \DTLnewrow{terminos}
 \DTLnewdbentry{terminos}{termino}{Few - shot}
@@ -48,10 +53,8 @@ casos, obtener beneficios económicos o personales.}
 \DTLnewdbentry{terminos}{termino}{Refinamiento de un LLM}
 \DTLnewdbentry{terminos}{definicion}{Se refiere a el procedimiento de adaptar o mejorar el desempeño de un modelo previamente entrenado en tareas o dominios especificas, no confundir con el preentrenamiento de un LLM, proceso diferente donde se busca el aprendizaje de las bases del lenguaje por parte del modelo mediante una gran cantidad de datos}
 
-% Ordenar alfabéticamente por la columna 'label'
 \DTLsort{termino}{terminos}
 
-% Mostrar la lista ordenada
 \begin{enumerate}
 \DTLforeach{terminos}{\labelItem=termino,\descItem=definicion}{
   \item \textbf{\labelItem}: \descItem
