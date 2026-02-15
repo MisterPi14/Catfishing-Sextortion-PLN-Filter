@@ -48,13 +48,9 @@ De los atacantes
 
 \subsection{Recolección y etiquetado de datos}
 
-El entrándonos en la etapa de la recolección de los datos la misma incluida por un lado adentrarnos en el flirt u bot de telegram fue necesario realizar el pago para una suscripción del mes- 
+El entrándonos en la etapa de la recolección de los datos la misma incluida por un lado adentrarnos en el flirt u bot de telegram fue necesario realizar el pago para una suscripción del mes, Posteriormente tras acceder a la aplicación se contacto con personas que sugería la aplicacion- Cabe mencionar que en este proceso se identificó una cantidad de interaccion desproporcionada y poco orgánica.
 
-Posteriormente tras poder acceder a la aplicación se empezó a contactar con todas las personas que sugería la app Cabe mencionar que en este proceso se identificó una cantidad de interaccion o poco orgánica considerando el promedio habitual de las aplicaciones de citas como esta
-
-La metodología incluyó definir un perfil con una determinada Personalidad atractiva para los estafadores una persona que trabaja en un Banco de 44 años.
-
-Posteriormente se procedió a contactar con todas las personas que la aplicación sugería y se estableció un diálogo dentro del mismo grupo que genera el bot de telegram el mismo bot advierte sobre no llevarlas a comunicaciones a otro sitio y priorizar establecerlas dentro del grupo creado.
+Se estableció un diálogo dentro del mismo grupo que genera el bot de telegram el mismo bot advierte sobre no llevarlas a comunicaciones a otro sitio y priorizar establecerlas dentro del grupo creado.
 
 Cabe mencionar que la mayoría de casos Se trataban de comunicaciones fraudulentas en las cuales se observaba una transición rápida entre primer contacto y coerción. De igual manera se solicitaba trasladar las comunicaciones dentro de un chat privado.
 
@@ -62,19 +58,19 @@ Para cada caso se procedió a comunicarse desde el chat privado y seguir un fluj
 
 A lo largo de los diferentes casos se identificaron Solicitudes de diversas índoles denotando los diferentes tipos de motivación relacionados a este fenómeno, De esta manera se consolidan los hallazgos documentados en la presente investigación.
 
-Posteriormente tras una muestra de 7 conversaciones se procedió con la extracción de datos aprovechando las características de telegram el cual permite exportar las conversaciones en un formato de HTML
+Posteriormente tras una muestra de 7 conversaciones se procedió con la extracción de datos aprovechando las características de telegram el cual permite exportar las conversaciones en un formato de HTML.
 
-Después se procedió con un proceso de limpieza de datos para almacenar los ejemplos de manera curada eliminando ruido, dado que en parte de los casos se presentaron errores Léxicos y gramaticales. Esta ultima caracteristica ha sido relacionada con las granjas de datos y las estafas automatizadas en diferentes artículos como el trabajo "" por "" el cual aborda la problematica vivida en el pais \cite{milenio2024cjng}.
+Después se procedió con un proceso de limpieza de datos para almacenar los ejemplos de manera curada eliminando ruido, dado que en parte de los casos se presentaron errores Léxicos y gramaticales.
 
 \section{Generación sintética de data set para refinamiento}
 
-El presente proyecto contempló la recolección de datos reales sobre estafas, correspondientemente a los límites y alcances de la investigación, esta recolección no fue masiva por lo que se adoptó una metodología basada en la generación sintética de datos para aumentar los mismos en calidad y variedad.
+El presente proyecto contempló la recolección de datos reales sobre estafas, correspondientemente a los límites y alcances de la investigación, esta recolección no fue masiva por lo que se adoptó una metodología basada en la generación sintética de datos para la construccion del conjunto de datos de refinamiento.
 Para conseguir este propósito, se siguieron 8 buenas practicas para la generacion sintetica de datos que provee ibm IBM \cite{SynthDataByIbm} 
 
 Los pasos que se siguieron para generar datos sintéticos: 
 1.- Recolección y etiquetado de datos reales (mayores detalles en la sección “Metodología: Perfil controlado de observación”)
 2.- Creación de un prompt basado en la técnica de prompting few shot donde se establecen las características que deben tener los datos así como los ejemplos recolectados
-3.- Síntesis de datos a partir de modelos largos de lenguaje de gran escala, incluyendo modelos como: Cloude Opus 4.6, GPT-5.2, Gemini 3 pro, DeepSeek-R1 y Grok 4
+3.- Síntesis de datos a partir de modelos largos de lenguaje de gran escala, incluyendo modelos como: Cloude Opus 4.6, GPT-5.2, Gemini 3 pro.
 4.- Revisión manual de los ejemplos generados priorizando realismo y diversidad
 5.- Construcción de conjunto de datos de refinamiento a partir de datos sinteticos y conjunto de datos de pruebas a partir de los datos reales.
 
@@ -159,9 +155,11 @@ La etapa inicial de esta investigación contempló efectuar un conjunto de prueb
         \item ministral-3:8b
 \end{itemize}
 
-El propósito de estas pruebas es determinar el conjunto de modelos con mayor ponderación mediante la comparación del desempeño de esta selección de modelos en la clasificación del cafishing y sextorsión contemplando refinamiento mediante técnicas de prompting bajo 3 enfoques: zero shot, one shot y few shot para determinar el modelo que se empleara en la aplicación de mensajería.
+El propósito de estas pruebas es determinar el conjunto de modelos con mayor ponderación mediante la comparación del desempeño de esta selección de modelos en la clasificación del cafishing y sextorsión asi como metricas relacionadas al tamaño de los modelos (numero de parametros) y tiempo promedio por predicción. Para las pruebas se contemplo refinamiento mediante técnicas de prompting bajo los enfoques: zero shot y few shot para determinar el modelo que se empleara en la aplicación de mensajería.
 
 La metodología empleada para llevar a cabo este conjunto de pruebas contempló el desarrollo de Un código de Python donde se programó la lógica de programación para la Ejecución De los modelos, evaluación A través de métricas Y almacenamiento de los resultados, La presentación de los resultados se realiza en la sección “Pruebas y resultados”.
+
+\textb{Dirigirse a los anexos y para observar el prompt de refinamiento empleado en las pruebas reportadas asi como los modulos mas relevantes del entorno de pruebas escrito en python en el orden respectivo.}
 
 \begin{figure}[H]
     \centering
@@ -170,224 +168,7 @@ La metodología empleada para llevar a cabo este conjunto de pruebas contempló 
     \label{fig:diagrama-entorno-pruebas}
 \end{figure}
 
-\section{Prompt de refinamiento compatible con las 3 técnicas de prompting empleado para la ejecución de la tarea y el refinamiento del modelo}
 
-ROLE: You are a cybersecurity expert specialized in detecting digital fraud and malicious online behavior.
-       
-CONTEXT: You are analyzing text messages written in Mexico City colloquial language to identify fraudulent behavior patterns in digital communications.
-
-DICTIONARY OF MEXICAN REGIONALISMS (These terms are common in Mexico City colloquial language and may appear in messages):
-
-DEFINITIONS OF THE SCAMS TO IDENTIFY
-1.- catfishing: Creation of a fake online identity to emotionally deceive the victim, typically requesting money, personal information, or creating emotional dependency.
-key differences: focused on establishing a romantic connection to manipulate the victim later, The tone of the characteristic speech is closer to deception, manipulation through emotional ties, persuasion and the lack of naturalness with which one tries to reach the link, usually ask for money for false emergencies or other contexts.
-2.-sextortion: Sexual blackmail where the attacker threatens to publish intimate content of the victim unless they comply with demands (usually money).
-key differences: it involves a video, photo or any other media, The tone of the characteristic speech is closer to blackmail, coercion, coercive or directly threatening action.
-3.-harmless: Normal and legitimate communication without fraudulent or malicious intentions.
-key differences: it does not represent any threat, casual conversations, real plans, cordial exchanges, normal romantic relationships conversations.
-
-ADDITIONAL EXAMPLES FOR CONTEXT (Pay close attention to these examples to understand the nuances of each category):
-
-APPROACH: Based on the previous, classify the following message into exactly one of these three categories: catfishing, sextortion, or harmless.
-
-LIMITS:
-- Respond ONLY with the corresponding label: catfishing, sextortion, or harmless.
-- DO NOT include explanations, justifications, or any additional text.
-- DO NOT use quotes, periods, or special characters in your response. Just the label.
-
-Message to analyze:
-
-
-\subsubsection{Módulos principales del código en lenguaje de programación Python}
-
-Paquetes empleados en el script, incluidos el cliente de ollama y la libreria de sci kit learn metrics.
-
-\begin{lstlisting}[language=Python]
-    import subprocess
-    import re
-    import json
-    import os
-    import time
-    import statistics
-    import sys
-    from datetime import datetime
-    from sklearn.metrics import classification_report, accuracy_score
-    from ollama import Client
-\end{lstlisting}
-
-Módulo que gestiona el envío del prompt al modelo (get model prediction) y la recepción de las etiquetas predichas. 
-
-\begin{lstlisting}[language=Python]
-    def get_model_prediction(model_name, text, additional_examples_text="", dictionary_text=""):
-    """Envia prompt al modelo y extrae la etiqueta predicha."""
-    prompt = (
-        "ROLE: You are a cybersecurity expert specialized in detecting digital fraud and malicious online behavior. "
-        
-        "CONTEXT: You are analyzing text messages written in Mexico City colloquial language to identify fraudulent behavior patterns in digital communications. "
-
-        f"{dictionary_text}" # INSERCION DEL DICCIONARIO DE REGIONALISMOS
-
-        f"{"DEFINITIONS OF THE SCAMS TO IDENTIFY "
-        "1.- catfishing: Creation of a fake online identity to emotionally deceive the victim, typically requesting money, personal information, or creating emotional dependency. "
-        "key differences: focused on establishing a romantic connection to manipulate the victim later, The tone of the characteristic speech is closer to deception, manipulation through emotional ties, persuasion and the lack of naturalness with which one tries to reach the link, usually ask for money for false emergencies or other contexts. "
-        "2.-sextortion: Sexual blackmail where the attacker threatens to publish intimate content of the victim unless they comply with demands (usually money). "
-        "key differences: it involves a video, photo or any other media, The tone of the characteristic speech is closer to blackmail, coercion, coercive or directly threatening action. "
-        "3.-harmless: Normal and legitimate communication without fraudulent or malicious intentions. "
-        "key differences: it does not represent any threat, casual conversations, real plans, cordial exchanges, normal romantic relationships conversations. " if DEFINITIONS else ''}"
-        
-        f"{additional_examples_text}" # INSERCION DE EJEMPLOS ADICIONALES
-        
-        "APPROACH: Based on the previous, classify the following message into exactly one of these three categories: catfishing, sextortion, or harmless. "
-        
-        f"{"The examples contain a real conversation that includes one of the 3 types of scams being considered. Identify the Attacker: and Victim: labels as they will indicate the participation of each actor. " if EXAMPLES_DIR == 'scam-examples/real' and EXAMPLES else ""}"
-
-        "LIMITS: "
-        "- Respond ONLY with the corresponding label: catfishing, sextortion, or harmless. "
-        "- DO NOT include explanations, justifications, or any additional text. "
-        "- DO NOT use quotes, periods, or special characters in your response. Just the label. "
-        
-        f"Message to analyze: \"{text}\" "
-    )
-    
-    # Peticion directa sin streaming
-    response = client.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False)
-    response = response['message']['content'].strip().lower()
-    response_without_thought = re.sub(r'.*\n+','',str(response), flags=re.DOTALL)#filtrado de la respuesta para eliminar la parte del pensamiento del texto
-    # Filtrar la etiqueta valida
-    labels = ['catfishing', 'sextortion', 'harmless']
-    found_labels = [label for label in labels if label in response_without_thought]
-    #descartar si no se encontro una etiqueta valida o se encontraron mas de una
-    if len(found_labels) == 1:
-        prediction = found_labels[0]
-    else:
-        prediction = 'unclassified'
-    return response_without_thought, prediction
-\end{lstlisting}
-
-Módulo encargado del almacenamiento persistente de las metricas computadas y recolectadas en formato json.
-
-\begin{lstlisting}[language=Python]
-    def export_to_json(report_data, metadata_dict, filename_prefix):
-    """Guarda el reporte con metadatos en un archivo JSON."""
-    payload = {
-        'metadata': metadata_dict,
-        'results': report_data
-    }
-    safe_model_name = re.sub(r'[^\w\-_.]', '_', metadata_dict['model_name'])
-    date_str = metadata_dict['evaluation_date'].split('T')[0]
-    filename = f"{safe_model_name}_eval_{date_str}.json"
-    
-    path = os.path.join(OUTPUT_DIR, filename)
-    with open(path, 'w', encoding='utf-8') as f:
-        json.dump(payload, f, indent=4, ensure_ascii=False)
-    print(f'JSON guardado en {path}')
-\end{lstlisting}
-
-Módulos encargados de la lógica de evaluación: calculan las métricas mediante la libreria de sci kit learn, también gestionan el orden de atención por modelo. 
-
-\begin{lstlisting}[language=Python]
-    def evaluate_all_models(current_dataset):
-    """Evalua todos los modelos disponibles en Ollama usando el dataset, ejemplos y diccionario."""
-    ensure_output_dir()
-
-    print(f"Cargando ejemplos y diccionario desde: {EXAMPLES_DIR}")
-    loaded_examples_text, loaded_dictionary_text = load_scam_examples_and_dictionary()
-
-    if loaded_examples_text:
-        example_count = loaded_examples_text.count("<")
-        print(f"Se cargaron {example_count} ejemplos.")
-    # No 'else' needed due to print within load_scam_examples_and_dictionary
-
-    if loaded_dictionary_text:
-        dict_entry_count = loaded_dictionary_text.count("\n- ")
-        print(f"Se cargaron {dict_entry_count} entradas de diccionario.")
-    # No 'else' needed
-
-    models_to_evaluate = get_available_models()
-
-    if not models_to_evaluate:
-        print("No se encontraron modelos nuevos para evaluar.")
-        return
-
-    print(f"\n{len(list(models_to_evaluate))} modelos encontrados para evaluar:\n")
-    print(*list(models_to_evaluate), sep="\n") 
-    print(f"Dataset con {len(current_dataset)} muestras.")
-    print(f"Resultados se guardaran en: {OUTPUT_DIR}/")
-
-    for i, model_name_to_eval in enumerate(models_to_evaluate, 1):
-        print(f"\n{'='*60}")
-        print(f"EVALUANDO MODELO {i}/{len(models_to_evaluate)}: {model_name_to_eval}")
-        print(f"{'='*60}")
-        
-        try:
-            current_metadata = get_metadata(model_name_to_eval, models_to_evaluate[model_name_to_eval], current_dataset, bool(loaded_dictionary_text))
-            
-            evaluation_report = evaluate_model(model_name_to_eval, current_dataset, loaded_examples_text, loaded_dictionary_text)
-            
-            export_to_json(evaluation_report, current_metadata, model_name_to_eval)
-            
-            print(f"Evaluacion completada para {model_name_to_eval}")
-            if 'classification_report' in evaluation_report and 'accuracy' in evaluation_report['classification_report']:
-                print(f"   Accuracy: {evaluation_report['classification_report']['accuracy']:.4f}")
-            if 'timing_metrics' in evaluation_report:
-                print(f"Tiempo total de evaluacion: {evaluation_report['timing_metrics']['total_evaluation_time_seconds']:.2f}s")
-
-        except Exception as e:
-            print(f"Error evaluando modelo {model_name_to_eval}: {e}")
-            import traceback
-            traceback.print_exc()
-            continue
-\end{lstlisting}
-
-Gestiona la evaluación individual por modelo.
-
-\begin{lstlisting}[language=Python]
-    def evaluate_model(model_name, dataset_to_use, additional_examples_text="", dictionary_text=""):
-    """Ejecuta todas las predicciones y calcula metricas para un modelo especifico."""
-    y_true, y_pred_raw, y_pred_leaked = [], [], []
-    prediction_times = []
-    
-    total_start_time = time.time()
-    print(f"Evaluando {len(dataset_to_use)} muestras con el modelo {model_name}...")
-
-    print("Progreso: 0%", end="")
-
-    for i, sample in enumerate(dataset_to_use, 1):        
-        individual_pred_start_time = time.time()
-        rawPrediction, leakedPrediction = get_model_prediction(model_name, sample['text'], additional_examples_text, dictionary_text)
-        individual_pred_end_time = time.time()
-        
-        y_true.append(sample['label'])
-        y_pred_raw.append(rawPrediction)
-        y_pred_leaked.append(leakedPrediction)
-        prediction_times.append(individual_pred_end_time - individual_pred_start_time)
-
-        percentage = (i / len(dataset_to_use)) * 100
-        print(f"\rProgreso: {percentage:.1f}% ({i}/{len(dataset_to_use)} muestras)", end="", flush=True)
-    
-    total_end_time = time.time()
-    total_evaluation_time = total_end_time - total_start_time
-    
-    print(f"\nCompletado: {len(dataset_to_use)} muestras procesadas para {model_name}.")
-    
-    possible_labels = sorted(list(set(y_true)))#se usa set para que no existan etiquetas repetidos
-    report_dict = classification_report(y_true, y_pred_leaked, output_dict=True, zero_division=0, labels=possible_labels)
-    report_dict['accuracy'] = accuracy_score(y_true, y_pred_leaked)
-    timing_metrics = {
-        'total_evaluation_time_seconds': total_evaluation_time,
-        'average_time_per_prediction_seconds': statistics.mean(prediction_times) if prediction_times else 0,
-        'min_prediction_time_seconds': min(prediction_times) if prediction_times else 0,
-        'max_prediction_time_seconds': max(prediction_times) if prediction_times else 0,
-        'samples_per_second': len(dataset_to_use) / total_evaluation_time if total_evaluation_time > 0 else 0,
-        'total_evaluation_time_minutes': total_evaluation_time / 60
-    }
-    
-    return {
-        'labels' : {'etiquetas_reales':y_true, 'llm-output-predictions':y_pred_raw, 'leaked-prediction': y_pred_leaked},
-        'classification_report': report_dict,
-        'timing_metrics': timing_metrics
-    }
-\end{lstlisting}
 
 \section{Arquitectura de solución}
 

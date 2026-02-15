@@ -1,2 +1,238 @@
 \chapter{Anexos}
-Aquí se agrega información adicional al Reporte Técnico, por ejemplo: hojas de datos, reconocimientos por presentar el trabajo en revistas y congresos, constancia de registro de propiedad intelectual o derechos de autor, etc. NO AGREGAR CÓDIGOS COMPLETOS.
+
+\section{Prompt de refinamiento compatible con zero y few shot prompting}
+
+NOTA: los (*) contienen leyendas sobre logica de programacion aplicada a este prompt en funcion de la configuracion del entorno
+
+ROLE: You are a cybersecurity expert specialized in detecting digital fraud and malicious online behavior.
+
+CONTEXT: You are analyzing short-to-medium text messages written in colloquial Mexico City Spanish, focusing exclusively on semantic and linguistic patterns to identify fraudulent or harmful behavior in digital communications.
+
+DEFINITIONS OF THE SCAMS TO IDENTIFY * Se escribe esta seccion si el valor de la variable DEFINITIONS es verdadera
+
+1.- catfishing: A fraud based on the creation or use of a false or misleading online identity to establish rapid emotional intimacy and artificial trust. This behavior is characterized by emotionally charged, unusually long or elaborate messages, accelerated romantic language, idealization of the interlocutor, and victimization narratives (e.g., tragedy, loneliness, sacrifice, hardship) used to generate empathy or emotional dependency. Typical linguistic patterns include justifications for not meeting in person or avoiding verification, gaslighting or guilt-inducing statements, exaggerated future promises (marriage, living together, shared destiny), and explicit or implicit requests for money, financial help, or personal information framed as emergencies or opportunities. The tone is persuasive, emotionally manipulative, and lacks the natural reciprocity of genuine conversation.
+
+2.- sextortion: A form of sexual coercion where the attackers primary objective is to obtain intimate images, videos, or live video exposure, and later use or threaten their disclosure to exert control over the victim. This behavior is characterized by early or immediate sexualization of the conversation, repetitive closed questions (e.g., asking if the victim is alone), pressure-driven language, urgency, insistence, and attempts to normalize risk through promises of confidentiality such as “only between us” or “no one will know.” Linguistic indicators include escalating demands, conditional statements, false withdrawal to regain trust (“I wont force you”), implicit or explicit threats of exposure, and conversations that revolve almost exclusively around sexual content rather than mutual interaction.
+
+3.- harmless: Legitimate, non-malicious communication reflecting natural social or romantic interaction. This includes casual, spontaneous language, humor, colloquial expressions, incomplete or improvised sentences, and balanced back-and-forth dialogue. Harmless messages show respect for boundaries, absence of urgency or pressure, no requests for money, personal data, or sexual content, and no emotional manipulation, victimization narratives, or coercive language. The tone is relaxed, reciprocal, and consistent with genuine everyday conversation.
+
+* Aquí se insertan los ejemplos reales desde archivo JSON
+
+APPROACH: Based on the definitions, linguistic patterns, and semantic indicators above, classify the following message into exactly one of these three categories: catfishing, sextortion, or harmless.
+
+LIMITS:
+
+Respond ONLY with the corresponding label: catfishing, sextortion, or harmless.
+DO NOT include explanations, reasoning, or any additional text.
+DO NOT use quotes, punctuation marks, or special characters. Output only the label.
+Message to analyze: 
+
+* Aquí se insertará el mensaje a analizar
+
+\subsubsection{Módulos principales del código en lenguaje de programación Python}
+
+Paquetes empleados en el script, incluidos el cliente de ollama y la libreria de sci kit learn metrics.
+
+\begin{lstlisting}[language=Python]
+    import subprocess
+    import re
+    import json
+    import os
+    import time
+    import statistics
+    import sys
+    from datetime import datetime
+    from sklearn.metrics import classification_report, accuracy_score
+    from ollama import Client
+\end{lstlisting}
+
+Módulo que gestiona el envío del prompt al modelo (get model prediction) y la recepción de las etiquetas predichas. 
+
+\begin{lstlisting}[language=Python]
+    def get_model_prediction(model_name, text, additional_examples_text="", dictionary_text=""):
+    """Envía prompt al modelo y extrae la etiqueta predicha."""
+    prompt = (
+        "ROLE: You are a cybersecurity expert specialized in detecting digital fraud and malicious online behavior. "
+
+        "CONTEXT: You are analyzing short-to-medium text messages written in colloquial Mexico City Spanish, focusing exclusively on semantic and linguistic patterns to identify fraudulent or harmful behavior in digital communications. "
+
+        f"{dictionary_text}"  # INSERCIÓN DEL DICCIONARIO DE REGIONALISMOS
+
+        f"{'DEFINITIONS OF THE SCAMS TO IDENTIFY '
+        '1.- catfishing: A fraud based on the creation or use of a false or misleading online identity to establish rapid emotional intimacy and artificial trust. '
+        'This behavior is characterized by emotionally charged, unusually long or elaborate messages, accelerated romantic language, idealization of the interlocutor, and victimization narratives '
+        '(e.g., tragedy, loneliness, sacrifice, hardship) used to generate empathy or emotional dependency. '
+        'Typical linguistic patterns include justifications for not meeting in person or avoiding verification, gaslighting or guilt-inducing statements, exaggerated future promises '
+        '(marriage, living together, shared destiny), and explicit or implicit requests for money, financial help, or personal information framed as emergencies or opportunities. '
+        'The tone is persuasive, emotionally manipulative, and lacks the natural reciprocity of genuine conversation. '
+
+        '2.- sextortion: A form of sexual coercion where the attackers primary objective is to obtain intimate images, videos, or live video exposure, '
+        'and later use or threaten their disclosure to exert control over the victim. '
+        'This behavior is characterized by early or immediate sexualization of the conversation, repetitive closed questions '
+        '(e.g., asking if the victim is alone), pressure-driven language, urgency, insistence, and attempts to normalize risk through promises of confidentiality '
+        'such as “only between us” or “no one will know.” '
+        'Linguistic indicators include escalating demands, conditional statements, false withdrawal to regain trust (“I wont force you”), '
+        'implicit or explicit threats of exposure, and conversations that revolve almost exclusively around sexual content rather than mutual interaction. '
+
+        '3.- harmless: Legitimate, non-malicious communication reflecting natural social or romantic interaction. '
+        'This includes casual, spontaneous language, humor, colloquial expressions, incomplete or improvised sentences, and balanced back-and-forth dialogue. '
+        'Harmless messages show respect for boundaries, absence of urgency or pressure, no requests for money, personal data, or sexual content, '
+        'and no emotional manipulation, victimization narratives, or coercive language. '
+        'The tone is relaxed, reciprocal, and consistent with genuine everyday conversation.'
+        if DEFINITIONS else ''}"
+        
+        f"{additional_examples_text}"  # INSERCIÓN DE EJEMPLOS ADICIONALES
+
+        "APPROACH: Based on the definitions, linguistic patterns, and semantic indicators above, classify the following message into exactly one of these three categories: catfishing, sextortion, or harmless. "
+
+        "LIMITS: "
+        "- Respond ONLY with the corresponding label: catfishing, sextortion, or harmless. "
+        "- DO NOT include explanations, reasoning, or any additional text. "
+        "- DO NOT use quotes, punctuation marks, or special characters. Output only the label. "
+
+        f"Message to analyze: \"{text}\" "
+    )
+    
+    # Petición directa sin streaming
+    response = client.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False)
+    response = response['message']['content'].strip().lower()
+    
+    # Improved filtering: robustly splitting by line and taking the last non-empty line
+    response_lines = str(response).strip().split('\n')
+    response_without_thought = response_lines[-1].strip() if response_lines else ""
+    
+    # Filtrar la etiqueta válida
+    labels = ['catfishing', 'sextortion', 'harmless']
+    found_labels = [label for label in labels if label in response_without_thought]
+    #descartar si no se encontro una etiqueta valida o se encontraron mas de una
+    if len(found_labels) == 1:
+        prediction = found_labels[0]
+    else:
+        prediction = 'unclassified'
+    return response_without_thought, prediction
+\end{lstlisting}
+
+Módulo encargado del almacenamiento persistente de las metricas computadas y recolectadas en formato json.
+
+\begin{lstlisting}[language=Python]
+    def export_to_json(report_data, metadata_dict, filename_prefix):
+    """Guarda el reporte con metadatos en un archivo JSON."""
+    payload = {
+        'metadata': metadata_dict,
+        'results': report_data
+    }
+    safe_model_name = re.sub(r'[^\w\-_.]', '_', metadata_dict['model_name'])
+    date_str = metadata_dict['evaluation_date'].split('T')[0]
+    filename = f"{safe_model_name}_eval_{date_str}.json"
+    
+    path = os.path.join(OUTPUT_DIR, filename)
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(payload, f, indent=4, ensure_ascii=False)
+    print(f'JSON guardado en {path}')
+\end{lstlisting}
+
+Módulos encargados de la lógica de evaluación: calculan las métricas mediante la libreria de sci kit learn, también gestionan el orden de atención por modelo. 
+
+\begin{lstlisting}[language=Python]
+    def evaluate_all_models(current_dataset):
+    """Evalúa todos los modelos disponibles en Ollama usando el dataset, ejemplos y diccionario."""
+    ensure_output_dir()
+    
+    print(f"Cargando ejemplos y diccionario desde: {REFINEMENT_DATASET}")
+    loaded_examples_text, loaded_dictionary_text = load_scam_examples_and_dictionary()
+    
+    if loaded_examples_text:
+        example_count = loaded_examples_text.count("<")
+        print(f"Se cargaron datos de ejemplos.")
+    # No 'else' needed due to print within load_scam_examples_and_dictionary
+
+    if loaded_dictionary_text:
+        dict_entry_count = loaded_dictionary_text.count("\n- ")
+        print(f"Se cargaron entradas de diccionario.")
+    # No 'else' needed
+
+    models_to_evaluate = get_available_models()
+    
+    if not models_to_evaluate:
+        print("No se encontraron modelos nuevos para evaluar.")
+        return
+    
+    print(f"\n{len(list(models_to_evaluate))} modelos encontrados para evaluar:\n")
+    print(*list(models_to_evaluate), sep="\n") 
+    print(f"Dataset con {len(current_dataset)} muestras.")
+    print(f"Resultados se guardarán en: {OUTPUT_DIR}/")
+    
+    for i, model_name_to_eval in enumerate(models_to_evaluate, 1):
+        print(f"\n{'='*60}")
+        print(f"EVALUANDO MODELO {i}/{len(models_to_evaluate)}: {model_name_to_eval}")
+        print(f"{'='*60}")
+        
+        try:
+            current_metadata = get_metadata(model_name_to_eval, models_to_evaluate[model_name_to_eval], current_dataset, bool(loaded_dictionary_text))
+            
+            evaluation_report = evaluate_model(model_name_to_eval, current_dataset, loaded_examples_text, loaded_dictionary_text)
+            
+            export_to_json(evaluation_report, current_metadata, model_name_to_eval)
+            
+            print(f"Evaluación completada para {model_name_to_eval}")
+            if 'classification_report' in evaluation_report and 'accuracy' in evaluation_report['classification_report']:
+                print(f"   Accuracy: {evaluation_report['classification_report']['accuracy']:.4f}")
+            if 'timing_metrics' in evaluation_report:
+                print(f"   Tiempo total de evaluación: {evaluation_report['timing_metrics']['total_evaluation_time_seconds']:.2f}s")
+
+        except Exception as e:
+            print(f"Error evaluando modelo {model_name_to_eval}: {e}")
+            import traceback
+            traceback.print_exc()
+            continue
+\end{lstlisting}
+
+Gestiona la evaluación individual por modelo.
+
+\begin{lstlisting}[language=Python]
+   def evaluate_model(model_name, dataset_to_use, additional_examples_text="", dictionary_text=""):
+    """Ejecuta todas las predicciones y calcula métricas para un modelo específico."""
+    y_true, y_pred_raw, y_pred_leaked = [], [], []
+    prediction_times = []
+    
+    total_start_time = time.time()
+    print(f"Evaluando {len(dataset_to_use)} muestras con el modelo {model_name}...")
+
+    print("Progreso: 0%", end="")
+
+    for i, sample in enumerate(dataset_to_use, 1):        
+        individual_pred_start_time = time.time()
+        rawPrediction, leakedPrediction = get_model_prediction(model_name, sample['text'], additional_examples_text, dictionary_text)
+        individual_pred_end_time = time.time()
+        
+        y_true.append(sample['label'])
+        y_pred_raw.append(rawPrediction)
+        y_pred_leaked.append(leakedPrediction)
+        prediction_times.append(individual_pred_end_time - individual_pred_start_time)
+
+        percentage = (i / len(dataset_to_use)) * 100
+        print(f"\rProgreso: {percentage:.1f}% ({i}/{len(dataset_to_use)} muestras)", end="", flush=True)
+    
+    total_end_time = time.time()
+    total_evaluation_time = total_end_time - total_start_time
+    
+    print(f"\nCompletado: {len(dataset_to_use)} muestras procesadas para {model_name}.")
+    
+    possible_labels = sorted(list(set(y_true)))#se usa set para que no existan etiquetas repetidos
+    report_dict = classification_report(y_true, y_pred_leaked, output_dict=True, zero_division=0, labels=possible_labels)
+    report_dict['accuracy'] = accuracy_score(y_true, y_pred_leaked)
+    timing_metrics = {
+        'total_evaluation_time_seconds': total_evaluation_time,
+        'average_time_per_prediction_seconds': statistics.mean(prediction_times) if prediction_times else 0,
+        'min_prediction_time_seconds': min(prediction_times) if prediction_times else 0,
+        'max_prediction_time_seconds': max(prediction_times) if prediction_times else 0,
+        'samples_per_second': len(dataset_to_use) / total_evaluation_time if total_evaluation_time > 0 else 0,
+        'total_evaluation_time_minutes': total_evaluation_time / 60
+    }
+    
+    return {
+        'labels' : {'etiquetas_reales':y_true, 'llm-output-predictions':y_pred_raw, 'leaked-prediction': y_pred_leaked},
+        'classification_report': report_dict,
+        'timing_metrics': timing_metrics
+    }
+\end{lstlisting}

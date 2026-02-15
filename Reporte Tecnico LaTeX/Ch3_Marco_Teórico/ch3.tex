@@ -42,7 +42,7 @@ La lingüística formal se enfoca en describir y analizar las estructuras gramat
 
 \subsubsection{La variabilidad en el español y las jergas empleadas en la sextorsión y el catfishing}
 
-El español, como lengua hablada en múltiples países y regiones, presenta una notable variabilidad dialectal y léxica. Esta diversidad se manifiesta en diferencias de vocabulario, pronunciación y uso de expresiones idiomáticas, influenciadas por factores geográficos, históricos y sociales. Un estudio reciente \cite{regionalizespanish2022} analizó mensajes públicos de Twitter geolocalizados en 26 países de habla hispana, identificando variaciones significativas en el uso del lenguaje. Estas diferencias incluyen el empleo de términos y expresiones particulares de cada región, así como la adopción de jergas específicas en contextos sociales determinados. En el ámbito de la sextorsión y el catfishing, los delincuentes suelen utilizar jergas y modismos locales para ganarse la confianza de sus víctimas y evitar la detección por sistemas automatizados. Esta adaptación lingüística representa un desafío para los modelos de procesamiento de lenguaje natural, que deben ser capaces de reconocer y entender estas variaciones para identificar comportamientos sospechosos de manera efectiva. Por lo tanto, es fundamental que los sistemas de detección de actividades fraudulentas en redes sociales incorporen mecanismos para manejar la variabilidad lingüística del español. Esto incluye el entrenamiento de modelos con datos representativos de diferentes dialectos y jergas, así como la actualización constante de los recursos lingüísticos utilizados para reflejar los cambios y tendencias en el uso del lenguaje.
+El español, como lengua hablada en múltiples países y regiones, presenta una notable variabilidad dialectal y léxica. Esta diversidad se manifiesta en diferencias de vocabulario, pronunciación y uso de expresiones idiomáticas, influenciadas por factores geográficos, históricos y sociales. Un estudio reciente \cite{regionalizespanish2022} analizó mensajes públicos de Twitter geolocalizados en 26 países de habla hispana, identificando variaciones significativas en el uso del lenguaje. Estas diferencias incluyen el empleo de términos y expresiones particulares de cada región, así como la adopción de jergas específicas en contextos sociales determinados. En el ámbito de la sextorsión y el catfishing, los delincuentes suelen utilizar jergas y modismos locales para ganarse la confianza de sus víctimas y evitar la detección por sistemas automatizados.
 
 \section{Técnicas computacionales}
 
@@ -65,10 +65,10 @@ Dentro de estas tecnicas se encuentran:
 
 En el contexto de las tareas de clasificación multiclase se realiza un procedimiento para dividir el problema inicial presentado en múltiples clases a varios problemas binarios tantos como número de clases se contemplen. En la siguiente sección se retomará este tema en detalle. Considerando lo anterior, se contemplan 4 escenarios posibles en la clasificación binaria por clase:
 
-VP (verdaderos positivos): Acontecen cuando tanto la etiqueta verdadera y la predicha por el modelo poseen el valor "verdadero"
-FP (falsos positivos): Acontecen cuando la etiqueta verdadera posee el valor "falso" y la predicha por el modelo "verdadero"
-VN (verdaderos negativos): Acontecen cuando tanto la etiqueta verdadera y la predicción por el modelo poseen el valor "falso" 
-FN (falsos negativos): Acontecen cuando la etiqueta verdadera posee el valor "positivo" y la predicha por el modelo "falso"
+VP (verdaderos positivos): Acontecen cuando tanto la etiqueta real y la predicha por el modelo poseen el valor "positivo"
+FP (falsos positivos): Acontecen cuando la etiqueta real posee el valor "negativo" y la predicha por el modelo "positivo"
+VN (verdaderos negativos): Acontecen cuando tanto la etiqueta real y la predicción por el modelo poseen el valor "negativo" 
+FN (falsos negativos): Acontecen cuando la etiqueta real posee el valor "positivo" y la predicha por el modelo "negativo"
 
 \cite{google2025clasificacion}
 
@@ -133,9 +133,7 @@ El mecanismo de dividir una tarea multiclase en varios problemas binarios —con
 \cite{sklearnOneVsRest}
 \cite{sklearnMultiClass}
 
-Algunas de las metricas que se emplean en la evaluacion de modelos en tareas de clasificacion desde la definicion estan concebidas para clasificacion binaria, algunos ejemplos incluyen la f1 score
-
-Cuando se trabaja con tareas de clasificacion multiclase o multietiqueta los datos son tratados como una coleccion de casos binarios uno por cada clase que se considere 
+Cuando se trabaja con tareas de clasificacion multiclase o multietiqueta los datos son tratados como una coleccion de casos binarios uno por cada clase que se considere.
 
 Si bien esta es una caracteristica de la definicion matematica de las metricas, para efectos practicos no es suficiente puesto que no nos provee con una vision general del desempeño a lo largo de todo el conjunto de clases, por ello es necesario apoyarnos de tecnicas para promediar estas metricas obtenidas por cada clase, cada una sera de mayor utilidad dependiendo el escenario.
 
@@ -204,6 +202,8 @@ F_{\beta, micro} = F_{\beta}(y, \hat{y})
 
 \subsubsection{macro average (promedio macro)}
 
+Es el calculo del promedio calculado con el acumulado por cada metrica sobre el numero total de ejemplos de todas las clases.
+
 \begin{equation}
 \text{Precision}_{macro} = \frac{1}{|L|} \sum_{l \in L} P(y_l, \hat{y}_l)
 \end{equation}
@@ -217,6 +217,8 @@ F_{\beta, macro} = \frac{1}{|L|} \sum_{l \in L} F_{\beta}(y_l, \hat{y}_l)
 \end{equation}
 
 \subsubsection{weighted average (promedio ponderado)}
+
+Es el calculo del promedio ponderado, son factores de cada metrica por el numero total de ejemplos analizados en esa clase sobre el numero total de ejemplos de todas las clases. 
 
 \begin{equation}
 \text{Precision}_{weighted} = \frac{1}{\sum_{l \in L} |y_l|} \sum_{l \in L} |y_l| P(y_l, \hat{y}_l)
