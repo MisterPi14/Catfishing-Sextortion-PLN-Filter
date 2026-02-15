@@ -441,7 +441,7 @@ Su uso es requerido dentro del proyecto en alineacion con el objetivo del diseñ
 
 \subsubsection{4. AWS LAMBDA - ReceiveMessage (Procesamiento de Mensajes Entrantes)}
 
-Las funciones Lambda de AWS son su alternativa a las denominadas funciones serverless, caracterizadas por no requeriri aprovisionamiento de alli la descripcion serverless equivalente a "sin servidor".
+Las funciones Lambda de AWS son su alternativa a las denominadas funciones serverless, caracterizadas por no requerir aprovisionamiento de alli la descripcion serverless equivalente a "sin servidor".
 
 La funcion de este servicio se concentra en el procesamiento de la logica de programacion definida, algunas de sus tareas incluyen: Almacenar los mensajes recibidos en la base de datos de AWS dynamodb, Encolar el mensaje empleando el servicio AWS SQS para su analisis posterior por parte del worker local (el modelo gestionado en maquina local) y Reenviar el mensaje a su destinatario a traves del servicio AWS API Gateway WebSocket.
 
@@ -449,53 +449,54 @@ Su uso en el proyecto es fundamental para la implementacion de la logica del bac
 
 \subsubsection{5. AWS LAMBDA - GetMessages (Recuperación de Historial)}
 
-Esta función Lambda maneja las solicitudes de los usuarios para recuperar el historial de conversaciones anteriores.
+Se define la funcion de nombre "GetMessages" dentro del diseño llevara la logica encargada de recuperar el historial de conversaciones para cada usuario.
 
-Funcionalidad: Cuando un usuario abre una conversación o solicita mensajes antiguos, esta función consulta DynamoDB usando el conversationId como clave de partición y recupera todos los mensajes ordenados por timestamp. Formatea los resultados incluyendo el contenido del mensaje, información del remitente, estado de análisis, y cualquier alerta de riesgo detectada.
+Su funcion en la arquitectura propuesta es consultar dentro de DynamoDB los mensajes asi como metadatos de los mismos por ejemplo el estado de su analisis y si fue reportada alguna alerta sobre el mismo.  
 
-Por qué es necesario: Separar la lógica de recuperación de historial en una función dedicada sigue el principio de responsabilidad única y permite optimizar las consultas a DynamoDB de forma independiente. Esta función puede implementar paginación para conversaciones largas, filtrado por fecha, y caché de resultados frecuentes sin afectar el rendimiento del envío de mensajes. La separación también facilita agregar funcionalidades futuras como búsqueda de mensajes o exportación de conversaciones.
+Dentro de las caracteristicas que consolidan la necesidad de delegar la funconalidad de recuperación de historial a esta funcion es la paginacion dentro de conversaciones largas, ademas de contar con un diseño modular segmentado por funcionalidad.
 
 \subsubsection{6. AWS LAMBDA - NotifyUser (Sistema de Alertas)}
 
-Esta función Lambda se encarga de enviar notificaciones a los usuarios cuando el sistema de análisis detecta contenido de riesgo en los mensajes.
+Esta funcion lambda es la encargada de notificar al front end del cliete cuanto el worker identifica contenido relacionado a catfishing y sextorsion  
 
-Funcionalidad: El Worker local invoca esta función cuando el LLM identifica patrones de catfishing o sextorsión. La función consulta DynamoDB para obtener el connectionId del usuario que debe ser alertado, construye un mensaje de alerta con detalles del riesgo detectado (tipo de amenaza), y lo envía a través de API Gateway WebSocket directamente al cliente conectado.
+En terminos de su funcionalidad, esta funcion es invocada por el worker cuando el mismo arroja un resultado de prediccion sobre catfishing o sectorsion, la funcion hace consultas a DynamoDB para obtener el id de coneccion del usuario para identificar al usuario que debe recibir el alertamiento, la notificacion de alerta es enviada a traves del servicio de API Gateway de WebSocket directo al cliente conectado
 
-Por qué es necesario: Las alertas de seguridad deben entregarse de forma inmediata y confiable. Esta función centraliza la lógica de notificaciones, permitiendo implementar canales de alerta (WebSocket) desde un único punto. Al ser invocada por el Worker local, mantiene el desacoplamiento entre el sistema de análisis y la infraestructura de AWS. También permite implementar lógica de negocio como evitar alertas duplicadas, escalar alertas según severidad, o registrar todas las notificaciones para auditoría.
+Esta funcion es responsable de una de las partes mas criticas del sistema responsable de alertar al usuario para lograr la prevencion de la estafa, ademas consolidar esta funcion permite obtener un modulo que posteriormente pueda ser ampliado en funcionalidades y gestionar aspectos como los son, el escalamiento de notificaciones en funcion del riezgo detectado o registro de notificaiones para auditorias.
 
 \subsubsection{7. AMAZON DYNAMODB (Persistencia de Datos)}
 
-DynamoDB es la base de datos NoSQL completamente administrada que almacena todos los datos del sistema: mensajes, metadatos de conversaciones, y estados de conexión.
+El serviccio de DynamoDB se consolida como una base de datos NoSQL perteneciente al ecosistema AWS, es el servicio encargado de almacenar los datos del sistema como mensajes y metadatos de conversaciones.
 
-Funcionalidad: La tabla ChatMessages utiliza un modelo de datos optimizado con conversationId como clave de partición (PK) y timestamp como clave de ordenamiento (SK). Esto permite consultas eficientes de todos los mensajes de una conversación ordenados cronológicamente. Cada registro almacena: messageId, senderId, receiverId, content (contenido del mensaje), status (pendiente/analizado), analysisResult (resultado del LLM), connectionId (para enrutamiento WebSocket), y metadatos adicionales.
+Dentro de la tabla de ChatMessages se emplea conversationId como clave de particion "PK" y timestanmp como clave de ordenamiento "SK", de esta manera los mensajes se presentan en orden cronologico, algunos campos notables son: messageId, senderId, receiverId, content, status, analysisResult, connectionId, entre otros.
 
-Por qué es necesario: DynamoDB ofrece latencia de milisegundos de un solo dígito, escalamiento automático, y alta disponibilidad sin gestión de servidores. Para un MVP de chat, estas características son críticas: las consultas de historial deben ser rápidas, el sistema debe manejar picos de escritura cuando múltiples mensajes llegan simultáneamente, y los datos deben estar siempre disponibles. Su modelo de precios bajo demanda significa que solo se paga por las operaciones realmente ejecutadas. La capa gratuita incluye 25GB de almacenamiento y 25 unidades de capacidad de lectura/escritura, suficiente para miles de mensajes. El diseño de clave compuesta (PK + SK) permite consultas eficientes sin índices secundarios costosos.
+DynamoDB es requerido en el presente proyecto por caracteristicas como 
+tener una latencia de milisegundos, permitir el escalamiento automatico y la disponibilidad en adicion con no requerir aprovisionamiento. Dentro del contexto de un sistema de mensajeria es totalmente necesario tanto por la persistencia de los datos como por todas las caracteriscas mencionadas las cuales son necesarias para tener consultas de mensajes rapidas asi como la posibilidad para soportar picos de escitura conforme al trafico.
 
 \subsubsection{8. AMAZON SQS - MessageAnalysisQueue (Cola de Análisis)}
 
-Amazon SQS (Simple Queue Service) es el servicio de cola de mensajes que actúa como buffer entre el sistema de chat en AWS y el Worker local que ejecuta el LLM.
+Amazon "SQS Simple Queue Service" es el servicio que tiene como tarea el encolamiento de mensajes, es un buffer o area de memoria entre el sistema de ,mensajeria y el Worker local que ejecuta el LLM mediante ollama.
 
-Funcionalidad: Cada mensaje de chat se encola en SQS inmediatamente después de ser almacenado en DynamoDB. La cola está configurada con long-polling (WaitTimeSeconds: 20s) para reducir solicitudes vacías y costos. El Worker local consulta continuamente esta cola, procesa los mensajes con el LLM, y los elimina de la cola solo después de actualizar exitosamente DynamoDB. Si un mensaje falla 3 veces (por ejemplo, por errores del LLM), se mueve automáticamente a la Dead Letter Queue (DLQ).
+El flujo de los datos respecto a este servicio inicia despues de hacer sido almacenado un mensaje en DynamoDB, esta cola se configurara con long-polling de 20 segundos (periodo de consulta por parte del worker hacia la cola en SQS), posteriormente el worker procesa cada mensajes mediante el LLM, y los elimina de la cola tras actualizar el estatus en el registro de DynamoDB.
 
-Por qué es necesario: SQS es fundamental para la tolerancia a fallos del sistema. Si la computadora local con Ollama está apagada o sin conexión, los mensajes permanecen en la cola hasta por 14 días, garantizando que ningún mensaje quede sin analizar. El VisibilityTimeout de 300 segundos asegura que si el Worker falla durante el procesamiento, el mensaje vuelve a estar disponible automáticamente. La DLQ captura mensajes problemáticos para investigación manual sin bloquear el procesamiento de mensajes válidos. SQS también desacopla completamente el ritmo de envío de mensajes del ritmo de análisis del LLM, permitiendo que el chat funcione con baja latencia incluso si el análisis toma varios segundos. La capa gratuita incluye 1 millón de solicitudes mensuales.
+La necesidad de SQS dentro del proyecto en buena medida se refiere a los mecanismos para tolerancia a fallos considerando la arquitectura hibrica cloud - local, se requiere para manejar casos como tener la computadora local apagada o sin conexión, esto permite garantizar que ningún mensaje quede sin analizar. 
 
 \subsubsection{9. AMAZON SQS - Dead Letter Queue (Gestión de Fallos)}
 
-La DLQ es una cola secundaria que recibe mensajes que no pudieron ser procesados exitosamente después de múltiples intentos.
+Esta es una cola secundaria conocida como DLQ esta recibe los mensajes en los que no se concreto el analisis después de múltiples intentos.
 
-Funcionalidad: Cuando un mensaje en MessageAnalysisQueue falla 3 veces consecutivas (configurado en maxReceiveCount), SQS lo mueve automáticamente a la DLQ. Estos mensajes quedan disponibles para inspección manual, reprocesamiento con parámetros ajustados, o análisis de patrones de fallo.
+Cuando un mensaje falle un numero de veces consecutivas SQS movera el mensaje a DQL estos mensajes quedaran disponibles para inspección manual o reprocesamiento.
 
-Por qué es necesario: Sin una DLQ, los mensajes problemáticos podrían bloquear la cola principal en un ciclo infinito de reintentos, consumiendo recursos y retrasando el procesamiento de mensajes válidos. La DLQ permite identificar problemas sistemáticos (por ejemplo, un tipo de contenido que causa errores en el LLM) sin perder datos ni afectar la operación normal. También proporciona visibilidad sobre la tasa de fallos del sistema, un indicador clave de salud para el MVP.
+Es requerida puesto que de no emplearse los mensajes que no pudieron ser analizados bloquearian la cola principal SQS en un ciclo infinito de reintentos lo cual imposibilitaria continuar con los demas mensajes, adicionalmente las DLQ pueden permitir la identificacion de problemas sistematicos en funcion de patrones problematicos en los mensajes. 
 
 \subsubsection{10. WORKER LOCAL + OLLAMA LLM (Análisis de Contenido)}
 
-El Worker es una aplicación Python que se ejecuta en una computadora local y actúa como puente entre AWS y el modelo de lenguaje Ollama.
+Lo que en esta seccion se ha referenciado como "Worker" se refiere concretametne a una aplicacion de Python que se ejecuta en la computadora local y el cual gestiona las llamadas a los modelos mediante el cliente de Ollama al igual que la comunicacion con los demas servicios dentro de la infraestructura de AWS.
 
-Funcionalidad: El Worker ejecuta un bucle continuo que: (1) Consulta SQS con long-polling para obtener mensajes pendientes, (2) Extrae el contenido del mensaje y lo envía a la API de Ollama (localhost:11434) con un prompt especializado para detectar catfishing y sextorsión, (3) Recibe la respuesta del LLM con clasificación de riesgo, etiquetas de amenaza, y nivel de confianza, (4) Actualiza el registro en DynamoDB cambiando el status a "analizado" y guardando el resultado, (5) Si se detecta riesgo alto, invoca la función Lambda NotifyUser para alertar al usuario, y (6) Elimina el mensaje de SQS solo después de confirmar todas las operaciones.
+Este codigo ejecuta en ciclos lo siguiente: 1.- SQS para obtención de mensajes pendientes de analisis, 2.- Enviar el contenido del mensaje al modelo que corre local mediante el cliente ollama, 3.- Recepcion de la etiqueta predicha por el modelo, 4.- Actualiza el estado de analisis en los registros de la base de datos en DynamoDB, 5.- invoca a la función Lambda "NotifyUser" para alertar al usuario en caso de haber recivido prediccion de estafa, y 6.- Eliminar el mensaje de la cola SQS después de confirmar todas las operaciones.
 
-Por qué es necesario: Ejecutar el LLM localmente es un requisito del proyecto que reduce costos significativamente (evita pagar por inferencia en AWS SageMaker o Bedrock) y permite usar una variedad de modelos largos de lenguaje para la detección de catfishing/sextorsión. El Worker requiere permisos IAM para: sqs:ReceiveMessage, sqs:DeleteMessage (interactuar con la cola), dynamodb:UpdateItem (actualizar resultados), y lambda:InvokeFunction (enviar alertas). 
+Este componente o servicio local es necesario y forma parte de la parte mas relevante del proyecto encargado de la ejecucion de la inferencia del modelo asi como de las operaciones pertinentes para clasificar los mensajes, ademas el que se implemente de manera local permite reduccion de costos en contraste con la alternativa en cloud que involucra pagar por inferencia en los servicios de AWS "SageMaker" o "Bedrock". De esta manera se ajusta a los limites establecidos en el presente proyecto  y permite emplear una coleccion basta de modelos los mismos que fueron evaluardos en la seccion de pruebas. 
 
-Para estos efectos se consideran modelos con escalas de entre 0.5 billones de parametros hasta 8 billones de parametros. Se contempla aprovisionamiento local en una instancia de computo on-premise para la ejecución de la inferencia de los distintos modelos con las siguientes caracteristicas de hardware: (CPU Intel(R) Core(TM) i7-4770 4ª generación  basada en la arquitectura Haswell Frecuencia base de 3.40GHz, GPU Nvidia GeForce GTX 1060 6GB Vram, 16GB Ram del sistema con frecuencia de 1600 MHz, Almacenamiento persistente ADATA HD720 SCSI 1.8 terabytes). Este diseño permite actualizar el modelo o ajustar prompts sin modificar la infraestructura de AWS.
+Se contemplo emplear modelos con escalas de entre 0.25 billones de parámetros hasta 8 billones de parámetros dentro de hardware local con las siguientes caracteristicas: (CPU Intel(R) Core(TM) i7-4770 4ª generación  basada en la arquitectura Haswell Frecuencia base de 3.40GHz, GPU Nvidia GeForce GTX 1060 6GB Vram, 16GB Ram del sistema con frecuencia de 1600 MHz, Almacenamiento persistente ADATA HD720 SCSI 1.8 terabytes).
 
 \subsubsection{Conclusión sobre la arquitectura}
 
