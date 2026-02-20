@@ -2,7 +2,7 @@
 
 \section{Prompt de refinamiento compatible con zero y few shot prompting}
 
-NOTA: los (*) contienen leyendas sobre logica de programacion aplicada a este prompt en funcion de la configuracion del entorno
+\textbf{NOTA: los (*) contienen leyendas sobre logica de programacion aplicada a este prompt en funcion de la configuracion del entorno.}
 
 ROLE: You are a cybersecurity expert specialized in detecting digital fraud and malicious online behavior.
 
@@ -31,7 +31,7 @@ Message to analyze:
 
 \section{Módulos principales del código en lenguaje de programación Python}
 
-Paquetes empleados en el script, incluidos el cliente de ollama y la libreria de sci kit learn metrics.
+\subsection{Paquetes empleados en el script, incluidos el cliente de ollama y la libreria de sci kit learn metrics.}
 
 \begin{lstlisting}[language=Python]
     import subprocess
@@ -46,7 +46,7 @@ Paquetes empleados en el script, incluidos el cliente de ollama y la libreria de
     from ollama import Client
 \end{lstlisting}
 
-Módulo que gestiona el envío del prompt al modelo (get model prediction) y la recepción de las etiquetas predichas. 
+\subsection{Módulo que gestiona el envío del prompt al modelo (get model prediction) y la recepción de las etiquetas predichas.}
 
 \begin{lstlisting}[language=Python]
     def get_model_prediction(model_name, text, additional_examples_text="", dictionary_text=""):
@@ -112,7 +112,7 @@ Módulo que gestiona el envío del prompt al modelo (get model prediction) y la 
     return response_without_thought, prediction
 \end{lstlisting}
 
-Módulo encargado del almacenamiento persistente de las metricas computadas y recolectadas en formato json.
+\subsection{Módulo encargado del almacenamiento persistente de las metricas computadas y recolectadas en formato json.}
 
 \begin{lstlisting}[language=Python]
     def export_to_json(report_data, metadata_dict, filename_prefix):
@@ -131,7 +131,7 @@ Módulo encargado del almacenamiento persistente de las metricas computadas y re
     print(f'JSON guardado en {path}')
 \end{lstlisting}
 
-Módulos encargados de la lógica de evaluación: calculan las métricas mediante la libreria de sci kit learn, también gestionan el orden de atención por modelo. 
+\subsection{Módulos encargados de la lógica de evaluación: calculan las métricas mediante la libreria de sci kit learn, también gestionan el orden de atención por modelo.}
 
 \begin{lstlisting}[language=Python]
     def evaluate_all_models(current_dataset):
@@ -187,7 +187,7 @@ Módulos encargados de la lógica de evaluación: calculan las métricas mediant
             continue
 \end{lstlisting}
 
-Gestiona la evaluación individual por modelo.
+\subsection{Gestiona la evaluación individual por modelo.}
 
 \begin{lstlisting}[language=Python]
    def evaluate_model(model_name, dataset_to_use, additional_examples_text="", dictionary_text=""):
@@ -236,3 +236,264 @@ Gestiona la evaluación individual por modelo.
         'timing_metrics': timing_metrics
     }
 \end{lstlisting}
+
+\subsection{Archivo serverless.yaml usado en la construcción de infraestructura como código}
+
+\begin{lstlisting}
+    org: ipnesimecu
+    service: pln-filter-backend
+
+    frameworkVersion: '4'
+
+    provider:
+    name: aws
+    runtime: python3.11
+    region: ${env:AWS_REGION, 'us-east-1'}
+    stage: ${opt:stage, 'dev'} #cambio ia
+    
+    environment:
+        IS_OFFLINE: ${env:IS_OFFLINE, 'true'}
+        AWS_REGION: ${self:provider.region}
+        DYNAMODB_TABLE: ${self:service}-${self:provider.stage}-messages
+        DYNAMODB_USERS_TABLE: ${self:service}-${self:provider.stage}-users
+        DYNAMODB_CONVERSATIONS_TABLE: ${self:service}-${self:provider.stage}-conversations
+        
+        SQS_QUEUE_URL: ${self:custom.config.${self:provider.stage}.SQS_QUEUE_URL}
+        SQS_ENDPOINT: ${self:custom.config.${self:provider.stage}.SQS_ENDPOINT}
+        DYNAMODB_ENDPOINT: ${self:custom.config.${self:provider.stage}.DYNAMODB_ENDPOINT}
+        WEBSOCKET_API_ENDPOINT: ${self:custom.config.${self:provider.stage}.WEBSOCKET_API_ENDPOINT}
+        AWS_ACCESS_KEY_ID: ${self:custom.awsKeys.${self:provider.stage}.accessKey}
+        AWS_SECRET_ACCESS_KEY: ${self:custom.awsKeys.${self:provider.stage}.secretKey}
+
+    
+    iam:
+        role:
+        statements:
+            - Effect: Allow
+            Action:
+                - dynamodb:Query
+                - dynamodb:Scan
+                - dynamodb:GetItem
+                - dynamodb:PutItem
+                - dynamodb:UpdateItem
+                - dynamodb:DeleteItem
+            Resource:
+                - !GetAtt MessagesTable.Arn
+                - !GetAtt UsersTable.Arn
+                - !GetAtt ConversationsTable.Arn
+            
+            - Effect: Allow
+            Action:
+                - sqs:SendMessage
+                - sqs:ReceiveMessage
+                - sqs:DeleteMessage
+            Resource: !GetAtt MessageQueue.Arn
+            
+            - Effect: Allow
+            Action:
+                - execute-api:ManageConnections
+            Resource: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${WebsocketApi}/*'
+
+    functions:
+    authorizer:
+        handler: handlers/auth.lambda_handler
+
+    connect:
+        handler: handlers/connect.lambda_handler
+        events:
+        - websocket:
+            route: $connect
+            authorizer:
+                name: authorizer
+                identitySource: method.request.header.Authorization
+
+    disconnect:
+        handler: handlers/connect.disconnect_handler
+        events:
+        - websocket:
+            route: $disconnect
+
+    receiveMessage:
+        handler: handlers/receive_message.lambda_handler
+        timeout: 30
+        memorySize: 256
+        events:
+        - websocket:
+            route: sendMessage
+    
+    getMessages:
+        handler: handlers/get_messages.lambda_handler
+        timeout: 30
+        memorySize: 256
+        events:
+        - websocket:
+            route: getMessages
+    
+    notifyUser:
+        handler: handlers/notify_user.lambda_handler
+        timeout: 30
+        memorySize: 256
+
+    register:
+        handler: handlers/user_management.register
+        events:
+        - http:
+            path: register
+            method: post
+            cors:
+                origin: 'http://localhost:5173'
+                headers:
+                - Content-Type
+                - Authorization
+                allowCredentials: true
+                
+    checkUser:
+        handler: handlers/user_management.check_user
+        events:
+        - http:
+            path: check-user/{username}
+            method: get
+            cors:
+                origin: 'http://localhost:5173'
+                headers:
+                - Content-Type
+                - Authorization
+                allowCredentials: true
+
+    login:
+        handler: handlers/user_management.login
+        events:
+        - http:
+            path: login
+            method: post
+            cors:
+                origin: 'http://localhost:5173'
+                headers:
+                - Content-Type
+                - Authorization
+                allowCredentials: true
+
+    resources:
+    Resources:
+        MessagesTable:
+        Type: AWS::DynamoDB::Table
+        Properties:
+            TableName: ${self:provider.environment.DYNAMODB_TABLE}
+            BillingMode: PAY_PER_REQUEST
+            AttributeDefinitions:
+            - AttributeName: conversationId
+                AttributeType: S
+            - AttributeName: timestamp
+                AttributeType: N
+            KeySchema:
+            - AttributeName: conversationId
+                KeyType: HASH
+            - AttributeName: timestamp
+                KeyType: RANGE
+            StreamSpecification:
+            StreamViewType: NEW_AND_OLD_IMAGES
+        
+        UsersTable:
+        Type: AWS::DynamoDB::Table
+        Properties:
+            TableName: ${self:provider.environment.DYNAMODB_USERS_TABLE}
+            BillingMode: PAY_PER_REQUEST
+            AttributeDefinitions:
+            - AttributeName: userId
+                AttributeType: S
+            KeySchema:
+            - AttributeName: userId
+                KeyType: HASH
+        
+        ConversationsTable:
+        Type: AWS::DynamoDB::Table
+        Properties:
+            TableName: ${self:provider.environment.DYNAMODB_CONVERSATIONS_TABLE}
+            BillingMode: PAY_PER_REQUEST
+            AttributeDefinitions:
+            - AttributeName: conversationId
+                AttributeType: S
+            KeySchema:
+            - AttributeName: conversationId
+                KeyType: HASH
+        
+        MessageQueue:
+        Type: AWS::SQS::Queue
+        Properties:
+            QueueName: ${self:custom.queueName}
+            VisibilityTimeout: 300
+            MessageRetentionPeriod: 1209600
+        
+        WebsocketApi:
+        Type: AWS::ApiGatewayV2::Api
+        Properties:
+            Name: ${self:service}-${self:provider.stage}-websocket
+            ProtocolType: WEBSOCKET
+            RouteSelectionExpression: $request.body.action
+
+    plugins:
+    - serverless-localstack
+    - serverless-offline
+    - serverless-plugin-scripts
+    
+    custom:
+    scripts:
+        hooks:
+        'deploy:finalize': node scripts/update-env.js
+    queueName: ${self:service}-${self:provider.stage}-messages
+
+    localstack:
+        stages:
+        - local
+        - dev
+        host: localhost
+        edgePort: 4566
+        autostart: false
+        lambda:
+        mountCode: false
+        docker:
+        sudo: false
+
+    pythonRequirements:
+        dockerizePip: true
+        slim: true
+        strip: false
+        layer: true
+    
+    config:
+        local:
+        SQS_QUEUE_URL: 'http://localhost:4566/000000000000/${self:custom.queueName}'
+        SQS_ENDPOINT: 'http://localhost:4566'
+        DYNAMODB_ENDPOINT: 'http://localhost:4566'
+        WEBSOCKET_API_ENDPOINT: 'http://localhost:3001'
+        dev:
+        SQS_QUEUE_URL: !Ref MessageQueue
+        SQS_ENDPOINT: ''
+        DYNAMODB_ENDPOINT: ''
+        WEBSOCKET_API_ENDPOINT: !Sub 'https://${WebsocketApi}.execute-api.${AWS::Region}.amazonaws.com/${self:provider.stage}'
+        prod:
+        SQS_QUEUE_URL: !Ref MessageQueue
+        SQS_ENDPOINT: ''
+        DYNAMODB_ENDPOINT: ''
+        WEBSOCKET_API_ENDPOINT: !Sub 'https://${WebsocketApi}.execute-api.${AWS::Region}.amazonaws.com/${self:provider.stage}'
+
+    awsKeys:
+        local:
+        accessKey: local
+        secretKey: local
+        dev:
+        accessKey: ''
+        secretKey: ''
+        prod:
+        accessKey: ''
+        secretKey: ''
+\end{lstlisting}
+
+\subsection{Diagrama de bloques: Entorno de desarrollo local PLN-filter}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{imagenes/Anexos/component-diagram.png}
+    \caption{Diagrama de bloques sobre el entorno de desarrollo local con sus dependencias creado mediante puml mediante fuentes propias}
+    \label{fig:component-diagram}
+\end{figure}

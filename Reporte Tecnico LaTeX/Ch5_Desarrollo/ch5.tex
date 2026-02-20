@@ -2,11 +2,11 @@
 
 \section{Metodología de investigación para la obtención de datos reales}
 
-En adición a la parte técnica, el proyecto contempló bajo una metodología, la obtención de datos reales sobre estafa, puntualmente ejemplos de mensajería fraudulenta que busca explotar a la víctima mediante métodos afines al catfishing y la sextorsión.
+En adición a la parte técnica, el proyecto contempló bajo una metodología, la obtención de datos reales sobre estafa, puntualmente ejemplos de mensajería fraudulenta que busca explotar a la víctima mediante métodos afines al \textbf{\textit{catfishing}} y la \textbf{\textit{sextorsión}}.
 
 Se llevo a cabo una investigación en foros de Internet como reddit \cite{RedditFlirtu2025} con el objetivo de encontrar una aplicación de mensajería con reportes frecuentes de estafas.
 
-Los resultados de esta primera fase arrojaron una aplicación candidata por las características difundidas por sus usuarios en el uso de esta plataforma. Se trata de un chat de citas llamado Flirt U, en sentido estricto, un bot de telegram el cual se utiliza dentro de dicha plataforma.
+Los resultados de esta primera fase arrojaron una aplicación candidata por las características difundidas por sus usuarios en el uso de esta plataforma. Se trata de un chat de citas llamado Flirt U, en sentido estricto, un \textbf{\textit{bot de telegram}} el cual se utiliza dentro de dicha plataforma.
 \cite{RedditFlirtu2025}
 \cite{telegramRisks}
 
@@ -14,9 +14,9 @@ Los resultados de esta primera fase arrojaron una aplicación candidata por las 
 
 Esta tarea involucró al realizar una cuenta señuelo para poder identificar y contactar con posibles estafadores dentro de la aplicación de citas.
 
-El objetivo de esta etapa fue puntualmente, determinar cuáles eran los patrones clave de cada tipo de estafa: cafishing y la sextorsión así como el estilo del lenguaje y la forma de la comunicación que se suele llevar a cabo por parte de los estafadores por un lado para la generación sintética de los datos y para la obtención principalmente de datos reales.
+El objetivo de esta etapa fue puntualmente, determinar cuáles eran los patrones clave de cada tipo de estafa: cafishing y la \textbf{\textit{sextorsión}} así como el estilo del lenguaje y la forma de la comunicación que se suele llevar a cabo por parte de los estafadores por un lado para la generación sintética de los datos y para la obtención principalmente de datos reales.
 
-La recolección de datos se remitió exclusivamente a medios de texto, no se contempló imagen.
+La \textbf{\textit{recolección de datos}} se remitió exclusivamente a medios de texto, no se contempló imagen.
 
 \subsection{Hallazgoz clave de la investigacion controlada en flirtu}
 
@@ -46,11 +46,11 @@ De los atacantes
     \item Usar contenido privado de las victimas para extorcionar bajo la amenaza de publicarlo o enviarlo a cercanos, jefes, parientes con motivaciones variadas, siendo las principales dinero o más material explicito.
 \end{itemize}
 
-\subsection{Recolección y etiquetado de datos}
+\subsection{\textbf{\textit{Recolección}} y \textbf{\textit{etiquetado de datos}}}
 
-El entrándonos en la etapa de la recolección de los datos la misma incluida por un lado adentrarnos en el flirt u bot de telegram fue necesario realizar el pago para una suscripción del mes, Posteriormente tras acceder a la aplicación se contacto con personas que sugería la aplicacion- Cabe mencionar que en este proceso se identificó una cantidad de interaccion desproporcionada y poco orgánica.
+El entrándonos en la etapa de la \textbf{\textit{recolección}} de los datos la misma incluida por un lado adentrarnos en el flirt u \textbf{\textit{bot de telegram}} fue necesario realizar el pago para una suscripción del mes, Posteriormente tras acceder a la aplicación se contacto con personas que sugería la aplicacion- Cabe mencionar que en este proceso se identificó una cantidad de interaccion desproporcionada y poco orgánica.
 
-Se estableció un diálogo dentro del mismo grupo que genera el bot de telegram el mismo bot advierte sobre no llevarlas a comunicaciones a otro sitio y priorizar establecerlas dentro del grupo creado.
+Se estableció un diálogo dentro del mismo grupo que genera el \textbf{\textit{bot de telegram}} el mismo bot advierte sobre no llevarlas a comunicaciones a otro sitio y priorizar establecerlas dentro del grupo creado.
 
 Cabe mencionar que la mayoría de casos Se trataban de comunicaciones fraudulentas en las cuales se observaba una transición rápida entre primer contacto y coerción. De igual manera se solicitaba trasladar las comunicaciones dentro de un chat privado.
 
@@ -64,19 +64,19 @@ Después se procedió con un proceso de limpieza de datos para almacenar los eje
 
 \section{Generación sintética de data set para refinamiento}
 
-El presente proyecto contempló la recolección de datos reales sobre estafas, correspondientemente a los límites y alcances de la investigación, esta recolección no fue masiva por lo que se adoptó una metodología basada en la generación sintética de datos para la construccion del conjunto de datos de refinamiento.
+El presente proyecto contempló la \textbf{\textit{recolección de datos}} reales sobre estafas, correspondientemente a los límites y alcances de la investigación, esta \textbf{\textit{recolección}} no fue masiva por lo que se adoptó una metodología basada en la generación sintética de datos para la construccion del conjunto de datos de refinamiento.
 Para conseguir este propósito, se siguieron 8 buenas practicas para la generacion sintetica de datos que provee ibm IBM \cite{SynthDataByIbm} 
 
 Los pasos que se siguieron para generar datos sintéticos: 
-1.- Recolección y etiquetado de datos reales (mayores detalles en la sección “Metodología: Perfil controlado de observación”)
+1.- \textbf{\textit{Recolección}} y \textbf{\textit{etiquetado de datos}} reales (mayores detalles en la sección “Metodología: Perfil controlado de observación”)
 2.- Creación de un prompt basado en la técnica de prompting few shot donde se establecen las características que deben tener los datos así como los ejemplos recolectados
-3.- Síntesis de datos a partir de modelos largos de lenguaje de gran escala, incluyendo modelos como: Cloude Opus 4.6, GPT-5.2, Gemini 3 pro.
+3.- \textbf{\textit{Síntesis de datos}} a partir de modelos largos de lenguaje de gran escala, incluyendo modelos como: Cloude Opus 4.6, GPT-5.2, Gemini 3 pro.
 4.- Revisión manual de los ejemplos generados priorizando realismo y diversidad
-5.- Construcción de conjunto de datos de refinamiento a partir de datos sinteticos y conjunto de datos de pruebas a partir de los datos reales.
+5.- Construcción de conjunto de datos de refinamiento a partir de \textbf{\textit{datos sinteticos}} y conjunto de datos de pruebas a partir de los datos reales.
 
-\subsection{Pruebas de desempeño de clasificación en LLMs}
+\subsection{Pruebas de \textbf{\textit{desempeño de clasificación}} en LLMs}
 
-Se contempla el uso de técnicas de \textit{prompt engineering} para maximizar la capacidad de modelos de lenguaje (LLM) en la tarea de clasificación de mensajes sospechosos.
+Se contempla el uso de técnicas de \textbf{\textit{prompt engineering}} para maximizar la capacidad de modelos de lenguaje (LLM) en la tarea de clasificación de mensajes sospechosos.
 
 La etapa inicial de esta investigación contempló efectuar un conjunto de pruebas a Una colección de modelos largos del lenguaje pertenecientes al actual estado del arte de la inteligencia artificial, se incluyen a continuación:
 
@@ -155,7 +155,7 @@ La etapa inicial de esta investigación contempló efectuar un conjunto de prueb
         \item ministral-3:8b
 \end{itemize}
 
-El propósito de estas pruebas es determinar el conjunto de modelos con mayor ponderación mediante la comparación del desempeño de esta selección de modelos en la clasificación del cafishing y sextorsión asi como metricas relacionadas al tamaño de los modelos (numero de parametros) y tiempo promedio por predicción. Para las pruebas se contemplo refinamiento mediante técnicas de prompting bajo los enfoques: zero shot y few shot para determinar el modelo que se empleara en la aplicación de mensajería.
+El propósito de estas pruebas es determinar el conjunto de modelos con mayor \textbf{\textit{ponderación}} mediante la comparación del desempeño de esta selección de modelos en la clasificación del cafishing y \textbf{\textit{sextorsión}} asi como metricas relacionadas al tamaño de los modelos (numero de \textbf{\textit{parametros}}) y tiempo promedio por predicción. Para las pruebas se contemplo refinamiento mediante técnicas de prompting bajo los enfoques: zero shot y few shot para determinar el modelo que se empleara en la aplicación de mensajería.
 
 La metodología empleada para llevar a cabo este conjunto de pruebas contempló el desarrollo de Un código de Python donde se programó la lógica de programación para la Ejecución De los modelos, evaluación A través de métricas Y almacenamiento de los resultados, La presentación de los resultados se realiza en la sección “Pruebas y resultados”.
 
@@ -179,9 +179,9 @@ La metodología empleada para llevar a cabo este conjunto de pruebas contempló 
     \label{fig:diagrama-arquitectonico}
 \end{figure}
 
-Se propone una solución híbrida contemplando cómputo en la nube mediante los servicios administrados de AWS y procesamiento local para la ejecución de la inferencia del modelo a largo de lenguaje para el análisis de contenido.
+Se propone una solución híbrida contemplando cómputo en la nube mediante los servicios administrados de AWS y procesamiento local para la ejecución de la \textbf{\textit{inferencia}} del modelo a largo de lenguaje para el análisis de contenido.
 
-El sistema está diseñado para detectar técnicas de sextorsión y catfishing en conversaciones de chat, alertando a los usuarios de manera preventiva cuando se identifiquen patrones de riesgo, mientras se cuenta con persistencia de datos y se entrega un sistema de mensajería.
+El sistema está diseñado para detectar técnicas de \textbf{\textit{sextorsión}} y \textbf{\textit{catfishing}} en conversaciones de chat, alertando a los usuarios de manera preventiva cuando se identifiquen patrones de riesgo, mientras se cuenta con persistencia de datos y se entrega un sistema de mensajería.
 
 \begin{figure}[H]
     \centering
@@ -192,13 +192,13 @@ El sistema está diseñado para detectar técnicas de sextorsión y catfishing e
 
 \subsection{Descripción de la arquitectura por servicio de Amazon web services}
 
-La arquitectura es una solución híbrida nube-local diseñada para implementar un sistema de mensajería instantánea con caracteristicas de inteligencia artificial para la detección de estafas en modalidad de catfishing y/o sextorsión. Esta arquitectura se fundamenta en la escalabilidad y confiabilidad de los servicios del ecosistema AWS y en el procesamiento local de la inferencia de modelos largos de lenguaje (LLMs) como clasificadores. El presente diseño esta contemplado para la deteccion de mensajeria catalogada como catfishing o sextorsión dentro de conversaciones de chat con el objetivo de alertar a usuarios potencialmente victimas de manera preventiva cuando el sistema identifique patrones de riesgo, todo integrado en un sistema de mensajeria con persistencia de datos y gestion de usuarios.
+La arquitectura es una solución híbrida nube-local diseñada para implementar un sistema de \textbf{\textit{mensajería instantánea}} con caracteristicas de inteligencia artificial para la detección de estafas en modalidad de \textbf{\textit{catfishing}} y/o \textbf{\textit{sextorsión}}. Esta arquitectura se fundamenta en la escalabilidad y confiabilidad de los servicios del \textbf{\textit{ecosistema}} AWS y en el procesamiento local de la \textbf{\textit{inferencia}} de modelos largos de lenguaje (LLMs) como clasificadores. El presente diseño esta contemplado para la deteccion de mensajeria catalogada como \textbf{\textit{catfishing}} o \textbf{\textit{sextorsión}} dentro de conversaciones de chat con el objetivo de alertar a usuarios potencialmente victimas de manera preventiva cuando el sistema identifique patrones de riesgo, todo integrado en un sistema de mensajeria con persistencia de datos y gestion de usuarios.
 
-\subsubsection{1. AWS AMPLIFY HOSTING (Frontend)}
+\subsubsection{1. AWS AMPLIFY HOSTING (\textbf{\textit{Frontend}})}
 
 AWS Amplify es un servicio de aws empleado para alojar y servir el front end de la aplicacion web, el lado del cliente. Este seervicio permite desplegar aplicaciones desde repositorios Git.
 
-Su funcion es servir los archivos estaticos del front end que incluyen html, css y JavaScript, es compatible con el certificado SSL/TLS por lo que sirve conexiones seguras a traves de HTTPS. 
+Su funcion es servir los archivos estaticos del front end que incluyen html, css y JavaScript, es compatible con el certificado \textbf{\textit{SSL/TLS}} por lo que sirve conexiones seguras a traves de \textbf{\textit{HTTPS}}. 
 
 Su uso dentro del presente proyecto radica en simplificar la complejidad del desarrollo en relacion a la configuracion de servidores web y aspectos relacionados a la gestion certificados SSL. De entre las caracteristicas por las que se contempla dentro del proyecto es su generosa capa gratuita que incluye 15GB de almacenamiento en la infraestructura de AWS asi como la compatibilidad con los demas servicios de la capa gratuita de AWS. 
 
@@ -206,25 +206,25 @@ Su uso dentro del presente proyecto radica en simplificar la complejidad del des
 
 Amazon Cognito User Pool es un servicio de AWS orientado a la autenticación de usuarios, maneja funcionalidades desde el registro hasta la recuperación de credenciales.
 
-Su funcion es servir como un sistema de autenticacion estable, gracias a que esta basado en estandares como OAuth 2.0 y OpenID Connect. mediante la generacion de Json Web Tokens permiten validar las credenciales de usuarios, estos son empleados para autorizar peticiones hacia API Gateway y otros servicios dentro del ecosistema AWS. 
+Su funcion es servir como un sistema de autenticacion estable, gracias a que esta basado en estandares como \textbf{\textit{OAuth 2.0}} y OpenID Connect. mediante la generacion de \textbf{\textit{JWT (Json Web Tokens)}} permiten validar las credenciales de usuarios, estos son empleados para autorizar peticiones hacia \textbf{\textit{API}} Gateway y otros servicios dentro del \textbf{\textit{ecosistema}} AWS. 
 
 Su uso dentro del presente proyecto es requerido para implementar un sistema de autentificacion seguro, lo cual es un proyecto de amplia madurez y complejidad en si mismo, ademas de ser propenso a vulnerabilidades. Cognito provee de una solucion robusta que brinda hash de contraseñas bcrypt, protección contra ataques de fuerza bruta, verificación de email, y cumplimiento con estándares de seguridad.
 
-\subsubsection{3. API GATEWAY WEBSOCKET API (Comunicación en tiempo síncrono.)}
+\subsubsection{3. API GATEWAY \textbf{\textit{WebSocket}} \textbf{\textit{API}} (Comunicación en \textbf{\textit{tiempo síncrono}}.)}
 
-API Gateway con soporte WebSocket es el servicio dentro de AWS que establece conexiones bidireccionales entre clientes y backend, permitiendo la comunicación en tiempo síncrono.
+\textbf{\textit{API}} Gateway con soporte \textbf{\textit{WebSocket}} es el servicio dentro de AWS que establece conexiones bidireccionales entre clientes y \textbf{\textit{backend}}, permitiendo la comunicación en \textbf{\textit{tiempo síncrono}}.
 
 Su funcion es servir como medio de enlace con cada uno de los clientes que consumen la aplicacion, este asigna un connectionId a cada sesión. Entre otras cosas gestiona el envio de los mensajes dentro de la aplicación, esta es la responsable del enrrutamiento hacia la funcion Lambda dependiento del flujo de datos, ejemplos como "enviar mensaje", "obtener historial", "recibir mensaje". También sera empleado por el requierimiento de envio de mensajes desde el backend hasta los clientes para gestionar el alertamiento oportuno mediante mensajes que lleguen a la inferaz de usuario.
 
-Su uso es requerido dentro del proyecto en alineacion con el objetivo del diseño de un sistema de mnsajeria similar a los medios de redes sociales actuales como WhatsApp o Telegram, en estos casos se emplea una comunicación bidireccional de tiempo sincrono, esto se lograra mediante una API de tipo WebSocket las cuales mantienen una conexion TCP persistente que permite comunicacion bidireccional, el servicio de AWS tiene incorporadas caracteristicas propias de los sistemas de comunicación como lo son el manejo de errores y la reconexión, en adición posee la integración con AWS Lambda. 
+Su uso es requerido dentro del proyecto en alineacion con el objetivo del diseño de un sistema de mnsajeria similar a los medios de redes sociales actuales como WhatsApp o Telegram, en estos casos se emplea una comunicación bidireccional de \textbf{\textit{tiempo sincrono}}, esto se lograra mediante una \textbf{\textit{API}} de tipo \textbf{\textit{WebSocket}} las cuales mantienen una conexion \textbf{\textit{TCP}} persistente que permite comunicacion bidireccional, el servicio de AWS tiene incorporadas caracteristicas propias de los sistemas de comunicación como lo son el manejo de errores y la reconexión, en adición posee la integración con AWS Lambda. 
 
 \subsubsection{4. AWS LAMBDA - ReceiveMessage (Procesamiento de Mensajes Entrantes)}
 
-Las funciones Lambda de AWS son su alternativa a las denominadas funciones serverless, caracterizadas por no requerir aprovisionamiento de alli la descripcion serverless equivalente a "sin servidor".
+Las funciones Lambda de AWS son su alternativa a las denominadas funciones serverless, caracterizadas por no requerir \textbf{\textit{aprovisionamiento}} de alli la descripcion serverless equivalente a "sin servidor".
 
 La funcion de este servicio se concentra en el procesamiento de la logica de programacion definida, algunas de sus tareas incluyen: Almacenar los mensajes recibidos en la base de datos de AWS dynamodb, Encolar el mensaje empleando el servicio AWS SQS para su analisis posterior por parte del worker local (el modelo gestionado en maquina local) y Reenviar el mensaje a su destinatario a traves del servicio AWS API Gateway WebSocket.
 
-Su uso en el proyecto es fundamental para la implementacion de la logica del backend, son requeridas de igual manera para la gestion de la logica de desacoplamiento asincrono gracias a la encolacion desde SQS se consigue que el procesamiento de la inferencia del LLM en el worker local sea independiente del flujo de datos principal perteneciente a la funcionalidad del sistema de mensajeria, de esta manera la ejecución del modelo no retraza el envio y recepcion de mensajes, en adicion una de las principales caracteristicas de las funciones lambda es la facturacion la cual puede ser en funcion de las ejecuciones lo cual ahorra costes de aprovisionamiento despediciado y solo se cobra por las ejecuciones realizadas.
+Su uso en el proyecto es fundamental para la implementacion de la logica del \textbf{\textit{backend}}, son requeridas de igual manera para la gestion de la logica de desacoplamiento asincrono gracias a la encolacion desde SQS se consigue que el procesamiento de la \textbf{\textit{inferencia}} del LLM en el worker local sea independiente del flujo de datos principal perteneciente a la funcionalidad del sistema de mensajeria, de esta manera la ejecución del modelo no retraza el envio y recepcion de mensajes, en adicion una de las principales caracteristicas de las funciones lambda es la facturacion la cual puede ser en funcion de las ejecuciones lo cual ahorra costes de \textbf{\textit{aprovisionamiento}} despediciado y solo se cobra por las ejecuciones realizadas.
 
 \subsubsection{5. AWS LAMBDA - GetMessages (Recuperación de Historial)}
 
@@ -244,16 +244,16 @@ Esta funcion es responsable de una de las partes mas criticas del sistema respon
 
 \subsubsection{7. AMAZON DYNAMODB (Persistencia de Datos)}
 
-El serviccio de DynamoDB se consolida como una base de datos NoSQL perteneciente al ecosistema AWS, es el servicio encargado de almacenar los datos del sistema como mensajes y metadatos de conversaciones.
+El serviccio de DynamoDB se consolida como una base de datos \textbf{\textit{NoSQL}} perteneciente al \textbf{\textit{ecosistema}} AWS, es el servicio encargado de almacenar los datos del sistema como mensajes y metadatos de conversaciones.
 
 Dentro de la tabla de ChatMessages se emplea conversationId como clave de particion "PK" y timestanmp como clave de ordenamiento "SK", de esta manera los mensajes se presentan en orden cronologico, algunos campos notables son: messageId, senderId, receiverId, content, status, analysisResult, connectionId, entre otros.
 
 DynamoDB es requerido en el presente proyecto por caracteristicas como 
-tener una latencia de milisegundos, permitir el escalamiento automatico y la disponibilidad en adicion con no requerir aprovisionamiento. Dentro del contexto de un sistema de mensajeria es totalmente necesario tanto por la persistencia de los datos como por todas las caracteriscas mencionadas las cuales son necesarias para tener consultas de mensajes rapidas asi como la posibilidad para soportar picos de escitura conforme al trafico.
+tener una \textbf{\textit{latencia}} de milisegundos, permitir el \textbf{\textit{escalamiento}} automatico y la disponibilidad en adicion con no requerir \textbf{\textit{aprovisionamiento}}. Dentro del contexto de un sistema de mensajeria es totalmente necesario tanto por la persistencia de los datos como por todas las caracteriscas mencionadas las cuales son necesarias para tener consultas de mensajes rapidas asi como la posibilidad para soportar picos de escitura conforme al trafico.
 
 \subsubsection{8. AMAZON SQS - MessageAnalysisQueue (Cola de Análisis)}
 
-Amazon "SQS Simple Queue Service" es el servicio que tiene como tarea el encolamiento de mensajes, es un buffer o area de memoria entre el sistema de ,mensajeria y el Worker local que ejecuta el LLM mediante ollama.
+Amazon "SQS Simple Queue Service" es el servicio que tiene como tarea el encolamiento de mensajes, es un \textbf{\textit{buffer de memoria}} entre el sistema de mensajeria y el Worker local que ejecuta el LLM mediante ollama.
 
 El flujo de los datos respecto a este servicio inicia despues de hacer sido almacenado un mensaje en DynamoDB, esta cola se configurara con long-polling de 20 segundos (periodo de consulta por parte del worker hacia la cola en SQS), posteriormente el worker procesa cada mensajes mediante el LLM, y los elimina de la cola tras actualizar el estatus en el registro de DynamoDB.
 
@@ -273,10 +273,74 @@ Lo que en esta seccion se ha referenciado como "Worker" se refiere concretametne
 
 Este codigo ejecuta en ciclos lo siguiente: 1.- SQS para obtención de mensajes pendientes de analisis, 2.- Enviar el contenido del mensaje al modelo que corre local mediante el cliente ollama, 3.- Recepcion de la etiqueta predicha por el modelo, 4.- Actualiza el estado de analisis en los registros de la base de datos en DynamoDB, 5.- invoca a la función Lambda "NotifyUser" para alertar al usuario en caso de haber recivido prediccion de estafa, y 6.- Eliminar el mensaje de la cola SQS después de confirmar todas las operaciones.
 
-Este componente o servicio local es necesario y forma parte de la parte mas relevante del proyecto encargado de la ejecucion de la inferencia del modelo asi como de las operaciones pertinentes para clasificar los mensajes, ademas el que se implemente de manera local permite reduccion de costos en contraste con la alternativa en cloud que involucra pagar por inferencia en los servicios de AWS "SageMaker" o "Bedrock". De esta manera se ajusta a los limites establecidos en el presente proyecto  y permite emplear una coleccion basta de modelos los mismos que fueron evaluardos en la seccion de pruebas. 
+Este componente o servicio local es necesario y forma parte de la parte mas relevante del proyecto encargado de la ejecucion de la \textbf{\textit{inferencia}} del modelo asi como de las operaciones pertinentes para clasificar los mensajes, ademas el que se implemente de manera local permite reduccion de costos en contraste con la alternativa en cloud que involucra pagar por \textbf{\textit{inferencia}} en los servicios de AWS "SageMaker" o "Bedrock". De esta manera se ajusta a los limites establecidos en el presente proyecto  y permite emplear una coleccion basta de modelos los mismos que fueron evaluardos en la seccion de pruebas. 
 
-Se contemplo emplear modelos con escalas de entre 0.25 billones de parámetros hasta 8 billones de parámetros dentro de hardware local con las siguientes caracteristicas: (CPU Intel(R) Core(TM) i7-4770 4ª generación  basada en la arquitectura Haswell Frecuencia base de 3.40GHz, GPU Nvidia GeForce GTX 1060 6GB Vram, 16GB Ram del sistema con frecuencia de 1600 MHz, Almacenamiento persistente ADATA HD720 SCSI 1.8 terabytes).
+Se contemplo emplear modelos con \textbf{\textit{escalas}} de entre 0.25 billones de \textbf{\textit{parámetros}} hasta 8 billones de \textbf{\textit{parámetros}} dentro de hardware local con las siguientes caracteristicas: (CPU Intel(R) Core(TM) i7-4770 4ª generación  basada en la arquitectura Haswell Frecuencia base de 3.40GHz, GPU Nvidia GeForce GTX 1060 6GB \textbf{\textit{VRAM}}, 16GB Ram del sistema con frecuencia de 1600 MHz, Almacenamiento persistente ADATA HD720 SCSI 1.8 terabytes).
 
-\subsubsection{Conclusión sobre la arquitectura}
+\subsection{Vistas de la aplicacion}
+
+En esta seccion se muestran las vistas de la aplicación de mensajería con la arquitectura anteriormente descrita.
+
+\subsubsection{Vistas del LogIn (Inicio de sesión)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/Log In.png}}
+    \caption{Vista de inicio de sesión}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/Log In false.png}}
+    \caption{Inicio de sesion con error de credenciales}
+\end{figure}
+
+\subsubsection{Vistas del registro}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/Registro.png}}
+    \caption{Formulario de registro}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/Registro 2.png}}
+    \caption{Procesamiento del registro}
+\end{figure}
+
+\subsubsection{Vistas de chat y agregar contacto}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/Vista de chat vacio.png}}
+    \caption{Vista de chat vacío (usuario sin conversaciones activas)}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/Vista de crear contacto.png}}
+    \caption{Vista de añadir nuevo contacto}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/Vista de crear contacto cuando detecta un usuario no registrado.png}}
+    \caption{Vista de añadir nuevo contacto con error por usuario no registrado en base de datos}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/Vista de crear contacto procedente sin chats activos.png}}
+    \caption{Vista de chat nuevo sin mensajes}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/notificacionSextorsion.png}}
+    \caption{Vista de chat con notificacion de alerta por sextorsión}
+\end{figure}
+
+\subsection{Conclusión sobre la arquitectura}
 
 La presente solucion se establece dentro de los servicios que oferta AWS en su capa gratuita, se consolida como un diseño funcional con caracteristicas modulares que permiten un mantenimiento gestionable a futuro, adicionalmente el uso de los diferentes servicios descritos le otorgan al sistema mecanismos de tolerancia a fallos que permiten su funcionamiento, incluso cuando determinados componentes de software dejen de operar.

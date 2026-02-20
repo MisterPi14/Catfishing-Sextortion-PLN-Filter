@@ -9,30 +9,30 @@
 \label{fig:iadiagram}
 \end{figure}
 
-El presente proyecto fundamenta el nucleo técnico en la rama del aprendizaje profundo, especificamente se trabajo con modelos largos del lenguaje.
-Los conocidos como LLMs son estructuras que contemplan redes neuronales profundas y múltiples capas, Estas redes neuronales pueden procesar textos e intrucciones al nivel del lenguaje humano lo que les permite desempeñar diferentes tareas para el contexto de esta investigacion, relacionadas con texto, como lo pueden ser las tareas de generación de texto y las tareas de clasificación siendo estas últimas el tipo principal de tarea con la que se trabajara a lo largo del presente proyecto.
+El presente proyecto fundamenta el nucleo técnico en la rama del \textbf{\textit{aprendizaje profundo}}, especificamente se trabajo con modelos largos del lenguaje.
+Los conocidos como LLMs son estructuras que contemplan \textbf{\textit{redes neuronales profundas}} y múltiples capas, Estas redes neuronales pueden procesar textos e intrucciones al nivel del lenguaje humano lo que les permite desempeñar diferentes tareas para el contexto de esta investigacion, relacionadas con texto, como lo pueden ser las tareas de generación de texto y las tareas de clasificación siendo estas últimas el tipo principal de tarea con la que se trabajara a lo largo del presente proyecto.
 
 \subsection{Que son los modelos largos de lenguaje LLM y cual es su utilidad}
 
-Los modelos largos de lenguajes son modelos de aprendizaje profundo que son pre entrenados con grandes cantidades de datos, su función es predecir y generar lenguaje humano a partir de la estimación de probabilidades de que un \textit{token} 
+Los modelos largos de lenguajes son modelos de aprendizaje profundo que son pre entrenados con grandes cantidades de datos, su función es predecir y generar lenguaje humano a partir de la estimación de probabilidades de que un \textbf{\textit{token}} 
 o secuencia de tokens ocurra dentro de una secuencia más larga de tokens, en este contexto comprender ``secuencia de tokens'' como una oración completa o parrafos o incluso documentos completos. \cite{googleLlmIntro2024}
 
 Poseen una estructura fundamentada en los transformadores, un tipo de arquitectura introducido en el
-artículo Attention Is All You Need en el 2017, este tipo de arquitectura se basa en mecanismos de \textit{atención}. Los transformadores son un conjunto de
+artículo Attention Is All You Need en el 2017, este tipo de arquitectura se basa en mecanismos de \textbf{\textit{atención}}. Los transformadores son un conjunto de
 redes neuronales que cuenta con un codificador y decodificador con capacidades de \textit{autoatención} un concepto referido a la extración de significados de una secuencia de texto y comprenden las relaciones entre las palabras y las frases que contiene. \cite{llmsbyAmazon} \cite{llmsbyIBM}
 
 Los LLMS pueden ser empleados para llevar a cabo tareas de diversas indoles como pueden ser, responder preguntas, resumir documentos, traducir idiomas, completar oraciones, automatizar la creación de contenido y cambiar la forma en que las personas utilizan los motores de búsqueda y los asistentes virtuales.
 
 \subsection{LLMs Como clasificadores de textos}
-Los modelos de lenguaje de gran escala (LLMs, por sus siglas en inglés) han transformado la forma en que se abordan las tareas de procesamiento de lenguaje natural (PLN), especialmente en el ámbito de la clasificación de textos. Tradicionalmente, esta tarea dependía de modelos supervisados entrenados con grandes volúmenes de datos etiquetados, los cuales requerían etapas explícitas de extracción de características y entrenamiento. En contraste,
+Los modelos de lenguaje de gran escala (LLMs, por sus siglas en inglés) han transformado la forma en que se abordan las tareas de procesamiento de lenguaje natural (\textbf{\textit{PLN}}), especialmente en el ámbito de la clasificación de textos. Tradicionalmente, esta tarea dependía de \textbf{\textit{modelos supervisados}} entrenados con grandes volúmenes de datos etiquetados, los cuales requerían etapas explícitas de extracción de características y entrenamiento. En contraste,
 
-\textbf{los LLMs permiten realizar tareas de clasificación incluso en entornos con pocos o ningún dato etiquetado, a través de técnicas de prompting como lo son zero-shot one-shot y few-shot learning.}
+\textbf{los LLMs permiten realizar tareas de clasificación incluso en entornos con pocos o ningún dato etiquetado, a través de técnicas de prompting como lo son zero-shot y few-shot learning.}
 
 En el artículo Large Language Models Are Zero-Shot Text Classifiers \cite{wang2023largelanguagemodelszeroshot}, se realizó una evaluación empírica del desempeño de distintos LLMs como clasificadores sin entrenamiento adicional, usando únicamente instrucciones (prompts) diseñadas cuidadosamente. Entre los hallazgos más relevantes destaca que, aunque estos modelos no superan sistemáticamente a clasificadores supervisados entrenados sobre datos específicos, 
 \textbf{ofrecen una ventaja considerable en contextos donde no se dispone de datos etiquetados o los recursos computacionales para entrenamiento son limitados.}
 Asimismo, se demostró que \textbf{el diseño del prompt es determinante: un cambio sutil en la redacción de la instrucción puede afectar significativamente la precisión del modelo.}
 
-Para el objetivo de este proyecto el cual contempla la identificación de estafas como sextorsión y catfishing, emplear modelos largos del lenguaje como clasificadores es un buen enfoque de solución considerando sus características de adaptabilidad ya sea mediante refinamiento a partir de técnicas de prompting para la redacción de prompts efectivos, técnicas de fine tuning para entrenamiento en un dominio específico Y otras técnicas y protocolos como lo son RAG (Retrieval-Augmented Generation) y MCP (Model Context Protocol). En contraste, los clasificadores a partir de modelos tradicionales de Machine learning poseen capacidades de generarización limitadas.
+Para el objetivo de este proyecto el cual contempla la identificación de estafas como \textbf{\textit{sextorsión}} y \textbf{\textit{catfishing}}, emplear modelos largos del lenguaje como clasificadores es un buen enfoque de solución considerando sus características de adaptabilidad ya sea mediante refinamiento a partir de técnicas de prompting para la redacción de prompts efectivos, técnicas de fine tuning para entrenamiento en un dominio específico Y otras técnicas y protocolos como lo son \textbf{\textit{RAG}} (Retrieval-Augmented Generation) y \textbf{\textit{MCP}} (Model Context Protocol). En contraste, los clasificadores a partir de modelos tradicionales de \textbf{\textit{Machine learning}} poseen capacidades de generarización limitadas.
 
 \subsection{Definición formal del lenguaje}
 
@@ -40,9 +40,9 @@ Desde la perspectiva de la lingüística formal, el lenguaje se concibe como un 
 
 La lingüística formal se enfoca en describir y analizar las estructuras gramaticales del lenguaje, utilizando herramientas matemáticas y lógicas para modelar fenómenos lingüísticos. Este enfoque permite una comprensión precisa de cómo se construyen y entienden las oraciones en un idioma, facilitando el desarrollo de modelos computacionales para el procesamiento del lenguaje natural.
 
-\subsubsection{La variabilidad en el español y las jergas empleadas en la sextorsión y el catfishing}
+\subsubsection{La variabilidad en el español y las \textbf{\textit{jergas}} empleadas en la sextorsión y el catfishing}
 
-El español, como lengua hablada en múltiples países y regiones, presenta una notable variabilidad dialectal y léxica. Esta diversidad se manifiesta en diferencias de vocabulario, pronunciación y uso de expresiones idiomáticas, influenciadas por factores geográficos, históricos y sociales. Un estudio reciente \cite{regionalizespanish2022} analizó mensajes públicos de Twitter geolocalizados en 26 países de habla hispana, identificando variaciones significativas en el uso del lenguaje. Estas diferencias incluyen el empleo de términos y expresiones particulares de cada región, así como la adopción de jergas específicas en contextos sociales determinados. En el ámbito de la sextorsión y el catfishing, los delincuentes suelen utilizar jergas y modismos locales para ganarse la confianza de sus víctimas y evitar la detección por sistemas automatizados.
+El español, como lengua hablada en múltiples países y regiones, presenta una notable variabilidad dialectal y léxica. Esta diversidad se manifiesta en diferencias de vocabulario, pronunciación y uso de expresiones idiomáticas, influenciadas por factores geográficos, históricos y sociales. Un estudio reciente \cite{regionalizespanish2022} analizó mensajes públicos de Twitter geolocalizados en 26 países de habla hispana, identificando variaciones significativas en el uso del lenguaje. Estas diferencias incluyen el empleo de términos y expresiones particulares de cada región, así como la adopción de \textbf{\textit{jergas}} específicas en contextos sociales determinados. En el ámbito de la \textbf{\textit{sextorsión}} y el \textbf{\textit{catfishing}}, los delincuentes suelen utilizar \textbf{\textit{jergas}} y \textbf{\textit{modismos}} locales para ganarse la confianza de sus víctimas y evitar la detección por sistemas automatizados.
 
 \section{Técnicas computacionales}
 
@@ -98,7 +98,7 @@ Recall es la habilidad que tiene un clasificador para encontrar todos los casos 
 \subsubsection{F1-Score (puntaje F1)}
 Antes de definir a la metrica F1-Score es necesaria la definicion de la medida F puesto que F1-Score es un caso particular de esta metrica.
 
-la medida F es la media harmonica ponderada entre las metricas precision y recall, esta metrica surge por la necesidad de balancear ambas metricas, aspecto que se logra  mediante la propiedad de la media harmonica de presentar una alta sensivilidad a valores de baja magnitud lo que conduce a una disminucion considerable en el valor resultante cuando cualquiera de las dos metricas posea un valor bajo
+la medida F es la \textbf{\textit{media harmonica}} ponderada entre las metricas precision y recall, esta metrica surge por la necesidad de balancear ambas metricas, aspecto que se logra  mediante la propiedad de la \textbf{\textit{media harmonica}} de presentar una alta sensivilidad a valores de baja magnitud lo que conduce a una disminucion considerable en el valor resultante cuando cualquiera de las dos metricas posea un valor bajo
 
 \begin{equation}
     F_\text{meassure} = F_\beta = (1 + \beta^2) \frac{\text{precision} \times \text{recall}}{\beta^2 \text{precision} + \text{recall}}
@@ -239,13 +239,13 @@ F_{\beta, weighted} = \frac{1}{\sum_{l \in L} |y_l|} \sum_{l \in L} |y_l| F_{\be
 
 Esta información generada artificialmente puede complementar o incluso reemplazar los datos del mundo real al entrenar o probar los modelos de inteligencia artificial \cite{AIbyIBM}.
 
-En comparación con los conjuntos de datos reales, que suponen desventajas en cuestión de costo, acceso, tiempo para etiquetarlos y suministro, los conjuntos de datos sintéticos pueden ser sintetizados mediante modelos generativos \cite{GenModelsByIbm}. En materia de costes resulta más económico generar datos en volúmen además de tener la capacidad de personalizar estos datos en función de las necesidades.
+En comparación con los conjuntos de datos reales, que suponen desventajas en cuestión de costo, acceso, tiempo para etiquetarlos y suministro, los conjuntos de \textbf{\textit{datos sintéticos}} pueden ser sintetizados mediante modelos generativos \cite{GenModelsByIbm}. En materia de costes resulta más económico generar datos en volúmen además de tener la capacidad de personalizar estos datos en función de las necesidades.
 
-A pesar de sus beneficios, los datos sintéticos \cite{SynthDataByImb} también conllevan dificultades. El proceso de generación puede ser complejo, ya que los científicos de datos tienen que crear datos realistas sin sacrificar su calidad y privacidad.
+A pesar de sus beneficios, los \textbf{\textit{datos sintéticos}} \cite{SynthDataByImb} también conllevan dificultades. El proceso de generación puede ser complejo, ya que los científicos de datos tienen que crear datos realistas sin sacrificar su calidad y privacidad.
 
-Para el desarrollo de este proyecto se llevo a cabo la generación sintética de datos con ejemplos de mensajería fraudulenta bajo la modalidad de las sextorsión y catfishing siguiendo las ocho mejores prácticas para la generación sintética de datos propuesta por IBM \cite{SynthDataByIbm}
+Para el desarrollo de este proyecto se llevo a cabo la generación sintética de datos con ejemplos de mensajería fraudulenta bajo la modalidad de la \textbf{\textit{sextorsión}} y el \textbf{\textit{catfishing}} siguiendo las ocho mejores prácticas para la generación sintética de datos propuesta por IBM \cite{SynthDataByIbm}
 
-En el dominio particular de este proyecto la generación sintética de datos se refiere precisamente a la síntesis de datos a partir de un modelo largo de lenguaje de gran escala (GPT 5.1, Gemini3 Pro, Claude Sonnet 4.5) los cuales, mediante su capacidad para generar textos se vuelven una herramienta muy útil para llevar a cabo este proceso. \cite{artificialanalysis}
+En el dominio particular de este proyecto la generación sintética de datos se refiere precisamente a la \textbf{\textit{síntesis de datos}} a partir de un modelo largo de lenguaje de gran escala (GPT 5.1, Gemini3 Pro, Claude Sonnet 4.5) los cuales, mediante su capacidad para generar textos se vuelven una herramienta muy útil para llevar a cabo este proceso. \cite{artificialanalysis}
 
 \section{Herramientas de software}
 
@@ -258,28 +258,28 @@ Poseer estructuras de datos de alto nivel eficientes.
 Un enfoque simple y efectivo sobre la programación orientada a objetos
 Sintaxis elegante.
 Tipado dinámico (no requiere definición explícita de tipo de datos)
-Es un lenguaje interpretado.
+Es un \textbf{\textit{lenguaje interpretado}}.
 Su librería estándar así como su intérprete son de recurso abierto en versión de código abierto o archivos binarios.\cite{python_tutorial_314}
 
 Este lenguaje de programación fue ampliamente empleada a lo largo del proyecto en diferentes etapas del mismo. Presente desde el script que se construyo para la ejecucion de las  pruebas de clasificación iniciales así como también en la definición de las funciones lambda dentro del entorno de Amazon web Services mediante el serverless framework.
 
 \subsection{Ollama}
 
-Ollama es una herramienta de código abierto que ejecuta modelelos largos de lenguaje de manera local \cite{hostingerOllama2025}, En el contexto actual del último año la inteligencia artificial esta tecnología Junto con los nuevos lanzamientos de modelos largos en lenguaje de pesos abiertos se han posicionado como la alternativa por excelencia a los modelos largos de lenguaje de gran escala de código cerrado, los cuales, anteriormente se consolidaban como los de mayor madurez para realizar las diversas tareas de la inteligencia artificial 
+Ollama es una herramienta de código abierto que ejecuta modelelos largos de lenguaje de manera local \cite{hostingerOllama2025}, En el contexto actual del último año la inteligencia artificial esta tecnología Junto con los nuevos lanzamientos de modelos largos en lenguaje de \textbf{\textit{pesos abiertos}} se han posicionado como la alternativa por excelencia a los modelos largos de lenguaje de gran escala de código cerrado, los cuales, anteriormente se consolidaban como los de mayor madurez para realizar las diversas tareas de la inteligencia artificial 
 
-Entre algunas de las principales ventajas que tiene el ejecutar modelos largos del lenguaje de manera local se encuentra la privacidad de los datos pues estos son procesados en el entorno autogestionado (on premise) \cite{hostingerOllama2025}, en contraste con los modelos de código cerrado que son alojados en servidores administrados por las diversas compañías incursionistas de la inteligencia artificial en los diferentes países del mundo. Lo anterior implica, que en cada solicitud realizada los datos tengan que ser transmitidos hasta esos territorios en legislaciones diferentes a las de Mexico. 
+Entre algunas de las principales ventajas que tiene el ejecutar modelos largos del lenguaje de manera local se encuentra la privacidad de los datos pues estos son procesados en el \textbf{\textit{entorno autogestionado}} (on premise) \cite{hostingerOllama2025}, en contraste con los modelos de código cerrado que son alojados en servidores administrados por las diversas compañías incursionistas de la inteligencia artificial en los diferentes países del mundo. Lo anterior implica, que en cada solicitud realizada los datos tengan que ser transmitidos hasta esos territorios en legislaciones diferentes a las de Mexico. 
 
-El un aspecto ha cobrado bastante relevancia en el contexto empresarial y de investigación dadas las implicaciones que presenta el envio de datos y en esta investigacion se considera el presente enfoque por las caracteristicas de la informacion privada asi como por los recursos destinados al hardware para la ejecucion de la inferencia. 
+El un aspecto ha cobrado bastante relevancia en el contexto empresarial y de investigación dadas las implicaciones que presenta el envio de datos y en esta investigacion se considera el presente enfoque por las caracteristicas de la informacion privada asi como por los recursos destinados al hardware para la ejecucion de la \textbf{\textit{inferencia}}. 
 
-Esta tecnología fue utilizada para la ejecución de la \textit{inferencia} de modelos largos del lenguaje de \textit{pesos abiertos} en entorno local a través del cliente esta iniciativa tecnología pone a disposición para la conectividad con Python.
+Esta tecnología fue utilizada para la ejecución de la \textbf{\textit{inferencia}} de modelos largos del lenguaje de \textbf{\textit{pesos abiertos}} en entorno local a través del cliente esta iniciativa tecnología pone a disposición para la conectividad con Python.
 
 \subsection{Amazon Web Services}   
 
-Amazon Web Services (AWS) es una plataforma que ofrece servicios de infraestructura de TI en la nube altamente confiable, escalable y de bajo costo. Hoy dia conocido como cómputo en la nube, un modelo de negocio que representa una ventaja a empresas e investigadores al permitir poner en marcha un buen numero de servicios con escalamiento horizontal y vertical al instante en cuestión de minutos sin requerir del aprovisionamiento de infraestructura autogestionada. \cite{WhatIsAws}
+Amazon Web Services (AWS) es una plataforma que ofrece servicios de \textbf{\textit{infraestructura de TI}} en la nube altamente confiable, escalable y de bajo costo. Hoy dia conocido como cómputo en la nube, un modelo de negocio que representa una ventaja a empresas e investigadores al permitir poner en marcha un buen numero de servicios con \textbf{\textit{escalamiento horizontal}} y \textbf{\textit{escalamiento vertical}} al instante en cuestión de minutos sin requerir del \textbf{\textit{aprovisionamiento}} de infraestructura autogestionada. \cite{WhatIsAws}
 
 Ademas una de las principales caracteristicas por las que se selecciono como el proveedor de nube para esta investigacion fue la cantidad de servicios ofertados en la capa gratuita, ademas de la 
 
-Amazon Web Services fue el proveedor de servicios en la nube seleccionado para implementar la aplicación de mensajería instantánea. Dentro de su ecosistema se contemplan diferentes servicios como lo son:
+Amazon Web Services fue el proveedor de servicios en la nube seleccionado para implementar la aplicación de \textbf{\textit{mensajería instantánea}}. Dentro de su \textbf{\textit{ecosistema}} se contemplan diferentes servicios como lo son:
 
 \begin{itemize}
     \item Amplify
@@ -292,7 +292,7 @@ Amazon Web Services fue el proveedor de servicios en la nube seleccionado para i
 
 \subsection{Serverless Framework}
 
-El propósito de esta tecnología dentro del presente proyecto se refirio a la definición de la infraestructura como código para el despliegue y la definición de la infraestructura de la propuesta de solución presentada dentro del ecosistema el proveedor de nube de Amazon web services. \cite{WhatIsSLS}
+El propósito de esta tecnología dentro del presente proyecto se refirio a la definición de la \textbf{\textit{infraestructura como código}} para el despliegue y la definición de la infraestructura de la propuesta de solución presentada dentro del \textbf{\textit{ecosistema}} el proveedor de nube de Amazon web services. \cite{WhatIsSLS}
 
 \subsection{PowerBi}
 
@@ -306,7 +306,7 @@ El nucleo técnico se relaciona con el desarrollo de software, en el desarrollo 
 
 \begin{itemize}
     \item CPU Intel(R) Core(TM) i7-4770 4ª generación basada en la arquitectura Haswell Frecuencia base de 3.40GHz
-    \item GPU Nvidia GeForce GTX 1060 6GB Vram
+    \item GPU Nvidia GeForce GTX 1060 6GB \textbf{\textit{VRAM}}
     \item 16GB Ram del sistema con frecuencia de 1600 MHz
     \item Almacenamiento persistente ADATA HD720 SCSI 1.8 terabytes
 \end{itemize}
