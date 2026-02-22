@@ -181,14 +181,7 @@ La metodología empleada para llevar a cabo este conjunto de pruebas contempló 
 
 Se propone una solución híbrida contemplando cómputo en la nube mediante los servicios administrados de AWS y procesamiento local para la ejecución de la \textbf{\textit{inferencia}} del modelo a largo de lenguaje para el análisis de contenido.
 
-El sistema está diseñado para detectar técnicas de \textbf{\textit{sextorsión}} y \textbf{\textit{catfishing}} en conversaciones de chat, alertando a los usuarios de manera preventiva cuando se identifiquen patrones de riesgo, mientras se cuenta con persistencia de datos y se entrega un sistema de mensajería.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{imagenes/desarrollo/propuestaSolucion/diagramaComponentes.pdf}
-    \caption{Diagrama de Componentes: infraestructura AWS para Aplicación de mensajería con soporte para modelo largo de lenguaje}
-    \label{fig:diagrama-componentes}
-\end{figure}
+El sistema está diseñado para detectar técnicas de \textbf{\textit{sextorsión}} y \textbf{\textit{catfishing}} en conversaciones de chat, alertando a los usuarios de manera preventiva cuando se identifiquen patrones de riesgo, mientras se cuenta con persistencia de datos y requerimientos funcionales de un sistema de mensajería.
 
 \subsection{Descripción de la arquitectura por servicio de Amazon web services}
 
@@ -277,11 +270,31 @@ Este componente o servicio local es necesario y forma parte de la parte mas rele
 
 Se contemplo emplear modelos con \textbf{\textit{escalas}} de entre 0.25 billones de \textbf{\textit{parámetros}} hasta 8 billones de \textbf{\textit{parámetros}} dentro de hardware local con las siguientes caracteristicas: (CPU Intel(R) Core(TM) i7-4770 4ª generación  basada en la arquitectura Haswell Frecuencia base de 3.40GHz, GPU Nvidia GeForce GTX 1060 6GB \textbf{\textit{VRAM}}, 16GB Ram del sistema con frecuencia de 1600 MHz, Almacenamiento persistente ADATA HD720 SCSI 1.8 terabytes).
 
-\subsection{Vistas de la aplicacion}
+\section{Entorno de desarrollo local}
+
+En conformidad con los limites y alcances del presente proyecto, la propuesta de solución fue desarrollada en un ambiente enteramente local. Esta delimitacion implico emplear una emulación local los servicios del ecosistema AWS definidos en la seccion anterior, mediante las tecnologias docker y local-stack, un plugin perteneciente al proyecto serverless framework.
+
+A continuación se adjuntan 2 diagramas sobre el entorno de producción definido en el desarrollo del sistema, el mismo emplea docker para encapsular la emulacion de los servicios AWS dentro de un contenedor independiante al sistema operativo anfitrión.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{imagenes/desarrollo/diagramaComponentes2.png}
+    \caption{Diagrama de topología lógica: Entorno de desarrollo local, Aplicación de mensajería con analisis conversacional mediante llms. \textit{Diagrama creado mediante notebookLM a partir de fuentes propias}}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/desarrollo/diagramaFlujoDatos.png}}
+    \caption{Diagrama de flujo de datos: Entorno de desarrollo local, Aplicación de mensajería con analisis conversacional mediante llms. \textit{Diagrama creado mediante notebookLM a partir de fuentes propias}}
+\end{figure}
+
+\section{Vistas de la aplicacion}
 
 En esta seccion se muestran las vistas de la aplicación de mensajería con la arquitectura anteriormente descrita.
 
 \subsubsection{Vistas del LogIn (Inicio de sesión)}
+
+Estas capturas muestran la interfaz de inicio de sesion, el caso 2 muestra la interfaz cuando se intenta acceder con credenciales no registradas en la base de datos de dynamodb
 
 \begin{figure}[H]
     \centering
@@ -297,6 +310,8 @@ En esta seccion se muestran las vistas de la aplicación de mensajería con la a
 
 \subsubsection{Vistas del registro}
 
+Aqui se muestra el registro de un usuario, se solicita un nombre de usuario y contraseña.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/Registro.png}}
@@ -311,11 +326,15 @@ En esta seccion se muestran las vistas de la aplicación de mensajería con la a
 
 \subsubsection{Vistas de chat y agregar contacto}
 
+A continuación se observa la ventana de chats que se muestra tras haberse loggeado efectivamente con credenciales validas en el sistema
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/Vista de chat vacio.png}}
     \caption{Vista de chat vacío (usuario sin conversaciones activas)}
 \end{figure}
+
+posteriormente tras ingresar a la aplicacion, se puede contactar con otro usuario registrado en la base de datos, para esto hay que dar click en el boton con el signo de + y posteriormente se desplegara este recuadro, el mismo validara la existencia del usuario en el sistema y de ser procedente creara un nuevo chat con el usuario.  
 
 \begin{figure}[H]
     \centering
@@ -323,17 +342,23 @@ En esta seccion se muestran las vistas de la aplicación de mensajería con la a
     \caption{Vista de añadir nuevo contacto}
 \end{figure}
 
+Esta es la vista de la ventana cuando se ingresa un usuario que no ha sido registrado.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/Vista de crear contacto cuando detecta un usuario no registrado.png}}
     \caption{Vista de añadir nuevo contacto con error por usuario no registrado en base de datos}
 \end{figure}
 
+Tras buscar algun usuario en la ventana anterior y haber encontrado una coincidencia, el sistema genera un nuevo chat listo para interactuar.  
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{\detokenize{imagenes/mockUps/Vista de crear contacto procedente sin chats activos.png}}
     \caption{Vista de chat nuevo sin mensajes}
 \end{figure}
+
+Una vez que se ha iniciado una conversacion, el sistema enviara cada mensaje a su analisis mediante el worker de python que ejecuta la inferencia del modelo a traves del cliente de Ollama y en caso de clasificar dicho mensaje como catfishing o sextorsión se mostrará una vista como la siguiente. 
 
 \begin{figure}[H]
     \centering

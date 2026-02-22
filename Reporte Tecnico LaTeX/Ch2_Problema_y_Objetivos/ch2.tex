@@ -13,7 +13,7 @@
 
 La basta cantidad de entornos de comunicación digital de distintos propósitos y otros fenómenos como el auge reciente de la inteligencia artificial han resultado en el incremento de fraudes digitales en los cuales las modalidades de \textbf{\textit{catfishing}} y \textbf{\textit{sextorsión}} presentan estragos notables como depresión y conductas suicidas en sus victimas que van desde infantes que navegan sin supervisión hasta adultos mayores con analfabetismo digital.[34]
 
-La masificación del uso de dispositivos móviles y de los sistemas de \textbf{\textit{mensajería instantánea}} en México ha generado un entorno propicio para la proliferación de fraudes en línea de manera masiva, El Heraldo de México sostiene que México supera la media global en ciberataques, teniendo que el 48 \% de los usuarios informan haber recibido ataques en sus teléfonos móviles \cite{heraldo1youtube}. Consolidándose como parte de estas estadísticas el \textbf{\textit{catfishing}} y la \textbf{\textit{sextorsión}}. En esta fuente se menciona de igual manera que los sistemas de \textbf{\textit{mensajería instantánea}} en un 35 \% y las llamadas y mensajes de texto con el 26 \%. Ambas se consolidan como las modalidades donde suelen proliferar este tipo de estafas. Estos delitos emplean el anonimato, la creación de identidades falsas y la manipulación emocional o sexual, y se caracterizan por una transición acelerada entre el primer contacto y la coerción sobre las víctimas. La poblacion objetivo de los estafadores contempla principalmente a grupos vulnerables, como niños, adolescentes y adultos mayores con baja alfabetización digital.
+La masificación del uso de dispositivos móviles y de los sistemas de \textbf{\textit{mensajería instantánea}} en México ha generado un entorno propicio para la proliferación de fraudes en línea de manera masiva, El Heraldo de México sostiene que México supera la media global en ciberataques, teniendo que el 48 \% de los usuarios informan haber recibido ataques en sus teléfonos móviles \cite{heraldo1youtube}. Consolidándose como parte de estas estadísticas el \textbf{\textit{catfishing}} y la \textbf{\textit{sextorsión}}. En esta fuente se menciona de igual manera que los sistemas de \textbf{\textit{mensajería instantánea}} en un 35 \% y las llamadas y mensajes de texto con el 26 \% se consolidan como medios de comunicación donde tienen mayor incidencia este tipo de estafas.
 
 %%Planteamiento del problema
 
@@ -43,10 +43,9 @@ La masificación del uso de dispositivos móviles y de los sistemas de \textbf{\
 
 %07-06-2025: las citas deben de ponerse inmediatamente
 
-
-
 \section{Objetivo general}
-Diseñar un sistema de detección de mensajería para detección de estafas, puntualmente al \textbf{\textit{catfishing}} y la \textbf{\textit{sextorsión}} mediante el refinamiento de un modelo largo de lenguaje delimitado al español.
+Diseñar un sistema de mensajería para detección de \textbf{\textit{catfishing}} y \textbf{\textit{sextorsión}} fundamentado en la integración y refinamiento de un modelo largo de lenguaje delimitado al español.
+
 
 %El "refinamiento" de los Modelos de Lenguaje a Gran Escala (LLM, por sus siglas en inglés, Large Language Models) se refiere al proceso de adaptar o mejorar un modelo previamente entrenado para tareas o dominios específicos, o para corregir comportamientos no deseados.
 
@@ -54,35 +53,26 @@ Diseñar un sistema de detección de mensajería para detección de estafas, pun
 
 %28-06-2025: con repecto al problema del enmascaramiento de palabras "ej algoritmo de youtube": en las estructuras de software, existe el mantenimiento como tarea, en ese caso puede darse la actualizacion de terminologia o de cambio de modelos con nuevos emergentes
 
-
-
-
-
-\subsection{Objetivos específicos}
+\section{Objetivos específicos}
 
 % Considerar lo siguiente para la redaccion de objetivos especificos: Seleccionar un modelo de lenguaje base adecuado balanceando tamaño y habilidad para identificación de
 
-
 \begin{itemize}
+    \item Recolectar datos reales sobre ejemplos de mensajería fraudulenta y categorizada como \textbf{\textit{catfishing}} o \textbf{\textit{sextorsión}} para la construcción de \textbf{\textit{conjunto de datos de prueba}}.
+
     \item Generar datos siguiendo las 8 practicas de generación de \textbf{\textit{datos sintéticos}} propuestas por IBM \cite{SynthDataByIbm}, puntualmente ejemplos de mensajes categorizados como \textbf{\textit{catfishing}}, \textbf{\textit{sextorsión}} e inofensivos mediante el uso de modelos largos de lenguaje de frontera como elemento sintetizador.
     %con respecto a este de generacion, hablar de la necesidad el por que se hara sintetica,ente, esta justificacion va en marco teorico y hablar de como se realizo la base de datos esto ira en desarrollo
     %en marco teorico tambien hablar de como es el proceso de entrenamiento en un llm
     %transfor learning = fine tuning
 
-    \item Recolectar datos reales sobre mensajes fraudulentos y categorizados como \textbf{\textit{catfishing}} o \textbf{\textit{sextorsión}}.
-
     \item Realizar pruebas de desempeño mediante un enfoque basado en refinamiento a través de técnicas de prompting \cite{PromptEngByIBM}
 
     \item Comparar el desempeño de una colección de modelos largos de lenguaje como llama3, gemma2, gemma3, mistral, qwen3, qwen2.5, phi4-mini, deepseek-r1, dolphin3, entre otros en la clasificación de las etiquetas: \textbf{\textit{catfishing}}, \textbf{\textit{sextorsión}} e inofensivo, utilizando refinamiento a través de técnicas de prompting: zero-shot y few-shot.
+    
+    \item Investigar ofertas sobre capas gratuitas de los proveedores de nube disponibles en el mercado
 
-    \item Realizar el diseño de una aplicación web de \textbf{\textit{mensajería instantánea}}.
+    \item Realizar el diseño arquitectónico de una aplicación web de \textbf{\textit{mensajería}}.
 \end{itemize}
-
-Mediante los resultados de las pruebas, seleccionar un modelo largo de lenguaje que se utilizara en el entorno de produccion 
-
-
-
-
 
 %Simplificar la redacción de los objetivos priorizando los action verbs, ya en el marco teorico se puede hablar mas detenidamente sobre las características profundoas de los modelos y todo lo contemplado en profundidad tecnica Simplificar la redacción de los objetivos priorizando los action verbs, ya en el marco teorico se puede hablar mas detenidamente sobre las características profundoas de los modelos y todo lo contemplado en profundidad tecnica
 
@@ -102,8 +92,6 @@ Mediante los resultados de las pruebas, seleccionar un modelo largo de lenguaje 
 
 %Migrar el modelo refinado mediante fine tuning al ecosistema de Andoid mediante la tecnolog{\'{i}}a LiteRT para ejecutarlo como un servicio local en el dispositivo
 
-
-
 \section{Límites y Alcances}
 \subsection{Límites}
 
@@ -119,6 +107,8 @@ Mediante los resultados de las pruebas, seleccionar un modelo largo de lenguaje 
     \item El presente proyecto no contempla el entrenamiento o ajuste fino de los \textbf{\textit{pesos}} de los modelos largos de lenguaje.
 
     \item Este proyecto no incluye procesamiento de imagen ni de audio se trabajara únicamente con contenido escrito.
+
+    \item El entorno de ejecución se contempla enteramente local
 \end{itemize}
 
 
@@ -127,13 +117,13 @@ Mediante los resultados de las pruebas, seleccionar un modelo largo de lenguaje 
 \begin{itemize}
     \item Se contempla realizar refinamiento de una colección de modelos largos de lenguaje a través de técnicas de prompting y documentos con ejemplos de \textbf{\textit{catfishing}} y \textbf{\textit{sextorsión}} reales y sintéticos.
 
-    \item Dentro de la investigación se efectúa la \textbf{\textit{recolección}} de mensajería fraudulenta para fines de \textbf{\textit{etiquetado}} y \textbf{\textit{síntesis de datos}} \cite{SynthDataByIbm} se contempla el anonimato de los actores.
+    \item Dentro de la investigación se efectúa la \textbf{\textit{recolección}} de mensajería fraudulenta para fines de \textbf{\textit{etiquetado}}, construccion de \textbf{\textit{conjunto de datos de prueba}} y \textbf{\textit{síntesis de datos}} \cite{SynthDataByIbm} se contempla el anonimato de los actores.
 
-    \item A lo largo del proyecto se contempla medir y comparar el desempeño en la tarea de la clasificación por parte de cada modelo largo de lenguaje bajo 3 técnicas de prompting (zero-shot, one-shot y few-shot) las ultimas dos con datos reales y sintéticos.
+    \item Se contempla realizar refinamiento de una colección de modelos largos de lenguaje a través de técnicas de prompting que incluyen ejemplos de catfishing y sextorsión reales y sintéticos.
 
-    \item En esta investigación se contemplaran únicamente las estafas \textbf{\textit{catfishing}} y \textbf{\textit{sextorsión}} ambas por su relación directa y dependencia mutua en la mayoría de casos. \cite{To_pay_or_not_to_pay} % Esta fuente es muy textual
+    \item En esta investigación se contemplaran únicamente las estafas \textbf{\textit{catfishing}} y \textbf{\textit{sextorsión}} ambas por su relación directa y dependencia conocida. \cite{To_pay_or_not_to_pay} % Esta fuente es muy textual
 
-    \item El presente trabajo contempla el diseño de una aplicación web de \textbf{\textit{mensajería instantánea}}
+    \item El presente trabajo contempla el diseño de una aplicación web de \textbf{\textit{mensajería}}
 \end{itemize}
 
 
@@ -152,8 +142,9 @@ Mediante los resultados de las pruebas, seleccionar un modelo largo de lenguaje 
 \section{Justificación del proyecto} 
 % Proyecto de ing: ¿Que problema resuelve este proyecto?, ¿para quien será de utilidad?, ¿quien se ve beneficiado?, ¿qué  ventajas tiene con respecto a otros proyectos parecidos?
 
-Este proyecto representa un esfuerzo destinado a la prevención las estafas en línea dentro del ámbito de los sistemas de \textbf{\textit{mensajería instantánea}}, con un enfoque particular en modalidades como el \textbf{\textit{catfishing}} y \textbf{\textit{sextorsión}}. Su utilidad práctica radica en el diseño de un sistema de mensajería que, mediante el análisis de carácter \textbf{\textit{semántico}} efectuado a conversaciones, pueda alertar de manera oportuna a los usuarios antes de convertirse en víctimas de este tipo de fraudes. De esta manera, el beneficio está orientado a personas de cualquier edad y género que utilicen sistemas de \textbf{\textit{mensajería instantánea}}, fundamentándose en la prevención. 
+Este proyecto representa un esfuerzo destinado a la prevención las estafas en línea dentro del ámbito de los sistemas de \textbf{\textit{mensajería instantánea}}, con un enfoque particular en modalidades como el \textbf{\textit{catfishing}} y \textbf{\textit{sextorsión}}. Su utilidad práctica radica en el diseño de un sistema de mensajería que, mediante el análisis de carácter \textbf{\textit{semántico}} efectuado a conversaciones, pueda alertar de manera oportuna a los usuarios antes de convertirse en víctimas de este tipo de fraudes. De esta manera, el beneficio está orientado a personas de cualquier edad y género que utilicen sistemas de \textbf{\textit{mensajería instantánea}}, fundamentándose en la prevención.
 
+La principal caracteristica distintiva que precenta el este proyecto recae en el diseño de una plataforma de mensajeria con caracteristicas de inteligencia artificial para detección de catfishing y sextorsión, aspecto altamente contrastante con otros proyectos como los que se precentan en el estado del arte, cuyo principal objetivo suele ser evaluar la aplicabilidad de modelos largos de lenguaje en la identificacion de pruebas a traves de pruebas. Adicionalmente el enfoque de esta propuesta de solucion se fundamenta en el uso de modelos largos de lenguaje en contraparte con los modelos de machine learning tradicional que presentan algunos proyectos, este enfoque permite tener un analisis semantico profundo respecto al contexto conversacional adicionalmente al emplear modelos largos de lenguaje en entorno local la informacion puede ser alojada en infraestructura propietaria y conforme se escale el entorno ya sea mediante el uso de proveedores de nube o hardware fisico, la escala de los modelos que podran ejecutarse sera mayor y por ende el desempeño de clasificacion y la rapidez de la inferencia incrementara considerablemente.
 
 %La justificación es puramente el por que se tiene que hacer, la parte de justificar las tecnologías e infraestructura esta mas de la mano del marco teorico o el desarrollo, la parte de la falta de evidencias también puede gihurar en la justificacion
 
