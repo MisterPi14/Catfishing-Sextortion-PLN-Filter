@@ -1,17 +1,17 @@
 \chapter{Resultados experimentales y puesta en marcha}
 
-\section{Pruebas: \textbf{\textit{desempeño}} en tarea de \textbf{\textit{clasificacion}} de estafa \textbf{\textit{catfishing}} y \textbf{\textit{sextorsión}}}
+\section{Pruebas: \textbf{\textit{desempeño}} en tarea de \textbf{\textit{clasificación}} de estafas \textbf{\textit{catfishing}} y \textbf{\textit{sextorsión}}}
 
-En correspondencia con el objetivo del presente proyeco se efectuo un conjunto de pruebas que involucro desde la creacion de un \textbf{\textit{entorno}} de pruebas funcional descrito en la seccion ``Pruebas de \textbf{\textit{desempeño de clasificación}} en LLMs'' en el capitulo 5 del desarrollo
+En correspondencia con el objetivo del presente proyecto, se efectuó un conjunto de pruebas que involucró la creación de un \textbf{\textit{entorno}} de pruebas funcional descrito en la sección ``Pruebas de \textbf{\textit{desempeño de clasificación}} en LLMs'', en el capítulo 5 del desarrollo.
 
-Puntualmente esta seccion concentra sus detalles en la metodologia seguida para la presentacion de los siguientes resultados.
+Puntualmente, esta sección concentra sus detalles en la metodología seguida para la presentación de los siguientes resultados.
 
 En el diagrama subsecuente puede obtener una referencia visual para esclarecer los siguientes conceptos:
 
 \begin{itemize}
-    \item Las metricas descritas en el capítulo del marco teorico como "metricas de  clasificacion" se calculan para cada etiqueta contemplada, esto se debe a la naturaleza matematica de las mismas, se establecen para evaluar probnlemas de clasificacion binaria.
-    \item Inicialmente el problema de clasificacion multietiqueta es dividido o segmentado en un conjunto de pruebas binarias una por cada etiqueta contemplada.
-    \item La forma de obtener una evaluacion integral que contemple el \textbf{\textit{desempeño}} del modelo para clasificar todas y cada una de las etiquetas es mediante promedios aritmeticos y ponderados. 
+    \item Las métricas descritas en el capítulo del marco teórico como ``métricas de clasificación'' se calculan para cada etiqueta contemplada; esto se debe a su naturaleza matemática, pues se establecen para evaluar problemas de clasificación binaria.
+    \item Inicialmente, el problema de clasificación multietiqueta se divide o segmenta en un conjunto de pruebas binarias, una por cada etiqueta contemplada.
+    \item La forma de obtener una evaluación integral que contemple el \textbf{\textit{desempeño}} del modelo para clasificar todas y cada una de las etiquetas es mediante promedios aritméticos y ponderados.
 \end{itemize}
 
 \begin{figure}[H]
@@ -21,9 +21,9 @@ En el diagrama subsecuente puede obtener una referencia visual para esclarecer l
     \label{fig:diagrama-conceptual-pruebas}
 \end{figure}
 
-Considerando lo anterior descrito conjuntamente se presentan resultados mediante el promedio ponderado sobre los resultados de las metricas de clasificacion por cada etiqueta, de esta manera se puede consolidar una vision general sobre el rendimiento del modelo al clasificr todas las etiquetas contempladas.
+Considerando lo anterior, se presentan resultados mediante el promedio ponderado sobre las métricas de clasificación por cada etiqueta. De esta manera, se puede consolidar una visión general sobre el rendimiento del modelo al clasificar todas las etiquetas contempladas.
 
-Notas: El promedio ponderado sobre la metrica f1 score resulta en la metrica unificada para observar el \textbf{\textit{desempeño}}, considerando su definicion matematica, el mismo se considera como la \textbf{\textit{media harmonica}} que pondera las metricas precision y recall. 
+Notas: El promedio ponderado sobre la métrica F1-score resulta en la métrica unificada para observar el \textbf{\textit{desempeño}}. Considerando su definición matemática, esta se considera como la \textbf{\textit{media armónica}} que pondera las métricas precision y recall.
 
 \subsection{Resultados con puntuación mayor a 8/10}
 

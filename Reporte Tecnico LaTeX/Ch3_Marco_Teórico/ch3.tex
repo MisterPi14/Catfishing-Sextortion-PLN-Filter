@@ -9,19 +9,16 @@
 \label{fig:iadiagram}
 \end{figure}
 
-El presente proyecto fundamenta el núcleo técnico en la rama del \textbf{\textit{aprendizaje profundo}} y el \textbf{\textit{procesamiento de lenguaje natural}}, especificamente se trabajo con modelos largos del lenguaje.
-Los conocidos como LLMs son estructuras que contemplan \textbf{\textit{redes neuronales profundas}} y múltiples capas, Estas redes neuronales pueden procesar textos e intrucciones al nivel del lenguaje humano lo que les permite desempeñar diferentes tareas para el contexto de esta investigacion, relacionadas con texto, como lo pueden ser las tareas de generación de texto y las tareas de clasificación siendo estas últimas el tipo principal de tarea con la que se trabajara a lo largo del presente proyecto.
+El presente proyecto fundamenta el núcleo técnico en la rama del \textbf{\textit{aprendizaje profundo}} y el \textbf{\textit{procesamiento de lenguaje natural}}; específicamente, se trabajó con modelos largos de lenguaje.
+Los conocidos como LLM son estructuras que contemplan \textbf{\textit{redes neuronales profundas}} y múltiples capas. Estas redes neuronales pueden procesar textos e instrucciones al nivel del lenguaje humano, lo que les permite desempeñar diferentes tareas para el contexto de esta investigación relacionadas con texto, como lo pueden ser las tareas de generación y clasificación; estas últimas son el tipo principal de tarea con la que se trabajará a lo largo del presente proyecto.
 
-\subsection{Que son los modelos largos de lenguaje LLM y cual es su utilidad}
+\subsection{¿Qué son los modelos largos de lenguaje (LLM) y cuál es su utilidad?}
 
-Los modelos largos de lenguajes son modelos de aprendizaje profundo que son pre entrenados con grandes cantidades de datos, su función es predecir y generar lenguaje humano a partir de la estimación de probabilidades de que un \textbf{\textit{token}} 
-o secuencia de tokens ocurra dentro de una secuencia más larga de tokens, en este contexto comprender ``secuencia de tokens'' como una oración completa o parrafos o incluso documentos completos. \cite{googleLlmIntro2024}
+Los modelos largos de lenguaje son modelos de aprendizaje profundo preentrenados con grandes cantidades de datos. Su función es predecir y generar lenguaje humano a partir de la estimación de probabilidades de que un \textbf{\textit{token}} o secuencia de tokens ocurra dentro de una secuencia más larga. En este contexto, se puede comprender ``secuencia de tokens'' como una oración completa, párrafos o incluso documentos completos. \cite{googleLlmIntro2024}
 
-Poseen una estructura fundamentada en los transformadores, un tipo de arquitectura introducido en el
-artículo Attention Is All You Need en el 2017, este tipo de arquitectura se basa en mecanismos de \textbf{\textit{atención}}. Los transformadores son un conjunto de
-redes neuronales que cuenta con un codificador y decodificador con capacidades de \textit{autoatención} un concepto referido a la extración de significados de una secuencia de texto y comprenden las relaciones entre las palabras y las frases que contiene. \cite{llmsbyAmazon} \cite{llmsbyIBM}
+Poseen una estructura fundamentada en los transformadores, un tipo de arquitectura introducido en el artículo Attention Is All You Need en 2017. Este tipo de arquitectura se basa en mecanismos de \textbf{\textit{atención}}. Los transformadores son un conjunto de redes neuronales que cuenta con un codificador y decodificador con capacidades de \textit{autoatención}, concepto referido a la extracción de significados de una secuencia de texto y a la comprensión de relaciones entre las palabras y frases que contiene. \cite{llmsbyAmazon} \cite{llmsbyIBM}
 
-Los LLMS pueden ser empleados para llevar a cabo tareas de diversas indoles como pueden ser, responder preguntas, resumir documentos, traducir idiomas, completar oraciones, automatizar la creación de contenido y cambiar la forma en que las personas utilizan los motores de búsqueda y los asistentes virtuales.
+Los LLM pueden ser empleados para llevar a cabo tareas de diversas índoles, como responder preguntas, resumir documentos, traducir idiomas, completar oraciones, automatizar la creación de contenido y cambiar la forma en que las personas utilizan motores de búsqueda y asistentes virtuales.
 
 \subsection{LLMs Como clasificadores de textos}
 Los modelos de lenguaje de gran escala (LLMs, por sus siglas en inglés) han transformado la forma en que se abordan las tareas de procesamiento de lenguaje natural (\textbf{\textit{PLN}}), especialmente en el ámbito de la clasificación de textos. Tradicionalmente, esta tarea dependía de \textbf{\textit{modelos supervisados}} entrenados con grandes volúmenes de datos etiquetados, los cuales requerían etapas explícitas de extracción de características y entrenamiento. En contraste,
@@ -32,7 +29,7 @@ En el artículo Large Language Models Are Zero-Shot Text Classifiers \cite{wang2
 \textbf{ofrecen una ventaja considerable en contextos donde no se dispone de datos etiquetados o los recursos computacionales para entrenamiento son limitados.}
 Asimismo, se demostró que \textbf{el diseño del prompt es determinante: un cambio sutil en la redacción de la instrucción puede afectar significativamente la precisión del modelo.}
 
-Para el objetivo de este proyecto el cual contempla la identificación de estafas como \textbf{\textit{sextorsión}} y \textbf{\textit{catfishing}}, emplear modelos largos del lenguaje como clasificadores es un buen enfoque de solución considerando sus características de adaptabilidad ya sea mediante refinamiento a partir de técnicas de prompting para la redacción de prompts efectivos, técnicas de fine tuning para entrenamiento en un dominio específico Y otras técnicas y protocolos como lo son \textbf{\textit{RAG}} (Retrieval-Augmented Generation) y \textbf{\textit{MCP}} (Model Context Protocol). En contraste, los clasificadores a partir de modelos tradicionales de \textbf{\textit{Machine learning}} poseen capacidades de generarización limitadas.
+Para el objetivo de este proyecto, el cual contempla la identificación de estafas como \textbf{\textit{sextorsión}} y \textbf{\textit{catfishing}}, emplear modelos largos de lenguaje como clasificadores es un buen enfoque de solución, considerando sus características de adaptabilidad, ya sea mediante refinamiento a partir de técnicas de prompting para la redacción de prompts efectivos, técnicas de fine tuning para entrenamiento en un dominio específico y otros protocolos como \textbf{\textit{RAG}} (Retrieval-Augmented Generation) y \textbf{\textit{MCP}} (Model Context Protocol). En contraste, los clasificadores a partir de modelos tradicionales de \textbf{\textit{machine learning}} poseen capacidades de generalización limitadas.
 
 \subsection{Definición formal del lenguaje}
 
@@ -46,16 +43,16 @@ El español, como lengua hablada en múltiples países y regiones, presenta una 
 
 \section{Técnicas computacionales}
 
-\subsection{Técnicas de promting (Prompt engineering)}
+\subsection{Técnicas de prompting (Prompt engineering)}
 
-Las tecnicas de ingenieria de prompt o tecnicas de prompting son estrategias empleadas en la redacción de instrucciones (prompts) orientados a la obtención de contenido generado con inteligencia artificial. Son fundamentales por la influencia directa en la calidad, relevancia y exactitud de los resultados generados por LLMs. \cite{PromptEngByIBM}
+Las técnicas de ingeniería de prompts o técnicas de prompting son estrategias empleadas en la redacción de instrucciones (prompts) orientadas a la obtención de contenido generado con inteligencia artificial. Son fundamentales por su influencia directa en la calidad, relevancia y exactitud de los resultados generados por LLM. \cite{PromptEngByIBM}
 
-Dentro de estas tecnicas se encuentran:
+Dentro de estas técnicas se encuentran:
 
 \begin{itemize}
     \item \textbf{Zero-shot}: Técnica de prompting en donde se le pide al modelo generar contenido sin proporcionar un ejemplo del resultado esperado.
-    \item \textbf{One-shot}: Técnica de prompting en donde se le pide al modelo generar contenido y se proporciona un solo ejemplo del resultado esperado para definir las cualidades que debe cumplir la salida del llm.
-    \item \textbf{Few-shot}: Técnica de prompting en donde se le pide al modelo generar contenido y se proporciona una colección de ejemplos de los resultados esperados para definir las cualidades que debe cumplir la salida del llm.
+    \item \textbf{One-shot}: Técnica de prompting en donde se le pide al modelo generar contenido y se proporciona un solo ejemplo del resultado esperado para definir las cualidades que debe cumplir la salida del LLM.
+    \item \textbf{Few-shot}: Técnica de prompting en donde se le pide al modelo generar contenido y se proporciona una colección de ejemplos de los resultados esperados para definir las cualidades que debe cumplir la salida del LLM.
     \item \textbf{Chain-of-thought}: Técnica de prompting que desglosa tareas complejas en un razonamiento paso a paso para mejorar la comprensión y exactitud del modelo.
 \end{itemize}
 
@@ -75,18 +72,18 @@ FN (falsos negativos): Acontecen cuando la etiqueta real posee el valor "positiv
 
 \subsection{Métricas de desempeño de clasificadores}
 
-\subsubsection{Acurracy}
+\subsubsection{Accuracy}
 \begin{equation}
     \text{accuracy}(y, \hat{y}) = \frac{1}{n_\text{samples}} \sum_{i=0}^{n_\text{samples}-1} 1(\hat{y}_i = y_i)
 \end{equation}
 \cite{accuracyScoreSkLearn}
 
-\subsubsection{Precision (Presicion)}
+\subsubsection{Precisión (Precision)}
 \begin{equation}
     \text{Precision} = (\frac{tp}{tp + fp})
 \end{equation}
-La precisión es la habilidad que posee un clasificador para no clasificar como positivo una muestra negativa.
-el rango de este valor va de 0 (el peor caso) a 1 (el mejor caso)
+La precisión es la habilidad que posee un clasificador para no clasificar como positiva una muestra negativa.
+El rango de este valor va de 0 (el peor caso) a 1 (el mejor caso).
 \cite{precisionScoreSkLearn}
 
 \subsubsection{Recall (Sensibilidad)}
@@ -96,15 +93,15 @@ el rango de este valor va de 0 (el peor caso) a 1 (el mejor caso)
 Recall es la habilidad que tiene un clasificador para encontrar todos los casos positivos \cite{recallScoreSkLearn}
 
 \subsubsection{F1-Score (puntaje F1)}
-Antes de definir a la metrica F1-Score es necesaria la definicion de la medida F puesto que F1-Score es un caso particular de esta metrica.
+Antes de definir la métrica F1-Score, es necesaria la definición de la medida F, puesto que F1-Score es un caso particular de esta métrica.
 
-la medida F es la \textbf{\textit{media harmonica}} ponderada entre las metricas precision y recall, esta metrica surge por la necesidad de balancear ambas metricas, aspecto que se logra  mediante la propiedad de la \textbf{\textit{media harmonica}} de presentar una alta sensivilidad a valores de baja magnitud lo que conduce a una disminucion considerable en el valor resultante cuando cualquiera de las dos metricas posea un valor bajo
+La medida F es la \textbf{\textit{media armónica}} ponderada entre las métricas precision y recall. Esta métrica surge por la necesidad de balancear ambas métricas, aspecto que se logra mediante la propiedad de la \textbf{\textit{media armónica}} de presentar una alta sensibilidad a valores de baja magnitud, lo que conduce a una disminución considerable en el valor resultante cuando cualquiera de las dos métricas posee un valor bajo.
 
 \begin{equation}
     F_\text{meassure} = F_\beta = (1 + \beta^2) \frac{\text{precision} \times \text{recall}}{\beta^2 \text{precision} + \text{recall}}
 \end{equation}
 
-Dentro de sci kit learn se emplea esta otra expresion equivalente para evitar el error de division con denominador cero en casos donde precision y recall son iguales a cero.
+Dentro de scikit-learn se emplea esta otra expresión equivalente para evitar el error de división con denominador cero en casos donde precision y recall son iguales a cero.
 
 \begin{equation}
     F_\text{meassure} = F_\beta = \frac{(1 + \beta^2) \text{tp}}{(1 + \beta^2) \text{tp} + \text{fp} + \beta^2 \text{fn}}
@@ -125,7 +122,7 @@ Si $\beta = 1$ → Se obtiene el F1-score, que equilibra precisión y recall por
 \cite{f1scoreSkLearn}
 
 
-\subsubsection{Manupulación de problemas multiclase a binarios}
+\subsubsection{Manipulación de problemas multiclase a binarios}
 
 El mecanismo de dividir una tarea multiclase en varios problemas binarios —conocido como One-vs-Rest (OvR).
 
@@ -133,11 +130,11 @@ El mecanismo de dividir una tarea multiclase en varios problemas binarios —con
 \cite{sklearnOneVsRest}
 \cite{sklearnMultiClass}
 
-Cuando se trabaja con tareas de clasificacion multiclase o multietiqueta los datos son tratados como una coleccion de casos binarios uno por cada clase que se considere.
+Cuando se trabaja con tareas de clasificación multiclase o multietiqueta, los datos son tratados como una colección de casos binarios, uno por cada clase que se considere.
 
-Si bien esta es una caracteristica de la definicion matematica de las metricas, para efectos practicos no es suficiente puesto que no nos provee con una vision general del desempeño a lo largo de todo el conjunto de clases, por ello es necesario apoyarnos de tecnicas para promediar estas metricas obtenidas por cada clase, cada una sera de mayor utilidad dependiendo el escenario.
+Si bien esta es una característica de la definición matemática de las métricas, para efectos prácticos no es suficiente, puesto que no provee una visión general del desempeño a lo largo de todo el conjunto de clases. Por ello, es necesario apoyarnos en técnicas para promediar estas métricas obtenidas por cada clase; cada una será de mayor utilidad según el escenario.
 
-\subsection{técnicas para promediar métricas de clasificación binaria en clasificación multiclase}
+\subsection{Técnicas para promediar métricas de clasificación binaria en clasificación multiclase}
 
 "Macro" simplemente calcula la media de las métricas binarias, dando el mismo peso a cada clase. En problemas donde las clases poco frecuentes son importantes, el promedio macro puede ser una forma de resaltar su rendimiento. Sin embargo, la suposición de que todas las clases son igualmente importantes a menudo no es cierta, por lo que el promedio macro puede sobrevalorar el bajo rendimiento de una clase poco frecuente.
 
@@ -202,7 +199,7 @@ F_{\beta, micro} = F_{\beta}(y, \hat{y})
 
 \subsubsection{macro average (promedio macro)}
 
-Es el calculo del promedio calculado con el acumulado por cada metrica sobre el numero total de ejemplos de todas las clases.
+Es el cálculo del promedio con el acumulado por cada métrica sobre el número total de ejemplos de todas las clases.
 
 \begin{equation}
 \text{Precision}_{macro} = \frac{1}{|L|} \sum_{l \in L} P(y_l, \hat{y}_l)
@@ -218,7 +215,7 @@ F_{\beta, macro} = \frac{1}{|L|} \sum_{l \in L} F_{\beta}(y_l, \hat{y}_l)
 
 \subsubsection{weighted average (promedio ponderado)}
 
-Es el calculo del promedio ponderado, son factores de cada metrica por el numero total de ejemplos analizados en esa clase sobre el numero total de ejemplos de todas las clases. 
+Es el cálculo del promedio ponderado; son factores de cada métrica por el número total de ejemplos analizados en esa clase sobre el número total de ejemplos de todas las clases.
 
 \begin{equation}
 \text{Precision}_{weighted} = \frac{1}{\sum_{l \in L} |y_l|} \sum_{l \in L} |y_l| P(y_l, \hat{y}_l)
@@ -239,11 +236,11 @@ F_{\beta, weighted} = \frac{1}{\sum_{l \in L} |y_l|} \sum_{l \in L} |y_l| F_{\be
 
 Esta información generada artificialmente puede complementar o incluso reemplazar los datos del mundo real al entrenar o probar los modelos de inteligencia artificial \cite{AIbyIBM}.
 
-En comparación con los conjuntos de datos reales, que suponen desventajas en cuestión de costo, acceso, tiempo para etiquetarlos y suministro, los conjuntos de \textbf{\textit{datos sintéticos}} pueden ser sintetizados mediante modelos generativos \cite{GenModelsByIbm}. En materia de costes resulta más económico generar datos en volúmen además de tener la capacidad de personalizar estos datos en función de las necesidades.
+En comparación con los conjuntos de datos reales, que suponen desventajas en cuestión de costo, acceso, tiempo para etiquetarlos y suministro, los conjuntos de \textbf{\textit{datos sintéticos}} pueden ser sintetizados mediante modelos generativos \cite{GenModelsByIbm}. En materia de costos, resulta más económico generar datos en volumen, además de tener la capacidad de personalizarlos en función de las necesidades.
 
 A pesar de sus beneficios, los \textbf{\textit{datos sintéticos}} \cite{SynthDataByImb} también conllevan dificultades. El proceso de generación puede ser complejo, ya que los científicos de datos tienen que crear datos realistas sin sacrificar su calidad y privacidad.
 
-Para el desarrollo de este proyecto se llevo a cabo la generación sintética de datos con ejemplos de mensajería fraudulenta bajo la modalidad de la \textbf{\textit{sextorsión}} y el \textbf{\textit{catfishing}} siguiendo las ocho mejores prácticas para la generación sintética de datos propuesta por IBM \cite{SynthDataByIbm}
+Para el desarrollo de este proyecto se llevó a cabo la generación sintética de datos con ejemplos de mensajería fraudulenta bajo la modalidad de la \textbf{\textit{sextorsión}} y el \textbf{\textit{catfishing}}, siguiendo las ocho mejores prácticas para la generación sintética de datos propuestas por IBM \cite{SynthDataByIbm}.
 
 En el dominio particular de este proyecto la generación sintética de datos se refiere precisamente a la \textbf{\textit{síntesis de datos}} a partir de un modelo largo de lenguaje de gran escala (GPT 5.1, Gemini3 Pro, Claude Sonnet 4.5) los cuales, mediante su capacidad para generar textos se vuelven una herramienta muy útil para llevar a cabo este proceso. \cite{artificialanalysis}
 

@@ -2,13 +2,13 @@
 
 \section{Prompt de refinamiento compatible con zero y few shot prompting}
 
-\textbf{NOTA: los (*) contienen leyendas sobre logica de programacion aplicada a este prompt en funcion de la configuracion del entorno.}
+\textbf{NOTA: los (*) contienen leyendas sobre lógica de programación aplicada a este prompt en función de la configuración del entorno.}
 
 ROLE: You are a cybersecurity expert specialized in detecting digital fraud and malicious online behavior.
 
 CONTEXT: You are analyzing short-to-medium text messages written in colloquial Mexico City Spanish, focusing exclusively on semantic and linguistic patterns to identify fraudulent or harmful behavior in digital communications.
 
-DEFINITIONS OF THE SCAMS TO IDENTIFY * Se escribe esta seccion si el valor de la variable DEFINITIONS es verdadera
+DEFINITIONS OF THE SCAMS TO IDENTIFY * Se escribe esta sección si el valor de la variable DEFINITIONS es verdadera.
 
 1.- catfishing: A fraud based on the creation or use of a false or misleading online identity to establish rapid emotional intimacy and artificial trust. This behavior is characterized by emotionally charged, unusually long or elaborate messages, accelerated romantic language, idealization of the interlocutor, and victimization narratives (e.g., tragedy, loneliness, sacrifice, hardship) used to generate empathy or emotional dependency. Typical linguistic patterns include justifications for not meeting in person or avoiding verification, gaslighting or guilt-inducing statements, exaggerated future promises (marriage, living together, shared destiny), and explicit or implicit requests for money, financial help, or personal information framed as emergencies or opportunities. The tone is persuasive, emotionally manipulative, and lacks the natural reciprocity of genuine conversation.
 
@@ -31,7 +31,7 @@ Message to analyze:
 
 \section{Módulos principales del código en lenguaje de programación Python}
 
-\subsection{Paquetes empleados en el script, incluidos el cliente de ollama y la libreria de sci kit learn metrics.}
+\subsection{Paquetes empleados en el script, incluidos el cliente de Ollama y la librería de scikit-learn metrics.}
 
 \begin{lstlisting}[language=Python]
     import subprocess
@@ -112,7 +112,7 @@ Message to analyze:
     return response_without_thought, prediction
 \end{lstlisting}
 
-\subsection{Módulo encargado del almacenamiento persistente de las metricas computadas y recolectadas en formato json.}
+\subsection{Módulo encargado del almacenamiento persistente de las métricas computadas y recolectadas en formato JSON.}
 
 \begin{lstlisting}[language=Python]
     def export_to_json(report_data, metadata_dict, filename_prefix):
@@ -131,7 +131,7 @@ Message to analyze:
     print(f'JSON guardado en {path}')
 \end{lstlisting}
 
-\subsection{Módulos encargados de la lógica de evaluación: calculan las métricas mediante la libreria de sci kit learn, también gestionan el orden de atención por modelo.}
+\subsection{Módulos encargados de la lógica de evaluación: calculan las métricas mediante la librería de scikit-learn y también gestionan el orden de atención por modelo.}
 
 \begin{lstlisting}[language=Python]
     def evaluate_all_models(current_dataset):
