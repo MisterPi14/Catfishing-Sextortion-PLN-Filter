@@ -1,6 +1,6 @@
 \chapter{Método de Desarrollo}
 
-\section{Metodología de investigación para la obtención de datos reales}
+\section{Metodología para la obtención de datos reales}
 
 En adición a la parte técnica, el proyecto contempló bajo una metodología, la obtención de datos reales sobre estafa, puntualmente ejemplos de mensajería fraudulenta que busca explotar a la víctima mediante métodos afines al \textbf{\textit{catfishing}} y la \textbf{\textit{sextorsión}}.
 
@@ -48,112 +48,33 @@ De los atacantes
 
 \subsection{\textbf{\textit{Recolección}} y \textbf{\textit{etiquetado de datos}}}
 
-El entrándonos en la etapa de la \textbf{\textit{recolección}} de los datos la misma incluida por un lado adentrarnos en el flirt u \textbf{\textit{bot de telegram}} fue necesario realizar el pago para una suscripción del mes, Posteriormente tras acceder a la aplicación se contacto con personas que sugería la aplicacion- Cabe mencionar que en este proceso se identificó una cantidad de interaccion desproporcionada y poco orgánica.
+Esta etapa de \textbf{\textit{recolección}} de datos implicó la creación de una cuenta en flirt u, un \textbf{\textit{bot de telegram}} (destinado a buscar relaciones amorosas "app de citas"), y establecer contacto con personas que sugería la aplicacion. Cabe mencionar que en este proceso se identificó una cantidad de interaccion desproporcionada y poco orgánica.
 
-Se estableció un diálogo dentro del mismo grupo que genera el \textbf{\textit{bot de telegram}} el mismo bot advierte sobre no llevarlas a comunicaciones a otro sitio y priorizar establecerlas dentro del grupo creado.
+Se estableció un diálogo dentro del mismo grupo que genera el \textbf{\textit{bot de telegram}} el mismo bot advierte sobre no llevarlas a comunicaciones a otro sitio y priorizar establecerlas dentro del grupo creado. En la mayoría de casos Se trataban de comunicaciones fraudulentas en las cuales se observaba una transición rápida entre primer contacto y coerción. De igual manera se solicitaba trasladar las comunicaciones dentro de un chat privado.
 
-Cabe mencionar que la mayoría de casos Se trataban de comunicaciones fraudulentas en las cuales se observaba una transición rápida entre primer contacto y coerción. De igual manera se solicitaba trasladar las comunicaciones dentro de un chat privado.
+Para cada caso se procedió a comunicarse desde el chat privado y seguir un flujo Conversacional esperado por el atacante. A lo largo de los diferentes casos se identificaron Solicitudes de diversas índoles denotando los diferentes tipos de motivación relacionados a este fenómeno, De esta manera se consolidan los hallazgos documentados en la presente investigación.
 
-Para cada caso se procedió a comunicarse desde el chat privado y seguir un flujo Conversacional esperado por el atacante.
-
-A lo largo de los diferentes casos se identificaron Solicitudes de diversas índoles denotando los diferentes tipos de motivación relacionados a este fenómeno, De esta manera se consolidan los hallazgos documentados en la presente investigación.
-
-Posteriormente tras una muestra de 7 conversaciones se procedió con la extracción de datos aprovechando las características de telegram el cual permite exportar las conversaciones en un formato de HTML.
-
-Después se procedió con un proceso de limpieza de datos para almacenar los ejemplos de manera curada eliminando ruido, dado que en parte de los casos se presentaron errores Léxicos y gramaticales.
+Posteriormente tras una muestra de 7 conversaciones se procedió con la extracción de datos aprovechando las características de telegram el cual permite exportar las conversaciones en un formato de HTML. Después se procedió con un proceso de limpieza de datos para almacenar los ejemplos de manera curada eliminando ruido, dado que en parte de los casos se presentaron errores Léxicos y gramaticales.
 
 \section{Generación sintética de data set para refinamiento}
 
 El presente proyecto contempló la \textbf{\textit{recolección de datos}} reales sobre estafas, correspondientemente a los límites y alcances de la investigación, esta \textbf{\textit{recolección}} no fue masiva por lo que se adoptó una metodología basada en la generación sintética de datos para la construccion del conjunto de datos de refinamiento.
-Para conseguir este propósito, se siguieron 8 buenas practicas para la generacion sintetica de datos que provee ibm IBM \cite{SynthDataByIbm} 
+Para conseguir este propósito, se siguieron 8 buenas practicas para la generacion sintetica de datos que provee ibm IBM. \cite{SynthDataByIbm} \linebreak \linebreak
+Los pasos que se siguieron para generar datos sintéticos: \linebreak
+1.- \textbf{\textit{Recolección}} y \textbf{\textit{etiquetado de datos}} reales (mayores detalles en la sección “Metodología: Perfil controlado de observación”).\linebreak
+2.- Creación de un prompt basado en la técnica de prompting few shot donde se establecen las características que deben tener los datos así como los ejemplos recolectados.\linebreak
+3.- \textbf{\textit{Síntesis de datos}} a partir de modelos largos de lenguaje de gran escala, incluyendo modelos como: Cloude Opus 4.6, GPT-5.2, Gemini 3 pro.\linebreak
+4.- Revisión manual de los ejemplos generados priorizando realismo y diversidad.\linebreak
+5.- Construcción de conjunto de datos de refinamiento a partir de \textbf{\textit{datos sinteticos}} y conjunto de datos de pruebas a partir de los datos reales.\linebreak
 
-Los pasos que se siguieron para generar datos sintéticos: 
-1.- \textbf{\textit{Recolección}} y \textbf{\textit{etiquetado de datos}} reales (mayores detalles en la sección “Metodología: Perfil controlado de observación”)
-2.- Creación de un prompt basado en la técnica de prompting few shot donde se establecen las características que deben tener los datos así como los ejemplos recolectados
-3.- \textbf{\textit{Síntesis de datos}} a partir de modelos largos de lenguaje de gran escala, incluyendo modelos como: Cloude Opus 4.6, GPT-5.2, Gemini 3 pro.
-4.- Revisión manual de los ejemplos generados priorizando realismo y diversidad
-5.- Construcción de conjunto de datos de refinamiento a partir de \textbf{\textit{datos sinteticos}} y conjunto de datos de pruebas a partir de los datos reales.
 
 \subsection{Pruebas de \textbf{\textit{desempeño de clasificación}} en LLMs}
 
 Se contempla el uso de técnicas de \textbf{\textit{prompt engineering}} para maximizar la capacidad de modelos de lenguaje (LLM) en la tarea de clasificación de mensajes sospechosos.
 
 La etapa inicial de esta investigación contempló efectuar un conjunto de pruebas a Una colección de modelos largos del lenguaje pertenecientes al actual estado del arte de la inteligencia artificial, se incluyen a continuación:
-
-\begin{itemize}
-    \item Qwen3-VL: 4b
-        \item Gemma3n: e4b, e2b
-        \item Gemma3: 1b, 4b
-        \item Gemma2: 2b
-        \item Mistral: 7b
-        \item Spam-Detect: latest
-        \item Qwen3: 8b, 4b, 1.7b, 0.6b
-        \item EmotionAI: latest
-        \item SmallThinker: 3b
-        \item Qwen2.5: 7b, 3b, 1.5b, 0.5b
-        \item Phi4-mini: 3.8b
-        \item Phi4-mini-reasoning: 3.8b
-        \item Llama-Guard3: 8b, 1b
-        \item TinyDolphin: 1.1b
-        \item Llama3: 8b
-        \item Llama3.2: 3b, 1b
-        \item Llama3.1: 8b
-        \item Llama-3-Refueled: Q4\_K\_M
-        \item Opus-v1.2: Q4\_K\_M
-        \item Granite3.2: 8b, 2b
-        \item Granite3.3: 8b, 2b
-        \item Dolphin3: 8b
-        \item DeepSeek-R1: 8b, 1.5b
-        \item DeepCoder: 1.5b
-        \item Cogito: 3b, 8b
-        \item ALIENTELLIGENCE/emotionalintelligenceanalysis:latest
-        \item ahmadwaqar/smolvlm2-500m-video:fp16
-        \item ahmadwaqar/smolvlm2-500m-video:q8
-        \item llama-pro:instruct
-        \item granite3.2-vision:2b
-        \item minicpm-v:8b
-        \item bakllava:7b
-        \item qwen2.5vl:3b
-        \item qwen2.5vl:7b
-        \item qwen3-vl:2b
-        \item qwen3-vl:4b
-        \item qwen3-vl:8b
-        \item llava:7b
-        \item codegemma:2b
-        \item codegemma:7b
-        \item starcoder2:3b
-        \item starcoder2:7b
-        \item wizard-vicuna-uncensored:7b
-        \item openthinker:7b
-        \item granite3.1-moe:1b
-        \item granite3.1-moe:3b
-        \item smollm:135m
-        \item smollm2:135m
-        \item smollm:360m
-        \item smollm2:360m
-        \item falcon3:1b
-        \item smollm:1.7b
-        \item smollm2:1.7b
-        \item tinyllama:1.1b
-        \item phi:2.7b
-        \item orca-mini:3b
-        \item falcon3:3b
-        \item stablelm2:1.6b
-        \item exaone-deep:2.4b
-        \item exaone-deep:7.8b
-        \item neural-chat:7b
-        \item falcon:7b
-        \item dolphin-llama3:8b
-        \item zephyr:7b
-        \item openchat:7b
-        \item orca-mini:7b
-        \item falcon3:7b
-        \item olmo2:7b
-        \item olmo-3:7b
-        \item phi3:3.8b
-        \item ministral-3:3b
-        \item ministral-3:8b
-\end{itemize}
+\linebreak
+Qwen3-VL: 4b, Gemma3n: e4b, e2b, Gemma3: 1b, 4b, Gemma2: 2b, Mistral: 7b, Spam-Detect: latest, Qwen3: 8b, 4b, 1.7b, 0.6b, EmotionAI: latest, SmallThinker: 3b, Qwen2.5: 7b, 3b, 1.5b, 0.5b, Phi4-mini: 3.8b, Phi4-mini-reasoning: 3.8b, Llama-Guard3: 8b, 1b, TinyDolphin: 1.1b, Llama3: 8b, Llama3.2: 3b, 1b, Llama3.1: 8b, Llama-3-Refueled: Q4\_K\_M, Opus-v1.2: Q4\_K\_M, Granite3.2: 8b, 2b, Granite3.3: 8b, 2b, Dolphin3: 8b, DeepSeek-R1: 8b, 1.5b, DeepCoder: 1.5b, Cogito: 3b, 8b, ALIENTELLIGENCE/emotionalintelligenceanalysis:latest, ahmadwaqar/smolvlm2-500m-video:fp16, ahmadwaqar/smolvlm2-500m-video:q8, llama-pro:instruct, granite3.2-vision:2b, minicpm-v:8b, bakllava:7b, qwen2.5vl:3b, qwen2.5vl:7b, qwen3-vl:2b, qwen3-vl:4b, qwen3-vl:8b, llava:7b, codegemma:2b, codegemma:7b, starcoder2:3b, starcoder2:7b, wizard-vicuna-uncensored:7b, openthinker:7b, granite3.1-moe:1b, granite3.1-moe:3b, smollm:135m, smollm2:135m, smollm:360m, smollm2:360m, falcon3:1b, smollm:1.7b, smollm2:1.7b, tinyllama:1.1b, phi:2.7b, orca-mini:3b, falcon3:3b, stablelm2:1.6b, exaone-deep:2.4b, exaone-deep:7.8b, neural-chat:7b, falcon:7b, dolphin-llama3:8b, zephyr:7b, openchat:7b, orca-mini:7b, falcon3:7b, olmo2:7b, olmo-3:7b, phi3:3.8b, ministral-3:3b, ministral-3:8b.
 
 El propósito de estas pruebas es determinar el conjunto de modelos con mayor \textbf{\textit{ponderación}} mediante la comparación del desempeño de esta selección de modelos en la clasificación del cafishing y \textbf{\textit{sextorsión}} asi como metricas relacionadas al tamaño de los modelos (numero de \textbf{\textit{parametros}}) y tiempo promedio por predicción. Para las pruebas se contemplo refinamiento mediante técnicas de prompting bajo los enfoques: zero shot y few shot para determinar el modelo que se empleara en la aplicación de mensajería.
 

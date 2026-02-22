@@ -9,7 +9,7 @@
 \label{fig:iadiagram}
 \end{figure}
 
-El presente proyecto fundamenta el nucleo técnico en la rama del \textbf{\textit{aprendizaje profundo}}, especificamente se trabajo con modelos largos del lenguaje.
+El presente proyecto fundamenta el núcleo técnico en la rama del \textbf{\textit{aprendizaje profundo}} y el \textbf{\textit{procesamiento de lenguaje natural}}, especificamente se trabajo con modelos largos del lenguaje.
 Los conocidos como LLMs son estructuras que contemplan \textbf{\textit{redes neuronales profundas}} y múltiples capas, Estas redes neuronales pueden procesar textos e intrucciones al nivel del lenguaje humano lo que les permite desempeñar diferentes tareas para el contexto de esta investigacion, relacionadas con texto, como lo pueden ser las tareas de generación de texto y las tareas de clasificación siendo estas últimas el tipo principal de tarea con la que se trabajara a lo largo del presente proyecto.
 
 \subsection{Que son los modelos largos de lenguaje LLM y cual es su utilidad}
@@ -48,7 +48,7 @@ El español, como lengua hablada en múltiples países y regiones, presenta una 
 
 \subsection{Técnicas de promting (Prompt engineering)}
 
-Las tecnicas de ingenieria de prompt o tecnicas de prompting son estrategias para redactar instrucciones para guiar a los modelos largos de lenguaje en la producción de los resultados deseados, estas tecnicas son fundamentales por la influencia directa en la calidad, relevancia y precisión de los resultados generados por LLMs.
+Las tecnicas de ingenieria de prompt o tecnicas de prompting son estrategias empleadas en la redacción de instrucciones (prompts) orientados a la obtención de contenido generado con inteligencia artificial. Son fundamentales por la influencia directa en la calidad, relevancia y exactitud de los resultados generados por LLMs. \cite{PromptEngByIBM}
 
 Dentro de estas tecnicas se encuentran:
 
@@ -249,7 +249,7 @@ En el dominio particular de este proyecto la generación sintética de datos se 
 
 \section{Herramientas de software}
 
-\subsection{Python}
+\subsection{Python 3.13.1}
 
 Python es un lenguaje de programación poderoso, sus caracteristicas destacables incluyen:
 
@@ -263,7 +263,7 @@ Su librería estándar así como su intérprete son de recurso abierto en versi�
 
 Este lenguaje de programación fue ampliamente empleada a lo largo del proyecto en diferentes etapas del mismo. Presente desde el script que se construyo para la ejecucion de las  pruebas de clasificación iniciales así como también en la definición de las funciones lambda dentro del entorno de Amazon web Services mediante el serverless framework.
 
-\subsection{Ollama}
+\subsection{Ollama 0.13.5}
 
 Ollama es una herramienta de código abierto que ejecuta modelelos largos de lenguaje de manera local \cite{hostingerOllama2025}, En el contexto actual del último año la inteligencia artificial esta tecnología Junto con los nuevos lanzamientos de modelos largos en lenguaje de \textbf{\textit{pesos abiertos}} se han posicionado como la alternativa por excelencia a los modelos largos de lenguaje de gran escala de código cerrado, los cuales, anteriormente se consolidaban como los de mayor madurez para realizar las diversas tareas de la inteligencia artificial 
 
@@ -290,11 +290,11 @@ Amazon Web Services fue el proveedor de servicios en la nube seleccionado para i
     \item Sqs
 \end{itemize}
 
-\subsection{Serverless Framework}
+\subsection{Serverless Framework 4.31.2}
 
 El propósito de esta tecnología dentro del presente proyecto se refirio a la definición de la \textbf{\textit{infraestructura como código}} para el despliegue y la definición de la infraestructura de la propuesta de solución presentada dentro del \textbf{\textit{ecosistema}} el proveedor de nube de Amazon web services. \cite{WhatIsSLS}
 
-\subsection{Docker}
+\subsection{Docker 29.1.3}
 
 Es una plataforma de codigo abierto que permite encapsulamiento de entorno de desarrollo, de esta manera se puede replicar un entorno completo de manera aislada con respecto al sistema operativo anfitrión.
 
@@ -304,7 +304,7 @@ Considerando el enfoque definido en el desarrollo del presente proyecto (el cual
 \cite{localstack_github}
 \cite{docker_docs_overview}
 
-\subsection{PowerBi}
+\subsection{PowerBi 2.150.1704.0}
 
 La utilidad que se le dio esta herramienta fue la visualización de los datos, tras haber efectuado las pruebas de clasificacion de los modelos mediante el worker local en python, las mismas se almacenaron en archivos de formato JSON los cuales, posteriormente fueron procesados por un script de python para integrarlos en un unico archivo csv.
  
