@@ -1,0 +1,105 @@
+@startuml
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+package "Host Local (Windows)" as HOST {
+
+  package "Frontend" as FE {
+    [Navegador] as FE_Browser
+    [Vite Dev Server\n:5173] as FE_Vite
+    [App Vue + Router + Views] as FE_App
+    [Chat Store] as FE_Store
+    [Auth Service] as FE_Auth
+    [WebSocket Service] as FE_WS
+  }
+
+  package "Backend Runtime (Node)" as BE_RT {
+    [Serverless Offline\nHTTP :3000\nWS :3001] as SLS_Offline
+
+    [Lambda authorizer/connect/disconnect] as L_Conn
+    [Lambda receiveMessage] as L_Receive
+    [Lambda getMessages] as L_GetMsg
+    [Lambda register/login/checkUser] as L_User
+    [Lambda notifyUser] as L_Notify
+
+    [shared/dynamodb_client.py] as SH_DDB
+    [shared/sqs_client.py] as SH_SQS
+    [shared/websocket_client.py] as SH_WS
+  }
+
+  package "Worker Runtime (Python)" as WK {
+    [worker/main.py] as WK_Main
+    [SQS Listener] as WK_SQS
+    [LLM Processor] as WK_LLM
+    [AWS Notifier] as WK_Notify
+    [Ollama API\n:11434] as OLLAMA
+  }
+
+  package "Docker Engine" as DOCKER {
+    package "Container: LocalStack" as LS {
+      [Edge API\n:4566] as LS_Edge
+      database "DynamoDB (emulado)" as LS_DDB
+      queue "SQS (emulado)" as LS_SQS
+      [Lambda API (emulada)] as LS_Lambda
+      [API Gateway REST (emulado)] as LS_APIGW_REST
+    }
+  }
+}
+
+' Flujo interno Frontend
+FE_Browser --> FE_Vite
+FE_Vite --> FE_App
+FE_App --> FE_Store
+FE_App --> FE_Auth
+FE_App --> FE_WS
+
+' Entradas desde frontend
+FE_Auth --> LS_APIGW_REST : VITE_API_URL\nhttp://localhost:4566/restapis/.../local/_user_request_
+FE_Store --> LS_APIGW_REST : login/register/check-user
+FE_WS --> SLS_Offline : VITE_WEBSOCKET_URL\nws://localhost:3001
+
+' Serverless runtime local
+SLS_Offline --> L_Conn
+SLS_Offline --> L_Receive
+SLS_Offline --> L_GetMsg
+SLS_Offline --> L_User
+SLS_Offline --> L_Notify
+
+' Lambdas usan clientes compartidos
+L_Receive --> SH_SQS
+L_GetMsg --> SH_DDB
+L_User --> SH_DDB
+L_Notify --> SH_WS
+
+' Endpoints locales configurados en serverless.yml
+SH_DDB --> LS_Edge : DYNAMODB_ENDPOINT=http://localhost:4566
+SH_SQS --> LS_Edge : SQS_ENDPOINT=http://localhost:4566
+SH_WS --> SLS_Offline : WEBSOCKET_API_ENDPOINT=http://localhost:3001
+
+' LocalStack enruta servicios emulados
+LS_Edge --> LS_DDB
+LS_Edge --> LS_SQS
+LS_Edge --> LS_Lambda
+LS_Edge --> LS_APIGW_REST
+
+' Worker local
+WK_Main --> WK_SQS
+WK_SQS --> LS_Edge : receive/delete SQS\nendpoint_url=AWS_ENDPOINT_URL
+WK_Main --> WK_LLM
+WK_LLM --> OLLAMA : análisis de texto
+WK_Main --> WK_Notify
+WK_Notify --> LS_Edge : update DynamoDB + invoke Lambda notifyUser
+
+' Integración backend-worker
+L_Receive --> LS_Edge : enqueue mensaje en SQS
+LS_APIGW_REST --> L_User : rutas HTTP (register/login/check-user)
+
+note bottom
+Stage local:
+- LocalStack plugin (serverless-localstack) usa host localhost:4566 y autostart=false
+- Serverless Offline expone HTTP/WS locales (:3000/:3001)
+- Worker y Lambdas usan endpoint_url para hablar con servicios AWS emulados
+end note
+
+@enduml
